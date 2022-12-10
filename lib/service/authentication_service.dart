@@ -37,4 +37,12 @@ class AuthenticationService {
   static Future<bool> hasBiometrics() async {
     return await _auth.canCheckBiometrics;
   }
+
+  // check with this method before you authenticate the user
+  Future<bool> authenticateIsAvailable() async {
+    final isAvailable = await _auth.canCheckBiometrics;
+    final isDeviceSupported = await _auth.isDeviceSupported();
+    return isAvailable && isDeviceSupported;
+  }
+
 }
