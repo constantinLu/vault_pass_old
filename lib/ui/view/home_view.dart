@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/view/authentication_view.dart';
 
-import '../main.dart';
+import '../../main.dart';
+import 'authentication_view.dart';
 
 class HomeView extends StatelessWidget {
   @override

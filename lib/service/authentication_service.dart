@@ -9,7 +9,7 @@ class AuthenticationService {
   static final log = Logger();
 
   static Future<bool> authenticate() async {
-    final isBiometricsAvailable = await hasBiometrics();
+    final isBiometricsAvailable = await authenticateIsAvailable();
     if (!isBiometricsAvailable) {
       log.i("This phone does not support biometrics authentication");
       return false;
@@ -17,11 +17,14 @@ class AuthenticationService {
 
     try {
       return await _auth.authenticate(
-          localizedReason: "Scan Fingerprint to Authenticate",
+          localizedReason: "Use your fingerprint to verify your identity.",
           options: const AuthenticationOptions(
-              biometricOnly: false, useErrorDialogs: true, stickyAuth: true));
+              biometricOnly: false,
+              useErrorDialogs: true,
+              stickyAuth: true)); //requires auth when you add the app to the background
     } on PlatformException catch (e) {
       log.e("Error on authentication", e);
+      //catch the error or show a custom error. when this is not setted up
       return false;
     }
   }
@@ -39,7 +42,7 @@ class AuthenticationService {
   }
 
   // check with this method before you authenticate the user
-  Future<bool> authenticateIsAvailable() async {
+  static Future<bool> authenticateIsAvailable() async {
     final isAvailable = await _auth.canCheckBiometrics;
     final isDeviceSupported = await _auth.isDeviceSupported();
     return isAvailable && isDeviceSupported;
