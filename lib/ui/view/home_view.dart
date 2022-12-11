@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../main.dart';
-import 'authentication_view.dart';
+import 'biometrics_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Home',
+                  'Home View',
                   style: TextStyle(fontSize: 40),
                 ),
                 const SizedBox(height: 48),
@@ -36,7 +36,7 @@ class HomeView extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
         onPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => AuthenticationView()),
+          MaterialPageRoute(builder: (context) => BiometricsView()),
         ),
       );
 }
