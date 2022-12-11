@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vault_pass/model/user.dart';
 import 'package:vault_pass/service/authentication_service.dart';
 import 'package:vault_pass/ui/router/app_router.dart';
+
+import '../../examples/Transaction.dart';
 
 class AuthenticationView extends StatefulWidget {
   const AuthenticationView({Key? key}) : super(key: key);
@@ -10,6 +13,7 @@ class AuthenticationView extends StatefulWidget {
 }
 
 class _AuthenticationViewState extends State<AuthenticationView> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
