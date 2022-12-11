@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:vault_pass/service/authentication_service.dart';
 import 'package:vault_pass/ui/router/app_router.dart';
 
-class AuthenticationView extends StatefulWidget {
-  const AuthenticationView({Key? key}) : super(key: key);
+class RegisterView extends StatefulWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
-  State<AuthenticationView> createState() => _AuthenticationViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _AuthenticationViewState extends State<AuthenticationView> {
+class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Text("Login"),
+      child: Text("RegisterView"),
     ));
   }
 
