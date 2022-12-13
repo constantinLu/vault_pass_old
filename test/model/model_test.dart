@@ -12,7 +12,7 @@ void main() {
     test('should create user with model variables when created', () {
       expect(user?.createdDate, isNotNull);
       expect(user?.updatedDate, isNotNull);
-      expect(user?.id, isNotNull);
+      expect(user?.id, isNull);
     });
 
     test("should map to json", () {

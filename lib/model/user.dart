@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 
 @immutable
 class User with EquatableMixin {
+
   final Uuid? id;
   final String firstName;
   final String lastName;
@@ -95,4 +96,10 @@ class UserBuilder {
       updatedDate: map['updatedDate'] as DateTime,
     );
   }
+}
+
+
+enum UserState {
+  AUTHENTICATED,
+  NOT_AUTHENTICATED
 }
