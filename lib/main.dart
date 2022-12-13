@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vault_pass/ui/router/app_router.dart';
+import 'package:vault_pass/util/constants/palette.dart';
 
 //lock screen mode
 Future main() async {
@@ -24,7 +26,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.grey),
+        theme: ThemeData(
+            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+            scaffoldBackgroundColor: background_black),
         onGenerateRoute: appRouter.onGenerate,
       );
 }
