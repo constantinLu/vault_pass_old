@@ -1,0 +1,12 @@
+INITIAL:
+
+-ENTER APP
+if the user is null -> REDIRECT TO REGISTER PAGE
+if the user is not null in the DB and the FINGERPRINT IS AVAILABLE -> REDIRECT TO AUTH WITH FINGERPRINT PAGE
+if the user is not null in the DB and the FINGERPRINT IS NOT AVAILABLE -> REDIRECT TO LOGIN PAGE
+
+
+---- TECHINCAL DETAILS ----
+What will be the state wich we need to follow here ?
+
+

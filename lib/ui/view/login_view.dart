@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/ui/widgets/text_button_widget.dart';
-import 'package:vault_pass/util/constants/style.dart';
 
 import '../../util/constants/palette.dart';
+import '../../util/constants/style.dart';
 import '../router/app_router.dart';
 import '../widgets/password_field_widget.dart';
+import '../widgets/text_button_widget.dart';
 import '../widgets/text_field_widget.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _LoginViewState extends State<LoginView> {
   bool passwordVisibility = false;
 
   @override
@@ -35,22 +35,14 @@ class _RegisterViewState extends State<RegisterView> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Register",
+                            "Welcome back.",
                             style: headline34,
                           ),
                           const Text(
-                            "Create an account to get started.",
+                            "You've been missed.",
                             style: bodyText15_grey,
                           ),
-                          const SizedBox(height: 50),
-                          const TextFieldWidget(
-                            hintText: 'First Name',
-                            inputType: TextInputType.name,
-                          ),
-                          const TextFieldWidget(
-                            hintText: 'Last Name',
-                            inputType: TextInputType.name,
-                          ),
+                          const SizedBox(height: 60),
                           const TextFieldWidget(
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
@@ -64,16 +56,6 @@ class _RegisterViewState extends State<RegisterView> {
                               });
                             },
                           ),
-                          PasswordFieldWidget(
-                            isPasswordVisible: passwordVisibility,
-                            hintText: "Retype password",
-                            onTap: () {
-                              setState(() {
-                                //need to persist the user in the database
-                                passwordVisibility != passwordVisibility;
-                              });
-                            },
-                          )
                         ],
                       ),
                     ),
@@ -81,15 +63,15 @@ class _RegisterViewState extends State<RegisterView> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          "Already have an account?",
+                          "Don't have an account?",
                           style: bodyText15_grey,
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed(RouteName.LOGIN_VIEW);
+                            Navigator.of(context).pushNamed(RouteName.REGISTER_VIEW);
                           },
                           child: const Text(
-                            'Sign In',
+                            'Register',
                             style: bodyText15_white,
                           ),
                         ),
@@ -101,7 +83,7 @@ class _RegisterViewState extends State<RegisterView> {
                     TextButtonWidget(
                       buttonName: 'Register',
                       onTap: () {
-                        Navigator.of(context).pushNamed(RouteName.LOGIN_VIEW);
+                        Navigator.of(context).pushNamed(RouteName.HOME_VIEW);
                       },
                       bgColor: Colors.white,
                       textColor: black,

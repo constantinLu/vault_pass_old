@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/ui/view/authentication_view.dart';
+import 'package:vault_pass/ui/view/login_view.dart';
 import 'package:vault_pass/ui/view/biometrics_view.dart';
 import 'package:vault_pass/ui/view/home_view.dart';
 import 'package:vault_pass/ui/view/register_view.dart';
@@ -8,9 +8,9 @@ class AppRouter {
   Route onGenerate(RouteSettings routerSettings) {
     switch (routerSettings.name) {
       case RouteName.DEFAULT_VIEW:
-        return MaterialPageRoute(builder: (_) => const BiometricsView());
-      case RouteName.AUTH_VIEW:
-        return MaterialPageRoute(builder: (_) => const AuthenticationView());
+        return MaterialPageRoute(builder: (_) => const RegisterView());
+      case RouteName.LOGIN_VIEW:
+        return MaterialPageRoute(builder: (_) => const LoginView());
       case RouteName.BIOMETRICS_VIEW:
         return MaterialPageRoute(builder: (_) => const BiometricsView());
       case RouteName.REGISTER_VIEW:
@@ -25,7 +25,7 @@ class AppRouter {
 
 class RouteName {
   static const DEFAULT_VIEW = "/";
-  static const AUTH_VIEW = "auth";
+  static const LOGIN_VIEW = "auth";
   static const BIOMETRICS_VIEW = "biometrics";
   static const HOME_VIEW = "home";
   static const LOGOUT_VIEW = "logout";
