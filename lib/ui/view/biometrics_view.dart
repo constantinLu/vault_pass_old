@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/service/authentication_service.dart';
+import 'package:vault_pass/service/biometrics_service.dart';
 import 'package:vault_pass/ui/router/app_router.dart';
 
 class BiometricsView extends StatefulWidget {
@@ -25,7 +25,7 @@ class _BiometricsViewState extends State<BiometricsView> {
   }
 
   void authenticate() async {
-    final isAuthenticated = await AuthenticationService.authenticate();
+    final isAuthenticated = await BiometricsService.authenticate();
     if (isAuthenticated) {
       Navigator.of(context).pushNamed(RouteName.HOME_VIEW);
     }

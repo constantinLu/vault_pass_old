@@ -2,35 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({
+  final String hintText;
+  final TextInputType inputType;
+  final Function? validator;
+  final TextEditingController controller;
+
+  TextFieldWidget({
     Key? key,
     required this.hintText,
     required this.inputType,
+    required this.controller,
+    this.validator,
   }) : super(key: key);
-  final String hintText;
-  final TextInputType inputType;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      child: TextField(
+      child: TextFormField(
         style: bodyText15_grey.copyWith(color: Colors.white),
         keyboardType: inputType,
         textInputAction: TextInputAction.next,
+        controller: controller,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.all(20),
+          contentPadding: const EdgeInsets.all(20),
           hintText: hintText,
           hintStyle: bodyText15_grey,
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.grey,
               width: 1,
             ),
             borderRadius: BorderRadius.circular(18),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.white,
               width: 1,
             ),
