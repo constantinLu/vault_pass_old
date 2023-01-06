@@ -1,52 +1,33 @@
 import 'dart:async';
 
-import 'package:flutter/services.dart';
-import 'package:local_auth/local_auth.dart';
-import 'package:logger/logger.dart';
-import 'package:vault_pass/model/user.dart';
+import '../state_management/authentication/authentication_bloc.dart';
+
+
+//TODO: This will be wired to the secure local storeage, it will not be saved into the db. or maybe encrypted.
+//TODO: it will be responsible to provide the data from the secured storage and then AuthBloc will react based on the data.
 
 class AuthenticationService {
-  static final LocalAuthentication _auth = LocalAuthentication();
-  static final log = Logger();
+  final _controller = StreamController<AuthenticationStatus>();
 
-  static Future<bool> authenticate() async {
-    final isBiometricsAvailable = await authenticateIsAvailable();
-    if (!isBiometricsAvailable) {
-      log.i("This phone does not support biometrics authentication");
-      return false;
-    }
-
-    try {
-      return await _auth.authenticate(
-          localizedReason: "Use your fingerprint to verify your identity.",
-          options: const AuthenticationOptions(
-              biometricOnly: false,
-              useErrorDialogs: true,
-              stickyAuth: true)); //requires auth when you add the app to the background
-    } on PlatformException catch (e) {
-      log.e("Error on authentication", e);
-      //catch the error or show a custom error. when this is not setted up
-      return false;
-    }
+  Stream<AuthenticationStatus> get status async* {
+    await Future<void>.delayed(const Duration(seconds: 1));
+    yield AuthenticationStatus.unauthenticated;
+    yield* _controller.stream;
   }
 
-  static Future<List<BiometricType>> getBiometrics() async {
-    try {
-      return await _auth.getAvailableBiometrics();
-    } on PlatformException catch (e) {
-      return <BiometricType>[];
-    }
+  Future<void> logIn({
+    required String username,
+    required String password,
+  }) async {
+    await Future.delayed(
+      const Duration(milliseconds: 300),
+      () => _controller.add(AuthenticationStatus.authenticated),
+    );
   }
 
-  static Future<bool> hasBiometrics() async {
-    return await _auth.canCheckBiometrics;
+  void logOut() {
+    _controller.add(AuthenticationStatus.unauthenticated);
   }
 
-  // check with this method before you authenticate the user
-  static Future<bool> authenticateIsAvailable() async {
-    final isAvailable = await _auth.canCheckBiometrics;
-    final isDeviceSupported = await _auth.isDeviceSupported();
-    return isAvailable && isDeviceSupported;
-  }
-
+  void dispose() => _controller.close();
 }

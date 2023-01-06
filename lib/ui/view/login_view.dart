@@ -16,6 +16,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   bool passwordVisibility = false;
+  final emailControllerField = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +44,21 @@ class _LoginViewState extends State<LoginView> {
                             style: bodyText15_grey,
                           ),
                           const SizedBox(height: 60),
-                          const TextFieldWidget(
+                          TextFieldWidget(
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
+                            controller: emailControllerField,
                           ),
-                          PasswordFieldWidget(
-                            isPasswordVisible: passwordVisibility,
-                            hintText: "Password",
-                            onTap: () {
-                              setState(() {
-                                passwordVisibility = !passwordVisibility;
-                              });
-                            },
-                          ),
+                          // PasswordFieldWidget(
+                          //   isPasswordVisible: passwordVisibility,
+                          //   hintText: "Password",
+                          //   controller: ,
+                          //   onPressed: () {
+                          //     setState(() {
+                          //       passwordVisibility = !passwordVisibility;
+                          //     });
+                          //   },
+                          // ),
                         ],
                       ),
                     ),
@@ -71,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                             Navigator.of(context).pushNamed(RouteName.REGISTER_VIEW);
                           },
                           child: const Text(
-                            'Register',
+                            'Login',
                             style: bodyText15_white,
                           ),
                         ),

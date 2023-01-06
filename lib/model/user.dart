@@ -4,13 +4,12 @@ import 'package:uuid/uuid.dart';
 
 @immutable
 class User with EquatableMixin {
-
   final Uuid? id;
   final String firstName;
   final String lastName;
   final String email;
   final String password;
-  final String token;
+  final String? token;
 
   final DateTime createdDate;
   final DateTime updatedDate;
@@ -26,7 +25,7 @@ class User with EquatableMixin {
         updatedDate = builder.updatedDate ?? DateTime.now();
 
   @override
-  List<Object> get props => [firstName, lastName, email, password, token, createdDate, updatedDate];
+  List<Object> get props => [id !=null, firstName, lastName, email, password, token != null, createdDate, updatedDate];
 
   Map<String, dynamic> toMap() {
     return {
@@ -44,6 +43,23 @@ class User with EquatableMixin {
   factory User.fromMap(Map<String, dynamic> map) {
     return UserBuilder.fromMap(map).build();
   }
+
+  isUserPresent() {
+    return id == null;
+  }
+
+  static User empty = UserBuilder(firstName: "", lastName: "", email: "", password: "", token: "").build();
+
+
+  //TODO: for the purpose of testing
+  static emptyF() {
+    return UserBuilder(firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        token: "")
+        .build();
+  }
 }
 
 class UserBuilder {
@@ -52,7 +68,7 @@ class UserBuilder {
   String lastName;
   String email;
   String password;
-  String token;
+  String? token;
   DateTime? createdDate;
   DateTime? updatedDate;
 
@@ -62,7 +78,7 @@ class UserBuilder {
     required this.lastName,
     required this.email,
     required this.password,
-    required this.token,
+    this.token,
     this.createdDate,
     this.updatedDate,
   });
@@ -98,8 +114,4 @@ class UserBuilder {
   }
 }
 
-
-enum UserState {
-  AUTHENTICATED,
-  NOT_AUTHENTICATED
-}
+enum UserState { AUTHENTICATED, NOT_AUTHENTICATED }

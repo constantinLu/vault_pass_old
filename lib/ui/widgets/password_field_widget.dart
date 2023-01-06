@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
 class PasswordFieldWidget extends StatelessWidget {
+  final bool isPasswordVisible;
+  final Function()? onPressed;
+  final String hintText;
+  final TextEditingController controller;
+
   const PasswordFieldWidget({
     Key? key,
     required this.isPasswordVisible,
-    required this.onTap,
+    required this.onPressed,
     required this.hintText,
+    required this.controller,
   }) : super(key: key);
-
-  final bool isPasswordVisible;
-  final Function()? onTap;
-  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +24,14 @@ class PasswordFieldWidget extends StatelessWidget {
         obscureText: isPasswordVisible,
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.done,
+        controller:  controller,
         decoration: InputDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: IconButton(
               splashColor: Colors.transparent,
               highlightColor: Colors.transparent,
-              onPressed: onTap,
+              onPressed: onPressed,
               icon: Icon(
                 isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                 color: Colors.grey,
