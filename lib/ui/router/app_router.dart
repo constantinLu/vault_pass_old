@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/ui/view/login_view.dart';
 import 'package:vault_pass/ui/view/biometrics_view.dart';
 import 'package:vault_pass/ui/view/home_view.dart';
+import 'package:vault_pass/ui/view/login_view.dart';
 import 'package:vault_pass/ui/view/register_view.dart';
 
 class AppRouter {
@@ -23,6 +23,7 @@ class AppRouter {
   }
 }
 
+//TODO: Change this into future with microTypes or enums
 class RouteName {
   static const DEFAULT_VIEW = "/";
   static const LOGIN_VIEW = "auth";
@@ -30,4 +31,15 @@ class RouteName {
   static const HOME_VIEW = "home";
   static const LOGOUT_VIEW = "logout";
   static const REGISTER_VIEW = "register";
+
 }
+
+//EXAMPLE
+// enum Foo {
+//   one(1),
+//   two(2);
+//
+//   const Foo(this.value);
+//   final num value;
+// }
+

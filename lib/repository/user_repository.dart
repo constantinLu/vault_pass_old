@@ -1,34 +1,31 @@
+import 'package:vault_pass/repository/mapper/repo_mapper.dart';
+import 'package:vault_pass/repository/vaultdb.dart';
+
 import '../model/user.dart';
 
 class UserRepository {
-  User? _user;
+  final VaultPassDb repository;
 
-  //mocked until db is created locally.
-  Future<User?> getUser() async {
-    if (_user != null) return _user;
+  UserRepository(this.repository);
+
+  Future<User> getUser(int userId) async {
+    final userData = await repository.getUser(userId);
+    final user = RepoMapper.toUser(userData);
+    print("Delay the getUser call");
     return Future.delayed(
       const Duration(milliseconds: 300),
-      () => _user = UserBuilder(
-              firstName: "Lungu",
-              lastName: "Constantin",
-              email: "lunguucatalin@gmail.com",
-              password: "asd",
-              token: "token")
-          .build(),
+          () => user,
     );
   }
 
-  void saveUser(User user) async {
-    Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _user = UserBuilder(
-              firstName: "Lungu",
-              lastName: "Constantin",
-              email: "lunguucatalin@gmail.com",
-              password: "asd",
-              token: "token")
-          .build(),
-    );
+  Future<int> addUser(User user) async {
+    final userCompanion = RepoMapper.toUserCompanion(user);
+    final response = await repository.addUser(userCompanion);
     print("User Saved in the database");
+    return Future.delayed(
+        const Duration(milliseconds: 300),
+            () => response
+    );
+
   }
 }

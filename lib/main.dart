@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vault_pass/repository/user_repository.dart';
+import 'package:vault_pass/repository/vaultdb.dart';
 import 'package:vault_pass/service/authentication_service.dart';
 import 'package:vault_pass/service/user_service.dart';
 import 'package:vault_pass/state_management/authentication/authentication_bloc.dart';
@@ -20,7 +21,7 @@ Future main() async {
 
   runApp(MyApp(
       authenticationService: AuthenticationService(),
-      userService: UserService(UserRepository()),
+      userService: UserService(UserRepository(VaultPassDb())),
       appRouter: AppRouter()));
 }
 

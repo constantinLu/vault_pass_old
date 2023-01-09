@@ -6,7 +6,7 @@ abstract class RegisterState extends Equatable {
 
 //INITIAL
 class RegisterInitial extends RegisterState {
-  RegisterInitial();
+  const RegisterInitial();
 
   @override
   // TODO: implement props
@@ -14,10 +14,10 @@ class RegisterInitial extends RegisterState {
 }
 
 //SUBMITTED
-class RegisterSubmitted extends RegisterState {
+class _RegisterSubmitted extends RegisterState {
   final User registeredUser;
 
-  RegisterSubmitted(this.registeredUser);
+  _RegisterSubmitted(this.registeredUser);
 
   @override
   // TODO: implement props

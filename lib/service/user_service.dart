@@ -30,21 +30,27 @@ class UserService {
   }
 
   Future<bool> hasToken() async {
-    /// read from keystore/keychain
+    //TODO:  read from keystore/keychain
     await Future.delayed(Duration(seconds: 1));
     return false;
   }
 
-  Future<User?> getUser() async {
-    return _userRepository.getUser();
+  Future<User?> getUser(int userId) async {
+    return _userRepository.getUser(userId);
   }
 
-  Future<RegisterStatus> saveUser(User user) async {
+  Future<RegisterStatus> addUser(User user) async {
     if (user == null) {
       return RegisterStatus.failure;
     }
-    _userRepository.saveUser(user);
-    //change this after you create the database
+    final response = _userRepository.addUser(user);
+    if (response == 1) {
+      return RegisterStatus.success;
+    }
+    if (response == 0) {
+      return RegisterStatus.already_exists;
+    }
+    //FIXME: FIX THIS!! logic after everything works
     return RegisterStatus.success;
   }
 }
