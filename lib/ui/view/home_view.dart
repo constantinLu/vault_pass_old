@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vault_pass/ui/view/login_view.dart';
 
 import '../../main.dart';
-import 'biometrics_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
@@ -36,7 +36,7 @@ class HomeView extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
         onPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => BiometricsView()),
+          MaterialPageRoute(builder: (context) => LoginView()),
         ),
       );
 }
