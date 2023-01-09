@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../util/constants/palette.dart';
 import '../../util/constants/style.dart';
 import '../router/app_router.dart';
+import '../router/jumper.dart';
 import '../widgets/password_field_widget.dart';
 import '../widgets/text_button_widget.dart';
 import '../widgets/text_field_widget.dart';
@@ -16,7 +17,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   bool passwordVisibility = false;
-  final emailControllerField = TextEditingController();
+  final emailField = TextEditingController();
+  final passwordField = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +49,18 @@ class _LoginViewState extends State<LoginView> {
                           TextFieldWidget(
                             hintText: 'Email',
                             inputType: TextInputType.emailAddress,
-                            controller: emailControllerField,
+                            controller: emailField,
                           ),
-                          // PasswordFieldWidget(
-                          //   isPasswordVisible: passwordVisibility,
-                          //   hintText: "Password",
-                          //   controller: ,
-                          //   onPressed: () {
-                          //     setState(() {
-                          //       passwordVisibility = !passwordVisibility;
-                          //     });
-                          //   },
-                          // ),
+                          PasswordFieldWidget(
+                            isPasswordVisible: passwordVisibility,
+                            hintText: "Password",
+                            controller: passwordField,
+                            onPressed: () {
+                              setState(() {
+                                passwordVisibility = !passwordVisibility;
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -71,7 +73,10 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).pushNamed(RouteName.REGISTER_VIEW);
+                            //TODO: verify if the user is authenticated, if not ->
+                            // authenticate him.
+
+                            Teleport.to(context, RouteName.REGISTER_VIEW);
                           },
                           child: const Text(
                             'Login',

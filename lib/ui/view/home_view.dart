@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'Home View',
+                  'Welcome to Home View',
                   style: TextStyle(fontSize: 40),
                 ),
                 const SizedBox(height: 48),

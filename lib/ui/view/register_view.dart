@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/state_management/register/register_bloc.dart';
+import 'package:vault_pass/ui/router/jumper.dart';
 import 'package:vault_pass/ui/widgets/text_button_widget.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
@@ -23,8 +26,6 @@ class _RegisterViewState extends State<RegisterView> {
   // Create a global key that uniquely identifies the Form widget and allows validation of the form.
   // Note: This is a `GlobalKey<FormState>`, not a GlobalKey<MyCustomFormState>.
   final _registerFormKey = GlobalKey<FormState>();
-  late final _newUser;
-
   final firstNameField = TextEditingController();
   final lastNameField = TextEditingController();
   final emailField = TextEditingController();
@@ -32,12 +33,21 @@ class _RegisterViewState extends State<RegisterView> {
   final retypePasswordField = TextEditingController();
 
   @override
+  void dispose() {
+    firstNameField.dispose();
+    lastNameField.dispose();
+    emailField.dispose();
+    passwordField.dispose();
+    retypePasswordField.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: background_black, elevation: 0),
       body: BlocBuilder<RegisterBloc, RegisterState>(
         //changes UI on every state changed
-        builder: (context, state) {
+        builder: (context, registerState) {
           return SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -122,19 +132,27 @@ class _RegisterViewState extends State<RegisterView> {
                         const SizedBox(
                           height: 20,
                         ),
+                        // ACTUAL BUTTON
                         TextButtonWidget(
                           buttonName: 'Register',
                           onTap: () {
-                            //Navigator.of(context).pushNamed(RouteName.LOGIN_VIEW);
+                            // HERE WE TRIGGER THE EVENT OF SAVING THE USER TO THE DB
                             BlocProvider.of<RegisterBloc>(context).add(
-                              RegisterEventSubmit(UserBuilder(
-                                  firstName: firstNameField.value.text,
-                                  lastName: lastNameField.value.text,
-                                  email: emailField.value.text,
-                                  password: passwordField.value.text,
-                                  token: "token")
-                                  .build(),),
+                              RegisterSubmitEvent(
+                                UserBuilder(
+                                        id: Random().nextInt(3),
+                                        //TODO: FIX THIS WHEN SAVING THE DB (It should not be random)
+                                         // it should be null, and increment into the db
+                                        firstName: firstNameField.value.text,
+                                        lastName: lastNameField.value.text,
+                                        email: emailField.value.text,
+                                        password: passwordField.value.text,
+                                        token: "token_constantin") //generate - a unique token
+                                    .build(),
+                              ),
                             );
+                            print("User persisted to the database. Point REGISTER VIEW");
+                            Teleport.to(context, RouteName.LOGIN_VIEW);
                           },
                           bgColor: Colors.white,
                           textColor: black,

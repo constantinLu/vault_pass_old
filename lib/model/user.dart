@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:uuid/uuid.dart';
 
 @immutable
 class User with EquatableMixin {
-  final Uuid? id;
+  final int id;
   final String firstName;
   final String lastName;
   final String email;
@@ -25,7 +26,8 @@ class User with EquatableMixin {
         updatedDate = builder.updatedDate ?? DateTime.now();
 
   @override
-  List<Object> get props => [id !=null, firstName, lastName, email, password, token != null, createdDate, updatedDate];
+  List<Object> get props =>
+      [id, firstName, lastName, email, password, token != null, createdDate, updatedDate];
 
   Map<String, dynamic> toMap() {
     return {
@@ -44,26 +46,25 @@ class User with EquatableMixin {
     return UserBuilder.fromMap(map).build();
   }
 
-  isUserPresent() {
-    return id == null;
-  }
-
-  static User empty = UserBuilder(firstName: "", lastName: "", email: "", password: "", token: "").build();
-
+  static User empty = UserBuilder(
+          id: Random().nextInt(2), firstName: "", lastName: "", email: "", password: "", token: "")
+      .build();
 
   //TODO: for the purpose of testing
-  static emptyF() {
-    return UserBuilder(firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        token: "")
+  static emptyUserBuilder() {
+    return UserBuilder(
+            id: Random().nextInt(2),
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            token: "")
         .build();
   }
 }
 
 class UserBuilder {
-  Uuid? id;
+  int id;
   String firstName;
   String lastName;
   String email;
@@ -73,7 +74,7 @@ class UserBuilder {
   DateTime? updatedDate;
 
   UserBuilder({
-    this.id,
+    required this.id,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -102,7 +103,7 @@ class UserBuilder {
 
   factory UserBuilder.fromMap(Map<String, dynamic> map) {
     return UserBuilder(
-      id: map['id'] as Uuid,
+      id: map['id'],
       firstName: map['firstName'] as String,
       lastName: map['lastName'] as String,
       email: map['email'] as String,
