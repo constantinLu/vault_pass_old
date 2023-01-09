@@ -26,7 +26,10 @@ class _RegisterSubmitted extends RegisterState {
 
 //COMPLETED
 class RegisterCompleted extends RegisterState {
-  RegisterCompleted();
+
+  AuthCredentials authCredentials;
+
+  RegisterCompleted(this.authCredentials);
 
   @override
   // TODO: implement props

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../model/auth_credentials.dart';
+import '../../state_management/login/login_bloc.dart';
 import '../../util/constants/palette.dart';
 import '../../util/constants/style.dart';
 import '../router/app_router.dart';
-import '../router/jumper.dart';
+import '../router/teleport.dart';
 import '../widgets/password_field_widget.dart';
 import '../widgets/text_button_widget.dart';
 import '../widgets/text_field_widget.dart';
@@ -17,8 +20,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   bool passwordVisibility = false;
-  final emailField = TextEditingController();
-  final passwordField = TextEditingController();
+  late TextEditingController emailField = TextEditingController();
+  late TextEditingController passwordField = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,35 +70,31 @@ class _LoginViewState extends State<LoginView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "Don't have an account?",
-                          style: bodyText15_grey,
-                        ),
+                        const Text("Don't have an account?", style: bodyText15_grey),
                         TextButton(
+                          child: const Text('Login', style: bodyText15_white),
                           onPressed: () {
-                            //TODO: verify if the user is authenticated, if not ->
-                            // authenticate him.
-
                             Teleport.to(context, RouteName.REGISTER_VIEW);
                           },
-                          child: const Text(
-                            'Login',
-                            style: bodyText15_white,
-                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextButtonWidget(
-                      buttonName: 'Register',
-                      onTap: () {
-                        Navigator.of(context).pushNamed(RouteName.HOME_VIEW);
-                      },
-                      bgColor: Colors.white,
-                      textColor: black,
-                    )
+                    const SizedBox(height: 20),
+                    BlocBuilder<LoginBloc, LoginState>(builder: (ctx, loginState) {
+                      return TextButtonWidget(
+                        buttonName: 'Login',
+                        onTap: () {
+                          context.read<LoginBloc>().add(
+                                LoginSubmittedEvent(AuthCredentialsBuilder(
+                                        email: emailField.text, password: passwordField.text)
+                                    .build()),
+                              );
+                          Teleport.to(context, RouteName.HOME_VIEW);
+                        },
+                        bgColor: Colors.white,
+                        textColor: black,
+                      );
+                    }),
                   ],
                 ),
               ),

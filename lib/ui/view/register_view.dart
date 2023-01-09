@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/state_management/register/register_bloc.dart';
-import 'package:vault_pass/ui/router/jumper.dart';
+import 'package:vault_pass/ui/router/teleport.dart';
 import 'package:vault_pass/ui/widgets/text_button_widget.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
@@ -140,7 +140,7 @@ class _RegisterViewState extends State<RegisterView> {
                             BlocProvider.of<RegisterBloc>(context).add(
                               RegisterSubmitEvent(
                                 UserBuilder(
-                                        id: Random().nextInt(3),
+                                        id: Random().nextInt(1000),
                                         //TODO: FIX THIS WHEN SAVING THE DB (It should not be random)
                                          // it should be null, and increment into the db
                                         firstName: firstNameField.value.text,

@@ -47,6 +47,16 @@ class RegisterSubmitEvent extends _RegisterEvent {
   List<Object?> get props => [newUser];
 }
 
+
+class RegisterCompletedEvent extends _RegisterEvent {
+  final AuthCredentials savedAuth;
+
+  const RegisterCompletedEvent(this.savedAuth);
+
+  @override
+  List<Object?> get props => [savedAuth];
+}
+
 class RegisterEventError extends _RegisterEvent {
   @override
   // TODO: implement props

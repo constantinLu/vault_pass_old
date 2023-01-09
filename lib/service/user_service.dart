@@ -1,21 +1,14 @@
-import 'package:vault_pass/repository/user_repository.dart';
+import 'package:vault_pass/model/auth_credentials.dart';
 import 'package:vault_pass/state_management/register/register_bloc.dart';
 
 import '../model/user.dart';
+import '../repository/user_repository.dart';
 
 //add local secure storage
 class UserService {
   final UserRepository _userRepository;
 
   UserService(this._userRepository);
-
-  Future<String> authenticate({
-    required String username,
-    required String password,
-  }) async {
-    await Future.delayed(Duration(seconds: 1));
-    return 'token';
-  }
 
   Future<void> deleteToken() async {
     /// delete from keystore/keychain
@@ -24,7 +17,7 @@ class UserService {
   }
 
   Future<void> persistToken(String token) async {
-    /// write to keystore/keychain
+    /// write to the database
     await Future.delayed(Duration(seconds: 1));
     return;
   }
@@ -37,6 +30,11 @@ class UserService {
 
   Future<User?> getUser(int userId) async {
     return _userRepository.getUser(userId);
+  }
+
+  //TODO: change the password to microType and encrypt it
+  Future<User?> authenticateUser(AuthCredentials authCredentials) async {
+    return _userRepository.authenticateUser(authCredentials);
   }
 
   Future<RegisterStatus> addUser(User user) async {

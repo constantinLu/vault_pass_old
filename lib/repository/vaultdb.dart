@@ -27,6 +27,18 @@ class VaultPassDb extends _$VaultPassDb {
   }
 
   //get user
+  Future<UserData> authenticateUser(String? email, String? password) async {
+    //gets the user based on the id if is found
+    if (email == null || password == null) {
+      throw Exception("Values cannot be null");
+    }
+    return await (select(user)
+          ..where((userEntity) => userEntity.email.equals(email)))
+         // ..where((userEntity) => userEntity.password.equals(password)))
+        .getSingle();
+  }
+
+  //get user
   Future<UserData> getUser(int userId) async {
     //gets the user based on the id if is found
     return await (select(user)..where((userEntity) => userEntity.id.equals(userId))).getSingle();
@@ -36,7 +48,6 @@ class VaultPassDb extends _$VaultPassDb {
   Future<int> addUser(UserCompanion userCompanion) async {
     return await into(user).insert(userCompanion);
   }
-
 
   //delete a user
   Future<int> deleteUser(int userId) async {
