@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -44,22 +42,6 @@ class User with EquatableMixin {
 
   factory User.fromMap(Map<String, dynamic> map) {
     return UserBuilder.fromMap(map).build();
-  }
-
-  static User empty = UserBuilder(
-          id: Random().nextInt(2), firstName: "", lastName: "", email: "", password: "", token: "")
-      .build();
-
-  //TODO: for the purpose of testing
-  static emptyUserBuilder() {
-    return UserBuilder(
-            id: Random().nextInt(2),
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            token: "")
-        .build();
   }
 }
 

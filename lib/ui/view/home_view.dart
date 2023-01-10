@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:vault_pass/ui/view/login_view.dart';
+import 'package:vault_pass/ui/widgets/tab_widget.dart';
+import 'package:vault_pass/util/constants/palette.dart';
 
-import '../../main.dart';
+import '../../util/constants/style.dart';
+import '../../util/device_size.dart';
+import '../router/app_router.dart';
+import '../router/teleport.dart';
+import '../widgets/avatar.dart';
 
 class HomeView extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text(MyApp.title),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        elevation: 0,
+        leading: Transform.scale(
+          scaleX: -1,
+          child: IconButton(
+              tooltip: "Logout",
+              onPressed: () => Teleport.to(context, RouteName.LOGIN_VIEW),
+              icon: const Icon(
+                Icons.login_sharp,
+                color: WHITE,
+              )),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(32),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Welcome to Home View',
-                  style: TextStyle(fontSize: 40),
-                ),
-                const SizedBox(height: 48),
-                buildLogoutButton(context)
-              ],
-            ),
-          ),
-        ),
-      );
-
-  Widget buildLogoutButton(BuildContext context) => ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight(50),
-        ),
-        child: Text(
-          'Logout',
-          style: TextStyle(fontSize: 20),
-        ),
-        onPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => LoginView()),
-        ),
-      );
+        //TODO: Make this dynamic of showing the initials
+        title: const Center(child: Text("Vault Pass", style: bodyText15_white_bold)),
+        actions: const [Avatar()],
+        toolbarHeight: heightPercentOf(8, context),
+      ),
+      body: TabWidget(),
+    );
+  }
 }

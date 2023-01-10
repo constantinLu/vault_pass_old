@@ -7,7 +7,9 @@ import '../../util/constants/palette.dart';
 import '../../util/constants/style.dart';
 import '../router/app_router.dart';
 import '../router/teleport.dart';
+import '../widgets/avatar.dart';
 import '../widgets/password_field_widget.dart';
+import '../widgets/shaded_appbar.dart';
 import '../widgets/text_button_widget.dart';
 import '../widgets/text_field_widget.dart';
 
@@ -26,7 +28,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: background_black, elevation: 0),
+      appBar: AppBarWidget(),
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -72,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                       children: [
                         const Text("Don't have an account?", style: bodyText15_grey),
                         TextButton(
-                          child: const Text('Login', style: bodyText15_white),
+                          child: const Text('Register', style: bodyText15_white),
                           onPressed: () {
                             Teleport.to(context, RouteName.REGISTER_VIEW);
                           },
@@ -91,8 +93,8 @@ class _LoginViewState extends State<LoginView> {
                               );
                           Teleport.to(context, RouteName.HOME_VIEW);
                         },
-                        bgColor: Colors.white,
-                        textColor: black,
+                        bgColor: WHITE,
+                        textColor: BLACK,
                       );
                     }),
                   ],
