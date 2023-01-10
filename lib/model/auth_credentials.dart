@@ -23,10 +23,6 @@ class AuthCredentials with EquatableMixin {
   factory AuthCredentials.fromMap(Map<String, dynamic> map) {
     return AuthCredentialsBuilder.fromMap(map).build();
   }
-
-  static emptyUserBuilder() {
-    return AuthCredentialsBuilder(email: "", password: "").build();
-  }
 }
 
 class AuthCredentialsBuilder {

@@ -17,10 +17,15 @@ const bodyText15_white = TextStyle(
   fontSize: 15,
 );
 
-const bodyText28 = TextStyle(
-  fontSize: 28,
-  fontWeight: FontWeight.w500,
+const bodyText15_white_bold = TextStyle(
   color: Colors.white,
+  fontWeight: FontWeight.bold,
+  fontSize: 15,
+);
+
+const bodyText10_white = TextStyle(
+  color: Colors.white,
+  fontSize: 10,
 );
 
 //button text styles
@@ -29,4 +34,3 @@ const buttonText16 = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.bold,
 );
-

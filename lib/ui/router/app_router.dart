@@ -3,6 +3,7 @@ import 'package:vault_pass/ui/view/biometrics_view.dart';
 import 'package:vault_pass/ui/view/home_view.dart';
 import 'package:vault_pass/ui/view/login_view.dart';
 import 'package:vault_pass/ui/view/register_view.dart';
+import 'package:vault_pass/ui/view/settings_view.dart';
 
 class AppRouter {
   Route onGenerate(RouteSettings routerSettings) {
@@ -17,6 +18,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const RegisterView());
       case RouteName.HOME_VIEW:
         return MaterialPageRoute(builder: (_) => HomeView());
+      case RouteName.SETTINGS_VIEW:
+        return MaterialPageRoute(builder: (_) => SettingsView());
       default:
         return throw Exception("No other route found!");
     }
@@ -31,7 +34,7 @@ class RouteName {
   static const HOME_VIEW = "home";
   static const LOGOUT_VIEW = "logout";
   static const REGISTER_VIEW = "register";
-
+  static const SETTINGS_VIEW = "settings";
 }
 
 //EXAMPLE
@@ -42,4 +45,3 @@ class RouteName {
 //   const Foo(this.value);
 //   final num value;
 // }
-

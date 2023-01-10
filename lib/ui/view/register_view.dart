@@ -44,7 +44,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: background_black, elevation: 0),
+      appBar: AppBar(backgroundColor: BACKGROUND_BLACK, elevation: 0),
       body: BlocBuilder<RegisterBloc, RegisterState>(
         //changes UI on every state changed
         builder: (context, registerState) {
@@ -142,7 +142,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 UserBuilder(
                                         id: Random().nextInt(1000),
                                         //TODO: FIX THIS WHEN SAVING THE DB (It should not be random)
-                                         // it should be null, and increment into the db
+                                        // it should be null, and increment into the db
                                         firstName: firstNameField.value.text,
                                         lastName: lastNameField.value.text,
                                         email: emailField.value.text,
@@ -154,8 +154,8 @@ class _RegisterViewState extends State<RegisterView> {
                             print("User persisted to the database. Point REGISTER VIEW");
                             Teleport.to(context, RouteName.LOGIN_VIEW);
                           },
-                          bgColor: Colors.white,
-                          textColor: black,
+                          bgColor: WHITE,
+                          textColor: BLACK,
                         )
                       ],
                     ),

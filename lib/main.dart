@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => AuthBloc(
-                authenticationService: authenticationService, userService: userService),
+            create: (context) =>
+                AuthBloc(authenticationService: authenticationService, userService: userService),
           ),
           BlocProvider(
             create: (context) => RegisterBloc(userService),
@@ -64,7 +64,8 @@ class MyApp extends StatelessWidget {
           title: title,
           theme: ThemeData(
               textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-              scaffoldBackgroundColor: background_black),
+              colorScheme: ColorScheme.fromSwatch(primarySwatch: white_pale),
+              scaffoldBackgroundColor: BACKGROUND_BLACK),
           onGenerateRoute: appRouter.onGenerate,
         ),
       ),
