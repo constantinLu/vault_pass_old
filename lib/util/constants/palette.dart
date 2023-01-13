@@ -1,23 +1,56 @@
-//colors
-
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
-// background - colors
-const BACKGROUND_BLACK = Color.fromRGBO(0, 0, 0, 0.9);
+class Palette {
+  static const List<Color> gradients = [whiteCultured, greyPlatinum, greySpanish, greyDim];
+  static primaryColor(context) => Theme.of(context).primaryColor;
+}
 
-const secondary_pale_white = Color.fromRGBO(54, 62, 100, 0.9);
+//blacks
+const blackFull = Color.fromRGBO(0, 0, 0, 1);
+const blackErie = Color.fromRGBO(37, 37, 37, 1);
+const blackJet = Color.fromRGBO(51, 51, 51, 1);
 
-// text - colors
-const BLACK = Colors.black87;
+//whites
+const whiteFull = Color.fromRGBO(255, 255, 255, 1);
+const whiteSnow = Color.fromRGBO(248, 248, 247, 1);
+const whiteCultured = Color.fromRGBO(221, 221, 216, 1);
 
-//
-const WHITE = Colors.white;
 
-MaterialColor white_pale = MaterialColor(
-  Color.fromRGBO(248, 248, 248, 1).value,
-  <int, Color>{
+//greys
+const greyPlatinum = Color.fromRGBO(228, 228, 228, 1);
+const greySpanish = Color.fromRGBO(148, 148, 148, 1);
+const greyDim = Color.fromRGBO(106, 106, 106, 1);
+
+
+//testing opacity //HEXA
+// 100% — FF
+// 95% — F2
+// 90% — E6
+// 85% — D9
+// 80% — CC
+// 75% — BF
+// 70% — B3
+// 65% — A6
+// 60% — 99
+// 55% — 8C
+// 50% — 80
+// 45% — 73
+// 40% — 66
+// 35% — 59
+// 30% — 4D
+// 25% — 40
+// 20% — 33
+// 15% — 26
+// 10% — 1A
+// 5% — 0D
+// 0% — 00
+const Color greySpanishHexa = Color(0xCC949494);
+
+// MATERIAL COLORS
+MaterialColor materialWhite = MaterialColor(
+  const Color.fromRGBO(248, 248, 248, 1).value,
+  const <int, Color>{
     50: Color.fromRGBO(252, 248, 248, 0.1),
     100: Color.fromRGBO(252, 248, 248, 0.2),
     200: Color.fromRGBO(252, 248, 248, 0.3),

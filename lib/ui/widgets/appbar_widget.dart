@@ -5,15 +5,15 @@ import '../../util/constants/palette.dart';
 class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
   Widget? child;
 
-  AppBarWidget.withChild(this.child);
+  AppBarWidget.withChild(this.child, {super.key});
 
-  AppBarWidget();
+  AppBarWidget({super.key, this.child});
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(backgroundColor: BACKGROUND_BLACK, elevation: 0);
+    return AppBar(backgroundColor: blackFull, elevation: 0);
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(100);
 }
