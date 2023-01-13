@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class Record with EquatableMixin {
   final int id;
   final String recordName;
-  final Type type;
+  final RecordType type;
 
   //this is used only when the type is custom
   final String? typeName;
@@ -29,8 +29,8 @@ class Record with EquatableMixin {
         url = builder.url,
         user = builder.user,
         password = builder.password,
-        createdDate = builder.createdDate ?? DateTime.now(),
-        updatedDate = builder.updatedDate ?? DateTime.now();
+        createdDate = builder.createdDate,
+        updatedDate = builder.updatedDate;
 
   @override
   List<Object?> get props =>
@@ -47,7 +47,7 @@ class Record with EquatableMixin {
       'url': this.url,
       'user': this.user,
       'password': this.password,
-      'createdDate': this.createdDate,
+      'createdDate': createdDate,
       'updatedDate': this.updatedDate,
     };
   }
@@ -60,7 +60,7 @@ class Record with EquatableMixin {
 class RecordBuilder with EquatableMixin {
   int id;
   String recordName;
-  Type type;
+  RecordType type;
 
   //this is used only when the type is custom
   //used for showing the tab name in the UI
@@ -115,7 +115,7 @@ class RecordBuilder with EquatableMixin {
     return RecordBuilder(
       id: map['id'] as int,
       recordName: map['recordName'] as String,
-      type: map['type'] as Type,
+      type: map['type'] as RecordType,
       typeName: map['typeName'] as String,
       logo: map['logo'] as String,
       description: map['description'] as String,
@@ -128,14 +128,27 @@ class RecordBuilder with EquatableMixin {
   }
 }
 
-enum State {
-  active,
-  inactive,
+enum RecordType {
+  account("Account"),
+  address("Address"),
+  work_account("Work Account");
+
+  final String value;
+
+  const RecordType(this.value);
+
+  static RecordType valueOf(String value) {
+    return RecordType.values.firstWhere((val) => val.value == value);
+  }
+
 }
 
-enum Type {
-  account,
-  address,
-  bank_cards,
-  custom,
-}
+// EXAMPLE
+// enum Foo {
+//   one(1),
+//   two(2);
+//
+//   const Foo(this.value);
+//
+//   final num value;
+// }

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   final AuthService authenticationService;
   final UserService userService;
 
-  static const String title = 'VaultPass';
+  static const String title = 'Vault Pass';
 
   MyApp({required this.appRouter, required this.authenticationService, required this.userService});
 
@@ -63,9 +63,11 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: title,
           theme: ThemeData(
+              primaryColor: blackJet,
+              //TODO: add colors here //splashColor: grey!!!,
               textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
-              colorScheme: ColorScheme.fromSwatch(primarySwatch: white_pale),
-              scaffoldBackgroundColor: BACKGROUND_BLACK),
+              colorScheme: ColorScheme.fromSwatch(primarySwatch: materialWhite),
+              scaffoldBackgroundColor: blackFull),
           onGenerateRoute: appRouter.onGenerate,
         ),
       ),

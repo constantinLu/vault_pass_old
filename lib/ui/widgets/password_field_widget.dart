@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
+import '../../util/constants/css.dart';
+
 class PasswordFieldWidget extends StatelessWidget {
   final bool isPasswordVisible;
   final Function()? onPressed;
@@ -46,14 +48,14 @@ class PasswordFieldWidget extends StatelessWidget {
               color: Colors.grey,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: borderRadiusCircular,
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color: Colors.white,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: borderRadiusCircular,
           ),
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
+import '../../util/constants/css.dart';
+
 class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final TextInputType inputType;
@@ -33,14 +35,14 @@ class TextFieldWidget extends StatelessWidget {
               color: Colors.grey,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: borderRadiusCircular,
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
               color: Colors.white,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(18),
+            borderRadius: borderRadiusCircular,
           ),
         ),
       ),

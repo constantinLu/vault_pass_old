@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vault_pass/util/constants/style.dart';
 
+import '../../util/constants/css.dart';
+
 class TextButtonWidget extends StatelessWidget {
   const TextButtonWidget({
     Key? key,
@@ -22,7 +24,7 @@ class TextButtonWidget extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: bgColor,
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: borderRadiusCircular,
       ),
       child: TextButton(
         style: ButtonStyle(

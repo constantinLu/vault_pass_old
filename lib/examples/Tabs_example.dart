@@ -4,7 +4,7 @@
 // import '../../util/constants/style.dart';
 // import '../router/app_router.dart';
 // import '../router/teleport.dart';
-// import '../widgets/avatar.dart';
+// import '../widgets/avatar_widget.dart';
 // import '../widgets/components/texter.dart';
 //
 // class HomeView extends StatelessWidget {
