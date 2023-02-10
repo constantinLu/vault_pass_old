@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:vault_pass/model/user.dart';
+import 'package:vault_pass/domain/user.dart';
 
 import '../data/user_test.dart';
 

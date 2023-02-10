@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vault_pass/repository/user_repository.dart';
-import 'package:vault_pass/repository/vaultdb.dart';
-import 'package:vault_pass/service/authentication_service.dart';
-import 'package:vault_pass/service/user_service.dart';
-import 'package:vault_pass/state_management/authentication/auth_bloc.dart';
-import 'package:vault_pass/state_management/login/login_bloc.dart';
-import 'package:vault_pass/state_management/register/register_bloc.dart';
-import 'package:vault_pass/ui/router/app_router.dart';
-import 'package:vault_pass/util/constants/palette.dart';
+import 'package:vault_pass/presentation/router/app_router.dart';
+import 'package:vault_pass/presentation/utils/palette.dart';
+
+import 'application/auth/auth_bloc.dart';
+import 'application/login/login_bloc.dart';
+import 'application/register/register_bloc.dart';
+import 'application/service/authentication_service.dart';
+import 'application/service/user_service.dart';
+import 'infra/repository/user_repository.dart';
+import 'infra/repository/vaultdb.dart';
 
 //lock screen mode
 Future main() async {

@@ -44,12 +44,14 @@ dependencies:
   logger: ^1.1.0 #for logging
   flutter_svg_provider: ^1.0.3 #to use svg images
   google_fonts: ^3.0.1 #fonts
-  drift: ^2.4.2 #db orm
-  sqlite3_flutter_libs: ^0.5.0 #sqlite
+  drift: #db orm
+  sqlite3_flutter_libs: #sqlite
   path_provider: #dart package for finding phone os storage folders
   path: #dart package for getting paths from phone
   flutter_svg:
-
+  dartz: #functional programming
+  freezed_annotation:
+  json_annotation: #for json/toMap code generation
 
 
 dev_dependencies:
@@ -62,9 +64,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  drift_dev: ^2.4.1
+  drift_dev: ^2.5.2
   build_runner: ^2.3.3
   drift_db_viewer: ^2.0.0
+  json_serializable: #needed for freezed
+  freezed:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

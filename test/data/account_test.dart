@@ -1,5 +1,6 @@
-import 'package:vault_pass/model/record.dart';
-import 'package:vault_pass/util/randomizer.dart';
+
+import 'package:vault_pass/application/common/randomizer.dart';
+import 'package:vault_pass/domain/record.dart';
 
 abstract class AccountTest {
 
