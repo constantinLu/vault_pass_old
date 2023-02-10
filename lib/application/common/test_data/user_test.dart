@@ -1,6 +1,7 @@
 import 'dart:math';
 
-import 'package:vault_pass/domain/user.dart';
+import '../../../domain/record.dart';
+import '../../../domain/user.dart';
 
 abstract class UserTest {
   static UserBuilder aUser() {
