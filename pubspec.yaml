@@ -49,6 +49,7 @@ dependencies:
   path_provider: #dart package for finding phone os storage folders
   path: #dart package for getting paths from phone
   flutter_svg:
+  fpdart: #functional programming
 
 
 
