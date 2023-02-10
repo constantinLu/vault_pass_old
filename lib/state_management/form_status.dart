@@ -1,1 +1,0 @@
-enum FormStatus { NEW, PENDING, SUBMITTED, REJECTED }
