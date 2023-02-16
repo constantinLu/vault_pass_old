@@ -7,14 +7,14 @@ class PasswordFieldWidget extends StatelessWidget {
   final bool isPasswordVisible;
   final Function()? onPressed;
   final String hintText;
-  final TextEditingController controller;
+  final Function? onChanged;
 
   const PasswordFieldWidget({
     Key? key,
     required this.isPasswordVisible,
-    required this.onPressed,
+    this.onPressed,
     required this.hintText,
-    required this.controller,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class PasswordFieldWidget extends StatelessWidget {
         obscureText: isPasswordVisible,
         keyboardType: TextInputType.text,
         textInputAction: TextInputAction.done,
-        controller: controller,
+        onChanged: (value) => onChanged,
         decoration: InputDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),

@@ -1,47 +1,27 @@
 part of 'register_bloc.dart';
 
-abstract class RegisterState extends Equatable {
-  const RegisterState();
-}
+@freezed
+class RegisterState with _$RegisterState {
+  const RegisterState._();
 
-//INITIAL
-class RegisterInitial extends RegisterState {
-  const RegisterInitial();
+  const factory RegisterState(
+      {required Name firstName,
+      required Name lastName,
+      required EmailAddress emailAddress,
+      required Password password,
+      required Password retypePassword,
+      required bool isLoading,
+      required AutovalidateMode? showErrorMessage,
+      //non nullable type
+      required Option<Either<AuthFailure, Unit>> response}) = _RegisterState;
 
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
-//SUBMITTED
-class _RegisterSubmitted extends RegisterState {
-  final User registeredUser;
-
-  _RegisterSubmitted(this.registeredUser);
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
-//COMPLETED
-class RegisterCompleted extends RegisterState {
-  AuthCredentials authCredentials;
-
-  RegisterCompleted(this.authCredentials);
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-}
-
-//FAILED
-class RegisterFailed extends RegisterState {
-  final String? error;
-
-  RegisterFailed(this.error);
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  factory RegisterState.initial() => RegisterState(
+      firstName: Name(""),
+      lastName: Name(""),
+      emailAddress: EmailAddress(""),
+      password: Password(""),
+      retypePassword: Password(""),
+      isLoading: false,
+      showErrorMessage: AutovalidateMode.disabled,
+      response: Option.none());
 }

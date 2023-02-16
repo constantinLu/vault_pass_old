@@ -1,8 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-//TODO: Change this into future with microTypes or enums
-class Teleport {
-  static to(BuildContext ctx, String routeName) {
-    Navigator.of(ctx).pushNamed(routeName.toString());
-  }
+teleportTo(BuildContext ctx, PageRouteInfo route) {
+  ctx.router.replace(route);
 }

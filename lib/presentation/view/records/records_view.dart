@@ -24,7 +24,7 @@ class RecordsView extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (ctx, index) {
         final record = _records[index];
-        return RecordWidget(record, _processColor(index));
+        //TODO:return RecordWidget(record, _processColor(index));
       },
       itemCount: _records.length,
     );

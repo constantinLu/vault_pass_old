@@ -1,35 +1,67 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:vault_pass/domain/auth/auth_facade.dart';
+import 'package:vault_pass/domain/microtypes/microtypes.dart';
 
-import '../../domain/auth_credentials.dart';
-import '../service/authentication_service.dart';
-import '../service/secure_storage_service.dart';
-import '../service/user_service.dart';
+import '../../domain/failures/auth_failure.dart';
+
+part 'login_bloc.freezed.dart';
 
 part 'login_event.dart';
 
 part 'login_state.dart';
 
+@injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthService _authService;
-  final UserService _userService;
+  final IAuthFacade _authFacade;
 
-  LoginBloc(this._authService, this._userService) : super(LoginInitState()) {
-    on<LoginUsernameChangedEvent>(_onUsernameChangedEvent);
-    on<LoginPasswordChangedEvent>(_onPasswordChangedEvent);
-    on<LoginSubmittedEvent>(_onLoginSubmittedChangedEvent);
+  LoginBloc(this._authFacade) : super(LoginState.initial()) {
+    on<EmailChangedEvent>(
+      (event, emitState) => changeEmail(event, emitState),
+    );
+    on<PasswordChangedEvent>(
+      (event, emitState) => changePassword(event, emitState),
+    );
+    on<LoginWithEmailAndPasswordEvent>(
+      (event, emitState) => loginWithEmailAndPassword(event, emitState),
+    );
+    on<LoginWithBiometrics>(
+      (event, emitState) => loginWithBio(event, emitState),
+    );
   }
 
-  void _onUsernameChangedEvent(LoginUsernameChangedEvent event, Emitter<LoginState> emit) {}
-
-  void _onPasswordChangedEvent(LoginPasswordChangedEvent event, Emitter<LoginState> emit) {}
-
-  void _onLoginSubmittedChangedEvent(LoginSubmittedEvent event, Emitter<LoginState> emit) {
-    final user = _userService.authenticateUser(event.authCredentials);
-    //TODO: check with a boolean here if the user exists and the password and email matches
-    //store credentials to the secure storage
-    SecureStorageService.persisToSecureStorage(event.authCredentials);
-    _authService.logIn(event.authCredentials);
+  void changeEmail(EmailChangedEvent event, Emitter<LoginState> emitState) {
+    emit(
+      state.copyWith(emailAddress: EmailAddress(event.emailAddress), response: none()),
+    );
   }
+
+  void changePassword(PasswordChangedEvent event, Emitter<LoginState> emitState) {
+    emit(
+      state.copyWith(password: Password(event.password), response: none()),
+    );
+  }
+
+  void loginWithEmailAndPassword(
+      LoginWithEmailAndPasswordEvent event, Emitter<LoginState> emitState) async {
+    final isEmailValid = state.emailAddress.isValid();
+    final isPasswordValid = state.password.isValid();
+
+    if (isEmailValid && isPasswordValid) {
+      emit(state.copyWith(isLoading: true, response: none()));
+
+      final loginResponse =
+          await _authFacade.login(emailAddress: state.emailAddress, password: state.password);
+
+      emit(state.copyWith(
+          isLoading: false,
+          showErrorMessage: AutovalidateMode.onUserInteraction,
+          response: optionOf(loginResponse)));
+    }
+  }
+
+  void loginWithBio(LoginWithBiometrics event, Emitter<LoginState> emitState) {}
 }

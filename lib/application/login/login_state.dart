@@ -1,22 +1,20 @@
 part of 'login_bloc.dart';
 
-@immutable
-abstract class LoginState extends Equatable {}
+@freezed
+class LoginState with _$LoginState {
+  const LoginState._();
 
-// init state when the login page is started
-class LoginInitState extends LoginState {
-  LoginInitState();
+  const factory LoginState(
+      {required EmailAddress emailAddress,
+      required Password password,
+      required bool isLoading,
+      required AutovalidateMode? showErrorMessage,
+      required Option<Either<AuthFailure, AuthCredentials>> response}) = _LoginState;
 
-  @override
-  List<Object> get props => [];
-}
-
-// when the credentials are submitted
-class LoginSubmittedState extends LoginState {
-  final AuthCredentials? authCredentials;
-
-  LoginSubmittedState(this.authCredentials);
-
-  @override
-  List<Object> get props => [];
+  factory LoginState.initial() => LoginState(
+      emailAddress: EmailAddress(""),
+      password: Password(""),
+      isLoading: false,
+      showErrorMessage: AutovalidateMode.disabled,
+      response: Option.none());
 }

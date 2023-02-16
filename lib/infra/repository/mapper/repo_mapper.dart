@@ -1,25 +1,23 @@
-import 'package:drift/drift.dart';
-
 import '../../../domain/user.dart';
-import '../vaultdb.dart';
+import '../../database/vaultdb.dart';
 
 class RepoMapper {
-  static User toUser(UserData userData) {
+  static User toDomain(UserEntry userEntry) {
     final user = UserBuilder(
-      id: userData.id,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      email: userData.email,
-      password: userData.password,
-      token: userData.token,
-      createdDate: userData.createdDate,
-      updatedDate: userData.updatedDate,
+      id: userEntry.id,
+      firstName: userEntry.firstName,
+      lastName: userEntry.lastName,
+      email: userEntry.email,
+      password: userEntry.password,
+      token: userEntry.token,
+      createdDate: userEntry.createdDate,
+      updatedDate: userEntry.updatedDate,
     ).build();
     return user;
   }
 
-  static UserData toUserData(User user) {
-    return UserData(
+  static UserEntry toEntry(User user) {
+    return UserEntry(
         id: user.id,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -30,16 +28,16 @@ class RepoMapper {
         updatedDate: user.updatedDate);
   }
 
-  // static UserCompanion toUserCompanion(User user) {
-  //   return UserCompanion(
-  //     id: Value(user.id),
-  //     firstName: Value(user.firstName),
-  //     lastName: Value(user.lastName),
-  //     email: Value(user.email),
-  //     password: Value(user.password),
-  //     token: user.token == null ? const Value.absent() : Value(user.token),
-  //     createdDate: Value(user.createdDate),
-  //     updatedDate: Value(user.updatedDate),
-  //   );
-  // }
+// static UserCompanion toUserCompanion(User user) {
+//   return UserCompanion(
+//     id: Value(user.id),
+//     firstName: Value(user.firstName),
+//     lastName: Value(user.lastName),
+//     email: Value(user.email),
+//     password: Value(user.password),
+//     token: user.token == null ? const Value.absent() : Value(user.token),
+//     createdDate: Value(user.createdDate),
+//     updatedDate: Value(user.updatedDate),
+//   );
+// }
 }

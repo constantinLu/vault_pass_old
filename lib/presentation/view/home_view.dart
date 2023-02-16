@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../application/common/device_size.dart';
-import '../router/app_router.dart';
-import '../router/teleport.dart';
+import '../core/device_size.dart';
 import '../utils/css.dart';
 import '../utils/palette.dart';
 import '../utils/style.dart';
@@ -22,7 +20,8 @@ class HomeView extends StatelessWidget {
           scaleX: -1,
           child: IconButton(
               tooltip: "Logout",
-              onPressed: () => Teleport.to(context, RouteName.LOGIN_VIEW),
+              onPressed: () => {},
+              //TODO:Teleport.to(context, RouteName.LOGIN_VIEW),
               icon: const Icon(
                 Icons.login_sharp,
                 color: whiteFull,
@@ -64,7 +63,7 @@ class FabWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
         child: const Icon(Icons.add),
         onPressed: () {
-          Teleport.to(context, RouteName.ADD_RECORD_VIEW);
+          //TODO:Teleport.to(context, RouteName.ADD_RECORD_VIEW);
         },
       ),
     );
