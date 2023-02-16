@@ -35,15 +35,15 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2 #iphone icons
-  uuid: ^3.0.7 #use uuid type
-  local_auth: ^2.1.2 #user biometric auth
-  flutter_secure_storage: ^7.0.1 #store authCredentials into secure storage
-  flutter_bloc: ^8.1.1 #state management
-  equatable: ^2.0.5 #equality helper
-  logger: ^1.1.0 #for logging
-  flutter_svg_provider: ^1.0.3 #to use svg images
-  google_fonts: ^3.0.1 #fonts
+  cupertino_icons: #iphone icons
+  uuid: #use uuid type
+  local_auth: #user biometric auth
+  flutter_secure_storage: #store authCredentials into secure storage
+  flutter_bloc: #state management
+  equatable: #equality helper
+  logger: #for logging
+  flutter_svg_provider: #to use svg images
+  google_fonts: #fonts
   drift: #db orm
   sqlite3_flutter_libs: #sqlite
   path_provider: #dart package for finding phone os storage folders
@@ -52,6 +52,13 @@ dependencies:
   fpdart: #functional programming
   freezed_annotation: #freeze
   json_annotation: #for json/toMap code generation
+  injectable: #dependency injection
+  get_it: #service locator
+  auto_route: #routing
+  kt_dart: #imutable lists
+
+
+
 
 
 
@@ -66,11 +73,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  drift_dev: ^2.5.2
+  drift_dev:
   build_runner: ^2.3.3
-  drift_db_viewer: ^2.0.0
+  drift_db_viewer:
   json_serializable: #needed for freezed
   freezed:
+  injectable_generator: # Version 2
+  auto_route_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../application/common/assets.dart';
-import '../../application/common/device_size.dart';
-import '../../application/common/test_data/account_test.dart';
-import '../../application/common/test_data/address_test.dart';
 import '../../domain/record.dart';
+import '../core/assets.dart';
+import '../core/device_size.dart';
+import '../core/test_data/account_test.dart';
+import '../core/test_data/address_test.dart';
 import '../utils/css.dart';
 import '../view/records/records_view.dart';
 

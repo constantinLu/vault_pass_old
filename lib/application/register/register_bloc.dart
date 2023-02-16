@@ -1,45 +1,113 @@
-import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'dart:math';
 
-import '../../domain/auth_credentials.dart';
-import '../../domain/user.dart';
-import '../service/user_service.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
+import 'package:vault_pass/domain/failures/auth_failure.dart';
+import 'package:vault_pass/domain/microtypes/microtypes.dart';
+import 'package:vault_pass/domain/user.dart';
+
+import '../../domain/auth/auth_facade.dart';
+
+part 'register_bloc.freezed.dart';
 
 part 'register_event.dart';
 
 part 'register_state.dart';
 
-enum RegisterStatus { success, failure, already_exists }
+@injectable
+class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
+  final IAuthFacade _authFacade;
 
-class RegisterBloc extends Bloc<_RegisterEvent, RegisterState> {
-  final UserService _userService;
-
-  //inital state
-  RegisterBloc(this._userService) : super(RegisterInitial()) {
-    on<RegisterSubmitEvent>(_onRegisterSubmitEvent);
+  RegisterBloc(this._authFacade) : super(RegisterState.initial()) {
+    on<FirstNameChangedEvent>(
+      (event, emitState) => changeFirstName(event, emitState),
+    );
+    on<LastNameChangedEvent>(
+      (event, emitState) => changeLastName(event, emitState),
+    );
+    on<EmailChangedEvent>(
+      (event, emitState) => changeEmail(event, emitState),
+    );
+    on<PasswordChangedEvent>(
+      (event, emitState) => changePassword(event, emitState),
+    );
+    on<RetypePasswordChangedEvent>(
+      (event, emitState) => changeRetypePassword(event, emitState),
+    );
+    on<RegisterUserEvent>(
+      (event, emitState) => registerUser(event, emitState),
+    );
   }
 
-  Future<void> _onRegisterSubmitEvent(
-      RegisterSubmitEvent event, Emitter<RegisterState> emit) async {
-    //Register the account in the database
-    //PERSIS THE ACCOUNT IN THE DATABASE THAT WILL BE CREATED
-    final result = await _userService.addUser(event.newUser);
-    print("User created in BLOC");
-    switch (result) {
-      case RegisterStatus.success:
-        //TODO: TEMPORALL ADDED HERE
-        emit(RegisterCompleted(
-            AuthCredentialsBuilder(email: event.newUser.email, password: event.newUser.password)
-                .build()));
-        break;
-      case RegisterStatus.failure:
-        emit(RegisterFailed("Some error occurred on processing"));
-        break;
-      case RegisterStatus.already_exists:
-        // TODO: Handle this case.
-        break;
+  void changeFirstName(FirstNameChangedEvent event, Emitter<RegisterState> emitState) {
+    emit(
+      state.copyWith(firstName: Name(event.firstName), response: none()),
+    );
+  }
+
+  void changeLastName(LastNameChangedEvent event, Emitter<RegisterState> emitState) {
+    emit(
+      state.copyWith(lastName: Name(event.lastName), response: none()),
+    );
+  }
+
+  void changeEmail(EmailChangedEvent event, Emitter<RegisterState> emitState) {
+    emit(
+      state.copyWith(emailAddress: EmailAddress(event.email), response: none()),
+    );
+  }
+
+  void changePassword(PasswordChangedEvent event, Emitter<RegisterState> emitState) {
+    emit(
+      state.copyWith(password: Password(event.password), response: none()),
+    );
+  }
+
+  void changeRetypePassword(RetypePasswordChangedEvent event, Emitter<RegisterState> emitState) {
+    emit(
+      state.copyWith(retypePassword: Password(event.retypePassword), response: none()),
+    );
+  }
+
+  Future<void> registerUser(RegisterUserEvent event, Emitter<RegisterState> emit) async {
+    Either<AuthFailure, Unit>? authResponse;
+
+    final isFirstNameValid = state.firstName.isValid();
+    final isLastNameValid = state.lastName.isValid();
+    final isEmailValid = state.emailAddress.isValid();
+    final isPasswordValid = state.password.isValid();
+    final isRetypePassword = state.retypePassword.isValid();
+
+    if (isEmailValid &&
+        isPasswordValid &&
+        isFirstNameValid &&
+        isLastNameValid &&
+        isPasswordValid &&
+        isRetypePassword) {
+      emit(state.copyWith(isLoading: true, response: none()));
+
+      // FIX ME
+      // WE NEED TO ADD THE USER TO THE DATABASE AS WELL
+      // HERE WE NEED TO CHANGE THIS LOGIC AND VALIDATE THE WHOLE USER !
+      //
+      final randomInt = Random(90000);
+      final user = UserBuilder(
+              id: randomInt.nextInt(9000),
+              firstName: state.firstName.getOrError(),
+              lastName: state.lastName.getOrError(),
+              email: state.emailAddress.getOrError(),
+              password: state.password.getOrError())
+          .build();
+      authResponse = await _authFacade.register(user: user);
     }
-    ;
+    emit(
+      state.copyWith(
+          isLoading: false,
+          showErrorMessage: AutovalidateMode.onUserInteraction,
+          response: optionOf(authResponse)),
+    );
   }
 }

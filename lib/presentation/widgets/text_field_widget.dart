@@ -3,18 +3,17 @@ import 'package:flutter/material.dart';
 import '../utils/css.dart';
 import '../utils/style.dart';
 
-
 class TextFieldWidget extends StatelessWidget {
   final String hintText;
   final TextInputType inputType;
   final Function? validator;
-  final TextEditingController controller;
+  final Function? onChanged;
 
   TextFieldWidget({
     Key? key,
     required this.hintText,
     required this.inputType,
-    required this.controller,
+    this.onChanged,
     this.validator,
   }) : super(key: key);
 
@@ -26,7 +25,7 @@ class TextFieldWidget extends StatelessWidget {
         style: bodyText15_grey.copyWith(color: Colors.white),
         keyboardType: inputType,
         textInputAction: TextInputAction.next,
-        controller: controller,
+        onChanged: (value) => onChanged,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(20),
           hintText: hintText,

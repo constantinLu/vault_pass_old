@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../application/common/assets.dart';
-import '../router/app_router.dart';
+import '../core/assets.dart';
 import '../router/teleport.dart';
 
 class Avatar extends StatelessWidget {
@@ -16,7 +15,7 @@ class Avatar extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: GestureDetector(
           onTap: () {
-            Teleport.to(context, RouteName.SETTINGS_VIEW);
+            //TODO: Teleport.to(context, RouteName.SETTINGS_VIEW);
           },
           child: CircleAvatar(
             radius: 40,

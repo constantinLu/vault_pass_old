@@ -1,6 +1,6 @@
 
-import 'package:vault_pass/application/common/randomizer.dart';
 import 'package:vault_pass/domain/record.dart';
+import 'package:vault_pass/presentation/core/randomizer.dart';
 
 class WorkAccountTest {
 

@@ -1,19 +1,8 @@
 part of 'auth_bloc.dart';
 
-/*
- AuthenticationEvent instances will be the input to the AuthBloc and will
- be processed and used to emit new AuthState instances.
- */
-@immutable
-abstract class AuthEvent {
-  //const constructor
-  const AuthEvent();
+@freezed
+class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.authRequestedChanged() = AuthRequestEvent;
+
+  const factory AuthEvent.authLogout() = AuthLogoutEvent;
 }
-
-class AuthStatusChangedEvent extends AuthEvent {
-  final AuthenticationStatus status;
-
-  AuthStatusChangedEvent(this.status);
-}
-
-class AuthLogoutRequestedEvent extends AuthEvent {}

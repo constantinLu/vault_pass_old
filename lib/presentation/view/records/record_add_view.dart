@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../router/app_router.dart';
-import '../../router/teleport.dart';
 import '../../utils/palette.dart';
 import '../../utils/style.dart';
 import '../../widgets/text_button_widget.dart';
@@ -46,17 +43,17 @@ class AddRecordView extends StatelessWidget {
                             TextFieldWidget(
                               hintText: 'First Name',
                               inputType: TextInputType.name,
-                              controller: retypePasswordField,
+                              onChanged: () {},
                             ),
                             TextFieldWidget(
                               hintText: 'Last Name',
                               inputType: TextInputType.name,
-                              controller: firstNameField2,
+                              onChanged: () {},
                             ),
                             TextFieldWidget(
                               hintText: 'Email',
                               inputType: TextInputType.emailAddress,
-                              controller: firstNameField,
+                              onChanged: () {},
                             ),
                           ],
                         ),
@@ -71,7 +68,7 @@ class AddRecordView extends StatelessWidget {
                         ),
                         TextButton(
                           onPressed: () {
-                            Teleport.to(context, RouteName.HOME_VIEW);
+                            //TODO:Teleport.to(context, RouteName.HOME_VIEW);
                           },
                           child: const Text(
                             'Sign In',
@@ -103,7 +100,7 @@ class AddRecordView extends StatelessWidget {
                         //   ),
                         // );
                         print("Record added to the db. GO back to home view");
-                        Teleport.to(context, RouteName.HOME_VIEW);;
+                        //TODO:Teleport.to(context, RouteName.HOME_VIEW);;
                       },
                       bgColor: whiteFull,
                       textColor: blackFull,
