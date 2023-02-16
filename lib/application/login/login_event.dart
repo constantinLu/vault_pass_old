@@ -7,6 +7,4 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.passwordChanged({required String password}) = PasswordChangedEvent;
 
   const factory LoginEvent.loginWithEmailAndPassword() = LoginWithEmailAndPasswordEvent;
-
-  const factory LoginEvent.loginWithBiometrics() = LoginWithBiometrics;
 }

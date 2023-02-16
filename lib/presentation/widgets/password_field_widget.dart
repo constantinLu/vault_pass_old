@@ -51,7 +51,7 @@ class PasswordFieldWidget extends StatelessWidget {
             borderRadius: borderRadiusCircular,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: Colors.white,
               width: 1,
             ),

@@ -21,7 +21,7 @@ class UserRepository {
       final authCredentials = AuthCredentials.authCredentials(user?.email, user?.password);
       return Either.right(authCredentials);
     } catch (e) {
-      return Either.left(const AuthFailure.notAuthorized());//BAD CREDENTIALS
+      return Either.left(const AuthFailure.notAuthorized()); //BAD CREDENTIALS
     }
   }
 

@@ -28,9 +28,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginWithEmailAndPasswordEvent>(
       (event, emitState) => loginWithEmailAndPassword(event, emitState),
     );
-    on<LoginWithBiometrics>(
-      (event, emitState) => loginWithBio(event, emitState),
-    );
   }
 
   void changeEmail(EmailChangedEvent event, Emitter<LoginState> emitState) {
@@ -62,6 +59,4 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           response: optionOf(loginResponse)));
     }
   }
-
-  void loginWithBio(LoginWithBiometrics event, Emitter<LoginState> emitState) {}
 }

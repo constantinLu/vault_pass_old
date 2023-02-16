@@ -6,7 +6,6 @@ import 'package:vault_pass/presentation/view/auth/login_form.dart';
 import '../../../injection.dart';
 
 class LoginView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

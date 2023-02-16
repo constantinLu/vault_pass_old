@@ -4,7 +4,6 @@ part 'microtype_failure.freezed.dart';
 
 @freezed
 class Failure<T> with _$Failure<T> {
-
   const factory Failure.invalidEmail({
     required T failedValue,
   }) = InvalidEmail<T>;

@@ -51,7 +51,8 @@ class AuthCredentials extends MicroType<Token> {
   const AuthCredentials._(this.value);
 
   factory AuthCredentials(String? userId, String? emailAddress, String? password) {
-    return AuthCredentials._(right(Token(userId: userId, emailAddress: emailAddress, password: password)));
+    return AuthCredentials._(
+        right(Token(userId: userId, emailAddress: emailAddress, password: password)));
   }
 
   factory AuthCredentials.userId(String? userId) {
@@ -88,6 +89,5 @@ class Token {
   final String? password;
   final String? failure;
 
-  Token(
-      {this.userId, this.emailAddress, this.password, this.failure});
+  Token({this.userId, this.emailAddress, this.password, this.failure});
 }

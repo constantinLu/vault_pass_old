@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/palette.dart';
 import '../utils/style.dart';
 import '../widgets/avatar_widget.dart';

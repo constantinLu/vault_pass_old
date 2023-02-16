@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vault_pass/presentation/core/app_widget.dart';
 
-
 import 'injection.dart';
 
 Future main() async {

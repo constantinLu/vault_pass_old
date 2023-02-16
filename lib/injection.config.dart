@@ -52,11 +52,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i12.LoginBloc>(() => _i12.LoginBloc(gh<_i10.IAuthFacade>()));
     gh.factory<_i13.RegisterBloc>(
         () => _i13.RegisterBloc(gh<_i10.IAuthFacade>()));
-    gh.factory<_i14.AuthBloc>(() => _i14.AuthBloc(
-          gh<_i10.IAuthFacade>(),
-          gh<_i6.SecureStorageService>(),
-          gh<_i4.BiometricsService>(),
-        ));
+    gh.factory<_i14.AuthBloc>(() => _i14.AuthBloc(gh<_i10.IAuthFacade>()));
     return this;
   }
 }

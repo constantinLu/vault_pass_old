@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../domain/record.dart';
 import '../../utils/palette.dart';
-import '../../widgets/record_widget.dart';
-
 
 class RecordsView extends StatelessWidget {
   const RecordsView(this._records, {Key? key}) : super(key: key);

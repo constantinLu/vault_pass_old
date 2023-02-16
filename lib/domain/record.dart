@@ -141,13 +141,3 @@ enum RecordType {
     return RecordType.values.firstWhere((val) => val.value == value);
   }
 }
-
-// EXAMPLE
-// enum Foo {
-//   one(1),
-//   two(2);
-//
-//   const Foo(this.value);
-//
-//   final num value;
-// }

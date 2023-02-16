@@ -1,4 +1,3 @@
-
 import '../../../domain/record.dart';
 import '../randomizer.dart';
 
