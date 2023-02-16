@@ -97,7 +97,7 @@ class LoginForm extends StatelessWidget {
                                     TextButton(
                                       onPressed: () {
                                         print("User login to the database. Point REGISTER VIEW");
-                                       // context.teleportTo(const RegisterView());
+                                        // context.teleportTo(const RegisterView());
                                       },
                                       child: const Text(
                                         'Sign In',

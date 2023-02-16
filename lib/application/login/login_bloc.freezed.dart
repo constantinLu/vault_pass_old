@@ -21,7 +21,6 @@ mixin _$LoginEvent {
     required TResult Function(String emailAddress) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() loginWithEmailAndPassword,
-    required TResult Function() loginWithBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +28,6 @@ mixin _$LoginEvent {
     TResult? Function(String emailAddress)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? loginWithEmailAndPassword,
-    TResult? Function()? loginWithBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +35,6 @@ mixin _$LoginEvent {
     TResult Function(String emailAddress)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? loginWithEmailAndPassword,
-    TResult Function()? loginWithBiometrics,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,7 +44,6 @@ mixin _$LoginEvent {
     required TResult Function(PasswordChangedEvent value) passwordChanged,
     required TResult Function(LoginWithEmailAndPasswordEvent value)
         loginWithEmailAndPassword,
-    required TResult Function(LoginWithBiometrics value) loginWithBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,7 +52,6 @@ mixin _$LoginEvent {
     TResult? Function(PasswordChangedEvent value)? passwordChanged,
     TResult? Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult? Function(LoginWithBiometrics value)? loginWithBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,7 +60,6 @@ mixin _$LoginEvent {
     TResult Function(PasswordChangedEvent value)? passwordChanged,
     TResult Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult Function(LoginWithBiometrics value)? loginWithBiometrics,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,7 +151,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     required TResult Function(String emailAddress) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() loginWithEmailAndPassword,
-    required TResult Function() loginWithBiometrics,
   }) {
     return emailChanged(emailAddress);
   }
@@ -168,7 +161,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     TResult? Function(String emailAddress)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? loginWithEmailAndPassword,
-    TResult? Function()? loginWithBiometrics,
   }) {
     return emailChanged?.call(emailAddress);
   }
@@ -179,7 +171,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     TResult Function(String emailAddress)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? loginWithEmailAndPassword,
-    TResult Function()? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -195,7 +186,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     required TResult Function(PasswordChangedEvent value) passwordChanged,
     required TResult Function(LoginWithEmailAndPasswordEvent value)
         loginWithEmailAndPassword,
-    required TResult Function(LoginWithBiometrics value) loginWithBiometrics,
   }) {
     return emailChanged(this);
   }
@@ -207,7 +197,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     TResult? Function(PasswordChangedEvent value)? passwordChanged,
     TResult? Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult? Function(LoginWithBiometrics value)? loginWithBiometrics,
   }) {
     return emailChanged?.call(this);
   }
@@ -219,7 +208,6 @@ class _$EmailChangedEvent implements EmailChangedEvent {
     TResult Function(PasswordChangedEvent value)? passwordChanged,
     TResult Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult Function(LoginWithBiometrics value)? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -308,7 +296,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     required TResult Function(String emailAddress) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() loginWithEmailAndPassword,
-    required TResult Function() loginWithBiometrics,
   }) {
     return passwordChanged(password);
   }
@@ -319,7 +306,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     TResult? Function(String emailAddress)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? loginWithEmailAndPassword,
-    TResult? Function()? loginWithBiometrics,
   }) {
     return passwordChanged?.call(password);
   }
@@ -330,7 +316,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     TResult Function(String emailAddress)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? loginWithEmailAndPassword,
-    TResult Function()? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -346,7 +331,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     required TResult Function(PasswordChangedEvent value) passwordChanged,
     required TResult Function(LoginWithEmailAndPasswordEvent value)
         loginWithEmailAndPassword,
-    required TResult Function(LoginWithBiometrics value) loginWithBiometrics,
   }) {
     return passwordChanged(this);
   }
@@ -358,7 +342,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     TResult? Function(PasswordChangedEvent value)? passwordChanged,
     TResult? Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult? Function(LoginWithBiometrics value)? loginWithBiometrics,
   }) {
     return passwordChanged?.call(this);
   }
@@ -370,7 +353,6 @@ class _$PasswordChangedEvent implements PasswordChangedEvent {
     TResult Function(PasswordChangedEvent value)? passwordChanged,
     TResult Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult Function(LoginWithBiometrics value)? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -435,7 +417,6 @@ class _$LoginWithEmailAndPasswordEvent
     required TResult Function(String emailAddress) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() loginWithEmailAndPassword,
-    required TResult Function() loginWithBiometrics,
   }) {
     return loginWithEmailAndPassword();
   }
@@ -446,7 +427,6 @@ class _$LoginWithEmailAndPasswordEvent
     TResult? Function(String emailAddress)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? loginWithEmailAndPassword,
-    TResult? Function()? loginWithBiometrics,
   }) {
     return loginWithEmailAndPassword?.call();
   }
@@ -457,7 +437,6 @@ class _$LoginWithEmailAndPasswordEvent
     TResult Function(String emailAddress)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? loginWithEmailAndPassword,
-    TResult Function()? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (loginWithEmailAndPassword != null) {
@@ -473,7 +452,6 @@ class _$LoginWithEmailAndPasswordEvent
     required TResult Function(PasswordChangedEvent value) passwordChanged,
     required TResult Function(LoginWithEmailAndPasswordEvent value)
         loginWithEmailAndPassword,
-    required TResult Function(LoginWithBiometrics value) loginWithBiometrics,
   }) {
     return loginWithEmailAndPassword(this);
   }
@@ -485,7 +463,6 @@ class _$LoginWithEmailAndPasswordEvent
     TResult? Function(PasswordChangedEvent value)? passwordChanged,
     TResult? Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult? Function(LoginWithBiometrics value)? loginWithBiometrics,
   }) {
     return loginWithEmailAndPassword?.call(this);
   }
@@ -497,7 +474,6 @@ class _$LoginWithEmailAndPasswordEvent
     TResult Function(PasswordChangedEvent value)? passwordChanged,
     TResult Function(LoginWithEmailAndPasswordEvent value)?
         loginWithEmailAndPassword,
-    TResult Function(LoginWithBiometrics value)? loginWithBiometrics,
     required TResult orElse(),
   }) {
     if (loginWithEmailAndPassword != null) {
@@ -510,123 +486,6 @@ class _$LoginWithEmailAndPasswordEvent
 abstract class LoginWithEmailAndPasswordEvent implements LoginEvent {
   const factory LoginWithEmailAndPasswordEvent() =
       _$LoginWithEmailAndPasswordEvent;
-}
-
-/// @nodoc
-abstract class _$$LoginWithBiometricsCopyWith<$Res> {
-  factory _$$LoginWithBiometricsCopyWith(_$LoginWithBiometrics value,
-          $Res Function(_$LoginWithBiometrics) then) =
-      __$$LoginWithBiometricsCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoginWithBiometricsCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$LoginWithBiometrics>
-    implements _$$LoginWithBiometricsCopyWith<$Res> {
-  __$$LoginWithBiometricsCopyWithImpl(
-      _$LoginWithBiometrics _value, $Res Function(_$LoginWithBiometrics) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoginWithBiometrics implements LoginWithBiometrics {
-  const _$LoginWithBiometrics();
-
-  @override
-  String toString() {
-    return 'LoginEvent.loginWithBiometrics()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoginWithBiometrics);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String emailAddress) emailChanged,
-    required TResult Function(String password) passwordChanged,
-    required TResult Function() loginWithEmailAndPassword,
-    required TResult Function() loginWithBiometrics,
-  }) {
-    return loginWithBiometrics();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String emailAddress)? emailChanged,
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function()? loginWithEmailAndPassword,
-    TResult? Function()? loginWithBiometrics,
-  }) {
-    return loginWithBiometrics?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String emailAddress)? emailChanged,
-    TResult Function(String password)? passwordChanged,
-    TResult Function()? loginWithEmailAndPassword,
-    TResult Function()? loginWithBiometrics,
-    required TResult orElse(),
-  }) {
-    if (loginWithBiometrics != null) {
-      return loginWithBiometrics();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(EmailChangedEvent value) emailChanged,
-    required TResult Function(PasswordChangedEvent value) passwordChanged,
-    required TResult Function(LoginWithEmailAndPasswordEvent value)
-        loginWithEmailAndPassword,
-    required TResult Function(LoginWithBiometrics value) loginWithBiometrics,
-  }) {
-    return loginWithBiometrics(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(EmailChangedEvent value)? emailChanged,
-    TResult? Function(PasswordChangedEvent value)? passwordChanged,
-    TResult? Function(LoginWithEmailAndPasswordEvent value)?
-        loginWithEmailAndPassword,
-    TResult? Function(LoginWithBiometrics value)? loginWithBiometrics,
-  }) {
-    return loginWithBiometrics?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmailChangedEvent value)? emailChanged,
-    TResult Function(PasswordChangedEvent value)? passwordChanged,
-    TResult Function(LoginWithEmailAndPasswordEvent value)?
-        loginWithEmailAndPassword,
-    TResult Function(LoginWithBiometrics value)? loginWithBiometrics,
-    required TResult orElse(),
-  }) {
-    if (loginWithBiometrics != null) {
-      return loginWithBiometrics(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoginWithBiometrics implements LoginEvent {
-  const factory LoginWithBiometrics() = _$LoginWithBiometrics;
 }
 
 /// @nodoc

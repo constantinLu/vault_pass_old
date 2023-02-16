@@ -8,8 +8,6 @@ import 'package:vault_pass/infra/service/user_service.dart';
 import '../../domain/auth/auth_facade.dart';
 import '../../domain/user.dart';
 
-//TODO: This will be wired to the secure local storage, it will not be saved into the db. or maybe encrypted.
-//TODO: it will be responsible to provide the data from the secured storage and then AuthBloc will react based on the data.
 
 @LazySingleton(as: IAuthFacade)
 class AuthFacade implements IAuthFacade {

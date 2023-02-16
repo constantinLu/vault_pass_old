@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vault_pass/domain/core/export_extension.dart';
+import 'package:vault_pass/domain/core/extensions.dart';
+import 'package:vault_pass/presentation/router/app_router.gr.dart';
 
 import '../core/device_size.dart';
 import '../utils/css.dart';
@@ -20,8 +23,7 @@ class HomeView extends StatelessWidget {
           scaleX: -1,
           child: IconButton(
               tooltip: "Logout",
-              onPressed: () => {},
-              //TODO:Teleport.to(context, RouteName.LOGIN_VIEW),
+              onPressed: () => context.teleportTo(LoginView()),
               icon: const Icon(
                 Icons.login_sharp,
                 color: whiteFull,
@@ -50,6 +52,7 @@ class HomeView extends StatelessWidget {
   }
 }
 
+/// FLOATING BUTTON FAB!
 class FabWidget extends StatelessWidget {
   const FabWidget({
     Key? key,

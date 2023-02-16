@@ -4,7 +4,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
-import 'package:vault_pass/infra/service/secure_storage_service.dart';
 
 import '../../domain/auth/auth_facade.dart';
 import '../../infra/service/biometrics_service.dart';
@@ -18,11 +17,8 @@ part 'auth_state.dart';
 @injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
-  final SecureStorageService _secureStorage;
-  final BiometricsService _biometricsService;
 
-  AuthBloc(this._authFacade, this._secureStorage, this._biometricsService)
-      : super(const AuthState.initial()) {
+  AuthBloc(this._authFacade) : super(const AuthState.initial()) {
     on<AuthRequestEvent>((event, emit) => checkAuthRequest(event, emit));
     on<AuthLogoutEvent>((event, emit) => signedOut(event, emit));
   }

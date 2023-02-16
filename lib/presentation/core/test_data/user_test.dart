@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import '../../../domain/record.dart';
 import '../../../domain/user.dart';
 
 abstract class UserTest {
