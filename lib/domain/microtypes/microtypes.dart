@@ -1,11 +1,14 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:vault_pass/domain/failures/microtype_failure.dart';
+import 'package:uuid/uuid.dart';
+import 'package:vault_pass/domain/failures/failures.dart';
 
+import '../model/token.dart';
+import '../validators/validators.dart';
 import 'microtype.dart';
 
 class Name extends MicroType<String> {
   @override
-  final Either<Failure<String>, String> value;
+  final Either<MicroTypeFailure<String>, String> value;
 
   const Name._(this.value);
 
@@ -13,18 +16,15 @@ class Name extends MicroType<String> {
     return Name._(validateName(input));
   }
 
-  static Either<Failure<String>, String> validateName(String input) {
-    if (input.length > 3) {
-      return right(input);
-    } else {
-      return left(Failure.invalidString(failedValue: input));
-    }
+  //# MAPPING DB-> MODEL
+  factory Name.of(String input) {
+    return Name._(Either.right(input));
   }
 }
 
 class EmailAddress extends MicroType<String> {
   @override
-  final Either<Failure<String>, String> value;
+  final Either<MicroTypeFailure<String>, String> value;
 
   const EmailAddress._(this.value);
 
@@ -32,21 +32,31 @@ class EmailAddress extends MicroType<String> {
     return EmailAddress._(validateEmailAddress(input));
   }
 
-  static Either<Failure<String>, String> validateEmailAddress(String input) {
-    if (input.length > 2) {
-      // const emailRegex = r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
-      //
-      // if (RegExp(emailRegex).hasMatch(input)) {
-      return right(input);
-    } else {
-      return left(Failure.invalidEmail(failedValue: input));
-    }
+  //# MAPPING DB-> MODEL
+  factory EmailAddress.of(String passValue) {
+    return EmailAddress._(Either.right(passValue));
+  }
+}
+
+class Password extends MicroType<String> {
+  @override
+  final Either<MicroTypeFailure<String>, String> value;
+
+  const Password._(this.value);
+
+  factory Password(String input) {
+    return Password._(validatePassword(input));
+  }
+
+  //# ONLY USED FOR DB MAPPING
+  factory Password.of(String value) {
+    return Password._(Either.right(value));
   }
 }
 
 class AuthCredentials extends MicroType<Token> {
   @override
-  final Either<Failure<Token>, Token> value;
+  final Either<MicroTypeFailure<Token>, Token> value;
 
   const AuthCredentials._(this.value);
 
@@ -56,7 +66,7 @@ class AuthCredentials extends MicroType<Token> {
   }
 
   factory AuthCredentials.userId(String? userId) {
-    return AuthCredentials._(right(Token(userId: userId, failure: "")));
+    return AuthCredentials._(right(Token(userId: userId)));
   }
 
   factory AuthCredentials.authCredentials(String? emailAddress, String? password) {
@@ -64,30 +74,49 @@ class AuthCredentials extends MicroType<Token> {
   }
 }
 
-class Password extends MicroType<String> {
+class UniqueId extends MicroType<String> {
   @override
-  final Either<Failure<String>, String> value;
+  final Either<MicroTypeFailure<String>, String> value;
 
-  const Password._(this.value);
+  const UniqueId._(this.value);
 
-  factory Password(String input) {
-    return Password._(validatePassword(input));
+  factory UniqueId() {
+    return UniqueId._(right(const Uuid().v1()));
   }
 
-  static Either<Failure<String>, String> validatePassword(String input) {
-    if (input.length > 5) {
-      return right(input);
-    } else {
-      return left(Failure.invalidPassword(failedValue: input));
-    }
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    assert(uniqueId != null);
+    return UniqueId._(right(uniqueId));
+  }
+
+  static String to(UniqueId uniqueId) {
+    assert(uniqueId.value != null);
+    assert(uniqueId.value.getRight() != null);
+
+    return uniqueId.getOrError();
   }
 }
 
-class Token {
-  final String? userId;
-  final String? emailAddress;
-  final String? password;
-  final String? failure;
+//# RECORDS MYCROTYPE
 
-  Token({this.userId, this.emailAddress, this.password, this.failure});
+class Description extends MicroType<String> {
+  @override
+  final Either<MicroTypeFailure<String>, String> value;
+
+  const Description._(this.value);
+
+  factory Description(String value) {
+    return Description._(right(value));
+  }
+}
+
+class Url extends MicroType<String> {
+  @override
+  final Either<MicroTypeFailure<String>, String> value;
+
+  const Url._(this.value);
+
+  factory Url(String value) {
+    return Url._(right(value));
+  }
 }

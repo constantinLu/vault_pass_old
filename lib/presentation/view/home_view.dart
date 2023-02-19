@@ -21,9 +21,10 @@ class HomeView extends StatelessWidget {
         elevation: 0,
         leading: Transform.scale(
           scaleX: -1,
+          //` LOGOUT BUTTON
           child: IconButton(
               tooltip: "Logout",
-              onPressed: () => context.teleportTo(LoginView()),
+              onPressed: () => context.teleportTo(const LoginView()),
               icon: const Icon(
                 Icons.login_sharp,
                 color: whiteFull,
@@ -52,7 +53,7 @@ class HomeView extends StatelessWidget {
   }
 }
 
-/// FLOATING BUTTON FAB!
+//` FLOATING ACTION BUTTON FAB!
 class FabWidget extends StatelessWidget {
   const FabWidget({
     Key? key,
@@ -66,6 +67,7 @@ class FabWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
         child: const Icon(Icons.add),
         onPressed: () {
+          context.teleportTo(const AddRecordView());
           //TODO:Teleport.to(context, RouteName.ADD_RECORD_VIEW);
         },
       ),

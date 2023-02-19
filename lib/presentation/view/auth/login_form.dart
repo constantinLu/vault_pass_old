@@ -1,9 +1,12 @@
+import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/application/login/login_bloc.dart';
 import 'package:vault_pass/application/register/register_bloc.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
 
+import '../../../application/auth/auth_bloc.dart';
 import '../../router/app_router.gr.dart';
 import '../../utils/css.dart';
 import '../../utils/palette.dart';
@@ -13,8 +16,29 @@ import '../../widgets/text_button_widget.dart';
 class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterBloc, RegisterState>(
-      listener: (context, state) {},
+    return BlocConsumer<LoginBloc, LoginState>(
+      listener: (context, state) {
+        state.response.fold(
+          () {}, //ON NONE !?
+          (either) => either.fold(
+            (failure) {
+              FlushbarHelper.createError(
+                message: failure.map(
+                  canceledByUser: (_) => 'Cancelled',
+                  customError: (_) => 'Server error',
+                  notAuthenticated: (_) => 'Email already in use',
+                  notAuthorized: (_) => 'Invalid email and password combination',
+                ),
+              ).show(context);
+            },
+            (_) {
+              context.router.replace(const SplashView());
+
+              context.read<AuthBloc>().add(const AuthEvent.authRequestedChanged());
+            },
+          ),
+        );
+      },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -96,8 +120,8 @@ class LoginForm extends StatelessWidget {
                                     const Text("Don't have an account?", style: bodyText15_grey),
                                     TextButton(
                                       onPressed: () {
-                                        print("User login to the database. Point REGISTER VIEW");
-                                        // context.teleportTo(const RegisterView());
+                                        context.teleportTo(const RegisterView());
+                                        print("User login to the database. Point LOGIN VIEW");
                                       },
                                       child: const Text(
                                         'Sign In',
@@ -116,8 +140,9 @@ class LoginForm extends StatelessWidget {
                                     context
                                         .read<LoginBloc>()
                                         .add(const LoginEvent.loginWithEmailAndPassword());
-                                    print("User persisted to the database. Point REGISTER VIEW");
-                                    context.teleportTo(const HomeView());
+                                    print("User persisted to the database. Point LOGIN VIEW");
+                                    //DO NOT REDIRECT HERE !!!
+                                    //REDIRECT FROM THE LISTENER
                                   },
                                   bgColor: whiteFull,
                                   textColor: blackFull,

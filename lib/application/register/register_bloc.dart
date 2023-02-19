@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
@@ -7,9 +5,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/failures/auth_failure.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
-import 'package:vault_pass/domain/user.dart';
 
 import '../../domain/auth/auth_facade.dart';
+import '../../domain/model/user.dart';
 
 part 'register_bloc.freezed.dart';
 
@@ -89,20 +87,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         isRetypePassword) {
       emit(state.copyWith(isLoading: true, response: none()));
 
-      // FIX ME
-      // WE NEED TO ADD THE USER TO THE DATABASE AS WELL
-      // HERE WE NEED TO CHANGE THIS LOGIC AND VALIDATE THE WHOLE USER !
-      //
-      final randomInt = Random(90000);
-      final user = UserBuilder(
-              id: randomInt.nextInt(9000),
-              firstName: state.firstName.getOrError(),
-              lastName: state.lastName.getOrError(),
-              email: state.emailAddress.getOrError(),
-              password: state.password.getOrError())
-          .build();
+      final user = User.build(state.firstName, state.lastName, state.emailAddress, state.password);
       authResponse = await _authFacade.register(user: user);
     }
+
     emit(
       state.copyWith(
           isLoading: false,

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vault_pass/application/auth/auth_bloc.dart';
 import 'package:vault_pass/application/register/register_bloc.dart';
 
+import '../../application/login/login_bloc.dart';
 import '../../injection.dart';
 import '../router/app_router.gr.dart';
 import '../utils/palette.dart';
@@ -20,13 +21,11 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              //adds event right away! with ..add()
-              getIt<AuthBloc>()..add(const AuthEvent.authRequestedChanged()),
-        ),
-        BlocProvider(
-          create: (context) => getIt<RegisterBloc>(),
-        ),
+            create: (context) =>
+                //adds event right away! with ..add()
+                getIt<AuthBloc>()..add(const AuthEvent.authRequestedChanged())),
+        BlocProvider(create: (context) => getIt<RegisterBloc>()),
+        BlocProvider(create: (context) => getIt<LoginBloc>()),
       ],
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),

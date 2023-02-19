@@ -3,11 +3,10 @@ import 'package:fpdart/src/unit.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/failures/auth_failure.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
+import 'package:vault_pass/domain/model/user.dart';
 import 'package:vault_pass/infra/service/user_service.dart';
 
 import '../../domain/auth/auth_facade.dart';
-import '../../domain/user.dart';
-
 
 @LazySingleton(as: IAuthFacade)
 class AuthFacade implements IAuthFacade {
@@ -29,15 +28,12 @@ class AuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> register({required User user}) async {
+  Future<Either<AuthFailure, Unit>> register({required User user}) {
     return userService.registerUser(user);
   }
 
   @override
-  Future<void> signOut() {
-    // just drop the credentials from local storage (this might not work since will
-    // propt the user to add the credentials again and we just want to log him with the biometrics
-    // REDIRECT TO LOGIN PAGE !
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    userService.signOut();
   }
 }

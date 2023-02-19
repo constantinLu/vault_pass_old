@@ -1,5 +1,8 @@
+import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vault_pass/application/auth/auth_bloc.dart';
 import 'package:vault_pass/application/register/register_bloc.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
 
@@ -13,7 +16,28 @@ class RegisterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterBloc, RegisterState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        state.response.fold(
+          () {}, //ON NONE ? do nothing ??
+          (either) => either.fold(
+            (failure) {
+              FlushbarHelper.createError(
+                message: failure.map(
+                  canceledByUser: (_) => 'Cancelled',
+                  customError: (_) => 'Server error',
+                  notAuthenticated: (_) => 'Email already in use',
+                  notAuthorized: (_) => 'Invalid email and password combination',
+                ),
+              ).show(context);
+            },
+            (_) {
+              context.router.replace(const SplashView());
+
+              context.read<AuthBloc>().add(const AuthEvent.authRequestedChanged());
+            },
+          ),
+        );
+      },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -42,7 +66,7 @@ class RegisterForm extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
 
-                                // #### FIRST NAME ####
+                                //! FIRST NAME
                                 Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 10),
                                   child: TextFormField(
@@ -64,7 +88,7 @@ class RegisterForm extends StatelessWidget {
                                   ),
                                 ),
 
-                                // #### LAST NAME ####
+                                //! LAST NAME
                                 Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 10),
                                   child: TextFormField(
@@ -87,7 +111,7 @@ class RegisterForm extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
 
-                                // #### EMAIL ####
+                                //! EMAIL
                                 Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 10),
                                   child: TextFormField(
@@ -110,7 +134,7 @@ class RegisterForm extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 8),
 
-                                // #### PASSWORD ####
+                                //! PASSWORD
                                 Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 10),
                                   child: TextFormField(
@@ -132,7 +156,7 @@ class RegisterForm extends StatelessWidget {
                                   ),
                                 ),
 
-                                // #### RETYPE PASSWORD ####
+                                //! RETYPE PASSWORD
                                 Padding(
                                   padding: const EdgeInsets.symmetric(vertical: 10),
                                   child: TextFormField(
@@ -159,7 +183,7 @@ class RegisterForm extends StatelessWidget {
                                   ),
                                 ),
 
-                                // ## BUTTONS ###
+                                //` LOGIN BUTTON
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -170,7 +194,9 @@ class RegisterForm extends StatelessWidget {
                                     TextButton(
                                       onPressed: () {
                                         print("User login to the database. Point LOGIN VIEW");
-                                        context.teleportTo(const LoginView());
+
+                                        ///REDIRECT TO LOGIN IF USER ALREADY HAS AN ACCOUNT
+                                        context.teleportTo(const SplashView());
                                       },
                                       child: const Text(
                                         'Sign In',
@@ -182,7 +208,8 @@ class RegisterForm extends StatelessWidget {
                                 const SizedBox(
                                   height: 20,
                                 ),
-                                // ACTUAL BUTTON
+
+                                //` REGISTER BUTTON
                                 TextButtonWidget(
                                   buttonName: 'Register',
                                   onTap: () {
@@ -190,6 +217,7 @@ class RegisterForm extends StatelessWidget {
                                         .read<RegisterBloc>()
                                         .add(const RegisterEvent.registerUser());
                                     print("User persisted to the database. Point REGISTER VIEW");
+                                    print("Should be REDIRECTED TO LOGIN VIEW");
                                   },
                                   bgColor: whiteFull,
                                   textColor: blackFull,
@@ -197,7 +225,7 @@ class RegisterForm extends StatelessWidget {
                                 if (state.isLoading) ...[
                                   const SizedBox(height: 8),
                                   const LinearProgressIndicator(),
-                                ]
+                                ],
                               ],
                             ),
                           ),

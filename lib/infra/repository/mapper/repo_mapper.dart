@@ -1,32 +1,33 @@
-import '../../../domain/user.dart';
+import 'package:vault_pass/domain/core/export_extension.dart';
+import 'package:vault_pass/domain/microtypes/microtypes.dart';
+import 'package:vault_pass/domain/model/user.dart';
+
 import '../../database/vaultdb.dart';
 
 class RepoMapper {
   static User toDomain(UserEntry userEntry) {
-    final user = UserBuilder(
-      id: userEntry.id,
-      firstName: userEntry.firstName,
-      lastName: userEntry.lastName,
-      email: userEntry.email,
-      password: userEntry.password,
-      token: userEntry.token,
-      createdDate: userEntry.createdDate,
-      updatedDate: userEntry.updatedDate,
-    ).build();
-    return user;
+    return User(
+        id: UniqueId.fromUniqueString(userEntry.id),
+        firstName: Name.of(userEntry.firstName),
+        lastName: Name.of(userEntry.lastName),
+        emailAddress: EmailAddress.of(userEntry.email),
+        password: Password.of(userEntry.password),
+        createdDate: userEntry.createdDate,
+        updatedDate: userEntry.updatedDate);
   }
 
   static UserEntry toEntry(User user) {
     return UserEntry(
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password,
-        token: user.token,
+        id: user.id.value.asRight(),
+        firstName: user.firstName.value.asRight(),
+        lastName: user.lastName.value.asRight(),
+        email: user.emailAddress.value.asRight(),
+        password: user.password.value.asRight(),
         createdDate: user.createdDate,
         updatedDate: user.updatedDate);
   }
+}
+
 
 // static UserCompanion toUserCompanion(User user) {
 //   return UserCompanion(
@@ -40,4 +41,3 @@ class RepoMapper {
 //     updatedDate: Value(user.updatedDate),
 //   );
 // }
-}

@@ -1,9 +1,7 @@
+// import '../../../domain/model/record_old.dart';
+// import '../randomizer.dart';
 //
-// import 'package:vault_pass/domain/model/record_old.dart';
-// import 'package:vault_pass/presentation/core/randomizer.dart';
-//
-// class WorkAccountTest {
-//
+// abstract class WorkAccountTest {
 //   static RecordBuilder aWorkAccount() {
 //     return RecordBuilder(
 //         id: Randomizer.randomInt(),

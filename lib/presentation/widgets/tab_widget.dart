@@ -1,41 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../domain/record.dart';
+import '../../domain/model/record.dart';
 import '../core/assets.dart';
 import '../core/device_size.dart';
 import '../core/test_data/account_test.dart';
-import '../core/test_data/address_test.dart';
 import '../utils/css.dart';
 import '../view/records/records_view.dart';
 
-class TabWidget extends StatefulWidget {
-  const TabWidget({Key? key}) : super(key: key);
-
-  @override
-  State<TabWidget> createState() => _TabWidgetState();
-}
-
-class _TabWidgetState extends State<TabWidget> {
+class TabWidget extends StatelessWidget {
   /// List of Tab Bar Item
-  //TODO: Aici trebuie sa legi un bloc cu dBunaBuna atele din baza de date cred
-  // sau direct din
+  //TODO: Aici trebuie sa legi un bloc cu  datele din baza de date cred
+  // RecordBloc
 
-  List<Record> _records = [
-    AccountTest.anAccountWithName("Facebook").build(),
-    AccountTest.anAccountWithName("Microsoft").build(),
-    AccountTest.anAccountWithName("Netflix").build(),
-    AddressTest.anAddress().build(),
-    AddressTest.anAddressWithName("Iasi Address").build(),
+  final List<Record> _records = [
+    AccountTest.anAccountWithName("Facebook"),
+    AccountTest.anAccountWithName("Microsoft"),
+    AccountTest.anAccountWithName("Netflix"),
   ];
-
-  //TODO: delete this after finish testing
-  List<Record> _records1 = [];
 
   final Map<RecordType, String> _imageType = {
     RecordType.account: IMAGE_ACCOUNT,
     RecordType.address: IMAGE_ADDRESS,
-    RecordType.work_account: IMAGE_CREDITCARD
+    RecordType.business: IMAGE_CREDITCARD
   };
 
   List<RecordType> get recordTypes => _imageType.keys.map((type) => type).toList();
@@ -73,7 +60,7 @@ class _TabWidgetState extends State<TabWidget> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          setState(() => current = index);
+                          //setState(() => current = index); //TODO fix this with bloc !
                         },
                         child: TabButton(checkIndex(index), recordTypes[index]),
                       ),
@@ -82,7 +69,7 @@ class _TabWidgetState extends State<TabWidget> {
                 }),
           ),
 
-          /// BODY
+          //# BODY
           Container(
             margin: const EdgeInsets.only(top: 30),
             width: double.infinity,

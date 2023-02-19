@@ -5,6 +5,7 @@ import 'package:drift/native.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
+import 'package:vault_pass/domain/microtypes/microtypes.dart';
 
 import 'vaultpass_tables.dart';
 
@@ -38,10 +39,10 @@ class VaultPassDb extends _$VaultPassDb {
   }
 
   //get user
-  Future<UserEntry> getUser(int userId) async {
+  Future<UserEntry> getUser(UniqueId userId) async {
     //gets the user based on the id if is found
-    return await (select(userTable)..where((userEntity) => userEntity.id.equals(userId)))
-        .getSingle();
+    final id = UniqueId.to(userId);
+    return await (select(userTable)..where((userEntity) => userEntity.id.equals(id))).getSingle();
   }
 
   //add user
@@ -50,7 +51,7 @@ class VaultPassDb extends _$VaultPassDb {
   }
 
   //delete a user
-  Future<int> deleteUser(int userId) async {
+  Future<int> deleteUser(String userId) async {
     return await (delete(userTable)..where((userEntity) => userEntity.id.equals(userId))).go();
   }
 }

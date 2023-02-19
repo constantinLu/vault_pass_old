@@ -1,8 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:vault_pass/domain/failures/auth_failure.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
-
-import '../user.dart';
+import 'package:vault_pass/domain/model/user.dart';
 
 abstract class IAuthFacade {
   Future<AuthCredentials> getCredentials();

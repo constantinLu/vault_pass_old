@@ -13,9 +13,7 @@ class SplashView extends StatelessWidget {
         state.map(
           initial: (_) => {}, //DO NOTHING
           unauthenticated: (_) => context.teleportTo(const RegisterView()),
-          authorizedCredentials: (_) {
-            context.teleportTo(const LoginView());
-          },
+          authorizedCredentials: (_) => context.teleportTo(const LoginView()),
           authorizedBiometrics: (_) => context.teleportTo(const HomeView()),
         );
       },

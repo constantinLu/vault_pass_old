@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:vault_pass/domain/errors/error.dart';
 
-import '../failures/microtype_failure.dart';
+import '../failures/failures.dart';
 
 @immutable
 abstract class MicroType<T> {
-  Either<Failure<T>, T> get value;
+  Either<MicroTypeFailure<T>, T> get value;
 
   const MicroType();
 
@@ -15,7 +15,7 @@ abstract class MicroType<T> {
     return value.fold((l) => throw UnexpectedValueError(l), id);
   }
 
-  Either<Failure<dynamic>, Unit> get failureOrUnit {
+  Either<MicroTypeFailure<dynamic>, Unit> get failureOrUnit {
     return value.fold(
       (l) => left(l),
       (r) => right(unit),
