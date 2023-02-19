@@ -1,32 +1,21 @@
-import '../../../domain/record.dart';
-import '../randomizer.dart';
+import '../../../domain/model/record.dart';
 
 abstract class AccountTest {
-  static RecordBuilder anAccount() {
-    return RecordBuilder(
-        id: Randomizer.randomInt(),
+  static Record anAccount() {
+    return Record.random(
         recordName: "Facebook",
-        type: RecordType.account,
+        recordType: RecordType.account,
         logo: "logo",
         description: "this is my facebook account",
-        url: "https://www.facebook.com/",
-        user: "constantin.lungu",
-        password: "haulesbaules",
-        createdDate: DateTime.now(),
-        updatedDate: DateTime.now().add(const Duration(days: 1)));
+        url: "https://www.facebook.com/");
   }
 
-  static RecordBuilder anAccountWithName(String recordName) {
-    return RecordBuilder(
-        id: Randomizer.randomInt(),
+  static Record anAccountWithName(String recordName) {
+    return Record.random(
         recordName: recordName,
-        type: RecordType.account,
+        recordType: RecordType.account,
         logo: "logo",
         description: "this is my facebook account",
-        url: "https://www.facebook.com/",
-        user: "constantin.lungu",
-        password: "haulesbaules",
-        createdDate: DateTime.now(),
-        updatedDate: DateTime.now().add(const Duration(days: 1)));
+        url: "https://www.facebook.com/");
   }
 }

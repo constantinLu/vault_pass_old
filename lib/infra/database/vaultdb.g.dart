@@ -11,13 +11,9 @@ class $UserTableTable extends UserTable
   $UserTableTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
-  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
       'id', aliasedName, false,
-      hasAutoIncrement: true,
-      type: DriftSqlType.int,
-      requiredDuringInsert: false,
-      defaultConstraints:
-          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _firstNameMeta =
       const VerificationMeta('firstName');
   @override
@@ -53,11 +49,6 @@ class $UserTableTable extends UserTable
           GeneratedColumn.checkTextLength(minTextLength: 5, maxTextLength: 32),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
-  static const VerificationMeta _tokenMeta = const VerificationMeta('token');
-  @override
-  late final GeneratedColumn<String> token = GeneratedColumn<String>(
-      'token', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _createdDateMeta =
       const VerificationMeta('createdDate');
   @override
@@ -71,16 +62,8 @@ class $UserTableTable extends UserTable
       'updated_date', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [
-        id,
-        firstName,
-        lastName,
-        email,
-        password,
-        token,
-        createdDate,
-        updatedDate
-      ];
+  List<GeneratedColumn> get $columns =>
+      [id, firstName, lastName, email, password, createdDate, updatedDate];
   @override
   String get aliasedName => _alias ?? 'user_table';
   @override
@@ -92,6 +75,8 @@ class $UserTableTable extends UserTable
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
     }
     if (data.containsKey('first_name')) {
       context.handle(_firstNameMeta,
@@ -117,10 +102,6 @@ class $UserTableTable extends UserTable
     } else if (isInserting) {
       context.missing(_passwordMeta);
     }
-    if (data.containsKey('token')) {
-      context.handle(
-          _tokenMeta, token.isAcceptableOrUnknown(data['token']!, _tokenMeta));
-    }
     if (data.containsKey('created_date')) {
       context.handle(
           _createdDateMeta,
@@ -141,13 +122,13 @@ class $UserTableTable extends UserTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => const {};
   @override
   UserEntry map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return UserEntry(
       id: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}id'])!,
       firstName: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}first_name'])!,
       lastName: attachedDatabase.typeMapping
@@ -156,8 +137,6 @@ class $UserTableTable extends UserTable
           .read(DriftSqlType.string, data['${effectivePrefix}email'])!,
       password: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}password'])!,
-      token: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}token']),
       createdDate: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_date'])!,
       updatedDate: attachedDatabase.typeMapping
@@ -172,12 +151,11 @@ class $UserTableTable extends UserTable
 }
 
 class UserEntry extends DataClass implements Insertable<UserEntry> {
-  final int id;
+  final String id;
   final String firstName;
   final String lastName;
   final String email;
   final String password;
-  final String? token;
   final DateTime createdDate;
   final DateTime updatedDate;
   const UserEntry(
@@ -186,20 +164,16 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
       required this.lastName,
       required this.email,
       required this.password,
-      this.token,
       required this.createdDate,
       required this.updatedDate});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['id'] = Variable<int>(id);
+    map['id'] = Variable<String>(id);
     map['first_name'] = Variable<String>(firstName);
     map['last_name'] = Variable<String>(lastName);
     map['email'] = Variable<String>(email);
     map['password'] = Variable<String>(password);
-    if (!nullToAbsent || token != null) {
-      map['token'] = Variable<String>(token);
-    }
     map['created_date'] = Variable<DateTime>(createdDate);
     map['updated_date'] = Variable<DateTime>(updatedDate);
     return map;
@@ -212,8 +186,6 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
       lastName: Value(lastName),
       email: Value(email),
       password: Value(password),
-      token:
-          token == null && nullToAbsent ? const Value.absent() : Value(token),
       createdDate: Value(createdDate),
       updatedDate: Value(updatedDate),
     );
@@ -223,12 +195,11 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return UserEntry(
-      id: serializer.fromJson<int>(json['id']),
+      id: serializer.fromJson<String>(json['id']),
       firstName: serializer.fromJson<String>(json['firstName']),
       lastName: serializer.fromJson<String>(json['lastName']),
       email: serializer.fromJson<String>(json['email']),
       password: serializer.fromJson<String>(json['password']),
-      token: serializer.fromJson<String?>(json['token']),
       createdDate: serializer.fromJson<DateTime>(json['createdDate']),
       updatedDate: serializer.fromJson<DateTime>(json['updatedDate']),
     );
@@ -237,24 +208,22 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
+      'id': serializer.toJson<String>(id),
       'firstName': serializer.toJson<String>(firstName),
       'lastName': serializer.toJson<String>(lastName),
       'email': serializer.toJson<String>(email),
       'password': serializer.toJson<String>(password),
-      'token': serializer.toJson<String?>(token),
       'createdDate': serializer.toJson<DateTime>(createdDate),
       'updatedDate': serializer.toJson<DateTime>(updatedDate),
     };
   }
 
   UserEntry copyWith(
-          {int? id,
+          {String? id,
           String? firstName,
           String? lastName,
           String? email,
           String? password,
-          Value<String?> token = const Value.absent(),
           DateTime? createdDate,
           DateTime? updatedDate}) =>
       UserEntry(
@@ -263,7 +232,6 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
         lastName: lastName ?? this.lastName,
         email: email ?? this.email,
         password: password ?? this.password,
-        token: token.present ? token.value : this.token,
         createdDate: createdDate ?? this.createdDate,
         updatedDate: updatedDate ?? this.updatedDate,
       );
@@ -275,7 +243,6 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
           ..write('lastName: $lastName, ')
           ..write('email: $email, ')
           ..write('password: $password, ')
-          ..write('token: $token, ')
           ..write('createdDate: $createdDate, ')
           ..write('updatedDate: $updatedDate')
           ..write(')'))
@@ -283,8 +250,8 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
   }
 
   @override
-  int get hashCode => Object.hash(id, firstName, lastName, email, password,
-      token, createdDate, updatedDate);
+  int get hashCode => Object.hash(
+      id, firstName, lastName, email, password, createdDate, updatedDate);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -294,18 +261,16 @@ class UserEntry extends DataClass implements Insertable<UserEntry> {
           other.lastName == this.lastName &&
           other.email == this.email &&
           other.password == this.password &&
-          other.token == this.token &&
           other.createdDate == this.createdDate &&
           other.updatedDate == this.updatedDate);
 }
 
 class UserTableCompanion extends UpdateCompanion<UserEntry> {
-  final Value<int> id;
+  final Value<String> id;
   final Value<String> firstName;
   final Value<String> lastName;
   final Value<String> email;
   final Value<String> password;
-  final Value<String?> token;
   final Value<DateTime> createdDate;
   final Value<DateTime> updatedDate;
   const UserTableCompanion({
@@ -314,32 +279,30 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     this.lastName = const Value.absent(),
     this.email = const Value.absent(),
     this.password = const Value.absent(),
-    this.token = const Value.absent(),
     this.createdDate = const Value.absent(),
     this.updatedDate = const Value.absent(),
   });
   UserTableCompanion.insert({
-    this.id = const Value.absent(),
+    required String id,
     required String firstName,
     required String lastName,
     required String email,
     required String password,
-    this.token = const Value.absent(),
     required DateTime createdDate,
     required DateTime updatedDate,
-  })  : firstName = Value(firstName),
+  })  : id = Value(id),
+        firstName = Value(firstName),
         lastName = Value(lastName),
         email = Value(email),
         password = Value(password),
         createdDate = Value(createdDate),
         updatedDate = Value(updatedDate);
   static Insertable<UserEntry> custom({
-    Expression<int>? id,
+    Expression<String>? id,
     Expression<String>? firstName,
     Expression<String>? lastName,
     Expression<String>? email,
     Expression<String>? password,
-    Expression<String>? token,
     Expression<DateTime>? createdDate,
     Expression<DateTime>? updatedDate,
   }) {
@@ -349,19 +312,17 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
       if (lastName != null) 'last_name': lastName,
       if (email != null) 'email': email,
       if (password != null) 'password': password,
-      if (token != null) 'token': token,
       if (createdDate != null) 'created_date': createdDate,
       if (updatedDate != null) 'updated_date': updatedDate,
     });
   }
 
   UserTableCompanion copyWith(
-      {Value<int>? id,
+      {Value<String>? id,
       Value<String>? firstName,
       Value<String>? lastName,
       Value<String>? email,
       Value<String>? password,
-      Value<String?>? token,
       Value<DateTime>? createdDate,
       Value<DateTime>? updatedDate}) {
     return UserTableCompanion(
@@ -370,7 +331,6 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
       password: password ?? this.password,
-      token: token ?? this.token,
       createdDate: createdDate ?? this.createdDate,
       updatedDate: updatedDate ?? this.updatedDate,
     );
@@ -380,7 +340,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     if (id.present) {
-      map['id'] = Variable<int>(id.value);
+      map['id'] = Variable<String>(id.value);
     }
     if (firstName.present) {
       map['first_name'] = Variable<String>(firstName.value);
@@ -393,9 +353,6 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     }
     if (password.present) {
       map['password'] = Variable<String>(password.value);
-    }
-    if (token.present) {
-      map['token'] = Variable<String>(token.value);
     }
     if (createdDate.present) {
       map['created_date'] = Variable<DateTime>(createdDate.value);
@@ -414,7 +371,6 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
           ..write('lastName: $lastName, ')
           ..write('email: $email, ')
           ..write('password: $password, ')
-          ..write('token: $token, ')
           ..write('createdDate: $createdDate, ')
           ..write('updatedDate: $updatedDate')
           ..write(')'))

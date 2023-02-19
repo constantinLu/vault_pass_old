@@ -8,12 +8,12 @@ import 'package:logger/logger.dart';
 @injectable
 class BiometricsService {
   static final LocalAuthentication _auth = LocalAuthentication();
-  static final log = Logger();
+  static final LOG = Logger();
 
   static Future<bool> authenticate() async {
     final isBiometricsAvailable = await authenticateIsAvailable();
     if (!isBiometricsAvailable) {
-      log.i("This phone does not support biometrics authentication");
+      LOG.i("This phone does not support biometrics authentication");
       return false;
     }
     try {
@@ -24,7 +24,7 @@ class BiometricsService {
               useErrorDialogs: true,
               stickyAuth: true)); //requires auth when you add the app to the background
     } on PlatformException catch (e) {
-      log.e("Error on authentication", e);
+      LOG.e("Error on authentication", e);
       //catch the error or show a custom error. when this is not setted up
       return false;
     }

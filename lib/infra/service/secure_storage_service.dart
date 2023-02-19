@@ -13,7 +13,6 @@ class SecureStorageService {
   static const _userId = 'userId';
   static const _emailKey = 'email';
   static const _passwordKey = 'password';
-  static const _isBiometrics = 'isBiometrics';
 
   Future<void> persistAllToSecureStorage(AuthCredentials authCredentials) async {
     await _setUserId(authCredentials.getOrError().userId);
@@ -42,7 +41,11 @@ class SecureStorageService {
     return AuthCredentials.userId(userId);
   }
 
-  //TODO: deleteAuthCredentials method
+  Future<void> deleteCredentials() async {
+    _secureStorage.delete(key: _emailKey);
+    _secureStorage.delete(key: _passwordKey);
+  }
+
   Future _setUserId(String? userId) async =>
       await _secureStorage.write(key: _userId, value: userId);
 

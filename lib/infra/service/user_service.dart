@@ -6,7 +6,7 @@ import 'package:vault_pass/domain/microtypes/microtypes.dart';
 import 'package:vault_pass/infra/service/secure_storage_service.dart';
 
 import '../../domain/failures/auth_failure.dart';
-import '../../domain/user.dart';
+import '../../domain/model/user.dart';
 import '../../infra/repository/user_repository.dart';
 
 @injectable
@@ -14,11 +14,11 @@ class UserService {
   final UserRepository _userRepository;
   final SecureStorageService secureStorageService;
 
+  UserService(this._userRepository, this.secureStorageService);
+
   Future<AuthCredentials> getAuthCredentials() {
     return secureStorageService.getAuthCredentials();
   }
-
-  UserService(this._userRepository, this.secureStorageService);
 
   ///Docs: Checks if the credentials matches with the user from the database
   ///Return: Authenticated User or AuthFailure
@@ -32,13 +32,16 @@ class UserService {
 
   Future<Either<AuthFailure, Unit>> registerUser(User user) async {
     final userResponse = await _userRepository.addUser(user);
-    final userValue = await getUser(user.id);
-    secureStorageService.persistUserId(AuthCredentials.userId(userValue.id.toString()));
-
+    final userValue = await _getUser(user.id);
+    await secureStorageService.persistUserId(AuthCredentials.userId(userValue.id.toString()));
     return userResponse;
   }
 
-  Future<User> getUser(int userId) async {
+  Future<void> signOut() async {
+    await secureStorageService.deleteCredentials();
+  }
+
+  Future<User> _getUser(UniqueId userId) async {
     return _userRepository.getUser(userId);
   }
 }

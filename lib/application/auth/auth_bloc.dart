@@ -3,9 +3,9 @@ import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
-import 'package:vault_pass/domain/microtypes/microtypes.dart';
 
 import '../../domain/auth/auth_facade.dart';
+import '../../domain/model/token.dart';
 import '../../infra/service/biometrics_service.dart';
 
 part 'auth_bloc.freezed.dart';
@@ -32,33 +32,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     if (eitherAuthCredentials.isLeft()) {
       final error = eitherAuthCredentials.asLeft();
+      //TODO: Here I think we should throw some error based on the response
       emit(const AuthState.unauthenticated());
     } else {
-      final credentials = eitherAuthCredentials.asRight() as Token;
-      if (credentials.emailAddress != null && credentials.password != null) {
-        //IN THIS POINT THE USER ALREADY PASSED THE LOGIN PAGE
+      final token = eitherAuthCredentials.asRight() as Token;
+      if (token.emailAddress != null && token.password != null) {
+        /// IN THIS POINT THE USER ALREADY PASSED THE LOGIN PAGE
         final isAuthenticated = await BiometricsService.authenticate();
         if (isAuthenticated) {
-          //IF BIOMETRICS WORK REDIRECT TO HOMEPAGE
+          //# If Biometrics work -> HomeView
           emit(const AuthState.authorizedBiometrics());
           return;
         } else {
-          // IF BIOMETRICS DO NOT WORK REDIRECT TO LOGIN
+          //# If Biometrics do not work redirect to -> LoginView
           emit(const AuthState.authorizedCredentials());
           return;
         }
       }
-      //REDIRECT TO LOGIN PAGE OR REGISTER
-      if (credentials.userId != null) {
-        emit(const AuthState.authorizedCredentials());
+      if (token.userId != null) {
+        emit(const AuthState.authorizedCredentials()); //# -> LoginView
       } else {
-        emit(const AuthState.unauthenticated()); //TO LOGIN
+        emit(const AuthState.unauthenticated()); //# -> RegisterView
       }
     }
   }
 
+  //# Redirect to LoginView
   Future<void> signedOut(AuthLogoutEvent event, Emitter<AuthState> emit) async {
     await _authFacade.signOut();
-    emit(const AuthState.unauthenticated());
+    emit(const AuthState.authorizedCredentials());
   }
 }

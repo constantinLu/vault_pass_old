@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/record.dart';
+import '../../../domain/model/record.dart';
 import '../../utils/palette.dart';
+import '../../widgets/record_widget.dart';
 
 class RecordsView extends StatelessWidget {
   const RecordsView(this._records, {Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class RecordsView extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (ctx, index) {
         final record = _records[index];
-        //TODO:return RecordWidget(record, _processColor(index));
+        return RecordWidget(record, _processColor(index));
       },
       itemCount: _records.length,
     );

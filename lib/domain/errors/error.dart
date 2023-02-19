@@ -1,12 +1,12 @@
 
-import 'package:vault_pass/domain/failures/microtype_failure.dart';
+import 'package:vault_pass/domain/failures/failures.dart';
 
 class NotAuthenticatedError extends Error {}
 
 class UnexpectedValueError extends Error {
   UnexpectedValueError(this.failure);
 
-  final Failure failure;
+  final MicroTypeFailure failure;
 
   @override
   String toString() {
