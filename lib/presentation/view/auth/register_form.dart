@@ -61,6 +61,7 @@ class RegisterForm extends StatelessWidget {
                                   style: headline34,
                                 ),
                                 const Text(
+                                  key: Key("asd"),
                                   "Create an account to get started.",
                                   style: bodyText15_grey,
                                 ),
