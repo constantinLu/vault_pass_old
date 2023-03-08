@@ -1,11 +1,14 @@
+import 'dart:core';
+
 import 'package:vault_pass/domain/core/export_extension.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
+import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/domain/model/user.dart';
 
 import '../../database/vaultdb.dart';
 
-class RepoMapper {
-  static User toDomain(UserEntry userEntry) {
+class UserMapper {
+  static User toModel(UserEntry userEntry) {
     return User(
         id: UniqueId.fromUniqueString(userEntry.id),
         firstName: Name.of(userEntry.firstName),
@@ -29,15 +32,39 @@ class RepoMapper {
 }
 
 
-// static UserCompanion toUserCompanion(User user) {
-//   return UserCompanion(
-//     id: Value(user.id),
-//     firstName: Value(user.firstName),
-//     lastName: Value(user.lastName),
-//     email: Value(user.email),
-//     password: Value(user.password),
-//     token: user.token == null ? const Value.absent() : Value(user.token),
-//     createdDate: Value(user.createdDate),
-//     updatedDate: Value(user.updatedDate),
-//   );
-// }
+class RecordMapper {
+  static Record toModel(RecordEntry recordEntry) {
+    return Record(
+      id: UniqueId.fromUniqueString(recordEntry.id),
+      recordName: Name.of(recordEntry.recordName),
+      type: RecordType.valueOf(recordEntry.recordType),
+      logo: recordEntry.logo,
+      loginRecord: Name.of(recordEntry.loginRecord),
+      passwordRecord: Password.of(recordEntry.passwordRecord),
+      description: Description(recordEntry.description),
+      url: Url(recordEntry.url),
+      createdDate: recordEntry.createdDate,
+      updatedDate: recordEntry.updatedDate,
+    );
+  }
+
+  static RecordEntry toEntry(Record record) {
+    return RecordEntry(
+      id: record.id.getOrError(),
+      recordName: record.recordName.getOrError(),
+      recordType: record.type.value,
+      // ?@
+      logo: record.logo,
+      loginRecord: record.loginRecord.getOrError(),
+      passwordRecord: record.passwordRecord.getOrError(),
+      description: record.description.getOrError(),
+      url: record.url.getOrError(),
+      createdDate: record.createdDate,
+      updatedDate: record.updatedDate,
+    );
+  }
+
+  static List<Record> toModels(List<RecordEntry> recordEntries) {
+    return recordEntries.map((element) => toModel(element)).toList();
+  }
+}

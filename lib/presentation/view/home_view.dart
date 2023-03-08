@@ -30,8 +30,9 @@ class HomeView extends StatelessWidget {
                 color: whiteFull,
               )),
         ),
-        //TODO: Make this dynamic of showing the initials
-        title: const Center(child: Text("Vault Pass", style: bodyText15_white_bold)),
+        //TODO: Make this dynamic of showing the initials, "Welcome Lungu or something"
+        title: const Center(
+            child: Text("Vault Pass", style: bodyText15_white_bold)),
         actions: const [Avatar()],
         toolbarHeight: heightPercentOf(8, context),
       ),
@@ -39,13 +40,17 @@ class HomeView extends StatelessWidget {
       floatingActionButton: const FabWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        shape: AutomaticNotchedShape(const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-            RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular))),
+        shape: AutomaticNotchedShape(
+            const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(radiusCircular))),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.favorite_border)),
+            IconButton(
+                onPressed: () {}, icon: const Icon(Icons.notifications_none)),
           ],
         ),
       ),
@@ -64,7 +69,8 @@ class FabWidget extends StatelessWidget {
     return RotateWidget(
       degree: const Degree.flat(),
       child: FloatingActionButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(radiusCircular)),
         child: const Icon(Icons.add),
         onPressed: () {
           context.teleportTo(const AddRecordView());

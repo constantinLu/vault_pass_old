@@ -8,7 +8,8 @@ part 'model.freezed.dart';
 abstract class Model implements _$Model {
   const Model._();
 
-  const factory Model({required UniqueId id,
+  const factory Model(
+      {required UniqueId id,
       required DateTime createdDate,
       required DateTime updatedDate}) = _Model;
 }

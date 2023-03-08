@@ -1,4 +1,3 @@
-
 import 'package:vault_pass/domain/failures/failures.dart';
 
 class NotAuthenticatedError extends Error {}
