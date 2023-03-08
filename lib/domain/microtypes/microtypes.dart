@@ -60,17 +60,20 @@ class AuthCredentials extends MicroType<Token> {
 
   const AuthCredentials._(this.value);
 
-  factory AuthCredentials(String? userId, String? emailAddress, String? password) {
-    return AuthCredentials._(
-        right(Token(userId: userId, emailAddress: emailAddress, password: password)));
+  factory AuthCredentials(
+      String? userId, String? emailAddress, String? password) {
+    return AuthCredentials._(right(
+        Token(userId: userId, emailAddress: emailAddress, password: password)));
   }
 
   factory AuthCredentials.userId(String? userId) {
     return AuthCredentials._(right(Token(userId: userId)));
   }
 
-  factory AuthCredentials.authCredentials(String? emailAddress, String? password) {
-    return AuthCredentials._(right(Token(emailAddress: emailAddress, password: password)));
+  factory AuthCredentials.authCredentials(
+      String? emailAddress, String? password) {
+    return AuthCredentials._(
+        right(Token(emailAddress: emailAddress, password: password)));
   }
 }
 
@@ -89,7 +92,7 @@ class UniqueId extends MicroType<String> {
     return UniqueId._(right(uniqueId));
   }
 
-  static String to(UniqueId uniqueId) {
+  static String toStr(UniqueId uniqueId) {
     assert(uniqueId.value != null);
     assert(uniqueId.value.getRight() != null);
 

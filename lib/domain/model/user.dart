@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:vault_pass/domain/core/export_extension.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
+
+import '../../infra/database/vaultdb.dart';
 
 part 'user.freezed.dart';
 
@@ -25,7 +28,8 @@ abstract class User implements _$User {
       createdDate: DateTime.now(),
       updatedDate: DateTime.now());
 
-  factory User.build(Name firstName, Name lastName, EmailAddress emailAddress, Password password) =>
+  factory User.build(Name firstName, Name lastName, EmailAddress emailAddress,
+          Password password) =>
       User(
           id: UniqueId(),
           firstName: firstName,
@@ -49,3 +53,4 @@ abstract class User implements _$User {
           createdDate: DateTime.now(),
           updatedDate: DateTime.now());
 }
+

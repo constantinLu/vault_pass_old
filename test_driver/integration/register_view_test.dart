@@ -6,7 +6,7 @@ import 'package:vault_pass/application/login/login_bloc.dart';
 import 'package:vault_pass/application/register/register_bloc.dart';
 import 'package:vault_pass/injection.dart';
 import 'package:vault_pass/presentation/view/auth/register_view.dart';
-//! IMPORTANT THIS IS A WORKING WIDGET TEST !!!!
+//! IMPORTANT THIS IS A WORKING INTEGRATION TEST !!!!
 void main() {
   Widget createWidgetUnderTest() {
     setup();
