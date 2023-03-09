@@ -73,6 +73,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Future<void> registerUser(RegisterUserEvent event, Emitter<RegisterState> emit) async {
     Either<AuthFailure, Unit>? authResponse;
 
+    //TODO: add validation to the whole object if possible
     final isFirstNameValid = state.firstName.isValid();
     final isLastNameValid = state.lastName.isValid();
     final isEmailValid = state.emailAddress.isValid();

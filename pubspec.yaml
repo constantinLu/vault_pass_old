@@ -52,11 +52,13 @@ dependencies:
   fpdart: #functional programming
   freezed_annotation: #freeze
   json_annotation: #for json/toMap code generation
+  json_serializable:
   injectable: #dependency injection
   get_it: #service locator
   auto_route: #routing
   kt_dart: #imutable lists
   another_flushbar:
+  rxdart:
 
 
 
