@@ -307,28 +307,31 @@ mixin _$AuthState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(UnAuthenticated value) unauthenticated,
-    required TResult Function(AuthenticatedWithCredentials value)
+    required TResult Function(UnAuthenticatedState value) unauthenticated,
+    required TResult Function(AuthenticatedWithCredentialsState value)
         authorizedCredentials,
-    required TResult Function(AuthenticatedWithBiometrics value)
+    required TResult Function(AuthenticatedWithBiometricsState value)
         authorizedBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
-    TResult? Function(UnAuthenticated value)? unauthenticated,
-    TResult? Function(AuthenticatedWithCredentials value)?
+    TResult? Function(UnAuthenticatedState value)? unauthenticated,
+    TResult? Function(AuthenticatedWithCredentialsState value)?
         authorizedCredentials,
-    TResult? Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult? Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(UnAuthenticated value)? unauthenticated,
-    TResult Function(AuthenticatedWithCredentials value)? authorizedCredentials,
-    TResult Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult Function(UnAuthenticatedState value)? unauthenticated,
+    TResult Function(AuthenticatedWithCredentialsState value)?
+        authorizedCredentials,
+    TResult Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -425,10 +428,10 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(UnAuthenticated value) unauthenticated,
-    required TResult Function(AuthenticatedWithCredentials value)
+    required TResult Function(UnAuthenticatedState value) unauthenticated,
+    required TResult Function(AuthenticatedWithCredentialsState value)
         authorizedCredentials,
-    required TResult Function(AuthenticatedWithBiometrics value)
+    required TResult Function(AuthenticatedWithBiometricsState value)
         authorizedBiometrics,
   }) {
     return initial(this);
@@ -438,10 +441,11 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
-    TResult? Function(UnAuthenticated value)? unauthenticated,
-    TResult? Function(AuthenticatedWithCredentials value)?
+    TResult? Function(UnAuthenticatedState value)? unauthenticated,
+    TResult? Function(AuthenticatedWithCredentialsState value)?
         authorizedCredentials,
-    TResult? Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult? Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
   }) {
     return initial?.call(this);
   }
@@ -450,9 +454,11 @@ class _$Initial implements Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(UnAuthenticated value)? unauthenticated,
-    TResult Function(AuthenticatedWithCredentials value)? authorizedCredentials,
-    TResult Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult Function(UnAuthenticatedState value)? unauthenticated,
+    TResult Function(AuthenticatedWithCredentialsState value)?
+        authorizedCredentials,
+    TResult Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -467,25 +473,25 @@ abstract class Initial implements AuthState {
 }
 
 /// @nodoc
-abstract class _$$UnAuthenticatedCopyWith<$Res> {
-  factory _$$UnAuthenticatedCopyWith(
-          _$UnAuthenticated value, $Res Function(_$UnAuthenticated) then) =
-      __$$UnAuthenticatedCopyWithImpl<$Res>;
+abstract class _$$UnAuthenticatedStateCopyWith<$Res> {
+  factory _$$UnAuthenticatedStateCopyWith(_$UnAuthenticatedState value,
+          $Res Function(_$UnAuthenticatedState) then) =
+      __$$UnAuthenticatedStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UnAuthenticatedCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$UnAuthenticated>
-    implements _$$UnAuthenticatedCopyWith<$Res> {
-  __$$UnAuthenticatedCopyWithImpl(
-      _$UnAuthenticated _value, $Res Function(_$UnAuthenticated) _then)
+class __$$UnAuthenticatedStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$UnAuthenticatedState>
+    implements _$$UnAuthenticatedStateCopyWith<$Res> {
+  __$$UnAuthenticatedStateCopyWithImpl(_$UnAuthenticatedState _value,
+      $Res Function(_$UnAuthenticatedState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$UnAuthenticated implements UnAuthenticated {
-  const _$UnAuthenticated();
+class _$UnAuthenticatedState implements UnAuthenticatedState {
+  const _$UnAuthenticatedState();
 
   @override
   String toString() {
@@ -495,7 +501,7 @@ class _$UnAuthenticated implements UnAuthenticated {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnAuthenticated);
+        (other.runtimeType == runtimeType && other is _$UnAuthenticatedState);
   }
 
   @override
@@ -542,10 +548,10 @@ class _$UnAuthenticated implements UnAuthenticated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(UnAuthenticated value) unauthenticated,
-    required TResult Function(AuthenticatedWithCredentials value)
+    required TResult Function(UnAuthenticatedState value) unauthenticated,
+    required TResult Function(AuthenticatedWithCredentialsState value)
         authorizedCredentials,
-    required TResult Function(AuthenticatedWithBiometrics value)
+    required TResult Function(AuthenticatedWithBiometricsState value)
         authorizedBiometrics,
   }) {
     return unauthenticated(this);
@@ -555,10 +561,11 @@ class _$UnAuthenticated implements UnAuthenticated {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
-    TResult? Function(UnAuthenticated value)? unauthenticated,
-    TResult? Function(AuthenticatedWithCredentials value)?
+    TResult? Function(UnAuthenticatedState value)? unauthenticated,
+    TResult? Function(AuthenticatedWithCredentialsState value)?
         authorizedCredentials,
-    TResult? Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult? Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
   }) {
     return unauthenticated?.call(this);
   }
@@ -567,9 +574,11 @@ class _$UnAuthenticated implements UnAuthenticated {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(UnAuthenticated value)? unauthenticated,
-    TResult Function(AuthenticatedWithCredentials value)? authorizedCredentials,
-    TResult Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult Function(UnAuthenticatedState value)? unauthenticated,
+    TResult Function(AuthenticatedWithCredentialsState value)?
+        authorizedCredentials,
+    TResult Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -579,32 +588,33 @@ class _$UnAuthenticated implements UnAuthenticated {
   }
 }
 
-abstract class UnAuthenticated implements AuthState {
-  const factory UnAuthenticated() = _$UnAuthenticated;
+abstract class UnAuthenticatedState implements AuthState {
+  const factory UnAuthenticatedState() = _$UnAuthenticatedState;
 }
 
 /// @nodoc
-abstract class _$$AuthenticatedWithCredentialsCopyWith<$Res> {
-  factory _$$AuthenticatedWithCredentialsCopyWith(
-          _$AuthenticatedWithCredentials value,
-          $Res Function(_$AuthenticatedWithCredentials) then) =
-      __$$AuthenticatedWithCredentialsCopyWithImpl<$Res>;
+abstract class _$$AuthenticatedWithCredentialsStateCopyWith<$Res> {
+  factory _$$AuthenticatedWithCredentialsStateCopyWith(
+          _$AuthenticatedWithCredentialsState value,
+          $Res Function(_$AuthenticatedWithCredentialsState) then) =
+      __$$AuthenticatedWithCredentialsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AuthenticatedWithCredentialsCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedWithCredentials>
-    implements _$$AuthenticatedWithCredentialsCopyWith<$Res> {
-  __$$AuthenticatedWithCredentialsCopyWithImpl(
-      _$AuthenticatedWithCredentials _value,
-      $Res Function(_$AuthenticatedWithCredentials) _then)
+class __$$AuthenticatedWithCredentialsStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedWithCredentialsState>
+    implements _$$AuthenticatedWithCredentialsStateCopyWith<$Res> {
+  __$$AuthenticatedWithCredentialsStateCopyWithImpl(
+      _$AuthenticatedWithCredentialsState _value,
+      $Res Function(_$AuthenticatedWithCredentialsState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
-  const _$AuthenticatedWithCredentials();
+class _$AuthenticatedWithCredentialsState
+    implements AuthenticatedWithCredentialsState {
+  const _$AuthenticatedWithCredentialsState();
 
   @override
   String toString() {
@@ -615,7 +625,7 @@ class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthenticatedWithCredentials);
+            other is _$AuthenticatedWithCredentialsState);
   }
 
   @override
@@ -662,10 +672,10 @@ class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(UnAuthenticated value) unauthenticated,
-    required TResult Function(AuthenticatedWithCredentials value)
+    required TResult Function(UnAuthenticatedState value) unauthenticated,
+    required TResult Function(AuthenticatedWithCredentialsState value)
         authorizedCredentials,
-    required TResult Function(AuthenticatedWithBiometrics value)
+    required TResult Function(AuthenticatedWithBiometricsState value)
         authorizedBiometrics,
   }) {
     return authorizedCredentials(this);
@@ -675,10 +685,11 @@ class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
-    TResult? Function(UnAuthenticated value)? unauthenticated,
-    TResult? Function(AuthenticatedWithCredentials value)?
+    TResult? Function(UnAuthenticatedState value)? unauthenticated,
+    TResult? Function(AuthenticatedWithCredentialsState value)?
         authorizedCredentials,
-    TResult? Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult? Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
   }) {
     return authorizedCredentials?.call(this);
   }
@@ -687,9 +698,11 @@ class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(UnAuthenticated value)? unauthenticated,
-    TResult Function(AuthenticatedWithCredentials value)? authorizedCredentials,
-    TResult Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult Function(UnAuthenticatedState value)? unauthenticated,
+    TResult Function(AuthenticatedWithCredentialsState value)?
+        authorizedCredentials,
+    TResult Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
     required TResult orElse(),
   }) {
     if (authorizedCredentials != null) {
@@ -699,32 +712,34 @@ class _$AuthenticatedWithCredentials implements AuthenticatedWithCredentials {
   }
 }
 
-abstract class AuthenticatedWithCredentials implements AuthState {
-  const factory AuthenticatedWithCredentials() = _$AuthenticatedWithCredentials;
+abstract class AuthenticatedWithCredentialsState implements AuthState {
+  const factory AuthenticatedWithCredentialsState() =
+      _$AuthenticatedWithCredentialsState;
 }
 
 /// @nodoc
-abstract class _$$AuthenticatedWithBiometricsCopyWith<$Res> {
-  factory _$$AuthenticatedWithBiometricsCopyWith(
-          _$AuthenticatedWithBiometrics value,
-          $Res Function(_$AuthenticatedWithBiometrics) then) =
-      __$$AuthenticatedWithBiometricsCopyWithImpl<$Res>;
+abstract class _$$AuthenticatedWithBiometricsStateCopyWith<$Res> {
+  factory _$$AuthenticatedWithBiometricsStateCopyWith(
+          _$AuthenticatedWithBiometricsState value,
+          $Res Function(_$AuthenticatedWithBiometricsState) then) =
+      __$$AuthenticatedWithBiometricsStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AuthenticatedWithBiometricsCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedWithBiometrics>
-    implements _$$AuthenticatedWithBiometricsCopyWith<$Res> {
-  __$$AuthenticatedWithBiometricsCopyWithImpl(
-      _$AuthenticatedWithBiometrics _value,
-      $Res Function(_$AuthenticatedWithBiometrics) _then)
+class __$$AuthenticatedWithBiometricsStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthenticatedWithBiometricsState>
+    implements _$$AuthenticatedWithBiometricsStateCopyWith<$Res> {
+  __$$AuthenticatedWithBiometricsStateCopyWithImpl(
+      _$AuthenticatedWithBiometricsState _value,
+      $Res Function(_$AuthenticatedWithBiometricsState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
-  const _$AuthenticatedWithBiometrics();
+class _$AuthenticatedWithBiometricsState
+    implements AuthenticatedWithBiometricsState {
+  const _$AuthenticatedWithBiometricsState();
 
   @override
   String toString() {
@@ -735,7 +750,7 @@ class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthenticatedWithBiometrics);
+            other is _$AuthenticatedWithBiometricsState);
   }
 
   @override
@@ -782,10 +797,10 @@ class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Initial value) initial,
-    required TResult Function(UnAuthenticated value) unauthenticated,
-    required TResult Function(AuthenticatedWithCredentials value)
+    required TResult Function(UnAuthenticatedState value) unauthenticated,
+    required TResult Function(AuthenticatedWithCredentialsState value)
         authorizedCredentials,
-    required TResult Function(AuthenticatedWithBiometrics value)
+    required TResult Function(AuthenticatedWithBiometricsState value)
         authorizedBiometrics,
   }) {
     return authorizedBiometrics(this);
@@ -795,10 +810,11 @@ class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Initial value)? initial,
-    TResult? Function(UnAuthenticated value)? unauthenticated,
-    TResult? Function(AuthenticatedWithCredentials value)?
+    TResult? Function(UnAuthenticatedState value)? unauthenticated,
+    TResult? Function(AuthenticatedWithCredentialsState value)?
         authorizedCredentials,
-    TResult? Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult? Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
   }) {
     return authorizedBiometrics?.call(this);
   }
@@ -807,9 +823,11 @@ class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Initial value)? initial,
-    TResult Function(UnAuthenticated value)? unauthenticated,
-    TResult Function(AuthenticatedWithCredentials value)? authorizedCredentials,
-    TResult Function(AuthenticatedWithBiometrics value)? authorizedBiometrics,
+    TResult Function(UnAuthenticatedState value)? unauthenticated,
+    TResult Function(AuthenticatedWithCredentialsState value)?
+        authorizedCredentials,
+    TResult Function(AuthenticatedWithBiometricsState value)?
+        authorizedBiometrics,
     required TResult orElse(),
   }) {
     if (authorizedBiometrics != null) {
@@ -819,6 +837,7 @@ class _$AuthenticatedWithBiometrics implements AuthenticatedWithBiometrics {
   }
 }
 
-abstract class AuthenticatedWithBiometrics implements AuthState {
-  const factory AuthenticatedWithBiometrics() = _$AuthenticatedWithBiometrics;
+abstract class AuthenticatedWithBiometricsState implements AuthState {
+  const factory AuthenticatedWithBiometricsState() =
+      _$AuthenticatedWithBiometricsState;
 }
