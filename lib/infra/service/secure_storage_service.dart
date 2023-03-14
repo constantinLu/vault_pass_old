@@ -10,7 +10,7 @@ import '../../injection.dart';
 class SecureStorageService {
   final _secureStorage = getIt<FlutterSecureStorage>();
 
-  static const _userId = 'userId';
+  static const _userIdKey = 'userId';
   static const _emailKey = 'email';
   static const _passwordKey = 'password';
 
@@ -42,12 +42,12 @@ class SecureStorageService {
   }
 
   Future<void> deleteCredentials() async {
+    _secureStorage.delete(key: _userIdKey);
     _secureStorage.delete(key: _emailKey);
     _secureStorage.delete(key: _passwordKey);
   }
 
-  Future _setUserId(String? userId) async =>
-      await _secureStorage.write(key: _userId, value: userId);
+  Future _setUserId(String? userId) async => await _secureStorage.write(key: _userIdKey, value: userId);
 
   Future _setEmail(String? email) async => await _secureStorage.write(key: _emailKey, value: email);
 
@@ -56,7 +56,7 @@ class SecureStorageService {
     return result;
   }
 
-  Future<String?> _getUserId() async => await _secureStorage.read(key: _userId);
+  Future<String?> _getUserId() async => await _secureStorage.read(key: _userIdKey);
 
   Future<String?> _getEmail() async => await _secureStorage.read(key: _emailKey);
 

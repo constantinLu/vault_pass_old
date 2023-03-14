@@ -14,6 +14,13 @@ class RecordRepository extends VaultPassDb {
     return RecordMapper.toModels(records);
   }
 
+  Future<List<Record>> getByType(RecordType recordType) async {
+    final recordEntries = await (select(recordTable)
+      ..where((userEntity) => userEntity.recordType.equals(recordType.value)))
+        .get();
+    return RecordMapper.toModels(recordEntries);
+  }
+
   Future<Record> get(UniqueId recordId) async {
     final recordEntry = await (select(recordTable)
           ..where((userEntity) => userEntity.id.equals(recordId.getOrError())))

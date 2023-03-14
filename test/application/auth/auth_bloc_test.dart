@@ -32,7 +32,7 @@ void main() {
             .thenAnswer((_) async => AuthCredentials(null, null, null));
         return authBloc;
       },
-      act: (bloc) => bloc.add(const AuthEvent.authRequestedChanged()),
+      act: (bloc) => bloc.add(const AuthEvent.authCheckRequest()),
       expect: () => [const AuthState.unauthenticated()],
     );
 
@@ -43,7 +43,7 @@ void main() {
             .thenAnswer((_) async => AuthCredentials("ID-12313", null, null));
         return authBloc;
       },
-      act: (bloc) => bloc.add(const AuthEvent.authRequestedChanged()),
+      act: (bloc) => bloc.add(const AuthEvent.authCheckRequest()),
       expect: () => [const AuthState.authorizedCredentials()],
     );
 

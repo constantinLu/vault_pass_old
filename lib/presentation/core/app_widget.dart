@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vault_pass/application/auth/auth_bloc.dart';
-import 'package:vault_pass/application/record_form/record_form_bloc.dart';
-import 'package:vault_pass/application/record_removal/record_removal_bloc.dart';
-import 'package:vault_pass/application/record_type/record_type_bloc.dart';
 import 'package:vault_pass/application/register/register_bloc.dart';
 
 import '../../application/login/login_bloc.dart';
@@ -12,6 +9,7 @@ import '../../injection.dart';
 import '../router/app_router.gr.dart';
 import '../utils/palette.dart';
 
+//TODO: ai ramas la record widget sa faci designu la cartonase pt accounts macar
 class AppWidget extends StatelessWidget {
   static const String title = 'Vault Pass';
 
@@ -27,13 +25,9 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 //adds event right away! with ..add()
-                getIt<AuthBloc>()..add(const AuthEvent.authRequestedChanged())),
+                getIt<AuthBloc>()..add(const AuthEvent.authCheckRequest())),
         BlocProvider(create: (context) => getIt<RegisterBloc>()),
         BlocProvider(create: (context) => getIt<LoginBloc>()),
-
-        BlocProvider(create: (context) => getIt<RecordTypeBloc>()),
-        BlocProvider(create: (context) => getIt<RecordFormBloc>()),
-        BlocProvider(create: (context) => getIt<RecordRemovalBloc>()),
       ],
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),

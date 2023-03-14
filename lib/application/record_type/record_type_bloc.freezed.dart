@@ -18,38 +18,55 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecordTypeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() accountTabBtnPressed,
+    required TResult Function() addressTabBtnPressed,
+    required TResult Function() businessAccountBtnPressed,
     required TResult Function() finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? accountTabBtnPressed,
+    TResult? Function()? addressTabBtnPressed,
+    TResult? Function()? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? accountTabBtnPressed,
+    TResult Function()? addressTabBtnPressed,
+    TResult Function()? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StartedEvent value) started,
+    required TResult Function(AccountTabBtnPressedEvent value)
+        accountTabBtnPressed,
+    required TResult Function(AddressTabBtnPressedEvent value)
+        addressTabBtnPressed,
+    required TResult Function(BusinessAccountTabBtnPressedEvent value)
+        businessAccountBtnPressed,
     required TResult Function(FinishedEvent value) finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StartedEvent value)? started,
+    TResult? Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult? Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult? Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult? Function(FinishedEvent value)? finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedEvent value)? started,
+    TResult Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult Function(FinishedEvent value)? finished,
     required TResult orElse(),
   }) =>
@@ -75,41 +92,46 @@ class _$RecordTypeEventCopyWithImpl<$Res, $Val extends RecordTypeEvent>
 }
 
 /// @nodoc
-abstract class _$$StartedEventCopyWith<$Res> {
-  factory _$$StartedEventCopyWith(
-          _$StartedEvent value, $Res Function(_$StartedEvent) then) =
-      __$$StartedEventCopyWithImpl<$Res>;
+abstract class _$$AccountTabBtnPressedEventCopyWith<$Res> {
+  factory _$$AccountTabBtnPressedEventCopyWith(
+          _$AccountTabBtnPressedEvent value,
+          $Res Function(_$AccountTabBtnPressedEvent) then) =
+      __$$AccountTabBtnPressedEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StartedEventCopyWithImpl<$Res>
-    extends _$RecordTypeEventCopyWithImpl<$Res, _$StartedEvent>
-    implements _$$StartedEventCopyWith<$Res> {
-  __$$StartedEventCopyWithImpl(
-      _$StartedEvent _value, $Res Function(_$StartedEvent) _then)
+class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res, _$AccountTabBtnPressedEvent>
+    implements _$$AccountTabBtnPressedEventCopyWith<$Res> {
+  __$$AccountTabBtnPressedEventCopyWithImpl(_$AccountTabBtnPressedEvent _value,
+      $Res Function(_$AccountTabBtnPressedEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$StartedEvent with DiagnosticableTreeMixin implements StartedEvent {
-  const _$StartedEvent();
+class _$AccountTabBtnPressedEvent
+    with DiagnosticableTreeMixin
+    implements AccountTabBtnPressedEvent {
+  const _$AccountTabBtnPressedEvent();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordTypeEvent.started()';
+    return 'RecordTypeEvent.accountTabBtnPressed()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'RecordTypeEvent.started'));
+    properties.add(
+        DiagnosticsProperty('type', 'RecordTypeEvent.accountTabBtnPressed'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$AccountTabBtnPressedEvent);
   }
 
   @override
@@ -118,30 +140,36 @@ class _$StartedEvent with DiagnosticableTreeMixin implements StartedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() accountTabBtnPressed,
+    required TResult Function() addressTabBtnPressed,
+    required TResult Function() businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
-    return started();
+    return accountTabBtnPressed();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? accountTabBtnPressed,
+    TResult? Function()? addressTabBtnPressed,
+    TResult? Function()? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
-    return started?.call();
+    return accountTabBtnPressed?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? accountTabBtnPressed,
+    TResult Function()? addressTabBtnPressed,
+    TResult Function()? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (accountTabBtnPressed != null) {
+      return accountTabBtnPressed();
     }
     return orElse();
   }
@@ -149,37 +177,311 @@ class _$StartedEvent with DiagnosticableTreeMixin implements StartedEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StartedEvent value) started,
+    required TResult Function(AccountTabBtnPressedEvent value)
+        accountTabBtnPressed,
+    required TResult Function(AddressTabBtnPressedEvent value)
+        addressTabBtnPressed,
+    required TResult Function(BusinessAccountTabBtnPressedEvent value)
+        businessAccountBtnPressed,
     required TResult Function(FinishedEvent value) finished,
   }) {
-    return started(this);
+    return accountTabBtnPressed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StartedEvent value)? started,
+    TResult? Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult? Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult? Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult? Function(FinishedEvent value)? finished,
   }) {
-    return started?.call(this);
+    return accountTabBtnPressed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedEvent value)? started,
+    TResult Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult Function(FinishedEvent value)? finished,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (accountTabBtnPressed != null) {
+      return accountTabBtnPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class StartedEvent implements RecordTypeEvent {
-  const factory StartedEvent() = _$StartedEvent;
+abstract class AccountTabBtnPressedEvent implements RecordTypeEvent {
+  const factory AccountTabBtnPressedEvent() = _$AccountTabBtnPressedEvent;
+}
+
+/// @nodoc
+abstract class _$$AddressTabBtnPressedEventCopyWith<$Res> {
+  factory _$$AddressTabBtnPressedEventCopyWith(
+          _$AddressTabBtnPressedEvent value,
+          $Res Function(_$AddressTabBtnPressedEvent) then) =
+      __$$AddressTabBtnPressedEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res, _$AddressTabBtnPressedEvent>
+    implements _$$AddressTabBtnPressedEventCopyWith<$Res> {
+  __$$AddressTabBtnPressedEventCopyWithImpl(_$AddressTabBtnPressedEvent _value,
+      $Res Function(_$AddressTabBtnPressedEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AddressTabBtnPressedEvent
+    with DiagnosticableTreeMixin
+    implements AddressTabBtnPressedEvent {
+  const _$AddressTabBtnPressedEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecordTypeEvent.addressTabBtnPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'RecordTypeEvent.addressTabBtnPressed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddressTabBtnPressedEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() accountTabBtnPressed,
+    required TResult Function() addressTabBtnPressed,
+    required TResult Function() businessAccountBtnPressed,
+    required TResult Function() finished,
+  }) {
+    return addressTabBtnPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? accountTabBtnPressed,
+    TResult? Function()? addressTabBtnPressed,
+    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function()? finished,
+  }) {
+    return addressTabBtnPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? accountTabBtnPressed,
+    TResult Function()? addressTabBtnPressed,
+    TResult Function()? businessAccountBtnPressed,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (addressTabBtnPressed != null) {
+      return addressTabBtnPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountTabBtnPressedEvent value)
+        accountTabBtnPressed,
+    required TResult Function(AddressTabBtnPressedEvent value)
+        addressTabBtnPressed,
+    required TResult Function(BusinessAccountTabBtnPressedEvent value)
+        businessAccountBtnPressed,
+    required TResult Function(FinishedEvent value) finished,
+  }) {
+    return addressTabBtnPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult? Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult? Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
+    TResult? Function(FinishedEvent value)? finished,
+  }) {
+    return addressTabBtnPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
+    TResult Function(FinishedEvent value)? finished,
+    required TResult orElse(),
+  }) {
+    if (addressTabBtnPressed != null) {
+      return addressTabBtnPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddressTabBtnPressedEvent implements RecordTypeEvent {
+  const factory AddressTabBtnPressedEvent() = _$AddressTabBtnPressedEvent;
+}
+
+/// @nodoc
+abstract class _$$BusinessAccountTabBtnPressedEventCopyWith<$Res> {
+  factory _$$BusinessAccountTabBtnPressedEventCopyWith(
+          _$BusinessAccountTabBtnPressedEvent value,
+          $Res Function(_$BusinessAccountTabBtnPressedEvent) then) =
+      __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res,
+        _$BusinessAccountTabBtnPressedEvent>
+    implements _$$BusinessAccountTabBtnPressedEventCopyWith<$Res> {
+  __$$BusinessAccountTabBtnPressedEventCopyWithImpl(
+      _$BusinessAccountTabBtnPressedEvent _value,
+      $Res Function(_$BusinessAccountTabBtnPressedEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$BusinessAccountTabBtnPressedEvent
+    with DiagnosticableTreeMixin
+    implements BusinessAccountTabBtnPressedEvent {
+  const _$BusinessAccountTabBtnPressedEvent();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'RecordTypeEvent.businessAccountBtnPressed()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty(
+        'type', 'RecordTypeEvent.businessAccountBtnPressed'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BusinessAccountTabBtnPressedEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() accountTabBtnPressed,
+    required TResult Function() addressTabBtnPressed,
+    required TResult Function() businessAccountBtnPressed,
+    required TResult Function() finished,
+  }) {
+    return businessAccountBtnPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? accountTabBtnPressed,
+    TResult? Function()? addressTabBtnPressed,
+    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function()? finished,
+  }) {
+    return businessAccountBtnPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? accountTabBtnPressed,
+    TResult Function()? addressTabBtnPressed,
+    TResult Function()? businessAccountBtnPressed,
+    TResult Function()? finished,
+    required TResult orElse(),
+  }) {
+    if (businessAccountBtnPressed != null) {
+      return businessAccountBtnPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AccountTabBtnPressedEvent value)
+        accountTabBtnPressed,
+    required TResult Function(AddressTabBtnPressedEvent value)
+        addressTabBtnPressed,
+    required TResult Function(BusinessAccountTabBtnPressedEvent value)
+        businessAccountBtnPressed,
+    required TResult Function(FinishedEvent value) finished,
+  }) {
+    return businessAccountBtnPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult? Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult? Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
+    TResult? Function(FinishedEvent value)? finished,
+  }) {
+    return businessAccountBtnPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
+    TResult Function(FinishedEvent value)? finished,
+    required TResult orElse(),
+  }) {
+    if (businessAccountBtnPressed != null) {
+      return businessAccountBtnPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BusinessAccountTabBtnPressedEvent implements RecordTypeEvent {
+  const factory BusinessAccountTabBtnPressedEvent() =
+      _$BusinessAccountTabBtnPressedEvent;
 }
 
 /// @nodoc
@@ -226,7 +528,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() accountTabBtnPressed,
+    required TResult Function() addressTabBtnPressed,
+    required TResult Function() businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
     return finished();
@@ -235,7 +539,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
+    TResult? Function()? accountTabBtnPressed,
+    TResult? Function()? addressTabBtnPressed,
+    TResult? Function()? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
     return finished?.call();
@@ -244,7 +550,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? accountTabBtnPressed,
+    TResult Function()? addressTabBtnPressed,
+    TResult Function()? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
@@ -257,7 +565,12 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StartedEvent value) started,
+    required TResult Function(AccountTabBtnPressedEvent value)
+        accountTabBtnPressed,
+    required TResult Function(AddressTabBtnPressedEvent value)
+        addressTabBtnPressed,
+    required TResult Function(BusinessAccountTabBtnPressedEvent value)
+        businessAccountBtnPressed,
     required TResult Function(FinishedEvent value) finished,
   }) {
     return finished(this);
@@ -266,7 +579,10 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(StartedEvent value)? started,
+    TResult? Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult? Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult? Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult? Function(FinishedEvent value)? finished,
   }) {
     return finished?.call(this);
@@ -275,7 +591,10 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StartedEvent value)? started,
+    TResult Function(AccountTabBtnPressedEvent value)? accountTabBtnPressed,
+    TResult Function(AddressTabBtnPressedEvent value)? addressTabBtnPressed,
+    TResult Function(BusinessAccountTabBtnPressedEvent value)?
+        businessAccountBtnPressed,
     TResult Function(FinishedEvent value)? finished,
     required TResult orElse(),
   }) {

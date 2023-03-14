@@ -6,6 +6,7 @@ import 'package:vault_pass/presentation/view/home_view.dart';
 import 'package:vault_pass/presentation/view/records/account/account_add_view.dart';
 import 'package:vault_pass/presentation/view/records/account/account_edit_view.dart';
 import 'package:vault_pass/presentation/view/records/account/account_view.dart';
+import 'package:vault_pass/presentation/view/records/address/address_view.dart';
 import 'package:vault_pass/presentation/view/records/record_add_view.dart';
 import 'package:vault_pass/presentation/view/settings_view.dart';
 
@@ -24,6 +25,10 @@ import 'package:vault_pass/presentation/view/settings_view.dart';
     AutoRoute(page: AccountView),
     AutoRoute(page: AccountEditView),
     AutoRoute(page: AccountAddView),
+
+    // Address
+
+    AutoRoute(page: AddressView),
   ],
 )
 class $AppRouter {}

@@ -21,15 +21,42 @@ class RecordTypeBloc extends Bloc<RecordTypeEvent, RecordTypeState> {
 
   RecordTypeBloc(this.recordRepository)
       : super(const RecordTypeState.initial()) {
-    on<StartedEvent>((event, emit) => getAllRecords(event, emit));
-    on<FinishedEvent>((event, emit) => emit(RecordTypeState.initial()));
+    on<AccountTabBtnPressedEvent>((event, emit) => getAccountRecords(event, emit));
+    on<AddressTabBtnPressedEvent>((event, emit) => getAddressRecords(event, emit));
+    on<BusinessAccountTabBtnPressedEvent>((event, emit) => getBusinessAccounts(event, emit));
+    on<FinishedEvent>((event, emit) => emit(const RecordTypeState.initial()));
   }
 
-  Future<void> getAllRecords(
-      StartedEvent event, Emitter<RecordTypeState> emit) async {
+  Future<void> getAccountRecords(
+      AccountTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
     emit(RecordTypeState.loading());
     try {
-      final records = await recordRepository.getAll();
+      final records = await recordRepository.getByType(RecordType.account);
+      emit(RecordTypeState.success(records));
+    } catch (e) {
+      //TODO: Need to customize this or change it to an union
+      emit(RecordTypeState.failure(ModelFailure.unexpected()));
+    }
+  }
+
+  Future<void> getAddressRecords(
+      AddressTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
+    emit(RecordTypeState.loading());
+    try {
+      final records = await recordRepository.getByType(RecordType.address);
+      emit(RecordTypeState.success(records));
+    } catch (e) {
+      //TODO: Need to customize this or change it to an union
+      emit(RecordTypeState.failure(ModelFailure.unexpected()));
+    }
+  }
+
+
+  Future<void> getBusinessAccounts(
+      BusinessAccountTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
+    emit(RecordTypeState.loading());
+    try {
+      final records = await recordRepository.getByType(RecordType.business);
       emit(RecordTypeState.success(records));
     } catch (e) {
       //TODO: Need to customize this or change it to an union
