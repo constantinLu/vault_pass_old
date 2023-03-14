@@ -18,38 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() authRequestedChanged,
+    required TResult Function() authCheckRequest,
     required TResult Function() authLogout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? authRequestedChanged,
+    TResult? Function()? authCheckRequest,
     TResult? Function()? authLogout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? authRequestedChanged,
+    TResult Function()? authCheckRequest,
     TResult Function()? authLogout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AuthRequestEvent value) authRequestedChanged,
+    required TResult Function(AuthCheckRequestEvent value) authCheckRequest,
     required TResult Function(AuthLogoutEvent value) authLogout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult? Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult? Function(AuthLogoutEvent value)? authLogout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult Function(AuthLogoutEvent value)? authLogout,
     required TResult orElse(),
   }) =>
@@ -74,35 +74,35 @@ class _$AuthEventCopyWithImpl<$Res, $Val extends AuthEvent>
 }
 
 /// @nodoc
-abstract class _$$AuthRequestEventCopyWith<$Res> {
-  factory _$$AuthRequestEventCopyWith(
-          _$AuthRequestEvent value, $Res Function(_$AuthRequestEvent) then) =
-      __$$AuthRequestEventCopyWithImpl<$Res>;
+abstract class _$$AuthCheckRequestEventCopyWith<$Res> {
+  factory _$$AuthCheckRequestEventCopyWith(_$AuthCheckRequestEvent value,
+          $Res Function(_$AuthCheckRequestEvent) then) =
+      __$$AuthCheckRequestEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AuthRequestEventCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res, _$AuthRequestEvent>
-    implements _$$AuthRequestEventCopyWith<$Res> {
-  __$$AuthRequestEventCopyWithImpl(
-      _$AuthRequestEvent _value, $Res Function(_$AuthRequestEvent) _then)
+class __$$AuthCheckRequestEventCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res, _$AuthCheckRequestEvent>
+    implements _$$AuthCheckRequestEventCopyWith<$Res> {
+  __$$AuthCheckRequestEventCopyWithImpl(_$AuthCheckRequestEvent _value,
+      $Res Function(_$AuthCheckRequestEvent) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AuthRequestEvent implements AuthRequestEvent {
-  const _$AuthRequestEvent();
+class _$AuthCheckRequestEvent implements AuthCheckRequestEvent {
+  const _$AuthCheckRequestEvent();
 
   @override
   String toString() {
-    return 'AuthEvent.authRequestedChanged()';
+    return 'AuthEvent.authCheckRequest()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthRequestEvent);
+        (other.runtimeType == runtimeType && other is _$AuthCheckRequestEvent);
   }
 
   @override
@@ -111,30 +111,30 @@ class _$AuthRequestEvent implements AuthRequestEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() authRequestedChanged,
+    required TResult Function() authCheckRequest,
     required TResult Function() authLogout,
   }) {
-    return authRequestedChanged();
+    return authCheckRequest();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? authRequestedChanged,
+    TResult? Function()? authCheckRequest,
     TResult? Function()? authLogout,
   }) {
-    return authRequestedChanged?.call();
+    return authCheckRequest?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? authRequestedChanged,
+    TResult Function()? authCheckRequest,
     TResult Function()? authLogout,
     required TResult orElse(),
   }) {
-    if (authRequestedChanged != null) {
-      return authRequestedChanged();
+    if (authCheckRequest != null) {
+      return authCheckRequest();
     }
     return orElse();
   }
@@ -142,37 +142,37 @@ class _$AuthRequestEvent implements AuthRequestEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AuthRequestEvent value) authRequestedChanged,
+    required TResult Function(AuthCheckRequestEvent value) authCheckRequest,
     required TResult Function(AuthLogoutEvent value) authLogout,
   }) {
-    return authRequestedChanged(this);
+    return authCheckRequest(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult? Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult? Function(AuthLogoutEvent value)? authLogout,
   }) {
-    return authRequestedChanged?.call(this);
+    return authCheckRequest?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult Function(AuthLogoutEvent value)? authLogout,
     required TResult orElse(),
   }) {
-    if (authRequestedChanged != null) {
-      return authRequestedChanged(this);
+    if (authCheckRequest != null) {
+      return authCheckRequest(this);
     }
     return orElse();
   }
 }
 
-abstract class AuthRequestEvent implements AuthEvent {
-  const factory AuthRequestEvent() = _$AuthRequestEvent;
+abstract class AuthCheckRequestEvent implements AuthEvent {
+  const factory AuthCheckRequestEvent() = _$AuthCheckRequestEvent;
 }
 
 /// @nodoc
@@ -213,7 +213,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() authRequestedChanged,
+    required TResult Function() authCheckRequest,
     required TResult Function() authLogout,
   }) {
     return authLogout();
@@ -222,7 +222,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? authRequestedChanged,
+    TResult? Function()? authCheckRequest,
     TResult? Function()? authLogout,
   }) {
     return authLogout?.call();
@@ -231,7 +231,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? authRequestedChanged,
+    TResult Function()? authCheckRequest,
     TResult Function()? authLogout,
     required TResult orElse(),
   }) {
@@ -244,7 +244,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(AuthRequestEvent value) authRequestedChanged,
+    required TResult Function(AuthCheckRequestEvent value) authCheckRequest,
     required TResult Function(AuthLogoutEvent value) authLogout,
   }) {
     return authLogout(this);
@@ -253,7 +253,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult? Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult? Function(AuthLogoutEvent value)? authLogout,
   }) {
     return authLogout?.call(this);
@@ -262,7 +262,7 @@ class _$AuthLogoutEvent implements AuthLogoutEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthRequestEvent value)? authRequestedChanged,
+    TResult Function(AuthCheckRequestEvent value)? authCheckRequest,
     TResult Function(AuthLogoutEvent value)? authLogout,
     required TResult orElse(),
   }) {

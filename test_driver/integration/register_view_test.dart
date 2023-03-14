@@ -13,7 +13,7 @@ void main() {
     return MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authRequestedChanged())),
+              create: (context) => getIt<AuthBloc>()..add(const AuthEvent.authCheckRequest())),
           BlocProvider(create: (context) => getIt<RegisterBloc>()),
           BlocProvider(create: (context) => getIt<LoginBloc>()),
         ],

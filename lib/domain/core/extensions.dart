@@ -12,6 +12,10 @@ extension Teleport on BuildContext {
   void teleportTo(PageRouteInfo route) {
     router.replace(route);
   }
+
+  void teleportBack() {
+    Navigator.pop(this);
+  }
 }
 
 extension FpdartOnNullable<T> on T? {

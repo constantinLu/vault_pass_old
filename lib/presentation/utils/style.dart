@@ -14,8 +14,8 @@ const headerText25_white = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-headerText25(Color color) => TextStyle(
-      fontSize: 25,
+headerText20(Color color) => TextStyle(
+      fontSize: 20,
       color: color,
       fontWeight: FontWeight.bold,
     );

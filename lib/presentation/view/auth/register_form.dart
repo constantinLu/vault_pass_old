@@ -33,7 +33,7 @@ class RegisterForm extends StatelessWidget {
             (_) {
               context.router.replace(const SplashView());
 
-              context.read<AuthBloc>().add(const AuthEvent.authRequestedChanged());
+              context.read<AuthBloc>().add(const AuthEvent.authCheckRequest());
             },
           ),
         );

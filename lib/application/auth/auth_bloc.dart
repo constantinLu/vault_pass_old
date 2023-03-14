@@ -19,13 +19,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final IAuthFacade _authFacade;
 
   AuthBloc(this._authFacade) : super(const AuthState.initial()) {
-    on<AuthRequestEvent>((event, emit) => checkAuthRequest(event, emit));
+    on<AuthCheckRequestEvent>((event, emit) => checkAuthRequest(event, emit));
     on<AuthLogoutEvent>((event, emit) => signedOut(event, emit));
   }
 
   //FIXME: REFACTOR THIS METHOD WHEN THERE IS TIME
   //FIRST POINT OF CONTACT
-  Future<void> checkAuthRequest(AuthRequestEvent event, Emitter<AuthState> emit) async {
+  Future<void> checkAuthRequest(AuthCheckRequestEvent event, Emitter<AuthState> emit) async {
     final futureCredentials = await _authFacade.getCredentials();
     final eitherAuthCredentials =
         futureCredentials.value.fold((l) => Either.left(l), (r) => Either.right(r));

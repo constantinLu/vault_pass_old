@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:drift/drift.dart';
 import 'package:drift/native.dart';
-import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../../domain/microtypes/microtypes.dart';
 import 'vaultpass_tables.dart';
 
 //make sure to include this part before generating the files
@@ -32,16 +32,16 @@ LazyDatabase _openConnection() {
     // put the database file, called db.sqlite here, into the documents folder
     // for your app.
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'vaultpass_test.sqlite'));
+    final file = File(p.join(dbFolder.path, 'vaultpass.sqlite'));
 
-    //FOR TESTING
-    if (!await file.exists()) {
-      // Extract the pre-populated database file from assets
-      final blob = await rootBundle.load('assets/vaultpass_test.sqlite');
-      final buffer = blob.buffer;
-      await file.writeAsBytes(
-          buffer.asUint8List(blob.offsetInBytes, blob.lengthInBytes));
-    }
+    // //FOR TESTING
+    // if (!await file.exists()) {
+    //   // Extract the pre-populated database file from assets
+    //   final blob = await rootBundle.load('assets/vaultpass_test.sqlite');
+    //   final buffer = blob.buffer;
+    //   await file.writeAsBytes(
+    //       buffer.asUint8List(blob.offsetInBytes, blob.lengthInBytes));
+    // }
 
     return NativeDatabase.createInBackground(file);
 

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:vault_pass/application/record_type/record_type_bloc.dart';
+import 'package:vault_pass/presentation/core/assets.dart';
+import 'package:vault_pass/presentation/view/records/records_cards.dart';
 
 import '../../domain/model/record.dart';
-import '../core/assets.dart';
 import '../core/device_size.dart';
 import '../core/test_data/account_test.dart';
 import '../utils/css.dart';
-import '../view/records/records_view.dart';
+import '../utils/style.dart';
 
 class TabWidget extends StatelessWidget {
-  /// List of Tab Bar Item
-  //TODO: Aici trebuie sa legi un bloc cu  datele din baza de date cred
-  // RecordBloc
-
   final List<Record> _records = [
     AccountTest.anAccountWithName("Facebook"),
     AccountTest.anAccountWithName("Microsoft"),
@@ -27,59 +26,74 @@ class TabWidget extends StatelessWidget {
 
   List<RecordType> get recordTypes => _imageType.keys.map((type) => type).toList();
 
-  List<Record> get filteredRecords =>
-      _records.where((record) => record.type == recordTypes[current]).toList();
-
-  int get recordTypesLength => _imageType.keys.toList().length;
-
   String imageTypes(index) => _imageType[recordTypes[index]]!;
 
-  int current = 0;
+  int currentIndex = 0;
 
   //check index helper
-  bool checkIndex(index) => current == index;
+  bool checkIndex({required int index}) => currentIndex == index;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      margin: const EdgeInsets.all(5),
-      child: Column(
-        children: [
-          /// CUSTOM TAB_BAR
-          SizedBox(
-            width: double.infinity,
-            height: heightPercentOf(10, context),
-            child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: recordTypesLength,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (ctx, index) {
-                  return Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          //setState(() => current = index); //TODO fix this with bloc !
-                        },
-                        child: TabButton(checkIndex(index), recordTypes[index]),
-                      ),
-                    ],
-                  );
-                }),
+    return BlocConsumer<RecordTypeBloc, RecordTypeState>(
+      listener: (BuildContext context, RecordTypeState state) {},
+      builder: (BuildContext context, RecordTypeState state) {
+        final recordTypeBloc = context.read<RecordTypeBloc>();
+        /// how to get the state
+        //final recordTypeState = BlocProvider.of<RecordTypeBloc>(context).state;
+        return Container(
+          width: double.infinity,
+          height: double.infinity,
+          margin: const EdgeInsets.all(5),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        currentIndex = 0;
+                        recordTypeBloc.add(const RecordTypeEvent.accountTabBtnPressed());
+                      },
+                      child: TabButton(checkIndex(index: 0), RecordType.account),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        currentIndex = 1;
+                        recordTypeBloc.add(const RecordTypeEvent.addressTabBtnPressed());
+                      },
+                      child: TabButton(checkIndex(index: 1), RecordType.address),
+                    ),
+                  ),
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        currentIndex = 2;
+                        recordTypeBloc.add(const RecordTypeEvent.businessAccountBtnPressed());
+                      },
+                      child: TabButton(checkIndex(index: 2), RecordType.business),
+                    ),
+                  ),
+                ],
+              ),
+              //! BODY
+              state.map(
+                  initial: (_) => Container(), //DO NOTHING
+                  loading: (_) => const CircularProgressIndicator(),
+                  success: (state) => Container(
+                      margin: const EdgeInsets.only(top: 30),
+                      width: double.infinity,
+                      height: heightPercentOf(60, context),
+                      child: state.records.isEmpty
+                          ? Center(child: BackgroundImage(imageTypes(currentIndex)))
+                          : RecordCards(state.records)),
+                  failure: (_) => const Center(child: Text("ERROR", style: bodyText15_white)))
+            ],
           ),
-
-          //# BODY
-          Container(
-            margin: const EdgeInsets.only(top: 30),
-            width: double.infinity,
-            height: heightPercentOf(60, context),
-            child: filteredRecords.isEmpty
-                ? Center(child: BackgroundImage(imageTypes(current)))
-                : RecordsView(filteredRecords),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
@@ -97,7 +111,8 @@ class TabButton extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       width: widthPercentOf(35, context),
       height: widthPercentOf(14, context),
-      //actual button design
+
+      /// actual button design
       decoration: BoxDecoration(
         color: checkIndex ? Colors.white : Colors.white54,
         borderRadius: checkIndex ? borderRadiusCircular : BorderRadius.circular(13),

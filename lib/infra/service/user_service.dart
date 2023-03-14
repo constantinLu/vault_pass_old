@@ -32,8 +32,8 @@ class UserService {
 
   Future<Either<AuthFailure, Unit>> registerUser(User user) async {
     final userResponse = await _userRepository.addUser(user);
-    final userValue = await _getUser(user.id);
-    await secureStorageService.persistUserId(AuthCredentials.userId(userValue.id.toString()));
+    final userModel = await _getUser(user.id);
+    await secureStorageService.persistUserId(AuthCredentials.userId(userModel.id.getOrError()));
     return userResponse;
   }
 

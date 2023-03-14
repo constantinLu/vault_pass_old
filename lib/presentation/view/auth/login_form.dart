@@ -19,7 +19,7 @@ class LoginForm extends StatelessWidget {
     return BlocConsumer<LoginBloc, LoginState>(
       listener: (context, state) {
         state.response.fold(
-          () {}, //ON NONE !?
+          () {}, //ON NONE !? DO NOTHING FOR NOW
           (either) => either.fold(
             (failure) {
               FlushbarHelper.createError(
@@ -31,10 +31,11 @@ class LoginForm extends StatelessWidget {
                 ),
               ).show(context);
             },
-            (_) {
+            (_) { //ON SUCCESS
               context.router.replace(const SplashView());
 
-              context.read<AuthBloc>().add(const AuthEvent.authRequestedChanged());
+              //change the auth state of our app
+              context.read<AuthBloc>().add(const AuthEvent.authCheckRequest());
             },
           ),
         );

@@ -22,6 +22,10 @@ abstract class MicroType<T> {
     );
   }
 
+  String stringValue() {
+    return getOrError() as String;
+  }
+
   bool isValid() => value.isRight();
 
   @override
