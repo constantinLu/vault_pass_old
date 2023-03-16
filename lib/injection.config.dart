@@ -49,7 +49,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i6.RecordRepository>(() => _i6.RecordRepository());
     gh.factory<_i7.RecordService>(
         () => _i7.RecordService(gh<_i6.RecordRepository>()));
-    gh.factory<_i8.RecordTypeBloc>(
+    gh.lazySingleton<_i8.RecordTypeBloc>(
         () => _i8.RecordTypeBloc(gh<_i6.RecordRepository>()));
     gh.factory<_i9.SecureStorageService>(() => _i9.SecureStorageService());
     gh.factory<_i10.UserRepository>(() => _i10.UserRepository());
@@ -61,10 +61,11 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i13.IAuthFacade>(
         () => _i14.AuthFacade(gh<_i11.UserService>()));
     gh.singleton<_i15.LoginBloc>(_i15.LoginBloc(gh<_i13.IAuthFacade>()));
-    gh.singleton<_i16.RecordBloc>(_i16.RecordBloc(gh<_i6.RecordRepository>()));
-    gh.factory<_i17.RecordRemovalBloc>(
+    gh.lazySingleton<_i16.RecordBloc>(
+        () => _i16.RecordBloc(gh<_i6.RecordRepository>()));
+    gh.lazySingleton<_i17.RecordRemovalBloc>(
         () => _i17.RecordRemovalBloc(gh<_i6.RecordRepository>()));
-    gh.factory<_i18.RegisterBloc>(
+    gh.lazySingleton<_i18.RegisterBloc>(
         () => _i18.RegisterBloc(gh<_i13.IAuthFacade>()));
     gh.singleton<_i19.AuthBloc>(_i19.AuthBloc(gh<_i13.IAuthFacade>()));
     return this;

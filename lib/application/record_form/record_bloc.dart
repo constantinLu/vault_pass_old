@@ -18,7 +18,7 @@ part 'record_state.dart';
 * This bloc is used for editing/saving the individual record
  */
 
-@singleton
+@lazySingleton
 class RecordBloc extends Bloc<RecordEvent, RecordState> {
   final RecordRepository _recordRepository;
 
@@ -97,7 +97,8 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   Future<void> addRecord(AddtRecordEvent event, Emitter<RecordState> emit) async {
     Either<ModelFailure, Unit>? response;
 
-    emit(state.copyWith(isEditing: true, response: none()));
+    emit(state.copyWith(isSaving: true, response: none()));
+
     final recordToPersist = Record.create(
       recordName: state.record.recordName.get(),
       recordType: state.record.type,
@@ -112,7 +113,6 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
       response = await _recordRepository.add(recordToPersist);
     }
 
-    ///TODO: make sure this works
     emit(
       state.copyWith(
         isSaving: false,
@@ -139,7 +139,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     );
 
     if (state.record.passwordRecord.isValid() && state.record.loginRecord.isValid()) {
-      response = await _recordRepository.add(recordToPersist);
+      response = await _recordRepository.updateM(recordToPersist);
     }
 
     ///TODO: make sure this works

@@ -15,7 +15,7 @@ part 'register_event.dart';
 
 part 'register_state.dart';
 
-@injectable
+@lazySingleton
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final IAuthFacade _authFacade;
 

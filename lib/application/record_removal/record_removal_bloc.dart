@@ -12,8 +12,9 @@ part 'record_removal_bloc.freezed.dart';
 part 'record_removal_event.dart';
 
 part 'record_removal_state.dart';
-
-@injectable
+///TODO: I think this can be moved to RecordBloc.
+///
+@lazySingleton
 class RecordRemovalBloc extends Bloc<RecordRemovalEvent, RecordRemovalState> {
   RecordRepository recordRepository;
 

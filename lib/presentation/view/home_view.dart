@@ -27,9 +27,6 @@ class HomeView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         /// GET all the records based on recordType
-        BlocProvider<RecordTypeBloc>(
-            create: (context) =>
-                getIt<RecordTypeBloc>()..add(const RecordTypeEvent.accountTabBtnPressed())),
         BlocProvider(create: (context) => getIt<RecordRemovalBloc>()),
       ],
       child: MultiBlocListener(

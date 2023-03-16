@@ -5,7 +5,6 @@ import 'package:vault_pass/application/record_form/record_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
 
 import '../../../domain/model/record.dart';
-import '../../../injection.dart';
 import '../../core/device_size.dart';
 import '../../router/app_router.gr.dart';
 import '../../utils/css.dart';
@@ -33,92 +32,93 @@ class RecordWidget extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
-    context.read<RecordBloc>().add(RecordEvent.initialized(Option.of(record)));
-    return SizedBox(
-      width: double.infinity,
-      height: heightPercentOf(31, context),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-        child: Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: borderRadiusCircular,
-          ),
-          elevation: 2,
-          margin: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-
-              ///ROW 1
-              Flexible(
-                flex: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Flexible(
-                        flex: 1,
-                        child: RecordNameWidget(record.recordName.get(), textBackgroundColor)),
-                    Flexible(
-                      flex: 0,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            flex: 0,
-                            child: IconButton(
-                              splashRadius: 12,
-                              padding: EdgeInsets.zero,
-                              icon: const Icon(Icons.open_in_full_sharp, weight: 20),
-                              onPressed: () {
-                                selectView(record, context);
-                              },
+    return BlocProvider.value(
+      value: context.read<RecordBloc>()..add(RecordEvent.initialized(Option.of(record))),
+      child: SizedBox(
+        width: double.infinity,
+        height: heightPercentOf(31, context),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: borderRadiusCircular,
+            ),
+            elevation: 2,
+            margin: const EdgeInsets.all(8),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                ///ROW 1
+                Flexible(
+                  flex: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          flex: 1,
+                          child: RecordNameWidget(record.recordName.get(), textBackgroundColor)),
+                      Flexible(
+                        flex: 0,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Flexible(
+                              flex: 0,
+                              child: IconButton(
+                                splashRadius: 12,
+                                padding: EdgeInsets.zero,
+                                icon: const Icon(Icons.open_in_full_sharp, weight: 20),
+                                onPressed: () {
+                                  selectView(record, context);
+                                },
+                              ),
                             ),
-                          ),
-                          Flexible(
-                            flex: 0,
-                            child: IconButton(
-                              icon: const Icon(Icons.remove_red_eye_outlined),
-                              onPressed: () {
-                                //show data from
-                              },
+                            Flexible(
+                              flex: 0,
+                              child: IconButton(
+                                icon: const Icon(Icons.remove_red_eye_outlined),
+                                onPressed: () {
+                                  //show data from
+                                },
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              ),
 
-              /// Column - which contains 2 rows - sub-row 1 and 2
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CredentialWidget(
-                        icon: Icons.account_circle,
-                        value: record.loginRecord.get(),
-                        isVisible: true,
-                      ),
-                      CopyWidget(),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CredentialWidget(
-                        icon: Icons.lock,
-                        value: record.passwordRecord.get(),
-                        isVisible: true,
-                      ),
-                      CopyWidget(),
-                    ],
-                  ),
-                ],
-              )
-            ],
+                /// Column - which contains 2 rows - sub-row 1 and 2
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CredentialWidget(
+                          icon: Icons.account_circle,
+                          value: record.loginRecord.get(),
+                          isVisible: true,
+                        ),
+                        CopyWidget(),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CredentialWidget(
+                          icon: Icons.lock,
+                          value: record.passwordRecord.get(),
+                          isVisible: true,
+                        ),
+                        CopyWidget(),
+                      ],
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
