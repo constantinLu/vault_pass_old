@@ -51,7 +51,7 @@ class TabWidget extends StatelessWidget {
                       onTap: () {
                         currentIndex = 0;
                         recordTypeBloc.add(const RecordTypeEvent.accountTabBtnPressed());
-                      },
+                      },8
                       child: TabButton(checkIndex(index: 0), RecordType.account),
                     ),
                   ),

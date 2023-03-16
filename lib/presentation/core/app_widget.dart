@@ -31,9 +31,7 @@ class AppWidget extends StatelessWidget {
         BlocProvider(create: (context) => getIt<RegisterBloc>()),
         BlocProvider(create: (context) => getIt<LoginBloc>()),
         BlocProvider(create: (context) => getIt<RecordBloc>()),
-        BlocProvider(
-            create: (context) =>
-                getIt<RecordTypeBloc>()..add(const RecordTypeEvent.accountTabBtnPressed()))
+
       ],
       child: MaterialApp.router(
         routerDelegate: _appRouter.delegate(),
