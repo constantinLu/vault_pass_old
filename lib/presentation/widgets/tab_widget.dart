@@ -5,19 +5,15 @@ import 'package:vault_pass/application/record_type/record_type_bloc.dart';
 import 'package:vault_pass/presentation/core/assets.dart';
 import 'package:vault_pass/presentation/view/records/records_cards.dart';
 
+import '../../application/record_form/record_bloc.dart';
 import '../../domain/model/record.dart';
+import '../../injection.dart';
 import '../core/device_size.dart';
 import '../core/test_data/account_test.dart';
 import '../utils/css.dart';
 import '../utils/style.dart';
 
 class TabWidget extends StatelessWidget {
-  final List<Record> _records = [
-    AccountTest.anAccountWithName("Facebook"),
-    AccountTest.anAccountWithName("Microsoft"),
-    AccountTest.anAccountWithName("Netflix"),
-  ];
-
   final Map<RecordType, String> _imageType = {
     RecordType.account: IMAGE_ACCOUNT,
     RecordType.address: IMAGE_ADDRESS,
@@ -41,6 +37,7 @@ class TabWidget extends StatelessWidget {
         final recordTypeBloc = context.read<RecordTypeBloc>();
         /// how to get the state
         //final recordTypeState = BlocProvider.of<RecordTypeBloc>(context).state;
+
         return Container(
           width: double.infinity,
           height: double.infinity,
@@ -82,13 +79,14 @@ class TabWidget extends StatelessWidget {
               state.map(
                   initial: (_) => Container(), //DO NOTHING
                   loading: (_) => const CircularProgressIndicator(),
-                  success: (state) => Container(
-                      margin: const EdgeInsets.only(top: 30),
-                      width: double.infinity,
-                      height: heightPercentOf(60, context),
-                      child: state.records.isEmpty
-                          ? Center(child: BackgroundImage(imageTypes(currentIndex)))
-                          : RecordCards(state.records)),
+                  success: (state) =>
+                      Container(
+                          margin: const EdgeInsets.only(top: 30),
+                          width: double.infinity,
+                          height: heightPercentOf(60, context),
+                          child: state.records.isEmpty
+                              ? Center(child: BackgroundImage(imageTypes(currentIndex)))
+                              : RecordCards(state.records)),
                   failure: (_) => const Center(child: Text("ERROR", style: bodyText15_white)))
             ],
           ),

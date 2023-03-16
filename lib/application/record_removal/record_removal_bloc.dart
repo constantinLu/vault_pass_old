@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/infra/repository/record_repository.dart';
 
@@ -11,6 +12,7 @@ part 'record_removal_event.dart';
 
 part 'record_removal_state.dart';
 
+@injectable
 class RecordRemovalBloc extends Bloc<RecordRemovalEvent, RecordRemovalState> {
   RecordRepository recordRepository;
 

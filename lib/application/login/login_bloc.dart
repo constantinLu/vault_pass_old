@@ -14,7 +14,7 @@ part 'login_event.dart';
 
 part 'login_state.dart';
 
-@injectable
+@singleton
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final IAuthFacade _authFacade;
 

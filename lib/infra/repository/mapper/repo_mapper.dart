@@ -50,15 +50,14 @@ class RecordMapper {
 
   static RecordEntry toEntry(Record record) {
     return RecordEntry(
-      id: record.id.getOrError(),
-      recordName: record.recordName.getOrError(),
+      id: record.id.get(),
+      recordName: record.recordName.get(),
       recordType: record.type.value,
-      // ?@
       logo: record.logo,
-      loginRecord: record.loginRecord.getOrError(),
-      passwordRecord: record.passwordRecord.getOrError(),
-      description: record.description.getOrError(),
-      url: record.url.getOrError(),
+      loginRecord: record.loginRecord.get(),
+      passwordRecord: record.passwordRecord.get(),
+      description: record.description.get(),
+      url: record.url.get(),
       createdDate: record.createdDate,
       updatedDate: record.updatedDate,
     );

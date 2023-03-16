@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
+import 'package:vault_pass/infra/database/vaultdb.dart';
 
 import '../../presentation/router/app_router.gr.dart';
 
@@ -11,4 +12,7 @@ abstract class AppInjectableModule {
 
   @singleton
   AppRouter get appRouter => AppRouter();
+
+  @singleton
+  VaultPassDb get vaultPassDb => VaultPassDb();
 }

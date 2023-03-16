@@ -8,14 +8,19 @@ extension EitherX<L, R> on Either<L, R> {
   L asLeft() => (this as Left).value;
 }
 
-extension Teleport on BuildContext {
+extension Teleporter on BuildContext {
+  void pushTo(PageRouteInfo route) {
+    router.push(route);
+  }
+
+  void navigateBack() {
+    router.navigateBack();
+  }
+
   void teleportTo(PageRouteInfo route) {
     router.replace(route);
   }
 
-  void teleportBack() {
-    Navigator.pop(this);
-  }
 }
 
 extension FpdartOnNullable<T> on T? {

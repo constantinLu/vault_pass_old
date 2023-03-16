@@ -1,14 +1,23 @@
+import 'package:drift/drift.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
 import 'package:vault_pass/domain/model/user.dart';
 import 'package:vault_pass/infra/database/vaultdb.dart';
+import 'package:vault_pass/infra/database/vaultpass_tables.dart';
 
 import '../../domain/failures/auth_failure.dart';
+import '../../injection.dart';
 import 'mapper/repo_mapper.dart';
 
+part 'user_repository.g.dart';
 @injectable
-class UserRepository extends VaultPassDb {
+@DriftAccessor(tables: [UserTable])
+class UserRepository extends DatabaseAccessor<VaultPassDb> with _$UserRepositoryMixin {
+
+
+  UserRepository() : super(getIt<VaultPassDb>());
+
   //TODO: change to User
   Future<List<UserEntry>> getusers() async {
     final users = await select(userTable).get();
@@ -19,7 +28,7 @@ class UserRepository extends VaultPassDb {
       EmailAddress emailAddress, Password password) async {
     final UserEntry? userEntry = await (select(userTable)
           ..where((userEntity) =>
-              userEntity.email.equals(emailAddress.getOrError())))
+              userEntity.email.equals(emailAddress.get())))
         .getSingleOrNull();
     try {
       final authCredentials = AuthCredentials.authCredentials(
@@ -60,7 +69,7 @@ class UserRepository extends VaultPassDb {
   Future<Either<AuthFailure, Unit>> deleteUser(UniqueId userId) async {
     try {
       await (delete(userTable)
-            ..where((userEntity) => userEntity.id.equals(userId.getOrError())))
+            ..where((userEntity) => userEntity.id.equals(userId.get())))
           .go();
 
       return Either.right(unit);

@@ -7,7 +7,6 @@ import 'package:vault_pass/presentation/view/records/account/account_add_view.da
 import 'package:vault_pass/presentation/view/records/account/account_edit_view.dart';
 import 'package:vault_pass/presentation/view/records/account/account_view.dart';
 import 'package:vault_pass/presentation/view/records/address/address_view.dart';
-import 'package:vault_pass/presentation/view/records/record_add_view.dart';
 import 'package:vault_pass/presentation/view/settings_view.dart';
 
 @MaterialAutoRouter(
@@ -19,12 +18,9 @@ import 'package:vault_pass/presentation/view/settings_view.dart';
     AutoRoute(page: HomeView),
     AutoRoute(page: SettingsView),
 
-    //TODO: Make up your mind what you want AddRecord or Add for each one ?
-    AutoRoute(page: AddRecordView),
-
     AutoRoute(page: AccountView),
-    AutoRoute(page: AccountEditView),
     AutoRoute(page: AccountAddView),
+    AutoRoute(page: AccountEditView),
 
     // Address
 

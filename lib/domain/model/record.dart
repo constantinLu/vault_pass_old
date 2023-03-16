@@ -9,7 +9,6 @@ abstract class Record implements _$Record {
 
   const factory Record({
     required UniqueId id,
-
     required Name recordName,
     required RecordType type,
     required Name loginRecord,
@@ -17,13 +16,12 @@ abstract class Record implements _$Record {
     required String logo,
     required Description description,
     required Url url,
-
     required DateTime createdDate,
     required DateTime updatedDate,
   }) = _Record;
 
   factory Record.empty() => Record(
-      id: UniqueId(),
+      id: UniqueId.fromUniqueString(""),
       recordName: Name(""),
       type: RecordType.account,
       loginRecord: Name(""),
@@ -46,6 +44,27 @@ abstract class Record implements _$Record {
           type: recordType,
           loginRecord: Name(""),
           passwordRecord: Password(""),
+          logo: logo,
+          description: Description(description),
+          url: Url(url),
+          createdDate: DateTime.now(),
+          updatedDate: DateTime.now());
+
+  factory Record.create({
+    required String recordName,
+    required RecordType recordType,
+    required String logo,
+    required String loginRecord,
+    required String loginPassword,
+    required String url,
+    required String description,
+  }) =>
+      Record(
+          id: UniqueId(),
+          recordName: Name(recordName),
+          type: recordType,
+          loginRecord: Name(loginRecord),
+          passwordRecord: Password(loginPassword),
           logo: logo,
           description: Description(description),
           url: Url(url),

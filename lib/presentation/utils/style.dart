@@ -19,7 +19,19 @@ headerText20(Color color) => TextStyle(
       color: color,
       fontWeight: FontWeight.bold,
     );
+
+headerWhite(int size) => TextStyle(
+  color: whiteFull,
+  fontSize: size.toDouble(),
+  fontWeight: FontWeight.bold,
+);
+
 // body
+bodyText(int size, Color color) => TextStyle(
+  color: color,
+  fontSize: size.toDouble(),
+);
+
 const bodyText15_grey = TextStyle(
   color: greySpanish,
   fontSize: 15,

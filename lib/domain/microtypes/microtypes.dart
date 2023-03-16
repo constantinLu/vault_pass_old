@@ -96,7 +96,7 @@ class UniqueId extends MicroType<String> {
     assert(uniqueId.value != null);
     assert(uniqueId.value.getRight() != null);
 
-    return uniqueId.getOrError();
+    return uniqueId.get();
   }
 }
 

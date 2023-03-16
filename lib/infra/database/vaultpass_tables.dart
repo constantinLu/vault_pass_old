@@ -15,6 +15,9 @@ class UserTable extends Table {
   DateTimeColumn get createdDate => dateTime()();
 
   DateTimeColumn get updatedDate => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 @DataClassName('RecordEntry')
@@ -38,4 +41,7 @@ class RecordTable extends Table {
   DateTimeColumn get createdDate => dateTime()();
 
   DateTimeColumn get updatedDate => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }

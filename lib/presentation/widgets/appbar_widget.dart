@@ -21,7 +21,7 @@ class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
         icon: const Icon(Icons.arrow_back_ios),
         iconSize: 10.0,
         onPressed: () {
-          context.teleportTo(const HomeView());
+          context.pushTo(const HomeView());
         },
       ),
     );

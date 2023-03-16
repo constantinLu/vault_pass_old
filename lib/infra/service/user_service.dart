@@ -26,14 +26,14 @@ class UserService {
       EmailAddress emailAddress, Password password) async {
     final user = _userRepository.authenticateUser(emailAddress, password);
     secureStorageService.persistCredentials(
-        AuthCredentials.authCredentials(emailAddress.getOrError(), password.getOrError()));
+        AuthCredentials.authCredentials(emailAddress.get(), password.get()));
     return user;
   }
 
   Future<Either<AuthFailure, Unit>> registerUser(User user) async {
     final userResponse = await _userRepository.addUser(user);
     final userModel = await _getUser(user.id);
-    await secureStorageService.persistUserId(AuthCredentials.userId(userModel.id.getOrError()));
+    await secureStorageService.persistUserId(AuthCredentials.userId(userModel.id.get()));
     return userResponse;
   }
 

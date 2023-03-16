@@ -1,3 +1,4 @@
+import 'package:drift/drift.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/microtypes/microtypes.dart';
@@ -6,9 +7,27 @@ import 'package:vault_pass/infra/database/vaultdb.dart';
 import 'package:vault_pass/infra/repository/mapper/repo_mapper.dart';
 
 import '../../domain/failures/model_failure.dart';
+import '../../injection.dart';
+import '../database/vaultpass_tables.dart';
+
+part 'record_repository.g.dart';
+
+//
+// // the _TodosDaoMixin will be created by drift. It contains all the necessary
+// // fields for the tables. The <MyDatabase> type annotation is the database class
+// // that should use this dao.
+//
+// class TodosDao extends DatabaseAccessor<MyDatabase> with _$TodosDaoMixin {
+//   // this constructor is required so that the main database can create an instance
+//   // of this object.
+//
 
 @injectable
-class RecordRepository extends VaultPassDb {
+@DriftAccessor(tables: [RecordTable])
+class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordRepositoryMixin {
+
+  RecordRepository() : super(getIt<VaultPassDb>());
+
   Future<List<Record>> getAll() async {
     final records = await select(recordTable).get();
     return RecordMapper.toModels(records);
@@ -16,14 +35,14 @@ class RecordRepository extends VaultPassDb {
 
   Future<List<Record>> getByType(RecordType recordType) async {
     final recordEntries = await (select(recordTable)
-      ..where((userEntity) => userEntity.recordType.equals(recordType.value)))
+          ..where((userEntity) => userEntity.recordType.equals(recordType.value)))
         .get();
     return RecordMapper.toModels(recordEntries);
   }
 
   Future<Record> get(UniqueId recordId) async {
     final recordEntry = await (select(recordTable)
-          ..where((userEntity) => userEntity.id.equals(recordId.getOrError())))
+          ..where((userEntity) => userEntity.id.equals(recordId.get())))
         .getSingle();
 
     print("Delay the getUser call");
@@ -56,7 +75,7 @@ class RecordRepository extends VaultPassDb {
   Future<Either<ModelFailure, Unit>> remove(UniqueId recordId) async {
     try {
       await (delete(recordTable)
-            ..where((recordEntry) => recordEntry.id.equals(recordId.getOrError())))
+            ..where((recordEntry) => recordEntry.id.equals(recordId.get())))
           .go();
 
       return Either.right(unit);

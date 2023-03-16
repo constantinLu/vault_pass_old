@@ -59,6 +59,7 @@ dependencies:
   kt_dart: #imutable lists
   another_flushbar:
   rxdart:
+  flutter_speed_dial:
 
 
 

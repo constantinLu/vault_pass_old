@@ -4,6 +4,24 @@ import 'package:flutter/material.dart';
 class Palette {
   static const List<Color> gradients = [whiteCultured, greyPlatinum, greySpanish, greyDim];
   static primaryColor(context) => Theme.of(context).primaryColor;
+
+  //blacks
+  static const blackFull = Color.fromRGBO(0, 0, 0, 1);
+  static const blackErie = Color.fromRGBO(37, 37, 37, 1);
+  static const blackJet = Color.fromRGBO(51, 51, 51, 1);
+  static const blackCard = Color.fromRGBO(13, 13, 13, 1.0);
+
+//whites
+  static const whiteFull = Color.fromRGBO(255, 255, 255, 1);
+  static const whiteSnow = Color.fromRGBO(248, 248, 247, 1);
+  static const whiteCultured = Color.fromRGBO(221, 221, 216, 1);
+
+
+//greys
+  static const greyPlatinum = Color.fromRGBO(228, 228, 228, 1);
+  static const greySpanish = Color.fromRGBO(148, 148, 148, 1);
+  static const greyDim = Color.fromRGBO(106, 106, 106, 1);
+
 }
 
 //blacks

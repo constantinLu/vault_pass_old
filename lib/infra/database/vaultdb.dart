@@ -13,7 +13,6 @@ import 'vaultpass_tables.dart';
 part 'vaultdb.g.dart';
 
 @DriftDatabase(tables: [UserTable, RecordTable])
-@injectable
 class VaultPassDb extends _$VaultPassDb {
   // we tell the database where to store the data with this constructor
   VaultPassDb() : super(_openConnection());
