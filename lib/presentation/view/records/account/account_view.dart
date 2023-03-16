@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:vault_pass/application/record_form/record_bloc.dart';
+import 'package:vault_pass/application/record_removal/record_removal_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
 import 'package:vault_pass/presentation/router/app_router.gr.dart';
 import 'package:vault_pass/presentation/utils/palette.dart';
 
+import '../../../../domain/microtypes/microtypes.dart';
 import '../../../../domain/model/record.dart';
 import '../../../../injection.dart';
 import '../../../core/device_size.dart';
@@ -82,7 +84,7 @@ class AccountView extends StatelessWidget {
                 ),
               ),
               floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-              floatingActionButton: _SpeedDialFabWidget(),
+              floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
             );
           },
         ),
@@ -156,7 +158,10 @@ class ViewCardWidget extends StatelessWidget {
 }
 
 class _SpeedDialFabWidget extends StatelessWidget {
-  const _SpeedDialFabWidget({Key? key}) : super(key: key);
+
+  final UniqueId recordId;
+
+  const _SpeedDialFabWidget({Key? key, required this.recordId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -192,6 +197,9 @@ class _SpeedDialFabWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
             //label: 'Delete',
             onTap: () {
+              //context.read<RecordBloc>().add(RecordEvent.initialized(Option.of(record)));
+              getIt<RecordRemovalBloc>().add(RecordRemovalEvent.remove(recordId));
+              //context.bloc<BlocRemoval>();
               context.teleportTo(HomeView());
             }),
       ],

@@ -5,6 +5,7 @@ import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/infra/repository/record_repository.dart';
 
 import '../../domain/failures/model_failure.dart';
+import '../../domain/microtypes/microtypes.dart';
 
 part 'record_removal_bloc.freezed.dart';
 
@@ -17,11 +18,11 @@ class RecordRemovalBloc extends Bloc<RecordRemovalEvent, RecordRemovalState> {
   RecordRepository recordRepository;
 
   RecordRemovalBloc(this.recordRepository) : super(const RecordRemovalState.initial()) {
-    on<_RemovalEvent>((event, emit) => _editRecord(event, emit));
+    on<_RemovalEvent>((event, emit) => _removeRecord(event, emit));
   }
 
-  Future<void> _editRecord(RecordRemovalEvent event, Emitter<RecordRemovalState> emit) async {
-    final response = await recordRepository.updateM(event.record);
+  Future<void> _removeRecord(RecordRemovalEvent event, Emitter<RecordRemovalState> emit) async {
+    final response = await recordRepository.remove(event.id);
 
     response.fold((failure) => emit(RecordRemovalState.failure(failure)),
         (record) => emit(const RecordRemovalState.success()));
