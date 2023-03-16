@@ -2,6 +2,6 @@ part of 'record_removal_bloc.dart';
 
 @freezed
 class RecordRemovalEvent with _$RecordRemovalEvent {
-  const factory RecordRemovalEvent.edited(Record record) = _RemovalEvent;
+  const factory RecordRemovalEvent.remove(UniqueId id) = _RemovalEvent;
 }
 

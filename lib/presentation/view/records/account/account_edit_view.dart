@@ -209,7 +209,7 @@ class AccountEditView extends StatelessWidget {
                                       ),
                                     ),
 
-                                    //! SAVE/EDIT BUTTON
+                                    //! EDIT BUTTON
                                     SizedBox(height: 20),
                                     TextButtonWidget(
                                       buttonName: 'Edit',

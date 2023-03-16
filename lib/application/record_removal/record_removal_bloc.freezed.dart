@@ -16,36 +16,36 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RecordRemovalEvent {
-  Record get record => throw _privateConstructorUsedError;
+  UniqueId get id => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Record record) edited,
+    required TResult Function(UniqueId id) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Record record)? edited,
+    TResult? Function(UniqueId id)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Record record)? edited,
+    TResult Function(UniqueId id)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RemovalEvent value) edited,
+    required TResult Function(_RemovalEvent value) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RemovalEvent value)? edited,
+    TResult? Function(_RemovalEvent value)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RemovalEvent value)? edited,
+    TResult Function(_RemovalEvent value)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,9 +61,7 @@ abstract class $RecordRemovalEventCopyWith<$Res> {
           RecordRemovalEvent value, $Res Function(RecordRemovalEvent) then) =
       _$RecordRemovalEventCopyWithImpl<$Res, RecordRemovalEvent>;
   @useResult
-  $Res call({Record record});
-
-  $RecordCopyWith<$Res> get record;
+  $Res call({UniqueId id});
 }
 
 /// @nodoc
@@ -79,22 +77,14 @@ class _$RecordRemovalEventCopyWithImpl<$Res, $Val extends RecordRemovalEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? record = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      record: null == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as Record,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RecordCopyWith<$Res> get record {
-    return $RecordCopyWith<$Res>(_value.record, (value) {
-      return _then(_value.copyWith(record: value) as $Val);
-    });
   }
 }
 
@@ -106,10 +96,7 @@ abstract class _$$_RemovalEventCopyWith<$Res>
       __$$_RemovalEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Record record});
-
-  @override
-  $RecordCopyWith<$Res> get record;
+  $Res call({UniqueId id});
 }
 
 /// @nodoc
@@ -123,13 +110,13 @@ class __$$_RemovalEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? record = null,
+    Object? id = null,
   }) {
     return _then(_$_RemovalEvent(
-      null == record
-          ? _value.record
-          : record // ignore: cast_nullable_to_non_nullable
-              as Record,
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
     ));
   }
 }
@@ -137,14 +124,14 @@ class __$$_RemovalEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RemovalEvent implements _RemovalEvent {
-  const _$_RemovalEvent(this.record);
+  const _$_RemovalEvent(this.id);
 
   @override
-  final Record record;
+  final UniqueId id;
 
   @override
   String toString() {
-    return 'RecordRemovalEvent.edited(record: $record)';
+    return 'RecordRemovalEvent.remove(id: $id)';
   }
 
   @override
@@ -152,11 +139,11 @@ class _$_RemovalEvent implements _RemovalEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RemovalEvent &&
-            (identical(other.record, record) || other.record == record));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, record);
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
@@ -167,27 +154,27 @@ class _$_RemovalEvent implements _RemovalEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Record record) edited,
+    required TResult Function(UniqueId id) remove,
   }) {
-    return edited(record);
+    return remove(id);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Record record)? edited,
+    TResult? Function(UniqueId id)? remove,
   }) {
-    return edited?.call(record);
+    return remove?.call(id);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Record record)? edited,
+    TResult Function(UniqueId id)? remove,
     required TResult orElse(),
   }) {
-    if (edited != null) {
-      return edited(record);
+    if (remove != null) {
+      return remove(id);
     }
     return orElse();
   }
@@ -195,37 +182,37 @@ class _$_RemovalEvent implements _RemovalEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_RemovalEvent value) edited,
+    required TResult Function(_RemovalEvent value) remove,
   }) {
-    return edited(this);
+    return remove(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_RemovalEvent value)? edited,
+    TResult? Function(_RemovalEvent value)? remove,
   }) {
-    return edited?.call(this);
+    return remove?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_RemovalEvent value)? edited,
+    TResult Function(_RemovalEvent value)? remove,
     required TResult orElse(),
   }) {
-    if (edited != null) {
-      return edited(this);
+    if (remove != null) {
+      return remove(this);
     }
     return orElse();
   }
 }
 
 abstract class _RemovalEvent implements RecordRemovalEvent {
-  const factory _RemovalEvent(final Record record) = _$_RemovalEvent;
+  const factory _RemovalEvent(final UniqueId id) = _$_RemovalEvent;
 
   @override
-  Record get record;
+  UniqueId get id;
   @override
   @JsonKey(ignore: true)
   _$$_RemovalEventCopyWith<_$_RemovalEvent> get copyWith =>

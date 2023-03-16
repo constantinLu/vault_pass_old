@@ -83,7 +83,6 @@ dev_dependencies:
   drift_dev:
   build_runner: ^2.3.3
   drift_db_viewer:
-  json_serializable: #needed for freezed
   freezed:
   injectable_generator: # Version 2
   auto_route_generator:

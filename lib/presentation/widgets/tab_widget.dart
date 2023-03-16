@@ -5,11 +5,9 @@ import 'package:vault_pass/application/record_type/record_type_bloc.dart';
 import 'package:vault_pass/presentation/core/assets.dart';
 import 'package:vault_pass/presentation/view/records/records_cards.dart';
 
-import '../../application/record_form/record_bloc.dart';
 import '../../domain/model/record.dart';
 import '../../injection.dart';
 import '../core/device_size.dart';
-import '../core/test_data/account_test.dart';
 import '../utils/css.dart';
 import '../utils/style.dart';
 
@@ -34,8 +32,10 @@ class TabWidget extends StatelessWidget {
     return BlocConsumer<RecordTypeBloc, RecordTypeState>(
       listener: (BuildContext context, RecordTypeState state) {},
       builder: (BuildContext context, RecordTypeState state) {
+        /// IMPORTANT!! THIS expression should be used when we need to add an event
+        /// see bloc documentation
         final recordTypeBloc = context.read<RecordTypeBloc>();
-        /// how to get the state
+        /// how to get the state (same as above) - do not use to update states
         //final recordTypeState = BlocProvider.of<RecordTypeBloc>(context).state;
 
         return Container(

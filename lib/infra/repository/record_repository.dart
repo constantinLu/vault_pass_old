@@ -25,7 +25,6 @@ part 'record_repository.g.dart';
 @injectable
 @DriftAccessor(tables: [RecordTable])
 class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordRepositoryMixin {
-
   RecordRepository() : super(getIt<VaultPassDb>());
 
   Future<List<Record>> getAll() async {
@@ -74,8 +73,7 @@ class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordReposi
 
   Future<Either<ModelFailure, Unit>> remove(UniqueId recordId) async {
     try {
-      await (delete(recordTable)
-            ..where((recordEntry) => recordEntry.id.equals(recordId.get())))
+      await (delete(recordTable)..where((recordEntry) => recordEntry.id.equals(recordId.get())))
           .go();
 
       return Either.right(unit);
