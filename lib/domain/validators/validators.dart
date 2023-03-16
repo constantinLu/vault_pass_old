@@ -15,7 +15,7 @@ Either<MicroTypeFailure<String>, String> validateEmailAddress(String input) {
 }
 
 Either<MicroTypeFailure<String>, String> validateName(String input) {
-  if (input.length > 3) {
+  if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(MicroTypeFailure.invalidString(failedValue: input));
@@ -23,7 +23,7 @@ Either<MicroTypeFailure<String>, String> validateName(String input) {
 }
 
 Either<MicroTypeFailure<String>, String> validatePassword(String input) {
-  if (input.length > 5) {
+  if (input.isNotEmpty) {
     return right(input);
   } else {
     return left(MicroTypeFailure.invalidPassword(failedValue: input));

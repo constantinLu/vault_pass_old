@@ -15,18 +15,18 @@ class SecureStorageService {
   static const _passwordKey = 'password';
 
   Future<void> persistAllToSecureStorage(AuthCredentials authCredentials) async {
-    await _setUserId(authCredentials.getOrError().userId);
-    await _setEmail(authCredentials.getOrError().emailAddress);
-    await _setPassword(authCredentials.getOrError().password);
+    await _setUserId(authCredentials.get().userId);
+    await _setEmail(authCredentials.get().emailAddress);
+    await _setPassword(authCredentials.get().password);
   }
 
   Future<void> persistUserId(AuthCredentials authCredentials) async {
-    await _setUserId(authCredentials.getOrError().userId);
+    await _setUserId(authCredentials.get().userId);
   }
 
   Future<void> persistCredentials(AuthCredentials authCredentials) async {
-    await _setEmail(authCredentials.getOrError().emailAddress);
-    await _setPassword(authCredentials.getOrError().password);
+    await _setEmail(authCredentials.get().emailAddress);
+    await _setPassword(authCredentials.get().password);
   }
 
   Future<AuthCredentials> getAuthCredentials() async {

@@ -16,7 +16,7 @@ class Avatar extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: GestureDetector(
           onTap: () {
-            context.teleportTo(const SettingsView());
+            context.pushTo(const SettingsView());
           },
           child: CircleAvatar(
             radius: 40,

@@ -1,17 +1,17 @@
-part of 'record_form_bloc.dart';
+part of 'record_bloc.dart';
 
 @freezed
-class RecordFormState with _$RecordFormState {
-  const RecordFormState._();
+class RecordState with _$RecordState {
+  const RecordState._();
 
-  const factory RecordFormState(
+  const factory RecordState(
       {required Record record,
       required bool isSaving,
       required bool isEditing,
       required AutovalidateMode? showErrorMessage,
-      required Option<Either<ModelFailure, Unit>> response}) = _RecordFormState;
+      required Option<Either<ModelFailure, Unit>> response}) = _RecordState;
 
-  factory RecordFormState.initial() => RecordFormState(
+  factory RecordState.initial() => RecordState(
       record: Record.empty(),
       isSaving: false,
       isEditing: false,

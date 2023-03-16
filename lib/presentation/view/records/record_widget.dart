@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:vault_pass/application/record_form/record_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
 
 import '../../../domain/model/record.dart';
+import '../../../injection.dart';
 import '../../core/device_size.dart';
 import '../../router/app_router.gr.dart';
 import '../../utils/css.dart';
@@ -14,28 +18,27 @@ class RecordWidget extends StatelessWidget {
 
   const RecordWidget(this.record, this.textBackgroundColor, {Key? key}) : super(key: key);
 
-  void selectView(RecordType recordType, BuildContext context) {
-    switch (recordType) {
+  void selectView(Record record, BuildContext context) {
+    switch (record.type) {
       case RecordType.account:
-        context.teleportTo(const AccountView());
+        context.pushTo(AccountView(record: record));
         break;
       case RecordType.address:
-        context.teleportTo(const AccountView());
+        context.pushTo(AccountView(record: record));
         break;
       case RecordType.business:
-        context.teleportTo(const AccountView());
+        context.pushTo(AccountView(record: record));
         break;
     }
   }
 
-  @override
   Widget build(BuildContext context) {
-    final String asd = record.loginRecord.getOrError();
+    context.read<RecordBloc>().add(RecordEvent.initialized(Option.of(record)));
     return SizedBox(
       width: double.infinity,
       height: heightPercentOf(31, context),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(8, 0, 5, 8),
+        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: borderRadiusCircular,
@@ -45,6 +48,7 @@ class RecordWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+
               ///ROW 1
               Flexible(
                 flex: 0,
@@ -54,8 +58,7 @@ class RecordWidget extends StatelessWidget {
                   children: [
                     Flexible(
                         flex: 1,
-                        child:
-                            RecordNameWidget(record.recordName.getOrError(), textBackgroundColor)),
+                        child: RecordNameWidget(record.recordName.get(), textBackgroundColor)),
                     Flexible(
                       flex: 0,
                       child: Column(
@@ -68,7 +71,7 @@ class RecordWidget extends StatelessWidget {
                               padding: EdgeInsets.zero,
                               icon: const Icon(Icons.open_in_full_sharp, weight: 20),
                               onPressed: () {
-                                selectView(record.type, context);
+                                selectView(record, context);
                               },
                             ),
                           ),
@@ -96,7 +99,7 @@ class RecordWidget extends StatelessWidget {
                     children: [
                       CredentialWidget(
                         icon: Icons.account_circle,
-                        value: record.loginRecord.getOrError(),
+                        value: record.loginRecord.get(),
                         isVisible: true,
                       ),
                       CopyWidget(),
@@ -107,7 +110,7 @@ class RecordWidget extends StatelessWidget {
                     children: [
                       CredentialWidget(
                         icon: Icons.lock,
-                        value: record.passwordRecord.getOrError(),
+                        value: record.passwordRecord.get(),
                         isVisible: true,
                       ),
                       CopyWidget(),

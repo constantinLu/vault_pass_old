@@ -8,14 +8,17 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:vault_pass/application/auth/auth_bloc.dart' as _i17;
+import 'package:vault_pass/application/auth/auth_bloc.dart' as _i19;
 import 'package:vault_pass/application/login/login_bloc.dart' as _i15;
+import 'package:vault_pass/application/record_form/record_bloc.dart' as _i16;
+import 'package:vault_pass/application/record_removal/record_removal_bloc.dart'
+    as _i17;
 import 'package:vault_pass/application/record_type/record_type_bloc.dart'
     as _i8;
-import 'package:vault_pass/application/register/register_bloc.dart' as _i16;
+import 'package:vault_pass/application/register/register_bloc.dart' as _i18;
 import 'package:vault_pass/domain/auth/auth_facade.dart' as _i13;
 import 'package:vault_pass/infra/database/vaultdb.dart' as _i12;
-import 'package:vault_pass/infra/module/vaultpass_module.dart' as _i18;
+import 'package:vault_pass/infra/module/vaultpass_module.dart' as _i20;
 import 'package:vault_pass/infra/repository/record_repository.dart' as _i6;
 import 'package:vault_pass/infra/repository/user_repository.dart' as _i10;
 import 'package:vault_pass/infra/service/auth_facade.dart' as _i14;
@@ -54,15 +57,18 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i10.UserRepository>(),
           gh<_i9.SecureStorageService>(),
         ));
-    gh.factory<_i12.VaultPassDb>(() => _i12.VaultPassDb());
+    gh.singleton<_i12.VaultPassDb>(appInjectableModule.vaultPassDb);
     gh.lazySingleton<_i13.IAuthFacade>(
         () => _i14.AuthFacade(gh<_i11.UserService>()));
-    gh.factory<_i15.LoginBloc>(() => _i15.LoginBloc(gh<_i13.IAuthFacade>()));
-    gh.factory<_i16.RegisterBloc>(
-        () => _i16.RegisterBloc(gh<_i13.IAuthFacade>()));
-    gh.factory<_i17.AuthBloc>(() => _i17.AuthBloc(gh<_i13.IAuthFacade>()));
+    gh.singleton<_i15.LoginBloc>(_i15.LoginBloc(gh<_i13.IAuthFacade>()));
+    gh.singleton<_i16.RecordBloc>(_i16.RecordBloc(gh<_i6.RecordRepository>()));
+    gh.factory<_i17.RecordRemovalBloc>(
+        () => _i17.RecordRemovalBloc(gh<_i6.RecordRepository>()));
+    gh.factory<_i18.RegisterBloc>(
+        () => _i18.RegisterBloc(gh<_i13.IAuthFacade>()));
+    gh.singleton<_i19.AuthBloc>(_i19.AuthBloc(gh<_i13.IAuthFacade>()));
     return this;
   }
 }
 
-class _$AppInjectableModule extends _i18.AppInjectableModule {}
+class _$AppInjectableModule extends _i20.AppInjectableModule {}

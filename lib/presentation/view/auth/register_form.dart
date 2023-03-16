@@ -197,7 +197,7 @@ class RegisterForm extends StatelessWidget {
                                         print("User login to the database. Point LOGIN VIEW");
 
                                         ///REDIRECT TO LOGIN IF USER ALREADY HAS AN ACCOUNT
-                                        context.teleportTo(const SplashView());
+                                        context.pushTo(const SplashView());
                                       },
                                       child: const Text(
                                         'Sign In',

@@ -10,7 +10,7 @@ abstract class MicroType<T> {
 
   const MicroType();
 
-  T getOrError() {
+  T get() {
     //id - identity - same as writing (r) -> r
     return value.fold((l) => throw UnexpectedValueError(l), id);
   }
@@ -23,7 +23,7 @@ abstract class MicroType<T> {
   }
 
   String stringValue() {
-    return getOrError() as String;
+    return get() as String;
   }
 
   bool isValid() => value.isRight();
