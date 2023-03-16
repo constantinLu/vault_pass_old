@@ -15,7 +15,7 @@ part 'record_type_state.dart';
 /*
 * This bloc is used for initializing all the records in the home view
  */
-@injectable
+@lazySingleton
 class RecordTypeBloc extends Bloc<RecordTypeEvent, RecordTypeState> {
   RecordRepository recordRepository;
 

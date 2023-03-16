@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/application/record_form/record_bloc.dart';
+import 'package:vault_pass/domain/core/export_extension.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
 import '../../../router/app_router.gr.dart';
@@ -79,8 +80,9 @@ class AccountAddView extends StatelessWidget {
                                         style: bodyText15_grey.copyWith(color: Colors.white),
                                         textInputAction: TextInputAction.next,
                                         autocorrect: false,
-                                        onChanged: (value) => context.read<RecordBloc>().add(
-                                            RecordEvent.recordNameChanged(recordName: value)),
+                                        onChanged: (value) => context
+                                            .read<RecordBloc>()
+                                            .add(RecordEvent.recordNameChanged(recordName: value)),
                                         decoration: _inputDecoration("Record Name"),
                                         validator: (_) => context
                                             .read<RecordBloc>()
@@ -107,8 +109,7 @@ class AccountAddView extends StatelessWidget {
                                         autocorrect: false,
                                         decoration: _inputDecoration("Login Credential"),
                                         onChanged: (value) => context.read<RecordBloc>().add(
-                                              RecordEvent.loginRecordChanged(
-                                                  loginRecord: value),
+                                              RecordEvent.loginRecordChanged(loginRecord: value),
                                             ),
                                         validator: (_) => context
                                             .read<RecordBloc>()
@@ -165,19 +166,14 @@ class AccountAddView extends StatelessWidget {
                                               RecordEvent.urlChanged(url: value),
                                             ),
                                         decoration: _inputDecoration("Url"),
-                                        validator: (_) => context
-                                            .read<RecordBloc>()
-                                            .state
-                                            .record
-                                            .url
-                                            .value
-                                            .fold(
-                                              (f) => f.maybeMap(
-                                                invalidString: (_) => 'Invalid url',
-                                                orElse: () => null,
-                                              ),
-                                              (_) => null,
-                                            ),
+                                        validator: (_) =>
+                                            context.read<RecordBloc>().state.record.url.value.fold(
+                                                  (f) => f.maybeMap(
+                                                    invalidString: (_) => 'Invalid url',
+                                                    orElse: () => null,
+                                                  ),
+                                                  (_) => null,
+                                                ),
                                       ),
                                     ),
 
@@ -207,19 +203,22 @@ class AccountAddView extends StatelessWidget {
                                       ),
                                     ),
 
-                                    //! SAVE/EDIT BUTTON
-                                    SizedBox(height: 20),
+                                    //! SAVE BUTTON
+                                    const SizedBox(height: 20),
                                     TextButtonWidget(
                                       buttonName: 'Save',
                                       onTap: () {
                                         context
                                             .read<RecordBloc>()
                                             .add(RecordEvent.addRecordEvent());
+                                        //Add a listener to the home view and listen to the state or redirect from here directly
+                                        context.teleportTo(HomeView());
+
                                       },
                                       bgColor: whiteFull,
                                       textColor: blackFull,
                                     ),
-                                    if (state.isEditing) ...[
+                                    if (state.isSaving) ...[
                                       const SizedBox(height: 8),
                                       const LinearProgressIndicator(),
                                     ],
