@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:fpdart/fpdart.dart';
+import 'package:fpdart/fpdart.dart' as fp;
 import 'package:vault_pass/application/record_form/record_bloc.dart';
 import 'package:vault_pass/application/record_removal/record_removal_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
@@ -16,23 +16,33 @@ import '../../../utils/butter.dart';
 import '../../../utils/css.dart';
 import '../../../utils/style.dart';
 
-class AccountView extends StatelessWidget {
+class AccountView extends StatefulWidget {
   final Record record;
 
   const AccountView({required this.record, Key? key}) : super(key: key);
 
   @override
+  State<AccountView> createState() => _AccountViewState();
+}
+
+class _AccountViewState extends State<AccountView> {
+  @override
+  void initState() {
+    context.read<RecordBloc>().add(RecordEvent.initialized(fp.Option.of(widget.record)));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    /// INIT THE RECORD TO THE BLOC
-    return WillPopScope(
-      //this makes the device button work to go back
-      onWillPop: () {
-        context.navigateBack();
-        return Future.value(false);
-      },
-      child: BlocBuilder<RecordBloc, RecordState>(
-        builder: (context, state) {
-          return Scaffold(
+    return BlocBuilder<RecordBloc, RecordState>(
+      builder: (context, state) {
+        return WillPopScope(
+          /// this makes the device button work to go back
+          onWillPop: () {
+            context.navigateBack();
+            return Future.value(false);
+          },
+          child: Scaffold(
             backgroundColor: Palette.blackFull,
             body: SafeArea(
               child: CustomScrollView(
@@ -49,43 +59,43 @@ class AccountView extends StatelessWidget {
                           const Divider(height: 10, thickness: 1, color: Colors.white),
                           const SizedBox(height: 10),
 
-                        //! RECORD NAME
-                        ViewCardWidget(
-                            textWidget: {"Record name": state.record.recordName.get()},
-                            cardHeight: 12),
+                          //! RECORD NAME
+                          ViewCardWidget(
+                              textWidget: {"Record name": state.record.recordName.get()},
+                              cardHeight: 12),
 
-                        //! Title
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
-                          child: Text("Credentials", style: bodyText(12, Palette.greySpanish)),
-                        ),
+                          //! Title
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
+                            child: Text("Credentials", style: bodyText(12, Palette.greySpanish)),
+                          ),
 
-                        //! RECORD LOGIN AND PASSWORD
-                        ViewCardWidget(textWidget: {
-                          "Login": state.record.loginRecord.get(),
-                          "Password": state.record.passwordRecord.get()
-                        }, cardHeight: 24),
+                          //! RECORD LOGIN AND PASSWORD
+                          ViewCardWidget(textWidget: {
+                            "Login": state.record.loginRecord.get(),
+                            "Password": state.record.passwordRecord.get()
+                          }, cardHeight: 24),
 
-                        //! URL
-                        ViewCardWidget(
-                            textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
+                          //! URL
+                          ViewCardWidget(
+                              textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
 
-                        //! DESCRIPTION
-                        ViewCardWidget(
-                            textWidget: {"Description": state.record.description.get()},
-                            cardHeight: 12),
-                      ],
+                          //! DESCRIPTION
+                          ViewCardWidget(
+                              textWidget: {"Description": state.record.description.get()},
+                              cardHeight: 12),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+            floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-          floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
         );
       },
-    ),
     );
   }
 }
@@ -155,7 +165,6 @@ class ViewCardWidget extends StatelessWidget {
 }
 
 class _SpeedDialFabWidget extends StatelessWidget {
-
   final UniqueId recordId;
 
   const _SpeedDialFabWidget({Key? key, required this.recordId}) : super(key: key);

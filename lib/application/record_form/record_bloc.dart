@@ -25,11 +25,13 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
   RecordBloc(this._recordRepository) : super(RecordState.initial()) {
     on<InitializedRecordEvent>((event, emit) => initializeRecord(event, emit));
     on<ResetRecordEvent>((event, emit) => resetedRecordState(event, emit));
+
     on<RecordNameChangedEvent>((event, emit) => recordNameChange(event, emit));
     on<RecordTypeChangedEvent>((event, emit) => recordTypeChange(event, emit));
     on<LoginRecordChangedEvent>((event, emit) => loginRecordChange(event, emit));
     on<PasswordRecordChangedEvent>((event, emit) => passwordRecordChange(event, emit));
     on<DescriptionChangedEvent>((event, emit) => descriptionChange(event, emit));
+
     on<UrlChangedEvent>((event, emit) => urlChange(event, emit));
     on<AddtRecordEvent>((event, emit) => addRecord(event, emit));
   }
