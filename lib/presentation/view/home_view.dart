@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +9,6 @@ import 'package:vault_pass/domain/core/extensions.dart';
 import 'package:vault_pass/injection.dart';
 import 'package:vault_pass/presentation/router/app_router.gr.dart';
 
-import '../../application/record_form/record_bloc.dart';
 import '../../domain/model/record.dart';
 import '../core/device_size.dart';
 import '../utils/css.dart';
@@ -28,6 +25,9 @@ class HomeView extends StatelessWidget {
       providers: [
         /// GET all the records based on recordType
         BlocProvider(create: (context) => getIt<RecordRemovalBloc>()),
+        BlocProvider(
+            create: (context) =>
+                getIt<RecordTypeBloc>()..add(const RecordTypeEvent.accountTabBtnPressed()))
       ],
       child: MultiBlocListener(
         listeners: [
