@@ -42,58 +42,61 @@ class _AccountViewState extends State<AccountView> {
             context.navigateBack();
             return Future.value(false);
           },
-          child: Scaffold(
-            backgroundColor: Palette.blackFull,
-            body: SafeArea(
-              child: CustomScrollView(
-                slivers: [
-                  SliverFillRemaining(
-                    hasScrollBody: false,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //! RECORD TYPE
-                          _RecordTypeWidget(value: state.record.type.value.toLowerCase()),
-                          const Divider(height: 10, thickness: 1, color: Colors.white),
-                          const SizedBox(height: 10),
+          child: !state.record.loginRecord.isValid()
+              ? const SizedBox()
+              : Scaffold(
+                  backgroundColor: Palette.blackFull,
+                  body: SafeArea(
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                //! RECORD TYPE
+                                _RecordTypeWidget(value: state.record.type.value.toLowerCase()),
+                                const Divider(height: 10, thickness: 1, color: Colors.white),
+                                const SizedBox(height: 10),
 
-                          //! RECORD NAME
-                          ViewCardWidget(
-                              textWidget: {"Record name": state.record.recordName.get()},
-                              cardHeight: 12),
+                                //! RECORD NAME
+                                ViewCardWidget(
+                                    textWidget: {"Record name": state.record.recordName.get()},
+                                    cardHeight: 12),
 
-                          //! Title
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
-                            child: Text("Credentials", style: bodyText(12, Palette.greySpanish)),
+                                //! Title
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
+                                  child:
+                                      Text("Credentials", style: bodyText(12, Palette.greySpanish)),
+                                ),
+
+                                //! RECORD LOGIN AND PASSWORD
+                                ViewCardWidget(textWidget: {
+                                  "Login": state.record.loginRecord.get(),
+                                  "Password": state.record.passwordRecord.get()
+                                }, cardHeight: 24),
+
+                                //! URL
+                                ViewCardWidget(
+                                    textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
+
+                                //! DESCRIPTION
+                                ViewCardWidget(
+                                    textWidget: {"Description": state.record.description.get()},
+                                    cardHeight: 12),
+                              ],
+                            ),
                           ),
-
-                          //! RECORD LOGIN AND PASSWORD
-                          ViewCardWidget(textWidget: {
-                            "Login": state.record.loginRecord.get(),
-                            "Password": state.record.passwordRecord.get()
-                          }, cardHeight: 24),
-
-                          //! URL
-                          ViewCardWidget(
-                              textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
-
-                          //! DESCRIPTION
-                          ViewCardWidget(
-                              textWidget: {"Description": state.record.description.get()},
-                              cardHeight: 12),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-            floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
-          ),
+                  floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+                  floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
+                ),
         );
       },
     );

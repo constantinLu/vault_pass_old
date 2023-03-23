@@ -6,12 +6,10 @@ import 'package:vault_pass/application/register/register_bloc.dart';
 
 import '../../application/login/login_bloc.dart';
 import '../../application/record_form/record_bloc.dart';
-import '../../application/record_type/record_type_bloc.dart';
 import '../../injection.dart';
 import '../router/app_router.gr.dart';
 import '../utils/palette.dart';
 
-//TODO: ai ramas la record widget sa faci designu la cartonase pt accounts macar
 class AppWidget extends StatelessWidget {
   static const String title = 'Vault Pass';
 
