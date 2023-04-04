@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,71 +37,89 @@ class _AccountViewState extends State<AccountView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RecordBloc, RecordState>(
-      builder: (context, state) {
-        return WillPopScope(
-          /// this makes the device button work to go back
-          onWillPop: () {
-            context.back();
-            return Future.value(false);
-          },
-          child: !state.record.loginRecord.isValid()
-              ? const SizedBox()
-              : Scaffold(
-                  backgroundColor: Palette.blackFull,
-                  body: SafeArea(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverFillRemaining(
-                          hasScrollBody: false,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                //! RECORD TYPE
-                                _RecordTypeWidget(value: state.record.type.value.toLowerCase()),
-                                const Divider(height: 10, thickness: 1, color: Colors.white),
-                                const SizedBox(height: 10),
+    return BlocListener<RecordBloc, RecordState>(
+      listener: (context, state) {
+        state.response.fold(
+          //ON NONE DO NOTHING
+          () {},
+          (either) => either.fold(
+              (failure) => FlushbarHelper.createError(
+                    message: failure.map(unexpected: (_) => "Unexpected Error"),
+                  ),
+              (unit) => {
+                    FlushbarHelper.createSuccess(message: 'Success,'),
+                    context.teleportTo(const HomeView()),
+                  }),
+        );
+        //THIS MIGHT NOT WORK
+        // SHOULD WORK ONLY ON EDIT
+      },
+      child: BlocBuilder<RecordBloc, RecordState>(
+        builder: (context, state) {
+          return WillPopScope(
+            /// this makes the device button work to go back
+            onWillPop: () {
+              context.back();
+              return Future.value(false);
+            },
+            child: !state.record.loginRecord.isValid()
+                ? const SizedBox()
+                : Scaffold(
+                    backgroundColor: Palette.blackFull,
+                    body: SafeArea(
+                      child: CustomScrollView(
+                        slivers: [
+                          SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  //! RECORD TYPE
+                                  _RecordTypeWidget(value: state.record.type.value.toLowerCase()),
+                                  const Divider(height: 10, thickness: 1, color: Colors.white),
+                                  const SizedBox(height: 10),
 
-                                //! RECORD NAME
-                                ViewCardWidget(
-                                    textWidget: {"Record name": state.record.recordName.get()},
-                                    cardHeight: 12),
+                                  //! RECORD NAME
+                                  ViewCardWidget(
+                                      textWidget: {"Record name": state.record.recordName.get()},
+                                      cardHeight: 12),
 
-                                //! Title
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
-                                  child:
-                                      Text("Credentials", style: bodyText(12, Palette.greySpanish)),
-                                ),
+                                  //! Title
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(15, 15, 10, 2),
+                                    child: Text("Credentials",
+                                        style: bodyText(12, Palette.greySpanish)),
+                                  ),
 
-                                //! RECORD LOGIN AND PASSWORD
-                                ViewCardWidget(textWidget: {
-                                  "Login": state.record.loginRecord.get(),
-                                  "Password": state.record.passwordRecord.get()
-                                }, cardHeight: 24),
+                                  //! RECORD LOGIN AND PASSWORD
+                                  ViewCardWidget(textWidget: {
+                                    "Login": state.record.loginRecord.get(),
+                                    "Password": state.record.passwordRecord.get()
+                                  }, cardHeight: 24),
 
-                                //! URL
-                                ViewCardWidget(
-                                    textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
+                                  //! URL
+                                  ViewCardWidget(
+                                      textWidget: {"Url": state.record.url.get()}, cardHeight: 12),
 
-                                //! DESCRIPTION
-                                ViewCardWidget(
-                                    textWidget: {"Description": state.record.description.get()},
-                                    cardHeight: 12),
-                              ],
+                                  //! DESCRIPTION
+                                  ViewCardWidget(
+                                      textWidget: {"Description": state.record.description.get()},
+                                      cardHeight: 12),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+                    floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
                   ),
-                  floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
-                  floatingActionButton: _SpeedDialFabWidget(recordId: state.record.id),
-                ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -181,8 +200,8 @@ class _SpeedDialFabWidget extends StatelessWidget {
       activeIcon: Icons.close,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
       childPadding: const EdgeInsets.all(5),
-      buttonSize: Size.fromRadius(30),
-      childrenButtonSize: Size.fromRadius(30),
+      buttonSize: const Size.fromRadius(30),
+      childrenButtonSize: const Size.fromRadius(30),
       direction: SpeedDialDirection.left,
       overlayOpacity: 0,
       children: [
@@ -200,7 +219,10 @@ class _SpeedDialFabWidget extends StatelessWidget {
           foregroundColor: Palette.blackCard,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
           //label: 'Edit',
-          onTap: () => context.pushTo(AccountEditView()),
+          onTap: () => context.pushTo(const AccountEditView())
+
+              //getIt<RecordBloc>().add(RecordEvent.editRecordEvent(recordId)),
+          //context.pushTo(const AccountEditView()),
           //onLongPress: () => debugPrint('FIRST CHILD LONG PRESS'),
         ),
         SpeedDialChild(
@@ -208,10 +230,9 @@ class _SpeedDialFabWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
             //label: 'Delete',
             onTap: () {
-              //context.read<RecordBloc>().add(RecordEvent.initialized(Option.of(record)));
               getIt<RecordRemovalBloc>().add(RecordRemovalEvent.remove(recordId));
-              //context.bloc<BlocRemoval>();
-              context.teleportTo(HomeView());
+              //TODO: I think we need to wait here or something// or change it to statefull
+              context.teleportTo(const HomeView());
             }),
       ],
     );

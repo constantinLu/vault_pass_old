@@ -32,9 +32,9 @@ class RecordTable extends Table {
 
   TextColumn get passwordRecord => text().withLength(min: 2, max: 32)();
 
-  TextColumn get logo => text().withLength(min: 2, max: 50)();
+  TextColumn get logo => text().withLength(min: 0, max: 50)();
 
-  TextColumn get description => text().withLength(min: 2, max: 100)();
+  TextColumn get description => text().nullable()();
 
   TextColumn get url => text().withLength(min: 2, max: 100)();
 

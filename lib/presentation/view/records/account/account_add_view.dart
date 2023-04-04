@@ -34,8 +34,9 @@ class AccountAddView extends StatelessWidget {
               (_) {
                 //RecordFormEvent.initialized(none());
                 /// check auth
-                //context.router.replace(const SplashView());
-                context.read<AuthBloc>().add(const AuthEvent.authCheckRequest());
+                ///
+                context.router.replace(const HomeView());
+                //context.read<AuthBloc>().add(const AuthEvent.authCheckRequest());
               },
             ),
           );
@@ -211,16 +212,16 @@ class AccountAddView extends StatelessWidget {
                                       onTap: () {
                                         context
                                             .read<RecordBloc>()
-                                            .add(RecordEvent.addRecordEvent());
+                                            .add(const RecordEvent.addRecordEvent());
                                         //Add a listener to the home view and listen to the state or redirect from here directly
-                                        context.teleportTo(HomeView());
+                                        //context.teleportTo(HomeView());
 
                                       },
                                       bgColor: whiteFull,
                                       textColor: blackFull,
                                     ),
                                     if (state.isSaving) ...[
-                                      const SizedBox(height: 8),
+                                      //const SizedBox(height: 8),
                                       const LinearProgressIndicator(),
                                     ],
                                   ],

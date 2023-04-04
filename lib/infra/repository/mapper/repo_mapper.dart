@@ -41,7 +41,7 @@ class RecordMapper {
       logo: recordEntry.logo,
       loginRecord: Name.of(recordEntry.loginRecord),
       passwordRecord: Password.of(recordEntry.passwordRecord),
-      description: Description(recordEntry.description),
+      description: Description(recordEntry.description!),
       url: Url(recordEntry.url),
       createdDate: recordEntry.createdDate,
       updatedDate: recordEntry.updatedDate,

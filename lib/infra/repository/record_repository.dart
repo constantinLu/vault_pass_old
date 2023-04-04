@@ -53,18 +53,17 @@ class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordReposi
 
   Future<Either<ModelFailure, Unit>> add(Record record) async {
     try {
-      await into(recordTable).insert(RecordMapper.toEntry(record));
+      var recordMap = RecordMapper.toEntry(record);
+      await into(recordTable).insert(recordMap);
       return Either.right(unit);
     } catch (e) {
       return Either.left(const ModelFailure.unexpected());
     }
   }
 
-  Future<Either<ModelFailure, Unit>> updateM(Record record) async {
+  Future<Either<ModelFailure, Unit>> updateModel(Record record) async {
     try {
       final isUpdated = await update(recordTable).replace(RecordMapper.toEntry(record));
-      //final updatedRecord = RecordMapper.toModel(updatedRecordList.first);
-
       return isUpdated ? Either.right(unit) : Either.left(const ModelFailure.unexpected());
     } catch (e) {
       return Either.left(const ModelFailure.unexpected());
@@ -75,7 +74,6 @@ class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordReposi
     try {
       await (delete(recordTable)..where((recordEntry) => recordEntry.id.equals(recordId.get())))
           .go();
-
       return Either.right(unit);
     } catch (e) {
       return Either.left(const ModelFailure.unexpected());

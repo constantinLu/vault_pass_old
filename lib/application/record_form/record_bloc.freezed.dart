@@ -28,7 +28,7 @@ mixin _$RecordEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$RecordEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,7 +58,7 @@ mixin _$RecordEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,7 +177,7 @@ class _$ResetRecordEvent implements ResetRecordEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return reset();
   }
@@ -195,7 +195,7 @@ class _$ResetRecordEvent implements ResetRecordEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return reset?.call();
   }
@@ -213,7 +213,7 @@ class _$ResetRecordEvent implements ResetRecordEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (reset != null) {
@@ -362,7 +362,7 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return initialized(optionalRecord);
   }
@@ -380,7 +380,7 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return initialized?.call(optionalRecord);
   }
@@ -398,7 +398,7 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -553,7 +553,7 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return recordNameChanged(recordName);
   }
@@ -571,7 +571,7 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return recordNameChanged?.call(recordName);
   }
@@ -589,7 +589,7 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (recordNameChanged != null) {
@@ -744,7 +744,7 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return recordTypeChanged(recordType);
   }
@@ -762,7 +762,7 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return recordTypeChanged?.call(recordType);
   }
@@ -780,7 +780,7 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (recordTypeChanged != null) {
@@ -935,7 +935,7 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return loginRecordChanged(loginRecord);
   }
@@ -953,7 +953,7 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return loginRecordChanged?.call(loginRecord);
   }
@@ -971,7 +971,7 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (loginRecordChanged != null) {
@@ -1128,7 +1128,7 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return passwordRecordChanged(passwordRecord);
   }
@@ -1146,7 +1146,7 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return passwordRecordChanged?.call(passwordRecord);
   }
@@ -1164,7 +1164,7 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (passwordRecordChanged != null) {
@@ -1317,7 +1317,7 @@ class _$LogoChangedEvent implements LogoChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return logoChanged(logo);
   }
@@ -1335,7 +1335,7 @@ class _$LogoChangedEvent implements LogoChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return logoChanged?.call(logo);
   }
@@ -1353,7 +1353,7 @@ class _$LogoChangedEvent implements LogoChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (logoChanged != null) {
@@ -1508,7 +1508,7 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return descriptionChanged(description);
   }
@@ -1526,7 +1526,7 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return descriptionChanged?.call(description);
   }
@@ -1544,7 +1544,7 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -1697,7 +1697,7 @@ class _$UrlChangedEvent implements UrlChangedEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return urlChanged(url);
   }
@@ -1715,7 +1715,7 @@ class _$UrlChangedEvent implements UrlChangedEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return urlChanged?.call(url);
   }
@@ -1733,7 +1733,7 @@ class _$UrlChangedEvent implements UrlChangedEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (urlChanged != null) {
@@ -1860,7 +1860,7 @@ class _$AddtRecordEvent implements AddtRecordEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
     return addRecordEvent();
   }
@@ -1878,7 +1878,7 @@ class _$AddtRecordEvent implements AddtRecordEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
     return addRecordEvent?.call();
   }
@@ -1896,7 +1896,7 @@ class _$AddtRecordEvent implements AddtRecordEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (addRecordEvent != null) {
@@ -1974,6 +1974,8 @@ abstract class _$$EditRecordEventCopyWith<$Res> {
   factory _$$EditRecordEventCopyWith(
           _$EditRecordEvent value, $Res Function(_$EditRecordEvent) then) =
       __$$EditRecordEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UniqueId id});
 }
 
 /// @nodoc
@@ -1983,26 +1985,50 @@ class __$$EditRecordEventCopyWithImpl<$Res>
   __$$EditRecordEventCopyWithImpl(
       _$EditRecordEvent _value, $Res Function(_$EditRecordEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$EditRecordEvent(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$EditRecordEvent implements EditRecordEvent {
-  const _$EditRecordEvent();
+  const _$EditRecordEvent(this.id);
+
+  @override
+  final UniqueId id;
 
   @override
   String toString() {
-    return 'RecordEvent.editRecordEvent()';
+    return 'RecordEvent.editRecordEvent(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EditRecordEvent);
+        (other.runtimeType == runtimeType &&
+            other is _$EditRecordEvent &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EditRecordEventCopyWith<_$EditRecordEvent> get copyWith =>
+      __$$EditRecordEventCopyWithImpl<_$EditRecordEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2017,9 +2043,9 @@ class _$EditRecordEvent implements EditRecordEvent {
     required TResult Function(String description) descriptionChanged,
     required TResult Function(String url) urlChanged,
     required TResult Function() addRecordEvent,
-    required TResult Function() editRecordEvent,
+    required TResult Function(UniqueId id) editRecordEvent,
   }) {
-    return editRecordEvent();
+    return editRecordEvent(id);
   }
 
   @override
@@ -2035,9 +2061,9 @@ class _$EditRecordEvent implements EditRecordEvent {
     TResult? Function(String description)? descriptionChanged,
     TResult? Function(String url)? urlChanged,
     TResult? Function()? addRecordEvent,
-    TResult? Function()? editRecordEvent,
+    TResult? Function(UniqueId id)? editRecordEvent,
   }) {
-    return editRecordEvent?.call();
+    return editRecordEvent?.call(id);
   }
 
   @override
@@ -2053,11 +2079,11 @@ class _$EditRecordEvent implements EditRecordEvent {
     TResult Function(String description)? descriptionChanged,
     TResult Function(String url)? urlChanged,
     TResult Function()? addRecordEvent,
-    TResult Function()? editRecordEvent,
+    TResult Function(UniqueId id)? editRecordEvent,
     required TResult orElse(),
   }) {
     if (editRecordEvent != null) {
-      return editRecordEvent();
+      return editRecordEvent(id);
     }
     return orElse();
   }
@@ -2123,7 +2149,12 @@ class _$EditRecordEvent implements EditRecordEvent {
 }
 
 abstract class EditRecordEvent implements RecordEvent {
-  const factory EditRecordEvent() = _$EditRecordEvent;
+  const factory EditRecordEvent(final UniqueId id) = _$EditRecordEvent;
+
+  UniqueId get id;
+  @JsonKey(ignore: true)
+  _$$EditRecordEventCopyWith<_$EditRecordEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -34,6 +34,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
 
     on<UrlChangedEvent>((event, emit) => urlChange(event, emit));
     on<AddtRecordEvent>((event, emit) => addRecord(event, emit));
+    on<EditRecordEvent>((event, emit) => editRecord(event, emit));
   }
 
   /// this will be an empty record since it needs to be added
@@ -130,7 +131,8 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     Either<ModelFailure, Unit>? response;
 
     emit(state.copyWith(isEditing: true, response: none()));
-    final recordToPersist = Record.create(
+    final recordToPersist = Record.update(
+      id: state.record.id,
       recordName: state.record.recordName.get(),
       recordType: state.record.type,
       logo: state.record.logo,
@@ -141,7 +143,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     );
 
     if (state.record.passwordRecord.isValid() && state.record.loginRecord.isValid()) {
-      response = await _recordRepository.updateM(recordToPersist);
+      response = await _recordRepository.updateModel(recordToPersist);
     }
 
     ///TODO: make sure this works

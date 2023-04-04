@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 
-import '../../../application/record_form/record_bloc.dart';
 import '../../../domain/model/record.dart';
-import '../../../injection.dart';
 import '../../utils/palette.dart';
 import 'record_widget.dart';
 
