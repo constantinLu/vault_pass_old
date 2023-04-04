@@ -1,30 +1,23 @@
-import 'package:auto_route/annotations.dart';
-import 'package:vault_pass/presentation/view/auth/login_view.dart';
-import 'package:vault_pass/presentation/view/auth/register_view.dart';
-import 'package:vault_pass/presentation/view/auth/splash_view.dart';
-import 'package:vault_pass/presentation/view/home_view.dart';
-import 'package:vault_pass/presentation/view/records/account/account_add_view.dart';
-import 'package:vault_pass/presentation/view/records/account/account_edit_view.dart';
-import 'package:vault_pass/presentation/view/records/account/account_view.dart';
-import 'package:vault_pass/presentation/view/records/address/address_view.dart';
-import 'package:vault_pass/presentation/view/settings_view.dart';
+import 'package:auto_route/auto_route.dart';
 
-@MaterialAutoRouter(
+import 'app_router.gr.dart';
+
+@AutoRouterConfig(
   replaceInRouteName: 'Page,Route',
-  routes: <AutoRoute>[
-    AutoRoute(page: SplashView, initial: true),
-    AutoRoute(page: RegisterView),
-    AutoRoute(page: LoginView),
-    AutoRoute(page: HomeView),
-    AutoRoute(page: SettingsView),
-
-    AutoRoute(page: AccountView),
-    AutoRoute(page: AccountAddView),
-    AutoRoute(page: AccountEditView),
-
-    // Address
-
-    AutoRoute(page: AddressView),
-  ],
 )
-class $AppRouter {}
+class AppRouter extends $AppRouter {
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(page: SplashView.page, path: '/'),
+    AutoRoute(page: RegisterView.page),
+    AutoRoute(page: LoginView.page),
+    AutoRoute(page: HomeView.page),
+    AutoRoute(page: SettingsView.page),
+    AutoRoute(page: AccountView.page),
+    AutoRoute(page: AccountAddView.page),
+    AutoRoute(page: AccountEditView.page),
+    AutoRoute(page: AddressView.page),
+  ];
+}

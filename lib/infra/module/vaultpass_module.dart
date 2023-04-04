@@ -2,7 +2,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:vault_pass/infra/database/vaultdb.dart';
 
-import '../../presentation/router/app_router.gr.dart';
+import '../../presentation/router/app_router.dart';
+
 
 /// HERE WE NEED TO JUST INJECT THE CLASSES WHICH ARE NOT PART OF OUR PROJECT
 @module

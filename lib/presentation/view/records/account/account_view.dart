@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -16,6 +17,7 @@ import '../../../utils/butter.dart';
 import '../../../utils/css.dart';
 import '../../../utils/style.dart';
 
+@RoutePage()
 class AccountView extends StatefulWidget {
   final Record record;
 
@@ -39,7 +41,7 @@ class _AccountViewState extends State<AccountView> {
         return WillPopScope(
           /// this makes the device button work to go back
           onWillPop: () {
-            context.navigateBack();
+            context.back();
             return Future.value(false);
           },
           child: !state.record.loginRecord.isValid()
@@ -189,7 +191,7 @@ class _SpeedDialFabWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
           //label: 'Back',
           visible: true,
-          onTap: () => context.navigateBack(),
+          onTap: () => context.back(),
           onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
         ),
         SpeedDialChild(

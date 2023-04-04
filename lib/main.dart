@@ -13,9 +13,7 @@ Future main() async {
   systemOrientation();
   setup();
   DbTestData().insertTestData();
-  BlocOverrides.runZoned(
-          () => runApp(const AppWidget()),
-      blocObserver: AppBlocObserver());
+  BlocOverrides.runZoned(() => runApp(const AppWidget()), blocObserver: AppBlocObserver());
 }
 
 Future<void> systemOrientation() async {

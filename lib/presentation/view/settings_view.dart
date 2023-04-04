@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/palette.dart';
 import '../utils/style.dart';
 import '../widgets/avatar_widget.dart';
 
+@RoutePage()
 class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

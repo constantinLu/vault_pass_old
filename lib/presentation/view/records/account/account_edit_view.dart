@@ -12,6 +12,7 @@ import '../../../utils/palette.dart';
 import '../../../utils/style.dart';
 import '../../../widgets/text_button_widget.dart';
 
+@RoutePage()
 class AccountEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

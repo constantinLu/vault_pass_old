@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
@@ -5,6 +6,7 @@ import 'package:vault_pass/presentation/router/app_router.gr.dart';
 
 import '../../../application/auth/auth_bloc.dart';
 
+@RoutePage()
 class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

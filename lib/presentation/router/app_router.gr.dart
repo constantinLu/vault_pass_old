@@ -1,213 +1,201 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i10;
 import 'package:flutter/material.dart' as _i11;
+import 'package:vault_pass/domain/model/record.dart' as _i12;
+import 'package:vault_pass/presentation/view/auth/login_view.dart' as _i1;
+import 'package:vault_pass/presentation/view/auth/register_view.dart' as _i2;
+import 'package:vault_pass/presentation/view/auth/splash_view.dart' as _i3;
+import 'package:vault_pass/presentation/view/home_view.dart' as _i4;
+import 'package:vault_pass/presentation/view/records/account/account_add_view.dart'
+    as _i5;
+import 'package:vault_pass/presentation/view/records/account/account_edit_view.dart'
+    as _i6;
+import 'package:vault_pass/presentation/view/records/account/account_view.dart'
+    as _i7;
+import 'package:vault_pass/presentation/view/records/address/address_view.dart'
+    as _i8;
+import 'package:vault_pass/presentation/view/settings_view.dart' as _i9;
 
-import '../../domain/model/record.dart' as _i12;
-import '../view/auth/login_view.dart' as _i3;
-import '../view/auth/register_view.dart' as _i2;
-import '../view/auth/splash_view.dart' as _i1;
-import '../view/home_view.dart' as _i4;
-import '../view/records/account/account_add_view.dart' as _i7;
-import '../view/records/account/account_edit_view.dart' as _i8;
-import '../view/records/account/account_view.dart' as _i6;
-import '../view/records/address/address_view.dart' as _i9;
-import '../view/settings_view.dart' as _i5;
-
-class AppRouter extends _i10.RootStackRouter {
-  AppRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
+abstract class $AppRouter extends _i10.RootStackRouter {
+  $AppRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
   final Map<String, _i10.PageFactory> pagesMap = {
-    SplashView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+    LoginView.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i1.SplashView(),
+        child: _i1.LoginView(),
       );
     },
     RegisterView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i2.RegisterView(),
       );
     },
-    LoginView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+    SplashView.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i3.LoginView(),
+        child: _i3.SplashView(),
       );
     },
     HomeView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i4.HomeView(),
       );
     },
-    SettingsView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+    AccountAddView.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i5.SettingsView(),
+        child: _i5.AccountAddView(),
+      );
+    },
+    AccountEditView.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i6.AccountEditView(),
       );
     },
     AccountView.name: (routeData) {
       final args = routeData.argsAs<AccountViewArgs>();
-      return _i10.MaterialPageX<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i6.AccountView(
+        child: _i7.AccountView(
           record: args.record,
           key: args.key,
         ),
       );
     },
-    AccountAddView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: _i7.AccountAddView(),
-      );
-    },
-    AccountEditView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: _i8.AccountEditView(),
-      );
-    },
     AddressView.name: (routeData) {
-      return _i10.MaterialPageX<dynamic>(
+      return _i10.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i9.AddressView(),
+        child: const _i8.AddressView(),
+      );
+    },
+    SettingsView.name: (routeData) {
+      return _i10.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i9.SettingsView(),
       );
     },
   };
-
-  @override
-  List<_i10.RouteConfig> get routes => [
-        _i10.RouteConfig(
-          SplashView.name,
-          path: '/',
-        ),
-        _i10.RouteConfig(
-          RegisterView.name,
-          path: '/register-view',
-        ),
-        _i10.RouteConfig(
-          LoginView.name,
-          path: '/login-view',
-        ),
-        _i10.RouteConfig(
-          HomeView.name,
-          path: '/home-view',
-        ),
-        _i10.RouteConfig(
-          SettingsView.name,
-          path: '/settings-view',
-        ),
-        _i10.RouteConfig(
-          AccountView.name,
-          path: '/account-view',
-        ),
-        _i10.RouteConfig(
-          AccountAddView.name,
-          path: '/account-add-view',
-        ),
-        _i10.RouteConfig(
-          AccountEditView.name,
-          path: '/account-edit-view',
-        ),
-        _i10.RouteConfig(
-          AddressView.name,
-          path: '/address-view',
-        ),
-      ];
 }
 
 /// generated route for
-/// [_i1.SplashView]
-class SplashView extends _i10.PageRouteInfo<void> {
-  const SplashView()
+/// [_i1.LoginView]
+class LoginView extends _i10.PageRouteInfo<void> {
+  const LoginView({List<_i10.PageRouteInfo>? children})
       : super(
-          SplashView.name,
-          path: '/',
+          LoginView.name,
+          initialChildren: children,
         );
 
-  static const String name = 'SplashView';
+  static const String name = 'LoginView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i2.RegisterView]
 class RegisterView extends _i10.PageRouteInfo<void> {
-  const RegisterView()
+  const RegisterView({List<_i10.PageRouteInfo>? children})
       : super(
           RegisterView.name,
-          path: '/register-view',
+          initialChildren: children,
         );
 
   static const String name = 'RegisterView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.LoginView]
-class LoginView extends _i10.PageRouteInfo<void> {
-  const LoginView()
+/// [_i3.SplashView]
+class SplashView extends _i10.PageRouteInfo<void> {
+  const SplashView({List<_i10.PageRouteInfo>? children})
       : super(
-          LoginView.name,
-          path: '/login-view',
+          SplashView.name,
+          initialChildren: children,
         );
 
-  static const String name = 'LoginView';
+  static const String name = 'SplashView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
 /// [_i4.HomeView]
 class HomeView extends _i10.PageRouteInfo<void> {
-  const HomeView()
+  const HomeView({List<_i10.PageRouteInfo>? children})
       : super(
           HomeView.name,
-          path: '/home-view',
+          initialChildren: children,
         );
 
   static const String name = 'HomeView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i5.SettingsView]
-class SettingsView extends _i10.PageRouteInfo<void> {
-  const SettingsView()
+/// [_i5.AccountAddView]
+class AccountAddView extends _i10.PageRouteInfo<void> {
+  const AccountAddView({List<_i10.PageRouteInfo>? children})
       : super(
-          SettingsView.name,
-          path: '/settings-view',
+          AccountAddView.name,
+          initialChildren: children,
         );
 
-  static const String name = 'SettingsView';
+  static const String name = 'AccountAddView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i6.AccountView]
+/// [_i6.AccountEditView]
+class AccountEditView extends _i10.PageRouteInfo<void> {
+  const AccountEditView({List<_i10.PageRouteInfo>? children})
+      : super(
+          AccountEditView.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AccountEditView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i7.AccountView]
 class AccountView extends _i10.PageRouteInfo<AccountViewArgs> {
   AccountView({
     required _i12.Record record,
     _i11.Key? key,
+    List<_i10.PageRouteInfo>? children,
   }) : super(
           AccountView.name,
-          path: '/account-view',
           args: AccountViewArgs(
             record: record,
             key: key,
           ),
+          initialChildren: children,
         );
 
   static const String name = 'AccountView';
+
+  static const _i10.PageInfo<AccountViewArgs> page =
+      _i10.PageInfo<AccountViewArgs>(name);
 }
 
 class AccountViewArgs {
@@ -227,37 +215,29 @@ class AccountViewArgs {
 }
 
 /// generated route for
-/// [_i7.AccountAddView]
-class AccountAddView extends _i10.PageRouteInfo<void> {
-  const AccountAddView()
-      : super(
-          AccountAddView.name,
-          path: '/account-add-view',
-        );
-
-  static const String name = 'AccountAddView';
-}
-
-/// generated route for
-/// [_i8.AccountEditView]
-class AccountEditView extends _i10.PageRouteInfo<void> {
-  const AccountEditView()
-      : super(
-          AccountEditView.name,
-          path: '/account-edit-view',
-        );
-
-  static const String name = 'AccountEditView';
-}
-
-/// generated route for
-/// [_i9.AddressView]
+/// [_i8.AddressView]
 class AddressView extends _i10.PageRouteInfo<void> {
-  const AddressView()
+  const AddressView({List<_i10.PageRouteInfo>? children})
       : super(
           AddressView.name,
-          path: '/address-view',
+          initialChildren: children,
         );
 
   static const String name = 'AddressView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i9.SettingsView]
+class SettingsView extends _i10.PageRouteInfo<void> {
+  const SettingsView({List<_i10.PageRouteInfo>? children})
+      : super(
+          SettingsView.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsView';
+
+  static const _i10.PageInfo<void> page = _i10.PageInfo<void>(name);
 }
