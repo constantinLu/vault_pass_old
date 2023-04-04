@@ -2,7 +2,6 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:vault_pass/application/record_form/record_bloc.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
@@ -43,7 +42,7 @@ class AccountEditView extends StatelessWidget {
           return WillPopScope(
             //this makes the device button work to go back
             onWillPop: () {
-              context.navigateTo(HomeView());
+              context.navigateTo(const HomeView());
               return Future.value(false);
             },
             child: Padding(
@@ -79,11 +78,11 @@ class AccountEditView extends StatelessWidget {
                                       child: TextFormField(
                                         style: bodyText15_grey.copyWith(color: Colors.white),
                                         textInputAction: TextInputAction.next,
-                                        initialValue:
-                                            init(state.record.recordName.get(), state.isEditing),
+                                        initialValue: state.record.recordName.get(),
                                         autocorrect: false,
-                                        onChanged: (value) => context.read<RecordBloc>().add(
-                                            RecordEvent.recordNameChanged(recordName: value)),
+                                        onChanged: (value) => context
+                                            .read<RecordBloc>()
+                                            .add(RecordEvent.recordNameChanged(recordName: value)),
                                         decoration: _inputDecoration("Record Name"),
                                         validator: (_) => context
                                             .read<RecordBloc>()
@@ -107,11 +106,11 @@ class AccountEditView extends StatelessWidget {
                                       child: TextFormField(
                                         style: bodyText15_grey.copyWith(color: Colors.white),
                                         textInputAction: TextInputAction.next,
+                                        initialValue: state.record.loginRecord.get(),
                                         autocorrect: false,
                                         decoration: _inputDecoration("Login Credential"),
                                         onChanged: (value) => context.read<RecordBloc>().add(
-                                              RecordEvent.loginRecordChanged(
-                                                  loginRecord: value),
+                                              RecordEvent.loginRecordChanged(loginRecord: value),
                                             ),
                                         validator: (_) => context
                                             .read<RecordBloc>()
@@ -135,6 +134,7 @@ class AccountEditView extends StatelessWidget {
                                       child: TextFormField(
                                         style: bodyText15_grey.copyWith(color: Colors.white),
                                         textInputAction: TextInputAction.next,
+                                        initialValue: state.record.passwordRecord.get(),
                                         autocorrect: false,
                                         decoration: _inputDecoration("Password Credential"),
                                         onChanged: (value) => context.read<RecordBloc>().add(
@@ -162,25 +162,21 @@ class AccountEditView extends StatelessWidget {
                                       padding: const EdgeInsets.symmetric(vertical: 10),
                                       child: TextFormField(
                                         style: bodyText15_grey.copyWith(color: Colors.white),
-                                        textInputAction: TextInputAction.next,
+                                        textInputAction: TextInputAction.done,
+                                        initialValue: state.record.url.get(),
                                         autocorrect: false,
                                         onChanged: (value) => context.read<RecordBloc>().add(
                                               RecordEvent.urlChanged(url: value),
                                             ),
                                         decoration: _inputDecoration("Url"),
-                                        validator: (_) => context
-                                            .read<RecordBloc>()
-                                            .state
-                                            .record
-                                            .url
-                                            .value
-                                            .fold(
-                                              (f) => f.maybeMap(
-                                                invalidString: (_) => 'Invalid url',
-                                                orElse: () => null,
-                                              ),
-                                              (_) => null,
-                                            ),
+                                        validator: (_) =>
+                                            context.read<RecordBloc>().state.record.url.value.fold(
+                                                  (f) => f.maybeMap(
+                                                    invalidString: (_) => 'Invalid url',
+                                                    orElse: () => null,
+                                                  ),
+                                                  (_) => null,
+                                                ),
                                       ),
                                     ),
 
@@ -190,6 +186,7 @@ class AccountEditView extends StatelessWidget {
                                       child: TextFormField(
                                         style: bodyText15_grey.copyWith(color: Colors.white),
                                         textInputAction: TextInputAction.next,
+                                        initialValue: state.record.description.get(),
                                         autocorrect: false,
                                         onChanged: (value) => context.read<RecordBloc>().add(
                                             RecordEvent.descriptionChanged(description: value)),
@@ -211,13 +208,13 @@ class AccountEditView extends StatelessWidget {
                                     ),
 
                                     //! EDIT BUTTON
-                                    SizedBox(height: 20),
+                                    const SizedBox(height: 20),
                                     TextButtonWidget(
                                       buttonName: 'Edit',
                                       onTap: () {
                                         context
                                             .read<RecordBloc>()
-                                            .add(RecordEvent.editRecordEvent());
+                                            .add(RecordEvent.editRecordEvent(state.record.id));
                                       },
                                       bgColor: whiteFull,
                                       textColor: blackFull,
@@ -243,10 +240,6 @@ class AccountEditView extends StatelessWidget {
       ),
     );
   }
-}
-
-String? init(String value, isEditing) {
-  return isEditing ? value : null;
 }
 
 InputDecoration _inputDecoration(String hitText) {

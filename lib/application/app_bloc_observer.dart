@@ -8,16 +8,16 @@ class AppBlocObserver extends BlocObserver {
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
     if (bloc is RecordTypeBloc) {
-      debugPrint('RECORD TYPE BLOC ->  ${change}');
+      //debugPrint('RECORD TYPE BLOC ->  ${change}');
     }
     if (bloc is RecordBloc) {
-      debugPrint('RECORDBLOC ->> ${change}');
+      //debugPrint('RECORDBLOC ->> ${change}');
     }
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    print('TRANSITION >>>>>>>>>> $transition');
+    //print('TRANSITION >>>>>>>>>> $transition');
   }
 }

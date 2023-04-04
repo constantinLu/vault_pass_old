@@ -49,6 +49,22 @@ class HomeView extends StatelessWidget {
                 },
                 orElse: () {});
           }),
+          BlocListener<RecordRemovalBloc, RecordRemovalState>(listener: (context, state) {
+            state.maybeMap(
+                failure: (state) {
+                  FlushbarHelper.createError(
+                    duration: const Duration(seconds: 5),
+                    message: state.failure.map(unexpected: (_) => "Error, Could delete record"),
+                  ).show(context);
+                },
+                success: (state) {
+                  FlushbarHelper.createSuccess(
+                    duration: const Duration(seconds: 5),
+                    message: "Record successfully deleted",
+                  ).show(context);
+                },
+                orElse: () {});
+          }),
         ],
         child: WillPopScope(
           onWillPop: () {
@@ -117,7 +133,7 @@ class FabWidget extends StatelessWidget {
     void selectView(RecordType recordType, BuildContext context) {
       switch (recordType) {
         case RecordType.account:
-          context.pushTo(AccountAddView());
+          context.pushTo(const AccountAddView());
           break;
         case RecordType.address:
           // context.teleportTo(const AccountView());

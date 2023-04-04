@@ -273,6 +273,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
   final Value<String> password;
   final Value<DateTime> createdDate;
   final Value<DateTime> updatedDate;
+  final Value<int> rowid;
   const UserTableCompanion({
     this.id = const Value.absent(),
     this.firstName = const Value.absent(),
@@ -281,6 +282,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     this.password = const Value.absent(),
     this.createdDate = const Value.absent(),
     this.updatedDate = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   UserTableCompanion.insert({
     required String id,
@@ -290,6 +292,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     required String password,
     required DateTime createdDate,
     required DateTime updatedDate,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         firstName = Value(firstName),
         lastName = Value(lastName),
@@ -305,6 +308,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     Expression<String>? password,
     Expression<DateTime>? createdDate,
     Expression<DateTime>? updatedDate,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -314,6 +318,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
       if (password != null) 'password': password,
       if (createdDate != null) 'created_date': createdDate,
       if (updatedDate != null) 'updated_date': updatedDate,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -324,7 +329,8 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
       Value<String>? email,
       Value<String>? password,
       Value<DateTime>? createdDate,
-      Value<DateTime>? updatedDate}) {
+      Value<DateTime>? updatedDate,
+      Value<int>? rowid}) {
     return UserTableCompanion(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
@@ -333,6 +339,7 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
       password: password ?? this.password,
       createdDate: createdDate ?? this.createdDate,
       updatedDate: updatedDate ?? this.updatedDate,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -360,6 +367,9 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
     if (updatedDate.present) {
       map['updated_date'] = Variable<DateTime>(updatedDate.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -372,7 +382,8 @@ class UserTableCompanion extends UpdateCompanion<UserEntry> {
           ..write('email: $email, ')
           ..write('password: $password, ')
           ..write('createdDate: $createdDate, ')
-          ..write('updatedDate: $updatedDate')
+          ..write('updatedDate: $updatedDate, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }
@@ -430,18 +441,15 @@ class $RecordTableTable extends RecordTable
   late final GeneratedColumn<String> logo = GeneratedColumn<String>(
       'logo', aliasedName, false,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 2, maxTextLength: 50),
+          GeneratedColumn.checkTextLength(minTextLength: 0, maxTextLength: 50),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
   static const VerificationMeta _descriptionMeta =
       const VerificationMeta('description');
   @override
   late final GeneratedColumn<String> description = GeneratedColumn<String>(
-      'description', aliasedName, false,
-      additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 2, maxTextLength: 100),
-      type: DriftSqlType.string,
-      requiredDuringInsert: true);
+      'description', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _urlMeta = const VerificationMeta('url');
   @override
   late final GeneratedColumn<String> url = GeneratedColumn<String>(
@@ -532,8 +540,6 @@ class $RecordTableTable extends RecordTable
           _descriptionMeta,
           description.isAcceptableOrUnknown(
               data['description']!, _descriptionMeta));
-    } else if (isInserting) {
-      context.missing(_descriptionMeta);
     }
     if (data.containsKey('url')) {
       context.handle(
@@ -579,7 +585,7 @@ class $RecordTableTable extends RecordTable
       logo: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}logo'])!,
       description: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}description'])!,
+          .read(DriftSqlType.string, data['${effectivePrefix}description']),
       url: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
       createdDate: attachedDatabase.typeMapping
@@ -602,7 +608,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
   final String loginRecord;
   final String passwordRecord;
   final String logo;
-  final String description;
+  final String? description;
   final String url;
   final DateTime createdDate;
   final DateTime updatedDate;
@@ -613,7 +619,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       required this.loginRecord,
       required this.passwordRecord,
       required this.logo,
-      required this.description,
+      this.description,
       required this.url,
       required this.createdDate,
       required this.updatedDate});
@@ -626,7 +632,9 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
     map['login_record'] = Variable<String>(loginRecord);
     map['password_record'] = Variable<String>(passwordRecord);
     map['logo'] = Variable<String>(logo);
-    map['description'] = Variable<String>(description);
+    if (!nullToAbsent || description != null) {
+      map['description'] = Variable<String>(description);
+    }
     map['url'] = Variable<String>(url);
     map['created_date'] = Variable<DateTime>(createdDate);
     map['updated_date'] = Variable<DateTime>(updatedDate);
@@ -641,7 +649,9 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       loginRecord: Value(loginRecord),
       passwordRecord: Value(passwordRecord),
       logo: Value(logo),
-      description: Value(description),
+      description: description == null && nullToAbsent
+          ? const Value.absent()
+          : Value(description),
       url: Value(url),
       createdDate: Value(createdDate),
       updatedDate: Value(updatedDate),
@@ -658,7 +668,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       loginRecord: serializer.fromJson<String>(json['loginRecord']),
       passwordRecord: serializer.fromJson<String>(json['passwordRecord']),
       logo: serializer.fromJson<String>(json['logo']),
-      description: serializer.fromJson<String>(json['description']),
+      description: serializer.fromJson<String?>(json['description']),
       url: serializer.fromJson<String>(json['url']),
       createdDate: serializer.fromJson<DateTime>(json['createdDate']),
       updatedDate: serializer.fromJson<DateTime>(json['updatedDate']),
@@ -674,7 +684,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       'loginRecord': serializer.toJson<String>(loginRecord),
       'passwordRecord': serializer.toJson<String>(passwordRecord),
       'logo': serializer.toJson<String>(logo),
-      'description': serializer.toJson<String>(description),
+      'description': serializer.toJson<String?>(description),
       'url': serializer.toJson<String>(url),
       'createdDate': serializer.toJson<DateTime>(createdDate),
       'updatedDate': serializer.toJson<DateTime>(updatedDate),
@@ -688,7 +698,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
           String? loginRecord,
           String? passwordRecord,
           String? logo,
-          String? description,
+          Value<String?> description = const Value.absent(),
           String? url,
           DateTime? createdDate,
           DateTime? updatedDate}) =>
@@ -699,7 +709,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
         loginRecord: loginRecord ?? this.loginRecord,
         passwordRecord: passwordRecord ?? this.passwordRecord,
         logo: logo ?? this.logo,
-        description: description ?? this.description,
+        description: description.present ? description.value : this.description,
         url: url ?? this.url,
         createdDate: createdDate ?? this.createdDate,
         updatedDate: updatedDate ?? this.updatedDate,
@@ -747,10 +757,11 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
   final Value<String> loginRecord;
   final Value<String> passwordRecord;
   final Value<String> logo;
-  final Value<String> description;
+  final Value<String?> description;
   final Value<String> url;
   final Value<DateTime> createdDate;
   final Value<DateTime> updatedDate;
+  final Value<int> rowid;
   const RecordTableCompanion({
     this.id = const Value.absent(),
     this.recordName = const Value.absent(),
@@ -762,6 +773,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     this.url = const Value.absent(),
     this.createdDate = const Value.absent(),
     this.updatedDate = const Value.absent(),
+    this.rowid = const Value.absent(),
   });
   RecordTableCompanion.insert({
     required String id,
@@ -770,17 +782,17 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     required String loginRecord,
     required String passwordRecord,
     required String logo,
-    required String description,
+    this.description = const Value.absent(),
     required String url,
     required DateTime createdDate,
     required DateTime updatedDate,
+    this.rowid = const Value.absent(),
   })  : id = Value(id),
         recordName = Value(recordName),
         recordType = Value(recordType),
         loginRecord = Value(loginRecord),
         passwordRecord = Value(passwordRecord),
         logo = Value(logo),
-        description = Value(description),
         url = Value(url),
         createdDate = Value(createdDate),
         updatedDate = Value(updatedDate);
@@ -795,6 +807,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     Expression<String>? url,
     Expression<DateTime>? createdDate,
     Expression<DateTime>? updatedDate,
+    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -807,6 +820,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       if (url != null) 'url': url,
       if (createdDate != null) 'created_date': createdDate,
       if (updatedDate != null) 'updated_date': updatedDate,
+      if (rowid != null) 'rowid': rowid,
     });
   }
 
@@ -817,10 +831,11 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       Value<String>? loginRecord,
       Value<String>? passwordRecord,
       Value<String>? logo,
-      Value<String>? description,
+      Value<String?>? description,
       Value<String>? url,
       Value<DateTime>? createdDate,
-      Value<DateTime>? updatedDate}) {
+      Value<DateTime>? updatedDate,
+      Value<int>? rowid}) {
     return RecordTableCompanion(
       id: id ?? this.id,
       recordName: recordName ?? this.recordName,
@@ -832,6 +847,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       url: url ?? this.url,
       createdDate: createdDate ?? this.createdDate,
       updatedDate: updatedDate ?? this.updatedDate,
+      rowid: rowid ?? this.rowid,
     );
   }
 
@@ -868,6 +884,9 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     if (updatedDate.present) {
       map['updated_date'] = Variable<DateTime>(updatedDate.value);
     }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
     return map;
   }
 
@@ -883,7 +902,8 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
           ..write('description: $description, ')
           ..write('url: $url, ')
           ..write('createdDate: $createdDate, ')
-          ..write('updatedDate: $updatedDate')
+          ..write('updatedDate: $updatedDate, ')
+          ..write('rowid: $rowid')
           ..write(')'))
         .toString();
   }

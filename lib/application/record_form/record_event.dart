@@ -28,5 +28,5 @@ class RecordEvent with _$RecordEvent {
 
   const factory RecordEvent.addRecordEvent() = AddtRecordEvent;
 
-  const factory RecordEvent.editRecordEvent() = EditRecordEvent;
+  const factory RecordEvent.editRecordEvent(UniqueId id) = EditRecordEvent;
 }

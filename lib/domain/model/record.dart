@@ -5,7 +5,7 @@ part 'record.freezed.dart';
 
 @freezed
 abstract class Record implements _$Record {
-  const Record._();
+  Record._();
 
   const factory Record({
     required UniqueId id,
@@ -61,6 +61,28 @@ abstract class Record implements _$Record {
   }) =>
       Record(
           id: UniqueId(),
+          recordName: Name(recordName),
+          type: recordType,
+          loginRecord: Name(loginRecord),
+          passwordRecord: Password(loginPassword),
+          logo: logo,
+          description: Description(description),
+          url: Url(url),
+          createdDate: DateTime.now(),
+          updatedDate: DateTime.now());
+
+  factory Record.update({
+    required UniqueId id,
+    required String recordName,
+    required RecordType recordType,
+    required String logo,
+    required String loginRecord,
+    required String loginPassword,
+    required String url,
+    required String description,
+  }) =>
+      Record(
+          id: id,
           recordName: Name(recordName),
           type: recordType,
           loginRecord: Name(loginRecord),
