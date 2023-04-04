@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/palette.dart';
 import '../../../utils/style.dart';
 import '../../../widgets/appbar_widget.dart';
 
+@RoutePage()
 class AddressView extends StatelessWidget {
   const AddressView({Key? key}) : super(key: key);
 

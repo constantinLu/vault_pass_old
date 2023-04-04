@@ -18,6 +18,7 @@ import '../widgets/animations_widget.dart';
 import '../widgets/avatar_widget.dart';
 import '../widgets/tab_widget.dart';
 
+@RoutePage()
 class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
