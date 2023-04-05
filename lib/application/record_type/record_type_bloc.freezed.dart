@@ -18,25 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RecordTypeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() accountTabBtnPressed,
-    required TResult Function() addressTabBtnPressed,
-    required TResult Function() businessAccountBtnPressed,
+    required TResult Function(int index) accountTabBtnPressed,
+    required TResult Function(int index) addressTabBtnPressed,
+    required TResult Function(int index) businessAccountBtnPressed,
     required TResult Function() finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? accountTabBtnPressed,
-    TResult? Function()? addressTabBtnPressed,
-    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function(int index)? accountTabBtnPressed,
+    TResult? Function(int index)? addressTabBtnPressed,
+    TResult? Function(int index)? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? accountTabBtnPressed,
-    TResult Function()? addressTabBtnPressed,
-    TResult Function()? businessAccountBtnPressed,
+    TResult Function(int index)? accountTabBtnPressed,
+    TResult Function(int index)? addressTabBtnPressed,
+    TResult Function(int index)? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) =>
@@ -97,6 +97,8 @@ abstract class _$$AccountTabBtnPressedEventCopyWith<$Res> {
           _$AccountTabBtnPressedEvent value,
           $Res Function(_$AccountTabBtnPressedEvent) then) =
       __$$AccountTabBtnPressedEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -106,6 +108,19 @@ class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
   __$$AccountTabBtnPressedEventCopyWithImpl(_$AccountTabBtnPressedEvent _value,
       $Res Function(_$AccountTabBtnPressedEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$AccountTabBtnPressedEvent(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
@@ -113,63 +128,75 @@ class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
 class _$AccountTabBtnPressedEvent
     with DiagnosticableTreeMixin
     implements AccountTabBtnPressedEvent {
-  const _$AccountTabBtnPressedEvent();
+  const _$AccountTabBtnPressedEvent(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordTypeEvent.accountTabBtnPressed()';
+    return 'RecordTypeEvent.accountTabBtnPressed(index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'RecordTypeEvent.accountTabBtnPressed'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RecordTypeEvent.accountTabBtnPressed'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountTabBtnPressedEvent);
+            other is _$AccountTabBtnPressedEvent &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AccountTabBtnPressedEventCopyWith<_$AccountTabBtnPressedEvent>
+      get copyWith => __$$AccountTabBtnPressedEventCopyWithImpl<
+          _$AccountTabBtnPressedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() accountTabBtnPressed,
-    required TResult Function() addressTabBtnPressed,
-    required TResult Function() businessAccountBtnPressed,
+    required TResult Function(int index) accountTabBtnPressed,
+    required TResult Function(int index) addressTabBtnPressed,
+    required TResult Function(int index) businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
-    return accountTabBtnPressed();
+    return accountTabBtnPressed(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? accountTabBtnPressed,
-    TResult? Function()? addressTabBtnPressed,
-    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function(int index)? accountTabBtnPressed,
+    TResult? Function(int index)? addressTabBtnPressed,
+    TResult? Function(int index)? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
-    return accountTabBtnPressed?.call();
+    return accountTabBtnPressed?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? accountTabBtnPressed,
-    TResult Function()? addressTabBtnPressed,
-    TResult Function()? businessAccountBtnPressed,
+    TResult Function(int index)? accountTabBtnPressed,
+    TResult Function(int index)? addressTabBtnPressed,
+    TResult Function(int index)? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
     if (accountTabBtnPressed != null) {
-      return accountTabBtnPressed();
+      return accountTabBtnPressed(index);
     }
     return orElse();
   }
@@ -218,7 +245,13 @@ class _$AccountTabBtnPressedEvent
 }
 
 abstract class AccountTabBtnPressedEvent implements RecordTypeEvent {
-  const factory AccountTabBtnPressedEvent() = _$AccountTabBtnPressedEvent;
+  const factory AccountTabBtnPressedEvent(final int index) =
+      _$AccountTabBtnPressedEvent;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$AccountTabBtnPressedEventCopyWith<_$AccountTabBtnPressedEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -227,6 +260,8 @@ abstract class _$$AddressTabBtnPressedEventCopyWith<$Res> {
           _$AddressTabBtnPressedEvent value,
           $Res Function(_$AddressTabBtnPressedEvent) then) =
       __$$AddressTabBtnPressedEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -236,6 +271,19 @@ class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
   __$$AddressTabBtnPressedEventCopyWithImpl(_$AddressTabBtnPressedEvent _value,
       $Res Function(_$AddressTabBtnPressedEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$AddressTabBtnPressedEvent(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
@@ -243,63 +291,75 @@ class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
 class _$AddressTabBtnPressedEvent
     with DiagnosticableTreeMixin
     implements AddressTabBtnPressedEvent {
-  const _$AddressTabBtnPressedEvent();
+  const _$AddressTabBtnPressedEvent(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordTypeEvent.addressTabBtnPressed()';
+    return 'RecordTypeEvent.addressTabBtnPressed(index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'RecordTypeEvent.addressTabBtnPressed'));
+    properties
+      ..add(DiagnosticsProperty('type', 'RecordTypeEvent.addressTabBtnPressed'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddressTabBtnPressedEvent);
+            other is _$AddressTabBtnPressedEvent &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddressTabBtnPressedEventCopyWith<_$AddressTabBtnPressedEvent>
+      get copyWith => __$$AddressTabBtnPressedEventCopyWithImpl<
+          _$AddressTabBtnPressedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() accountTabBtnPressed,
-    required TResult Function() addressTabBtnPressed,
-    required TResult Function() businessAccountBtnPressed,
+    required TResult Function(int index) accountTabBtnPressed,
+    required TResult Function(int index) addressTabBtnPressed,
+    required TResult Function(int index) businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
-    return addressTabBtnPressed();
+    return addressTabBtnPressed(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? accountTabBtnPressed,
-    TResult? Function()? addressTabBtnPressed,
-    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function(int index)? accountTabBtnPressed,
+    TResult? Function(int index)? addressTabBtnPressed,
+    TResult? Function(int index)? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
-    return addressTabBtnPressed?.call();
+    return addressTabBtnPressed?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? accountTabBtnPressed,
-    TResult Function()? addressTabBtnPressed,
-    TResult Function()? businessAccountBtnPressed,
+    TResult Function(int index)? accountTabBtnPressed,
+    TResult Function(int index)? addressTabBtnPressed,
+    TResult Function(int index)? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
     if (addressTabBtnPressed != null) {
-      return addressTabBtnPressed();
+      return addressTabBtnPressed(index);
     }
     return orElse();
   }
@@ -348,7 +408,13 @@ class _$AddressTabBtnPressedEvent
 }
 
 abstract class AddressTabBtnPressedEvent implements RecordTypeEvent {
-  const factory AddressTabBtnPressedEvent() = _$AddressTabBtnPressedEvent;
+  const factory AddressTabBtnPressedEvent(final int index) =
+      _$AddressTabBtnPressedEvent;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$AddressTabBtnPressedEventCopyWith<_$AddressTabBtnPressedEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -357,6 +423,8 @@ abstract class _$$BusinessAccountTabBtnPressedEventCopyWith<$Res> {
           _$BusinessAccountTabBtnPressedEvent value,
           $Res Function(_$BusinessAccountTabBtnPressedEvent) then) =
       __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
 }
 
 /// @nodoc
@@ -368,6 +436,19 @@ class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
       _$BusinessAccountTabBtnPressedEvent _value,
       $Res Function(_$BusinessAccountTabBtnPressedEvent) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$BusinessAccountTabBtnPressedEvent(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
@@ -375,63 +456,77 @@ class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
 class _$BusinessAccountTabBtnPressedEvent
     with DiagnosticableTreeMixin
     implements BusinessAccountTabBtnPressedEvent {
-  const _$BusinessAccountTabBtnPressedEvent();
+  const _$BusinessAccountTabBtnPressedEvent(this.index);
+
+  @override
+  final int index;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordTypeEvent.businessAccountBtnPressed()';
+    return 'RecordTypeEvent.businessAccountBtnPressed(index: $index)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty(
-        'type', 'RecordTypeEvent.businessAccountBtnPressed'));
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'RecordTypeEvent.businessAccountBtnPressed'))
+      ..add(DiagnosticsProperty('index', index));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BusinessAccountTabBtnPressedEvent);
+            other is _$BusinessAccountTabBtnPressedEvent &&
+            (identical(other.index, index) || other.index == index));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BusinessAccountTabBtnPressedEventCopyWith<
+          _$BusinessAccountTabBtnPressedEvent>
+      get copyWith => __$$BusinessAccountTabBtnPressedEventCopyWithImpl<
+          _$BusinessAccountTabBtnPressedEvent>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() accountTabBtnPressed,
-    required TResult Function() addressTabBtnPressed,
-    required TResult Function() businessAccountBtnPressed,
+    required TResult Function(int index) accountTabBtnPressed,
+    required TResult Function(int index) addressTabBtnPressed,
+    required TResult Function(int index) businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
-    return businessAccountBtnPressed();
+    return businessAccountBtnPressed(index);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? accountTabBtnPressed,
-    TResult? Function()? addressTabBtnPressed,
-    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function(int index)? accountTabBtnPressed,
+    TResult? Function(int index)? addressTabBtnPressed,
+    TResult? Function(int index)? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
-    return businessAccountBtnPressed?.call();
+    return businessAccountBtnPressed?.call(index);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? accountTabBtnPressed,
-    TResult Function()? addressTabBtnPressed,
-    TResult Function()? businessAccountBtnPressed,
+    TResult Function(int index)? accountTabBtnPressed,
+    TResult Function(int index)? addressTabBtnPressed,
+    TResult Function(int index)? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
     if (businessAccountBtnPressed != null) {
-      return businessAccountBtnPressed();
+      return businessAccountBtnPressed(index);
     }
     return orElse();
   }
@@ -480,8 +575,14 @@ class _$BusinessAccountTabBtnPressedEvent
 }
 
 abstract class BusinessAccountTabBtnPressedEvent implements RecordTypeEvent {
-  const factory BusinessAccountTabBtnPressedEvent() =
+  const factory BusinessAccountTabBtnPressedEvent(final int index) =
       _$BusinessAccountTabBtnPressedEvent;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$BusinessAccountTabBtnPressedEventCopyWith<
+          _$BusinessAccountTabBtnPressedEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -528,9 +629,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() accountTabBtnPressed,
-    required TResult Function() addressTabBtnPressed,
-    required TResult Function() businessAccountBtnPressed,
+    required TResult Function(int index) accountTabBtnPressed,
+    required TResult Function(int index) addressTabBtnPressed,
+    required TResult Function(int index) businessAccountBtnPressed,
     required TResult Function() finished,
   }) {
     return finished();
@@ -539,9 +640,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? accountTabBtnPressed,
-    TResult? Function()? addressTabBtnPressed,
-    TResult? Function()? businessAccountBtnPressed,
+    TResult? Function(int index)? accountTabBtnPressed,
+    TResult? Function(int index)? addressTabBtnPressed,
+    TResult? Function(int index)? businessAccountBtnPressed,
     TResult? Function()? finished,
   }) {
     return finished?.call();
@@ -550,9 +651,9 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? accountTabBtnPressed,
-    TResult Function()? addressTabBtnPressed,
-    TResult Function()? businessAccountBtnPressed,
+    TResult Function(int index)? accountTabBtnPressed,
+    TResult Function(int index)? addressTabBtnPressed,
+    TResult Function(int index)? businessAccountBtnPressed,
     TResult Function()? finished,
     required TResult orElse(),
   }) {
@@ -615,7 +716,7 @@ mixin _$RecordTypeState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Record> records) success,
+    required TResult Function(List<Record> records, int tabIndex) success,
     required TResult Function(ModelFailure failure) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -623,7 +724,7 @@ mixin _$RecordTypeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Record> records)? success,
+    TResult? Function(List<Record> records, int tabIndex)? success,
     TResult? Function(ModelFailure failure)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -631,33 +732,33 @@ mixin _$RecordTypeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Record> records)? success,
+    TResult Function(List<Record> records, int tabIndex)? success,
     TResult Function(ModelFailure failure)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialTypeState value) initial,
-    required TResult Function(_LoadingTypeState value) loading,
-    required TResult Function(_SuccessTypeState value) success,
-    required TResult Function(_FailureTypeState value) failure,
+    required TResult Function(InitialTypeState value) initial,
+    required TResult Function(LoadingTypeState value) loading,
+    required TResult Function(SuccessTypeState value) success,
+    required TResult Function(FailureTypeState value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialTypeState value)? initial,
-    TResult? Function(_LoadingTypeState value)? loading,
-    TResult? Function(_SuccessTypeState value)? success,
-    TResult? Function(_FailureTypeState value)? failure,
+    TResult? Function(InitialTypeState value)? initial,
+    TResult? Function(LoadingTypeState value)? loading,
+    TResult? Function(SuccessTypeState value)? success,
+    TResult? Function(FailureTypeState value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialTypeState value)? initial,
-    TResult Function(_LoadingTypeState value)? loading,
-    TResult Function(_SuccessTypeState value)? success,
-    TResult Function(_FailureTypeState value)? failure,
+    TResult Function(InitialTypeState value)? initial,
+    TResult Function(LoadingTypeState value)? loading,
+    TResult Function(SuccessTypeState value)? success,
+    TResult Function(FailureTypeState value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -682,27 +783,27 @@ class _$RecordTypeStateCopyWithImpl<$Res, $Val extends RecordTypeState>
 }
 
 /// @nodoc
-abstract class _$$_InitialTypeStateCopyWith<$Res> {
-  factory _$$_InitialTypeStateCopyWith(
-          _$_InitialTypeState value, $Res Function(_$_InitialTypeState) then) =
-      __$$_InitialTypeStateCopyWithImpl<$Res>;
+abstract class _$$InitialTypeStateCopyWith<$Res> {
+  factory _$$InitialTypeStateCopyWith(
+          _$InitialTypeState value, $Res Function(_$InitialTypeState) then) =
+      __$$InitialTypeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$_InitialTypeState>
-    implements _$$_InitialTypeStateCopyWith<$Res> {
-  __$$_InitialTypeStateCopyWithImpl(
-      _$_InitialTypeState _value, $Res Function(_$_InitialTypeState) _then)
+class __$$InitialTypeStateCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$InitialTypeState>
+    implements _$$InitialTypeStateCopyWith<$Res> {
+  __$$InitialTypeStateCopyWithImpl(
+      _$InitialTypeState _value, $Res Function(_$InitialTypeState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialTypeState
+class _$InitialTypeState
     with DiagnosticableTreeMixin
-    implements _InitialTypeState {
-  const _$_InitialTypeState();
+    implements InitialTypeState {
+  const _$InitialTypeState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -718,7 +819,7 @@ class _$_InitialTypeState
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialTypeState);
+        (other.runtimeType == runtimeType && other is _$InitialTypeState);
   }
 
   @override
@@ -729,7 +830,7 @@ class _$_InitialTypeState
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Record> records) success,
+    required TResult Function(List<Record> records, int tabIndex) success,
     required TResult Function(ModelFailure failure) failure,
   }) {
     return initial();
@@ -740,7 +841,7 @@ class _$_InitialTypeState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Record> records)? success,
+    TResult? Function(List<Record> records, int tabIndex)? success,
     TResult? Function(ModelFailure failure)? failure,
   }) {
     return initial?.call();
@@ -751,7 +852,7 @@ class _$_InitialTypeState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Record> records)? success,
+    TResult Function(List<Record> records, int tabIndex)? success,
     TResult Function(ModelFailure failure)? failure,
     required TResult orElse(),
   }) {
@@ -764,10 +865,10 @@ class _$_InitialTypeState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialTypeState value) initial,
-    required TResult Function(_LoadingTypeState value) loading,
-    required TResult Function(_SuccessTypeState value) success,
-    required TResult Function(_FailureTypeState value) failure,
+    required TResult Function(InitialTypeState value) initial,
+    required TResult Function(LoadingTypeState value) loading,
+    required TResult Function(SuccessTypeState value) success,
+    required TResult Function(FailureTypeState value) failure,
   }) {
     return initial(this);
   }
@@ -775,10 +876,10 @@ class _$_InitialTypeState
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialTypeState value)? initial,
-    TResult? Function(_LoadingTypeState value)? loading,
-    TResult? Function(_SuccessTypeState value)? success,
-    TResult? Function(_FailureTypeState value)? failure,
+    TResult? Function(InitialTypeState value)? initial,
+    TResult? Function(LoadingTypeState value)? loading,
+    TResult? Function(SuccessTypeState value)? success,
+    TResult? Function(FailureTypeState value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -786,10 +887,10 @@ class _$_InitialTypeState
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialTypeState value)? initial,
-    TResult Function(_LoadingTypeState value)? loading,
-    TResult Function(_SuccessTypeState value)? success,
-    TResult Function(_FailureTypeState value)? failure,
+    TResult Function(InitialTypeState value)? initial,
+    TResult Function(LoadingTypeState value)? loading,
+    TResult Function(SuccessTypeState value)? success,
+    TResult Function(FailureTypeState value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -799,32 +900,32 @@ class _$_InitialTypeState
   }
 }
 
-abstract class _InitialTypeState implements RecordTypeState {
-  const factory _InitialTypeState() = _$_InitialTypeState;
+abstract class InitialTypeState implements RecordTypeState {
+  const factory InitialTypeState() = _$InitialTypeState;
 }
 
 /// @nodoc
-abstract class _$$_LoadingTypeStateCopyWith<$Res> {
-  factory _$$_LoadingTypeStateCopyWith(
-          _$_LoadingTypeState value, $Res Function(_$_LoadingTypeState) then) =
-      __$$_LoadingTypeStateCopyWithImpl<$Res>;
+abstract class _$$LoadingTypeStateCopyWith<$Res> {
+  factory _$$LoadingTypeStateCopyWith(
+          _$LoadingTypeState value, $Res Function(_$LoadingTypeState) then) =
+      __$$LoadingTypeStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$_LoadingTypeState>
-    implements _$$_LoadingTypeStateCopyWith<$Res> {
-  __$$_LoadingTypeStateCopyWithImpl(
-      _$_LoadingTypeState _value, $Res Function(_$_LoadingTypeState) _then)
+class __$$LoadingTypeStateCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$LoadingTypeState>
+    implements _$$LoadingTypeStateCopyWith<$Res> {
+  __$$LoadingTypeStateCopyWithImpl(
+      _$LoadingTypeState _value, $Res Function(_$LoadingTypeState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingTypeState
+class _$LoadingTypeState
     with DiagnosticableTreeMixin
-    implements _LoadingTypeState {
-  const _$_LoadingTypeState();
+    implements LoadingTypeState {
+  const _$LoadingTypeState();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -840,7 +941,7 @@ class _$_LoadingTypeState
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingTypeState);
+        (other.runtimeType == runtimeType && other is _$LoadingTypeState);
   }
 
   @override
@@ -851,7 +952,7 @@ class _$_LoadingTypeState
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Record> records) success,
+    required TResult Function(List<Record> records, int tabIndex) success,
     required TResult Function(ModelFailure failure) failure,
   }) {
     return loading();
@@ -862,7 +963,7 @@ class _$_LoadingTypeState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Record> records)? success,
+    TResult? Function(List<Record> records, int tabIndex)? success,
     TResult? Function(ModelFailure failure)? failure,
   }) {
     return loading?.call();
@@ -873,7 +974,7 @@ class _$_LoadingTypeState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Record> records)? success,
+    TResult Function(List<Record> records, int tabIndex)? success,
     TResult Function(ModelFailure failure)? failure,
     required TResult orElse(),
   }) {
@@ -886,10 +987,10 @@ class _$_LoadingTypeState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialTypeState value) initial,
-    required TResult Function(_LoadingTypeState value) loading,
-    required TResult Function(_SuccessTypeState value) success,
-    required TResult Function(_FailureTypeState value) failure,
+    required TResult Function(InitialTypeState value) initial,
+    required TResult Function(LoadingTypeState value) loading,
+    required TResult Function(SuccessTypeState value) success,
+    required TResult Function(FailureTypeState value) failure,
   }) {
     return loading(this);
   }
@@ -897,10 +998,10 @@ class _$_LoadingTypeState
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialTypeState value)? initial,
-    TResult? Function(_LoadingTypeState value)? loading,
-    TResult? Function(_SuccessTypeState value)? success,
-    TResult? Function(_FailureTypeState value)? failure,
+    TResult? Function(InitialTypeState value)? initial,
+    TResult? Function(LoadingTypeState value)? loading,
+    TResult? Function(SuccessTypeState value)? success,
+    TResult? Function(FailureTypeState value)? failure,
   }) {
     return loading?.call(this);
   }
@@ -908,10 +1009,10 @@ class _$_LoadingTypeState
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialTypeState value)? initial,
-    TResult Function(_LoadingTypeState value)? loading,
-    TResult Function(_SuccessTypeState value)? success,
-    TResult Function(_FailureTypeState value)? failure,
+    TResult Function(InitialTypeState value)? initial,
+    TResult Function(LoadingTypeState value)? loading,
+    TResult Function(SuccessTypeState value)? success,
+    TResult Function(FailureTypeState value)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -921,47 +1022,53 @@ class _$_LoadingTypeState
   }
 }
 
-abstract class _LoadingTypeState implements RecordTypeState {
-  const factory _LoadingTypeState() = _$_LoadingTypeState;
+abstract class LoadingTypeState implements RecordTypeState {
+  const factory LoadingTypeState() = _$LoadingTypeState;
 }
 
 /// @nodoc
-abstract class _$$_SuccessTypeStateCopyWith<$Res> {
-  factory _$$_SuccessTypeStateCopyWith(
-          _$_SuccessTypeState value, $Res Function(_$_SuccessTypeState) then) =
-      __$$_SuccessTypeStateCopyWithImpl<$Res>;
+abstract class _$$SuccessTypeStateCopyWith<$Res> {
+  factory _$$SuccessTypeStateCopyWith(
+          _$SuccessTypeState value, $Res Function(_$SuccessTypeState) then) =
+      __$$SuccessTypeStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Record> records});
+  $Res call({List<Record> records, int tabIndex});
 }
 
 /// @nodoc
-class __$$_SuccessTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$_SuccessTypeState>
-    implements _$$_SuccessTypeStateCopyWith<$Res> {
-  __$$_SuccessTypeStateCopyWithImpl(
-      _$_SuccessTypeState _value, $Res Function(_$_SuccessTypeState) _then)
+class __$$SuccessTypeStateCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$SuccessTypeState>
+    implements _$$SuccessTypeStateCopyWith<$Res> {
+  __$$SuccessTypeStateCopyWithImpl(
+      _$SuccessTypeState _value, $Res Function(_$SuccessTypeState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? records = null,
+    Object? tabIndex = null,
   }) {
-    return _then(_$_SuccessTypeState(
+    return _then(_$SuccessTypeState(
       null == records
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
               as List<Record>,
+      null == tabIndex
+          ? _value.tabIndex
+          : tabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_SuccessTypeState
+class _$SuccessTypeState
     with DiagnosticableTreeMixin
-    implements _SuccessTypeState {
-  const _$_SuccessTypeState(final List<Record> records) : _records = records;
+    implements SuccessTypeState {
+  const _$SuccessTypeState(final List<Record> records, this.tabIndex)
+      : _records = records;
 
   final List<Record> _records;
   @override
@@ -972,8 +1079,11 @@ class _$_SuccessTypeState
   }
 
   @override
+  final int tabIndex;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'RecordTypeState.success(records: $records)';
+    return 'RecordTypeState.success(records: $records, tabIndex: $tabIndex)';
   }
 
   @override
@@ -981,36 +1091,39 @@ class _$_SuccessTypeState
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'RecordTypeState.success'))
-      ..add(DiagnosticsProperty('records', records));
+      ..add(DiagnosticsProperty('records', records))
+      ..add(DiagnosticsProperty('tabIndex', tabIndex));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SuccessTypeState &&
-            const DeepCollectionEquality().equals(other._records, _records));
+            other is _$SuccessTypeState &&
+            const DeepCollectionEquality().equals(other._records, _records) &&
+            (identical(other.tabIndex, tabIndex) ||
+                other.tabIndex == tabIndex));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_records));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_records), tabIndex);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessTypeStateCopyWith<_$_SuccessTypeState> get copyWith =>
-      __$$_SuccessTypeStateCopyWithImpl<_$_SuccessTypeState>(this, _$identity);
+  _$$SuccessTypeStateCopyWith<_$SuccessTypeState> get copyWith =>
+      __$$SuccessTypeStateCopyWithImpl<_$SuccessTypeState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Record> records) success,
+    required TResult Function(List<Record> records, int tabIndex) success,
     required TResult Function(ModelFailure failure) failure,
   }) {
-    return success(records);
+    return success(records, tabIndex);
   }
 
   @override
@@ -1018,10 +1131,10 @@ class _$_SuccessTypeState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Record> records)? success,
+    TResult? Function(List<Record> records, int tabIndex)? success,
     TResult? Function(ModelFailure failure)? failure,
   }) {
-    return success?.call(records);
+    return success?.call(records, tabIndex);
   }
 
   @override
@@ -1029,12 +1142,12 @@ class _$_SuccessTypeState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Record> records)? success,
+    TResult Function(List<Record> records, int tabIndex)? success,
     TResult Function(ModelFailure failure)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(records);
+      return success(records, tabIndex);
     }
     return orElse();
   }
@@ -1042,10 +1155,10 @@ class _$_SuccessTypeState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialTypeState value) initial,
-    required TResult Function(_LoadingTypeState value) loading,
-    required TResult Function(_SuccessTypeState value) success,
-    required TResult Function(_FailureTypeState value) failure,
+    required TResult Function(InitialTypeState value) initial,
+    required TResult Function(LoadingTypeState value) loading,
+    required TResult Function(SuccessTypeState value) success,
+    required TResult Function(FailureTypeState value) failure,
   }) {
     return success(this);
   }
@@ -1053,10 +1166,10 @@ class _$_SuccessTypeState
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialTypeState value)? initial,
-    TResult? Function(_LoadingTypeState value)? loading,
-    TResult? Function(_SuccessTypeState value)? success,
-    TResult? Function(_FailureTypeState value)? failure,
+    TResult? Function(InitialTypeState value)? initial,
+    TResult? Function(LoadingTypeState value)? loading,
+    TResult? Function(SuccessTypeState value)? success,
+    TResult? Function(FailureTypeState value)? failure,
   }) {
     return success?.call(this);
   }
@@ -1064,10 +1177,10 @@ class _$_SuccessTypeState
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialTypeState value)? initial,
-    TResult Function(_LoadingTypeState value)? loading,
-    TResult Function(_SuccessTypeState value)? success,
-    TResult Function(_FailureTypeState value)? failure,
+    TResult Function(InitialTypeState value)? initial,
+    TResult Function(LoadingTypeState value)? loading,
+    TResult Function(SuccessTypeState value)? success,
+    TResult Function(FailureTypeState value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -1077,21 +1190,22 @@ class _$_SuccessTypeState
   }
 }
 
-abstract class _SuccessTypeState implements RecordTypeState {
-  const factory _SuccessTypeState(final List<Record> records) =
-      _$_SuccessTypeState;
+abstract class SuccessTypeState implements RecordTypeState {
+  const factory SuccessTypeState(
+      final List<Record> records, final int tabIndex) = _$SuccessTypeState;
 
   List<Record> get records;
+  int get tabIndex;
   @JsonKey(ignore: true)
-  _$$_SuccessTypeStateCopyWith<_$_SuccessTypeState> get copyWith =>
+  _$$SuccessTypeStateCopyWith<_$SuccessTypeState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_FailureTypeStateCopyWith<$Res> {
-  factory _$$_FailureTypeStateCopyWith(
-          _$_FailureTypeState value, $Res Function(_$_FailureTypeState) then) =
-      __$$_FailureTypeStateCopyWithImpl<$Res>;
+abstract class _$$FailureTypeStateCopyWith<$Res> {
+  factory _$$FailureTypeStateCopyWith(
+          _$FailureTypeState value, $Res Function(_$FailureTypeState) then) =
+      __$$FailureTypeStateCopyWithImpl<$Res>;
   @useResult
   $Res call({ModelFailure failure});
 
@@ -1099,11 +1213,11 @@ abstract class _$$_FailureTypeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FailureTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$_FailureTypeState>
-    implements _$$_FailureTypeStateCopyWith<$Res> {
-  __$$_FailureTypeStateCopyWithImpl(
-      _$_FailureTypeState _value, $Res Function(_$_FailureTypeState) _then)
+class __$$FailureTypeStateCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$FailureTypeState>
+    implements _$$FailureTypeStateCopyWith<$Res> {
+  __$$FailureTypeStateCopyWithImpl(
+      _$FailureTypeState _value, $Res Function(_$FailureTypeState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1111,7 +1225,7 @@ class __$$_FailureTypeStateCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_FailureTypeState(
+    return _then(_$FailureTypeState(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1130,10 +1244,10 @@ class __$$_FailureTypeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailureTypeState
+class _$FailureTypeState
     with DiagnosticableTreeMixin
-    implements _FailureTypeState {
-  const _$_FailureTypeState(this.failure);
+    implements FailureTypeState {
+  const _$FailureTypeState(this.failure);
 
   @override
   final ModelFailure failure;
@@ -1155,7 +1269,7 @@ class _$_FailureTypeState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureTypeState &&
+            other is _$FailureTypeState &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -1165,15 +1279,15 @@ class _$_FailureTypeState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureTypeStateCopyWith<_$_FailureTypeState> get copyWith =>
-      __$$_FailureTypeStateCopyWithImpl<_$_FailureTypeState>(this, _$identity);
+  _$$FailureTypeStateCopyWith<_$FailureTypeState> get copyWith =>
+      __$$FailureTypeStateCopyWithImpl<_$FailureTypeState>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Record> records) success,
+    required TResult Function(List<Record> records, int tabIndex) success,
     required TResult Function(ModelFailure failure) failure,
   }) {
     return failure(this.failure);
@@ -1184,7 +1298,7 @@ class _$_FailureTypeState
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Record> records)? success,
+    TResult? Function(List<Record> records, int tabIndex)? success,
     TResult? Function(ModelFailure failure)? failure,
   }) {
     return failure?.call(this.failure);
@@ -1195,7 +1309,7 @@ class _$_FailureTypeState
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Record> records)? success,
+    TResult Function(List<Record> records, int tabIndex)? success,
     TResult Function(ModelFailure failure)? failure,
     required TResult orElse(),
   }) {
@@ -1208,10 +1322,10 @@ class _$_FailureTypeState
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_InitialTypeState value) initial,
-    required TResult Function(_LoadingTypeState value) loading,
-    required TResult Function(_SuccessTypeState value) success,
-    required TResult Function(_FailureTypeState value) failure,
+    required TResult Function(InitialTypeState value) initial,
+    required TResult Function(LoadingTypeState value) loading,
+    required TResult Function(SuccessTypeState value) success,
+    required TResult Function(FailureTypeState value) failure,
   }) {
     return failure(this);
   }
@@ -1219,10 +1333,10 @@ class _$_FailureTypeState
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_InitialTypeState value)? initial,
-    TResult? Function(_LoadingTypeState value)? loading,
-    TResult? Function(_SuccessTypeState value)? success,
-    TResult? Function(_FailureTypeState value)? failure,
+    TResult? Function(InitialTypeState value)? initial,
+    TResult? Function(LoadingTypeState value)? loading,
+    TResult? Function(SuccessTypeState value)? success,
+    TResult? Function(FailureTypeState value)? failure,
   }) {
     return failure?.call(this);
   }
@@ -1230,10 +1344,10 @@ class _$_FailureTypeState
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_InitialTypeState value)? initial,
-    TResult Function(_LoadingTypeState value)? loading,
-    TResult Function(_SuccessTypeState value)? success,
-    TResult Function(_FailureTypeState value)? failure,
+    TResult Function(InitialTypeState value)? initial,
+    TResult Function(LoadingTypeState value)? loading,
+    TResult Function(SuccessTypeState value)? success,
+    TResult Function(FailureTypeState value)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -1243,12 +1357,12 @@ class _$_FailureTypeState
   }
 }
 
-abstract class _FailureTypeState implements RecordTypeState {
-  const factory _FailureTypeState(final ModelFailure failure) =
-      _$_FailureTypeState;
+abstract class FailureTypeState implements RecordTypeState {
+  const factory FailureTypeState(final ModelFailure failure) =
+      _$FailureTypeState;
 
   ModelFailure get failure;
   @JsonKey(ignore: true)
-  _$$_FailureTypeStateCopyWith<_$_FailureTypeState> get copyWith =>
+  _$$FailureTypeStateCopyWith<_$FailureTypeState> get copyWith =>
       throw _privateConstructorUsedError;
 }

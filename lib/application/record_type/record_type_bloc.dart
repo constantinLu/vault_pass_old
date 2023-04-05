@@ -29,38 +29,38 @@ class RecordTypeBloc extends Bloc<RecordTypeEvent, RecordTypeState> {
 
   Future<void> getAccountRecords(
       AccountTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
-    emit(RecordTypeState.loading());
+    emit(const RecordTypeState.loading());
     try {
       final records = await recordRepository.getByType(RecordType.account);
-      emit(RecordTypeState.success(records));
+      emit(RecordTypeState.success(records, event.index));
     } catch (e) {
       //TODO: Need to customize this or change it to an union
-      emit(RecordTypeState.failure(ModelFailure.unexpected()));
+      emit(const RecordTypeState.failure(ModelFailure.unexpected()));
     }
   }
 
   Future<void> getAddressRecords(
       AddressTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
-    emit(RecordTypeState.loading());
+    emit(const RecordTypeState.loading());
     try {
       final records = await recordRepository.getByType(RecordType.address);
-      emit(RecordTypeState.success(records));
+      emit(RecordTypeState.success(records, event.index));
     } catch (e) {
       //TODO: Need to customize this or change it to an union
-      emit(RecordTypeState.failure(ModelFailure.unexpected()));
+      emit(const RecordTypeState.failure(ModelFailure.unexpected()));
     }
   }
 
 
   Future<void> getBusinessAccounts(
       BusinessAccountTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {
-    emit(RecordTypeState.loading());
+    emit(const RecordTypeState.loading());
     try {
       final records = await recordRepository.getByType(RecordType.business);
-      emit(RecordTypeState.success(records));
+      emit(RecordTypeState.success(records, event.index));
     } catch (e) {
       //TODO: Need to customize this or change it to an union
-      emit(RecordTypeState.failure(ModelFailure.unexpected()));
+      emit(const RecordTypeState.failure(ModelFailure.unexpected()));
     }
   }
 }
