@@ -5,7 +5,7 @@ part 'record.freezed.dart';
 
 @freezed
 abstract class Record implements _$Record {
-  Record._();
+  const Record._();
 
   const factory Record({
     required UniqueId id,

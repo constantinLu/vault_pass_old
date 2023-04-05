@@ -3,7 +3,6 @@ import 'package:vault_pass/domain/model/record.dart';
 
 import '../microtypes/microtypes.dart';
 
-@freezed
 abstract class SuperModel {
   UniqueId id;
   RecordType recordType;

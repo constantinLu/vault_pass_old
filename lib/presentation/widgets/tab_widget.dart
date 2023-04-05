@@ -4,9 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:vault_pass/application/record_type/record_type_bloc.dart';
 import 'package:vault_pass/presentation/core/assets.dart';
 import 'package:vault_pass/presentation/view/records/records_cards.dart';
+import 'package:vault_pass/presentation/widgets/gesture_slider.dart';
 
 import '../../domain/model/record.dart';
-import '../../injection.dart';
 import '../core/device_size.dart';
 import '../utils/css.dart';
 import '../utils/style.dart';
@@ -27,17 +27,37 @@ class TabWidget extends StatelessWidget {
   //check index helper
   bool checkIndex({required int index}) => currentIndex == index;
 
+  int tabChanger(RecordType recordType) {
+    if (recordType == RecordType.account) {
+      return 0;
+    }
+    if (recordType == RecordType.address) {
+      return 1;
+    }
+    if (recordType == RecordType.business) {
+      return 2;
+    } else {
+      return 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RecordTypeBloc, RecordTypeState>(
-      listener: (BuildContext context, RecordTypeState state) {},
+      listener: (BuildContext context, RecordTypeState state) {
+        state.maybeMap(
+            success: (state) {
+              currentIndex = state.tabIndex;
+            },
+            orElse: () {});
+      },
       builder: (BuildContext context, RecordTypeState state) {
         /// IMPORTANT!! THIS expression should be used when we need to add an event
         /// see bloc documentation
         final recordTypeBloc = context.read<RecordTypeBloc>();
+
         /// how to get the state (same as above) - do not use to update states
         //final recordTypeState = BlocProvider.of<RecordTypeBloc>(context).state;
-
         return Container(
           width: double.infinity,
           height: double.infinity,
@@ -49,8 +69,7 @@ class TabWidget extends StatelessWidget {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        currentIndex = 0;
-                        recordTypeBloc.add(const RecordTypeEvent.accountTabBtnPressed());
+                        recordTypeBloc.add(const RecordTypeEvent.accountTabBtnPressed(0));
                       },
                       child: TabButton(checkIndex(index: 0), RecordType.account),
                     ),
@@ -59,7 +78,7 @@ class TabWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         currentIndex = 1;
-                        recordTypeBloc.add(const RecordTypeEvent.addressTabBtnPressed());
+                        recordTypeBloc.add(const RecordTypeEvent.addressTabBtnPressed(1));
                       },
                       child: TabButton(checkIndex(index: 1), RecordType.address),
                     ),
@@ -68,7 +87,7 @@ class TabWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         currentIndex = 2;
-                        recordTypeBloc.add(const RecordTypeEvent.businessAccountBtnPressed());
+                        recordTypeBloc.add(const RecordTypeEvent.businessAccountBtnPressed(2));
                       },
                       child: TabButton(checkIndex(index: 2), RecordType.business),
                     ),
@@ -79,14 +98,17 @@ class TabWidget extends StatelessWidget {
               state.map(
                   initial: (_) => Container(), //DO NOTHING
                   loading: (_) => const CircularProgressIndicator(),
-                  success: (state) =>
-                      Container(
-                          margin: const EdgeInsets.only(top: 30),
-                          width: double.infinity,
-                          height: heightPercentOf(60, context),
-                          child: state.records.isEmpty
-                              ? Center(child: BackgroundImage(imageTypes(currentIndex)))
-                              : RecordCards(state.records)),
+                  success: (state) => GestureSlider(
+                        typeBloc: recordTypeBloc,
+                        tabIndex: state.tabIndex,
+                        child: Container(
+                            margin: const EdgeInsets.only(top: 30),
+                            width: double.infinity,
+                            height: heightPercentOf(60, context),
+                            child: state.records.isEmpty
+                                ? Center(child: BackgroundImage(imageTypes(currentIndex)))
+                                : RecordCards(state.records)),
+                      ),
                   failure: (_) => const Center(child: Text("ERROR", style: bodyText15_white)))
             ],
           ),
@@ -146,5 +168,13 @@ class BackgroundImage extends StatelessWidget {
           width: widthPercentOf(30, context),
           height: heightPercentOf(30, context)),
     );
+  }
+}
+
+void swiper(DragEndDetails details) {
+  if (details.primaryVelocity! > 0) {
+// User swiped Left
+  } else if (details.primaryVelocity! < 0) {
+// User swiped Right
   }
 }
