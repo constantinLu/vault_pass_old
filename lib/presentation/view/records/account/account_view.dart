@@ -15,6 +15,7 @@ import '../../../../domain/model/record.dart';
 import '../../../../injection.dart';
 import '../../../utils/css.dart';
 import '../../../utils/style.dart';
+import '../../../widgets/title_widget.dart';
 import '../../../widgets/view_card_widget.dart';
 
 @RoutePage()
@@ -73,7 +74,7 @@ class _AccountViewState extends State<AccountView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //! RECORD TYPE
-                                  _RecordTypeWidget(value: state.record.type.value.toLowerCase()),
+                                  TitleWidget(value: '${state.record.type.value.toLowerCase()} details'),
                                   const Divider(height: 10, thickness: 1, color: Colors.white),
                                   const SizedBox(height: 10),
 
@@ -120,23 +121,6 @@ class _AccountViewState extends State<AccountView> {
   }
 }
 
-class _RecordTypeWidget extends StatelessWidget {
-  final String value;
-
-  const _RecordTypeWidget({
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        '$value details',
-        style: headerText25_white,
-      ),
-    );
-  }
-}
 
 class _SpeedDialFabWidget extends StatelessWidget {
   final UniqueId recordId;
