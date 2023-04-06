@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../widgets/placehoder_widger.dart';
+import '../../widgets/placehoder_widget.dart';
 
 @RoutePage()
 class AccountSettingsView extends StatelessWidget {

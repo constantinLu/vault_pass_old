@@ -8,7 +8,7 @@ import 'package:vault_pass/presentation/router/app_router.gr.dart';
 import '../../utils/palette.dart';
 import '../../utils/style.dart';
 import '../../widgets/avatar_widget.dart';
-import '../../widgets/icon_card_widget.dart';
+import '../../widgets/text_button_widget.dart';
 
 @RoutePage()
 class SettingsView extends StatefulWidget {
@@ -38,16 +38,20 @@ class _SettingsViewState extends State<SettingsView> {
               ? const SizedBox()
               : Scaffold(
                   appBar: AppBar(
-                     leading: const BackButton(
+                      leading: const BackButton(
                         color: Palette.whiteSnow,
-                     ),
+                      ),
                       backgroundColor: blackFull,
                       title: Center(
                           child: Text(
                               "${state.getValueOrCrash(state.response)!.firstName.get()} "
                               "${state.getValueOrCrash(state.response)!.lastName.get()}",
                               style: bodyText15_white)),
-                      actions: [Avatar(onTapDisabled: true,)]),
+                      actions: [
+                        Avatar(
+                          onTapDisabled: true,
+                        )
+                      ]),
                   body: SafeArea(
                     child: CustomScrollView(
                       slivers: [
@@ -59,115 +63,71 @@ class _SettingsViewState extends State<SettingsView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 //! DONATE
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(8, 0, 5, 12),
-                                  child: ElevatedButton.icon(
-                                    onPressed: () {
-                                      context.pushTo(const DonationView());
-                                    },
-                                    icon: const Icon(Icons.heart_broken, color: Palette.whiteCultured),
-                                    label: const Text("Donate", style: bodyText15_white_bold,),
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: Palette.blackCard2,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10.0)
-                                      )
-                                    ),
-                                  ),
-                                ),
-                                IconCardWidget(
-                                  textButton: [
-                                    TextButton.icon(
-                                      // <-- TextButton
-                                      onPressed: () {
-                                        context.pushTo(const HelpSettingsView());
-                                      },
-                                      icon: const Icon(
-                                        Icons.help_outlined,
-                                        color: Palette.whiteSnow,
-                                        size: 20.0,
-                                      ),
-                                      label: Text('Help', style: bodyText15(Palette.whiteSnow)),
-                                    ),
-                                  ],
-                                  cardHeight: 12,
+                                const DonationButton(),
+
+                                //! HELP BUTTON
+                                TextButtonWidget(
+                                  buttonName: 'Help',
+                                  btnSize: BtnSize.large,
+                                  icon: Icons.help_outlined,
+                                  onTap: () {
+                                    context.pushTo(const HelpSettingsView());
+                                  },
+                                  bgColor: Palette.blackCard,
+                                  textColor: Palette.whiteSnow,
+                                  bold: false,
                                 ),
 
                                 //! ACCOUNT SETTINGS
-                                IconCardWidget(
-                                  textButton: [
-                                    TextButton.icon(
-                                      // <-- TextButton
-                                      onPressed: () {
-                                        context.pushTo(const AccountSettingsView());
-                                      },
-                                      icon: const Icon(
-                                        Icons.manage_accounts_sharp,
-                                        color: Palette.whiteSnow,
-                                        size: 20.0,
-                                      ),
-                                      label: Text('Account', style: bodyText15(Palette.whiteSnow)),
-                                    ),
-                                  ],
-                                  cardHeight: 12,
+                                TextButtonWidget(
+                                  buttonName: 'Account',
+                                  btnSize: BtnSize.large,
+                                  icon: Icons.manage_accounts_sharp,
+                                  onTap: () {
+                                    context.pushTo(const AccountSettingsView());
+                                  },
+                                  bgColor: Palette.blackCard,
+                                  textColor: Palette.whiteSnow,
+                                  bold: false,
                                 ),
 
                                 //! SECURITY
-                                IconCardWidget(
-                                  textButton: [
-                                    TextButton.icon(
-                                      // <-- TextButton
-                                      onPressed: () {
-                                        context.pushTo(const SecuritySettingsView());
-                                      },
-                                      icon: const Icon(
-                                        Icons.security,
-                                        color: Palette.whiteSnow,
-                                        size: 20.0,
-                                      ),
-                                      label: Text('Security', style: bodyText15(Palette.whiteSnow)),
-                                    ),
-                                  ],
-                                  cardHeight: 12,
+                                TextButtonWidget(
+                                  buttonName: 'Security',
+                                  btnSize: BtnSize.large,
+                                  icon: Icons.security,
+                                  onTap: () {
+                                    context.pushTo(const SecuritySettingsView());
+                                  },
+                                  bgColor: Palette.blackCard,
+                                  textColor: Palette.whiteSnow,
+                                  bold: false,
                                 ),
 
                                 //! APP SETTINGS
-                                IconCardWidget(
-                                  textButton: [
-                                    TextButton.icon(
-                                      // <-- TextButton
-                                      onPressed: () {
-                                        context.pushTo(const AppSettingsView());
-                                      },
-                                      icon: const Icon(
-                                        Icons.settings_outlined,
-                                        color: Palette.whiteSnow,
-                                        size: 20.0,
-                                      ),
-                                      label: Text('App Settings',
-                                          style: bodyText15(Palette.whiteSnow)),
-                                    ),
-                                  ],
-                                  cardHeight: 12,
+                                TextButtonWidget(
+                                  buttonName: 'App Settings',
+                                  btnSize: BtnSize.large,
+                                  icon: Icons.settings_outlined,
+                                  onTap: () {
+                                    context.pushTo(const AppSettingsView());
+                                  },
+                                  bgColor: Palette.blackCard,
+                                  textColor: Palette.whiteSnow,
+                                  bold: false,
                                 ),
 
                                 //! ABOUT US
-                                IconCardWidget(
-                                  textButton: [
-                                    TextButton.icon(
-                                      // <-- TextButton
-                                      onPressed: () {
-                                        context.pushTo(const AboutUsSettingsView());
-                                      },
-                                      icon: const Icon(
-                                        Icons.developer_mode_sharp,
-                                        color: Palette.whiteSnow,
-                                        size: 20.0,
-                                      ),
-                                      label: Text('About Us', style: bodyText15(Palette.whiteSnow)),
-                                    ),
-                                  ],
-                                  cardHeight: 12,
+                                TextButtonWidget(
+                                  buttonName: 'About Us',
+                                  btnSize: BtnSize.large,
+                                  icon: Icons.developer_mode_sharp,
+                                  onTap: () {
+                                    context.pushTo(const AppSettingsView());
+                                  },
+                                  bgColor: Palette.blackCard,
+                                  textColor: Palette.whiteSnow,
+                                  bold: false,
                                 ),
                               ],
                             ),
@@ -179,6 +139,30 @@ class _SettingsViewState extends State<SettingsView> {
                 ),
         );
       },
+    );
+  }
+}
+
+class DonationButton extends StatelessWidget {
+  const DonationButton({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 0, 5, 12),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          context.pushTo(const DonationView());
+        },
+        icon: const Icon(Icons.heart_broken, color: Palette.whiteCultured),
+        label: const Text(
+          "Donate",
+          style: bodyText15_white_bold,
+        ),
+        style: ElevatedButton.styleFrom(
+            backgroundColor: Palette.blackCard2,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0))),
+      ),
     );
   }
 }

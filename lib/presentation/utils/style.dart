@@ -8,8 +8,8 @@ const headline34 = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const headerText25_white = TextStyle(
-  fontSize: 25,
+headerText_white(int size) => TextStyle(
+  fontSize: size.toDouble(),
   color: whiteFull,
   fontWeight: FontWeight.bold,
 );
@@ -68,4 +68,10 @@ const buttonText16 = TextStyle(
   color: blackFull,
   fontSize: 16,
   fontWeight: FontWeight.bold,
+);
+
+const buttonText15 = TextStyle(
+  color: blackFull,
+  fontSize: 15,
+  fontWeight: FontWeight.normal,
 );
