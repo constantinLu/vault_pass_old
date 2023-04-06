@@ -25,8 +25,8 @@ class UserService {
   Future<Either<AuthFailure, AuthCredentials>> authenticateUser(
       EmailAddress emailAddress, Password password) async {
     final user = _userRepository.authenticateUser(emailAddress, password);
-    secureStorageService.persistCredentials(
-        AuthCredentials.authCredentials(emailAddress.get(), password.get()));
+    secureStorageService
+        .persistCredentials(AuthCredentials.authCredentials(emailAddress.get(), password.get()));
     return user;
   }
 

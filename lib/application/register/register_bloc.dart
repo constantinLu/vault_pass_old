@@ -88,7 +88,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         isRetypePassword) {
       emit(state.copyWith(isLoading: true, response: none()));
 
-      final user = User.build(state.firstName, state.lastName, state.emailAddress, state.password);
+      final user = User.create(state.firstName, state.lastName, state.emailAddress, state.password);
       authResponse = await _authFacade.register(user: user);
     }
 

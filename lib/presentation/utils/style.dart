@@ -32,6 +32,11 @@ bodyText(int size, Color color) => TextStyle(
   fontSize: size.toDouble(),
 );
 
+bodyText15(Color color) => TextStyle(
+  color: color,
+  fontSize: 15,
+);
+
 const bodyText15_grey = TextStyle(
   color: greySpanish,
   fontSize: 15,

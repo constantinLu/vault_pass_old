@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/application/record_removal/record_removal_bloc.dart';
 import 'package:vault_pass/application/record_type/record_type_bloc.dart';
+import 'package:vault_pass/application/user/user_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
 import 'package:vault_pass/injection.dart';
@@ -68,6 +69,9 @@ class HomeView extends StatelessWidget {
         ],
         child: WillPopScope(
           onWillPop: () {
+            //FIXME: THIS THROWS ERROR WHEN PRESSED
+            //TODO: when pressed, move the app in the drawer phone app and unauntheticate the user
+            //TODO: when opens back the app the fingerprint auth window should appear.
             context.popRoute();
             return Future.value(false);
           },
@@ -93,7 +97,7 @@ class HomeView extends StatelessWidget {
               ),
               //TODO: Make this dynamic of showing the initials, "Welcome Lungu or something"
               title: const Center(child: Text("Vault Pass", style: bodyText15_white_bold)),
-              actions: const [Avatar()],
+              actions: [Avatar(onTapDisabled: false,)],
               toolbarHeight: heightPercentOf(8, context),
             ),
 

@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 
-import '../failures/failures.dart';
+import '../failures/microtype_failures.dart';
 
 //TODO: FIX ALL THE VALIDATION AFTER YOU TEST AND FINISH THE PROJECT
 Either<MicroTypeFailure<String>, String> validateEmailAddress(String input) {

@@ -1,6 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:uuid/uuid.dart';
-import 'package:vault_pass/domain/failures/failures.dart';
+import 'package:vault_pass/domain/failures/microtype_failures.dart';
 
 import '../model/token.dart';
 import '../validators/validators.dart';

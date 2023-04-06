@@ -6,7 +6,9 @@ import '../core/assets.dart';
 import '../router/app_router.gr.dart';
 
 class Avatar extends StatelessWidget {
-  const Avatar({super.key});
+  final bool onTapDisabled;
+
+  Avatar({required this.onTapDisabled});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class Avatar extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: GestureDetector(
           onTap: () {
-            context.pushTo(const SettingsView());
+            onTapDisabled ? null : context.pushTo(const SettingsView()); //PUSH TO EDIT ACCOUNT
           },
           child: CircleAvatar(
             radius: 40,

@@ -9,7 +9,8 @@ class Palette {
   static const blackFull = Color.fromRGBO(0, 0, 0, 1);
   static const blackErie = Color.fromRGBO(37, 37, 37, 1);
   static const blackJet = Color.fromRGBO(51, 51, 51, 1);
-  static const blackCard = Color.fromRGBO(13, 13, 13, 1.0);
+  static const blackCard = Color.fromRGBO(13, 13, 13, 1);
+  static const blackCard2 = Color.fromRGBO(16, 16, 16, 1);
 
 //whites
   static const whiteFull = Color.fromRGBO(255, 255, 255, 1);

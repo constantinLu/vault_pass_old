@@ -25,8 +25,8 @@ abstract class User implements _$User {
       createdDate: DateTime.now(),
       updatedDate: DateTime.now());
 
-  factory User.build(Name firstName, Name lastName, EmailAddress emailAddress,
-          Password password) =>
+  factory User.create(
+          Name firstName, Name lastName, EmailAddress emailAddress, Password password) =>
       User(
           id: UniqueId(),
           firstName: firstName,
@@ -48,5 +48,16 @@ abstract class User implements _$User {
           emailAddress: EmailAddress.of(emailAddress),
           password: Password.of(password),
           createdDate: DateTime.now(),
+          updatedDate: DateTime.now());
+
+  factory User.build(UniqueId id, Name firstName, Name lastName, EmailAddress emailAddress,
+          Password password, DateTime createdDate) =>
+      User(
+          id: id,
+          firstName: firstName,
+          lastName: lastName,
+          emailAddress: emailAddress,
+          password: password,
+          createdDate: createdDate,
           updatedDate: DateTime.now());
 }
