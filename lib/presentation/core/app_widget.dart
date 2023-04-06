@@ -6,6 +6,7 @@ import 'package:vault_pass/application/register/register_bloc.dart';
 
 import '../../application/login/login_bloc.dart';
 import '../../application/record_form/record_bloc.dart';
+import '../../application/user/user_bloc.dart';
 import '../../injection.dart';
 import '../router/app_router.dart';
 import '../utils/palette.dart';
@@ -22,6 +23,7 @@ class AppWidget extends StatelessWidget {
     /// PROVIDES ACCESS TO BLOCS TO THE CHILDREN
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => getIt<UserBloc>()),
         BlocProvider(
             create: (context) =>
                 //adds event right away! with ..add()

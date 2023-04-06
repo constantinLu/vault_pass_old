@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/infra/repository/record_repository.dart';
 
-import '../../domain/failures/model_failure.dart';
+import '../../domain/failures/model_failures.dart';
 import '../../domain/microtypes/microtypes.dart';
 
 part 'record_removal_bloc.freezed.dart';

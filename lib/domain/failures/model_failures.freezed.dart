@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'model_failure.dart';
+part of 'model_failures.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -162,4 +162,154 @@ class _$_Unexpected implements _Unexpected {
 
 abstract class _Unexpected implements ModelFailure {
   const factory _Unexpected() = _$_Unexpected;
+}
+
+/// @nodoc
+mixin _$UserFailure {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() userFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? userFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? userFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserFailure value) userFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserFailure value)? userFailure,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserFailure value)? userFailure,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserFailureCopyWith<$Res> {
+  factory $UserFailureCopyWith(
+          UserFailure value, $Res Function(UserFailure) then) =
+      _$UserFailureCopyWithImpl<$Res, UserFailure>;
+}
+
+/// @nodoc
+class _$UserFailureCopyWithImpl<$Res, $Val extends UserFailure>
+    implements $UserFailureCopyWith<$Res> {
+  _$UserFailureCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_UserFailureCopyWith<$Res> {
+  factory _$$_UserFailureCopyWith(
+          _$_UserFailure value, $Res Function(_$_UserFailure) then) =
+      __$$_UserFailureCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UserFailureCopyWithImpl<$Res>
+    extends _$UserFailureCopyWithImpl<$Res, _$_UserFailure>
+    implements _$$_UserFailureCopyWith<$Res> {
+  __$$_UserFailureCopyWithImpl(
+      _$_UserFailure _value, $Res Function(_$_UserFailure) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UserFailure implements _UserFailure {
+  const _$_UserFailure();
+
+  @override
+  String toString() {
+    return 'UserFailure.userFailure()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UserFailure);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() userFailure,
+  }) {
+    return userFailure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? userFailure,
+  }) {
+    return userFailure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? userFailure,
+    required TResult orElse(),
+  }) {
+    if (userFailure != null) {
+      return userFailure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UserFailure value) userFailure,
+  }) {
+    return userFailure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UserFailure value)? userFailure,
+  }) {
+    return userFailure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UserFailure value)? userFailure,
+    required TResult orElse(),
+  }) {
+    if (userFailure != null) {
+      return userFailure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserFailure implements UserFailure {
+  const factory _UserFailure() = _$_UserFailure;
 }

@@ -6,7 +6,7 @@ import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/infra/database/vaultdb.dart';
 import 'package:vault_pass/infra/repository/mapper/repo_mapper.dart';
 
-import '../../domain/failures/model_failure.dart';
+import '../../domain/failures/model_failures.dart';
 import '../../injection.dart';
 import '../database/vaultpass_tables.dart';
 

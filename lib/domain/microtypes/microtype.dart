@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:vault_pass/domain/errors/error.dart';
 
-import '../failures/failures.dart';
+import '../failures/microtype_failures.dart';
 
 @immutable
 abstract class MicroType<T> {

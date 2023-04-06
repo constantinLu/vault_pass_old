@@ -13,10 +13,9 @@ import 'package:vault_pass/presentation/utils/palette.dart';
 import '../../../../domain/microtypes/microtypes.dart';
 import '../../../../domain/model/record.dart';
 import '../../../../injection.dart';
-import '../../../core/device_size.dart';
-import '../../../utils/butter.dart';
 import '../../../utils/css.dart';
 import '../../../utils/style.dart';
+import '../../../widgets/view_card_widget.dart';
 
 @RoutePage()
 class AccountView extends StatefulWidget {
@@ -40,8 +39,7 @@ class _AccountViewState extends State<AccountView> {
     return BlocListener<RecordBloc, RecordState>(
       listener: (context, state) {
         state.response.fold(
-          //ON NONE DO NOTHING
-          () {},
+          () {}, //ON NONE DO NOTHING
           (either) => either.fold(
               (failure) => FlushbarHelper.createError(
                     message: failure.map(unexpected: (_) => "Unexpected Error"),
@@ -51,8 +49,6 @@ class _AccountViewState extends State<AccountView> {
                     context.teleportTo(const HomeView()),
                   }),
         );
-        //THIS MIGHT NOT WORK
-        // SHOULD WORK ONLY ON EDIT
       },
       child: BlocBuilder<RecordBloc, RecordState>(
         builder: (context, state) {
@@ -97,7 +93,7 @@ class _AccountViewState extends State<AccountView> {
                                   ViewCardWidget(textWidget: {
                                     "Login": state.record.loginRecord.get(),
                                     "Password": state.record.passwordRecord.get()
-                                  }, cardHeight: 24),
+                                  }, cardHeight: 23),
 
                                   //! URL
                                   ViewCardWidget(
@@ -142,52 +138,6 @@ class _RecordTypeWidget extends StatelessWidget {
   }
 }
 
-class ViewCardWidget extends StatelessWidget {
-  final Map<String, String> textWidget;
-  final int cardHeight;
-  final Color? cardColor;
-
-  ViewCardWidget({required this.textWidget, required this.cardHeight, this.cardColor, super.key}) {
-    if (textWidget.size > 1) {
-      checkHeight(cardHeight, 25);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    List<Widget> textWidgets = <Widget>[];
-    textWidget.forEach((k, v) {
-      textWidgets.add(Text(k, style: bodyText(12, Palette.greySpanish)));
-      textWidgets.add(Text(v, style: bodyText(15, Palette.whiteSnow)));
-      if (textWidget.size > 1) {
-        textWidgets.add(const SizedBox(
-          height: 25,
-        ));
-      }
-    });
-    return SizedBox(
-      width: double.infinity,
-      height: heightPercentOf(cardHeight.toDouble(), context),
-      child: Card(
-        color: cardColor ?? Palette.blackCard,
-        shape: RoundedRectangleBorder(
-          borderRadius: borderRadiusCircular,
-        ),
-        elevation: 2,
-        margin: const EdgeInsets.all(8),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 15, 10, 5),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: textWidgets,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class _SpeedDialFabWidget extends StatelessWidget {
   final UniqueId recordId;
 
@@ -214,17 +164,17 @@ class _SpeedDialFabWidget extends StatelessWidget {
           onLongPress: () => debugPrint('THIRD CHILD LONG PRESS'),
         ),
         SpeedDialChild(
-          child: const Icon(Icons.edit),
-          backgroundColor: Palette.whiteSnow,
-          foregroundColor: Palette.blackCard,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
-          //label: 'Edit',
-          onTap: () => context.pushTo(const AccountEditView())
+            child: const Icon(Icons.edit),
+            backgroundColor: Palette.whiteSnow,
+            foregroundColor: Palette.blackCard,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
+            //label: 'Edit',
+            onTap: () => context.pushTo(const AccountEditView())
 
-              //getIt<RecordBloc>().add(RecordEvent.editRecordEvent(recordId)),
-          //context.pushTo(const AccountEditView()),
-          //onLongPress: () => debugPrint('FIRST CHILD LONG PRESS'),
-        ),
+            //getIt<RecordBloc>().add(RecordEvent.editRecordEvent(recordId)),
+            //context.pushTo(const AccountEditView()),
+            //onLongPress: () => debugPrint('FIRST CHILD LONG PRESS'),
+            ),
         SpeedDialChild(
             child: const Icon(Icons.delete),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),

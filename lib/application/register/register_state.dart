@@ -23,5 +23,5 @@ class RegisterState with _$RegisterState {
       retypePassword: Password(""),
       isLoading: false,
       showErrorMessage: AutovalidateMode.disabled,
-      response: Option.none());
+      response: const Option.none());
 }

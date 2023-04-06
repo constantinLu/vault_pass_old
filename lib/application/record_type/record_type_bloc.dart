@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:vault_pass/domain/failures/model_failure.dart';
+import 'package:vault_pass/domain/failures/model_failures.dart';
 import 'package:vault_pass/domain/model/record.dart';
 import 'package:vault_pass/infra/repository/record_repository.dart';
 
