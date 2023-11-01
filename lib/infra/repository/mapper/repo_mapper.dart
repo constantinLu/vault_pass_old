@@ -31,7 +31,6 @@ class UserMapper {
   }
 }
 
-
 class RecordMapper {
   static Record toModel(RecordEntry recordEntry) {
     return Record(
@@ -43,6 +42,7 @@ class RecordMapper {
       passwordRecord: Password.of(recordEntry.passwordRecord),
       description: Description(recordEntry.description!),
       url: Url(recordEntry.url),
+      isFavorite: recordEntry.isFavorite,
       createdDate: recordEntry.createdDate,
       updatedDate: recordEntry.updatedDate,
     );
@@ -58,6 +58,7 @@ class RecordMapper {
       passwordRecord: record.passwordRecord.get(),
       description: record.description.get(),
       url: record.url.get(),
+      isFavorite: record.isFavorite ?? false,
       createdDate: record.createdDate,
       updatedDate: record.updatedDate,
     );

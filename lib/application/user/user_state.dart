@@ -29,11 +29,13 @@ class UserState with _$UserState {
       showErrorMessage: AutovalidateMode.disabled,
       response: const Option.none());
 
+
+  //TODO this should not be here
   User? getValueOrCrash(Option<Either<UserFailure, Option<User>>> response) {
     if (response.isSome()) {
       return response
-          .flatMap((either) => either.fold((l) => throw UnexpectedError("NO User Found"), id))
-      .fold(() => null, id);
+          .flatMap((either) => either.fold((l) => throw UnexpectedError("NO User Found"), (id) => id))
+      .fold(() => null, (id) => id);
     }
     return null;
   }

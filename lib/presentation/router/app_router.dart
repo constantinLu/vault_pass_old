@@ -21,11 +21,15 @@ class AppRouter extends $AppRouter {
     AutoRoute(page: AddressView.page),
 
     /// settings
+    AutoRoute(page: DonationView.page),
     AutoRoute(page: HelpSettingsView.page),
     AutoRoute(page: AccountSettingsView.page),
     AutoRoute(page: SecuritySettingsView.page),
     AutoRoute(page: AppSettingsView.page),
     AutoRoute(page: AboutUsSettingsView.page),
-    AutoRoute(page: DonationView.page),
+
+    /// fab
+    AutoRoute(page: FavoriteView.page),
+    AutoRoute(page: NotificationView.page),
   ];
 }

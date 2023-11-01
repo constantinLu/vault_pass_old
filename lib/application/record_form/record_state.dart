@@ -8,7 +8,7 @@ class RecordState with _$RecordState {
       {required Record record,
       required bool isSaving,
       required bool isEditing,
-      required AutovalidateMode? showErrorMessage,
+      required AutovalidateMode? showErrorMessage, //used for forms
       required Option<Either<ModelFailure, Unit>> response}) = _RecordState;
 
   factory RecordState.initial() => RecordState(

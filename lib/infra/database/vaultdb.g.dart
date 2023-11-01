@@ -65,9 +65,10 @@ class $UserTableTable extends UserTable
   List<GeneratedColumn> get $columns =>
       [id, firstName, lastName, email, password, createdDate, updatedDate];
   @override
-  String get aliasedName => _alias ?? 'user_table';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'user_table';
+  String get actualTableName => $name;
+  static const String $name = 'user_table';
   @override
   VerificationContext validateIntegrity(Insertable<UserEntry> instance,
       {bool isInserting = false}) {
@@ -458,6 +459,16 @@ class $RecordTableTable extends RecordTable
           GeneratedColumn.checkTextLength(minTextLength: 2, maxTextLength: 100),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
+  static const VerificationMeta _isFavoriteMeta =
+      const VerificationMeta('isFavorite');
+  @override
+  late final GeneratedColumn<bool> isFavorite = GeneratedColumn<bool>(
+      'is_favorite', aliasedName, false,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('CHECK ("is_favorite" IN (0, 1))'),
+      defaultValue: const Constant(false));
   static const VerificationMeta _createdDateMeta =
       const VerificationMeta('createdDate');
   @override
@@ -480,13 +491,15 @@ class $RecordTableTable extends RecordTable
         logo,
         description,
         url,
+        isFavorite,
         createdDate,
         updatedDate
       ];
   @override
-  String get aliasedName => _alias ?? 'record_table';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'record_table';
+  String get actualTableName => $name;
+  static const String $name = 'record_table';
   @override
   VerificationContext validateIntegrity(Insertable<RecordEntry> instance,
       {bool isInserting = false}) {
@@ -547,6 +560,12 @@ class $RecordTableTable extends RecordTable
     } else if (isInserting) {
       context.missing(_urlMeta);
     }
+    if (data.containsKey('is_favorite')) {
+      context.handle(
+          _isFavoriteMeta,
+          isFavorite.isAcceptableOrUnknown(
+              data['is_favorite']!, _isFavoriteMeta));
+    }
     if (data.containsKey('created_date')) {
       context.handle(
           _createdDateMeta,
@@ -588,6 +607,8 @@ class $RecordTableTable extends RecordTable
           .read(DriftSqlType.string, data['${effectivePrefix}description']),
       url: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}url'])!,
+      isFavorite: attachedDatabase.typeMapping
+          .read(DriftSqlType.bool, data['${effectivePrefix}is_favorite'])!,
       createdDate: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}created_date'])!,
       updatedDate: attachedDatabase.typeMapping
@@ -610,6 +631,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
   final String logo;
   final String? description;
   final String url;
+  final bool isFavorite;
   final DateTime createdDate;
   final DateTime updatedDate;
   const RecordEntry(
@@ -621,6 +643,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       required this.logo,
       this.description,
       required this.url,
+      required this.isFavorite,
       required this.createdDate,
       required this.updatedDate});
   @override
@@ -636,6 +659,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       map['description'] = Variable<String>(description);
     }
     map['url'] = Variable<String>(url);
+    map['is_favorite'] = Variable<bool>(isFavorite);
     map['created_date'] = Variable<DateTime>(createdDate);
     map['updated_date'] = Variable<DateTime>(updatedDate);
     return map;
@@ -653,6 +677,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
           ? const Value.absent()
           : Value(description),
       url: Value(url),
+      isFavorite: Value(isFavorite),
       createdDate: Value(createdDate),
       updatedDate: Value(updatedDate),
     );
@@ -670,6 +695,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       logo: serializer.fromJson<String>(json['logo']),
       description: serializer.fromJson<String?>(json['description']),
       url: serializer.fromJson<String>(json['url']),
+      isFavorite: serializer.fromJson<bool>(json['isFavorite']),
       createdDate: serializer.fromJson<DateTime>(json['createdDate']),
       updatedDate: serializer.fromJson<DateTime>(json['updatedDate']),
     );
@@ -686,6 +712,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
       'logo': serializer.toJson<String>(logo),
       'description': serializer.toJson<String?>(description),
       'url': serializer.toJson<String>(url),
+      'isFavorite': serializer.toJson<bool>(isFavorite),
       'createdDate': serializer.toJson<DateTime>(createdDate),
       'updatedDate': serializer.toJson<DateTime>(updatedDate),
     };
@@ -700,6 +727,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
           String? logo,
           Value<String?> description = const Value.absent(),
           String? url,
+          bool? isFavorite,
           DateTime? createdDate,
           DateTime? updatedDate}) =>
       RecordEntry(
@@ -711,6 +739,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
         logo: logo ?? this.logo,
         description: description.present ? description.value : this.description,
         url: url ?? this.url,
+        isFavorite: isFavorite ?? this.isFavorite,
         createdDate: createdDate ?? this.createdDate,
         updatedDate: updatedDate ?? this.updatedDate,
       );
@@ -725,6 +754,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
           ..write('logo: $logo, ')
           ..write('description: $description, ')
           ..write('url: $url, ')
+          ..write('isFavorite: $isFavorite, ')
           ..write('createdDate: $createdDate, ')
           ..write('updatedDate: $updatedDate')
           ..write(')'))
@@ -732,8 +762,18 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
   }
 
   @override
-  int get hashCode => Object.hash(id, recordName, recordType, loginRecord,
-      passwordRecord, logo, description, url, createdDate, updatedDate);
+  int get hashCode => Object.hash(
+      id,
+      recordName,
+      recordType,
+      loginRecord,
+      passwordRecord,
+      logo,
+      description,
+      url,
+      isFavorite,
+      createdDate,
+      updatedDate);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -746,6 +786,7 @@ class RecordEntry extends DataClass implements Insertable<RecordEntry> {
           other.logo == this.logo &&
           other.description == this.description &&
           other.url == this.url &&
+          other.isFavorite == this.isFavorite &&
           other.createdDate == this.createdDate &&
           other.updatedDate == this.updatedDate);
 }
@@ -759,6 +800,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
   final Value<String> logo;
   final Value<String?> description;
   final Value<String> url;
+  final Value<bool> isFavorite;
   final Value<DateTime> createdDate;
   final Value<DateTime> updatedDate;
   final Value<int> rowid;
@@ -771,6 +813,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     this.logo = const Value.absent(),
     this.description = const Value.absent(),
     this.url = const Value.absent(),
+    this.isFavorite = const Value.absent(),
     this.createdDate = const Value.absent(),
     this.updatedDate = const Value.absent(),
     this.rowid = const Value.absent(),
@@ -784,6 +827,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     required String logo,
     this.description = const Value.absent(),
     required String url,
+    this.isFavorite = const Value.absent(),
     required DateTime createdDate,
     required DateTime updatedDate,
     this.rowid = const Value.absent(),
@@ -805,6 +849,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     Expression<String>? logo,
     Expression<String>? description,
     Expression<String>? url,
+    Expression<bool>? isFavorite,
     Expression<DateTime>? createdDate,
     Expression<DateTime>? updatedDate,
     Expression<int>? rowid,
@@ -818,6 +863,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       if (logo != null) 'logo': logo,
       if (description != null) 'description': description,
       if (url != null) 'url': url,
+      if (isFavorite != null) 'is_favorite': isFavorite,
       if (createdDate != null) 'created_date': createdDate,
       if (updatedDate != null) 'updated_date': updatedDate,
       if (rowid != null) 'rowid': rowid,
@@ -833,6 +879,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       Value<String>? logo,
       Value<String?>? description,
       Value<String>? url,
+      Value<bool>? isFavorite,
       Value<DateTime>? createdDate,
       Value<DateTime>? updatedDate,
       Value<int>? rowid}) {
@@ -845,6 +892,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
       logo: logo ?? this.logo,
       description: description ?? this.description,
       url: url ?? this.url,
+      isFavorite: isFavorite ?? this.isFavorite,
       createdDate: createdDate ?? this.createdDate,
       updatedDate: updatedDate ?? this.updatedDate,
       rowid: rowid ?? this.rowid,
@@ -878,6 +926,9 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
     if (url.present) {
       map['url'] = Variable<String>(url.value);
     }
+    if (isFavorite.present) {
+      map['is_favorite'] = Variable<bool>(isFavorite.value);
+    }
     if (createdDate.present) {
       map['created_date'] = Variable<DateTime>(createdDate.value);
     }
@@ -901,6 +952,7 @@ class RecordTableCompanion extends UpdateCompanion<RecordEntry> {
           ..write('logo: $logo, ')
           ..write('description: $description, ')
           ..write('url: $url, ')
+          ..write('isFavorite: $isFavorite, ')
           ..write('createdDate: $createdDate, ')
           ..write('updatedDate: $updatedDate, ')
           ..write('rowid: $rowid')

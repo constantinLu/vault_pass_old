@@ -19,8 +19,7 @@ part 'record_type_state.dart';
 class RecordTypeBloc extends Bloc<RecordTypeEvent, RecordTypeState> {
   RecordRepository recordRepository;
 
-  RecordTypeBloc(this.recordRepository)
-      : super(const RecordTypeState.initial()) {
+  RecordTypeBloc(this.recordRepository) : super(const RecordTypeState.initial()) {
     on<AccountTabBtnPressedEvent>((event, emit) => getAccountRecords(event, emit));
     on<AddressTabBtnPressedEvent>((event, emit) => getAddressRecords(event, emit));
     on<BusinessAccountTabBtnPressedEvent>((event, emit) => getBusinessAccounts(event, emit));
@@ -50,7 +49,6 @@ class RecordTypeBloc extends Bloc<RecordTypeEvent, RecordTypeState> {
       emit(const RecordTypeState.failure(ModelFailure.unexpected()));
     }
   }
-
 
   Future<void> getBusinessAccounts(
       BusinessAccountTabBtnPressedEvent event, Emitter<RecordTypeState> emit) async {

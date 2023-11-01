@@ -27,20 +27,6 @@ class TabWidget extends StatelessWidget {
   //check index helper
   bool checkIndex({required int index}) => currentIndex == index;
 
-  int tabChanger(RecordType recordType) {
-    if (recordType == RecordType.account) {
-      return 0;
-    }
-    if (recordType == RecordType.address) {
-      return 1;
-    }
-    if (recordType == RecordType.business) {
-      return 2;
-    } else {
-      return 0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RecordTypeBloc, RecordTypeState>(
@@ -61,7 +47,8 @@ class TabWidget extends StatelessWidget {
         return Container(
           width: double.infinity,
           height: double.infinity,
-          margin: const EdgeInsets.all(5),
+          margin: const EdgeInsets.fromLTRB(5, 2, 5, 5),
+          //TODO: AICI E O PROBLEMA DE RANDARE
           child: Column(
             children: <Widget>[
               Row(
@@ -102,9 +89,9 @@ class TabWidget extends StatelessWidget {
                         typeBloc: recordTypeBloc,
                         tabIndex: state.tabIndex,
                         child: Container(
-                            margin: const EdgeInsets.only(top: 30),
+                            margin: const EdgeInsets.only(top: 20),
                             width: double.infinity,
-                            height: heightPercentOf(60, context),
+                            height: heightPercentOf(63, context),
                             child: state.records.isEmpty
                                 ? Center(child: BackgroundImage(imageTypes(currentIndex)))
                                 : RecordCards(state.records)),

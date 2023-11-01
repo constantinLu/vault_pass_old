@@ -38,6 +38,8 @@ class RecordTable extends Table {
 
   TextColumn get url => text().withLength(min: 2, max: 100)();
 
+  BoolColumn get isFavorite => boolean().withDefault(const Constant(false))();
+
   DateTimeColumn get createdDate => dateTime()();
 
   DateTimeColumn get updatedDate => dateTime()();

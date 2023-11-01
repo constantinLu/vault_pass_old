@@ -13,7 +13,7 @@ class SplashView extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.map(
-          initial: (_) => {}, //DO NOTHING
+          initial: (_) => context.pushTo(const LoginView()),
           //TODO: change this after the app is finished
           unauthenticated: (_) => context.pushTo(const HomeView()),
           authorizedCredentials: (_) => context.pushTo(const HomeView()),

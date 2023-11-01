@@ -89,22 +89,22 @@ class _$RecordRemovalEventCopyWithImpl<$Res, $Val extends RecordRemovalEvent>
 }
 
 /// @nodoc
-abstract class _$$_RemovalEventCopyWith<$Res>
+abstract class _$$RemovalEventImplCopyWith<$Res>
     implements $RecordRemovalEventCopyWith<$Res> {
-  factory _$$_RemovalEventCopyWith(
-          _$_RemovalEvent value, $Res Function(_$_RemovalEvent) then) =
-      __$$_RemovalEventCopyWithImpl<$Res>;
+  factory _$$RemovalEventImplCopyWith(
+          _$RemovalEventImpl value, $Res Function(_$RemovalEventImpl) then) =
+      __$$RemovalEventImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$$_RemovalEventCopyWithImpl<$Res>
-    extends _$RecordRemovalEventCopyWithImpl<$Res, _$_RemovalEvent>
-    implements _$$_RemovalEventCopyWith<$Res> {
-  __$$_RemovalEventCopyWithImpl(
-      _$_RemovalEvent _value, $Res Function(_$_RemovalEvent) _then)
+class __$$RemovalEventImplCopyWithImpl<$Res>
+    extends _$RecordRemovalEventCopyWithImpl<$Res, _$RemovalEventImpl>
+    implements _$$RemovalEventImplCopyWith<$Res> {
+  __$$RemovalEventImplCopyWithImpl(
+      _$RemovalEventImpl _value, $Res Function(_$RemovalEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_RemovalEventCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$_RemovalEvent(
+    return _then(_$RemovalEventImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$_RemovalEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RemovalEvent implements _RemovalEvent {
-  const _$_RemovalEvent(this.id);
+class _$RemovalEventImpl implements _RemovalEvent {
+  const _$RemovalEventImpl(this.id);
 
   @override
   final UniqueId id;
@@ -138,7 +138,7 @@ class _$_RemovalEvent implements _RemovalEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RemovalEvent &&
+            other is _$RemovalEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -148,8 +148,8 @@ class _$_RemovalEvent implements _RemovalEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RemovalEventCopyWith<_$_RemovalEvent> get copyWith =>
-      __$$_RemovalEventCopyWithImpl<_$_RemovalEvent>(this, _$identity);
+  _$$RemovalEventImplCopyWith<_$RemovalEventImpl> get copyWith =>
+      __$$RemovalEventImplCopyWithImpl<_$RemovalEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -209,13 +209,13 @@ class _$_RemovalEvent implements _RemovalEvent {
 }
 
 abstract class _RemovalEvent implements RecordRemovalEvent {
-  const factory _RemovalEvent(final UniqueId id) = _$_RemovalEvent;
+  const factory _RemovalEvent(final UniqueId id) = _$RemovalEventImpl;
 
   @override
   UniqueId get id;
   @override
   @JsonKey(ignore: true)
-  _$$_RemovalEventCopyWith<_$_RemovalEvent> get copyWith =>
+  _$$RemovalEventImplCopyWith<_$RemovalEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -292,25 +292,25 @@ class _$RecordRemovalStateCopyWithImpl<$Res, $Val extends RecordRemovalState>
 }
 
 /// @nodoc
-abstract class _$$_InitialRemovalStateCopyWith<$Res> {
-  factory _$$_InitialRemovalStateCopyWith(_$_InitialRemovalState value,
-          $Res Function(_$_InitialRemovalState) then) =
-      __$$_InitialRemovalStateCopyWithImpl<$Res>;
+abstract class _$$InitialRemovalStateImplCopyWith<$Res> {
+  factory _$$InitialRemovalStateImplCopyWith(_$InitialRemovalStateImpl value,
+          $Res Function(_$InitialRemovalStateImpl) then) =
+      __$$InitialRemovalStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialRemovalStateCopyWithImpl<$Res>
-    extends _$RecordRemovalStateCopyWithImpl<$Res, _$_InitialRemovalState>
-    implements _$$_InitialRemovalStateCopyWith<$Res> {
-  __$$_InitialRemovalStateCopyWithImpl(_$_InitialRemovalState _value,
-      $Res Function(_$_InitialRemovalState) _then)
+class __$$InitialRemovalStateImplCopyWithImpl<$Res>
+    extends _$RecordRemovalStateCopyWithImpl<$Res, _$InitialRemovalStateImpl>
+    implements _$$InitialRemovalStateImplCopyWith<$Res> {
+  __$$InitialRemovalStateImplCopyWithImpl(_$InitialRemovalStateImpl _value,
+      $Res Function(_$InitialRemovalStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitialRemovalState implements _InitialRemovalState {
-  const _$_InitialRemovalState();
+class _$InitialRemovalStateImpl implements _InitialRemovalState {
+  const _$InitialRemovalStateImpl();
 
   @override
   String toString() {
@@ -320,7 +320,8 @@ class _$_InitialRemovalState implements _InitialRemovalState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitialRemovalState);
+        (other.runtimeType == runtimeType &&
+            other is _$InitialRemovalStateImpl);
   }
 
   @override
@@ -402,29 +403,29 @@ class _$_InitialRemovalState implements _InitialRemovalState {
 }
 
 abstract class _InitialRemovalState implements RecordRemovalState {
-  const factory _InitialRemovalState() = _$_InitialRemovalState;
+  const factory _InitialRemovalState() = _$InitialRemovalStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingRemovalStateCopyWith<$Res> {
-  factory _$$_LoadingRemovalStateCopyWith(_$_LoadingRemovalState value,
-          $Res Function(_$_LoadingRemovalState) then) =
-      __$$_LoadingRemovalStateCopyWithImpl<$Res>;
+abstract class _$$LoadingRemovalStateImplCopyWith<$Res> {
+  factory _$$LoadingRemovalStateImplCopyWith(_$LoadingRemovalStateImpl value,
+          $Res Function(_$LoadingRemovalStateImpl) then) =
+      __$$LoadingRemovalStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingRemovalStateCopyWithImpl<$Res>
-    extends _$RecordRemovalStateCopyWithImpl<$Res, _$_LoadingRemovalState>
-    implements _$$_LoadingRemovalStateCopyWith<$Res> {
-  __$$_LoadingRemovalStateCopyWithImpl(_$_LoadingRemovalState _value,
-      $Res Function(_$_LoadingRemovalState) _then)
+class __$$LoadingRemovalStateImplCopyWithImpl<$Res>
+    extends _$RecordRemovalStateCopyWithImpl<$Res, _$LoadingRemovalStateImpl>
+    implements _$$LoadingRemovalStateImplCopyWith<$Res> {
+  __$$LoadingRemovalStateImplCopyWithImpl(_$LoadingRemovalStateImpl _value,
+      $Res Function(_$LoadingRemovalStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_LoadingRemovalState implements _LoadingRemovalState {
-  const _$_LoadingRemovalState();
+class _$LoadingRemovalStateImpl implements _LoadingRemovalState {
+  const _$LoadingRemovalStateImpl();
 
   @override
   String toString() {
@@ -434,7 +435,8 @@ class _$_LoadingRemovalState implements _LoadingRemovalState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_LoadingRemovalState);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadingRemovalStateImpl);
   }
 
   @override
@@ -516,29 +518,29 @@ class _$_LoadingRemovalState implements _LoadingRemovalState {
 }
 
 abstract class _LoadingRemovalState implements RecordRemovalState {
-  const factory _LoadingRemovalState() = _$_LoadingRemovalState;
+  const factory _LoadingRemovalState() = _$LoadingRemovalStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_SuccessRemovalStateCopyWith<$Res> {
-  factory _$$_SuccessRemovalStateCopyWith(_$_SuccessRemovalState value,
-          $Res Function(_$_SuccessRemovalState) then) =
-      __$$_SuccessRemovalStateCopyWithImpl<$Res>;
+abstract class _$$SuccessRemovalStateImplCopyWith<$Res> {
+  factory _$$SuccessRemovalStateImplCopyWith(_$SuccessRemovalStateImpl value,
+          $Res Function(_$SuccessRemovalStateImpl) then) =
+      __$$SuccessRemovalStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SuccessRemovalStateCopyWithImpl<$Res>
-    extends _$RecordRemovalStateCopyWithImpl<$Res, _$_SuccessRemovalState>
-    implements _$$_SuccessRemovalStateCopyWith<$Res> {
-  __$$_SuccessRemovalStateCopyWithImpl(_$_SuccessRemovalState _value,
-      $Res Function(_$_SuccessRemovalState) _then)
+class __$$SuccessRemovalStateImplCopyWithImpl<$Res>
+    extends _$RecordRemovalStateCopyWithImpl<$Res, _$SuccessRemovalStateImpl>
+    implements _$$SuccessRemovalStateImplCopyWith<$Res> {
+  __$$SuccessRemovalStateImplCopyWithImpl(_$SuccessRemovalStateImpl _value,
+      $Res Function(_$SuccessRemovalStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SuccessRemovalState implements _SuccessRemovalState {
-  const _$_SuccessRemovalState();
+class _$SuccessRemovalStateImpl implements _SuccessRemovalState {
+  const _$SuccessRemovalStateImpl();
 
   @override
   String toString() {
@@ -548,7 +550,8 @@ class _$_SuccessRemovalState implements _SuccessRemovalState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SuccessRemovalState);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessRemovalStateImpl);
   }
 
   @override
@@ -630,14 +633,14 @@ class _$_SuccessRemovalState implements _SuccessRemovalState {
 }
 
 abstract class _SuccessRemovalState implements RecordRemovalState {
-  const factory _SuccessRemovalState() = _$_SuccessRemovalState;
+  const factory _SuccessRemovalState() = _$SuccessRemovalStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_FailureRemovalStateCopyWith<$Res> {
-  factory _$$_FailureRemovalStateCopyWith(_$_FailureRemovalState value,
-          $Res Function(_$_FailureRemovalState) then) =
-      __$$_FailureRemovalStateCopyWithImpl<$Res>;
+abstract class _$$FailureRemovalStateImplCopyWith<$Res> {
+  factory _$$FailureRemovalStateImplCopyWith(_$FailureRemovalStateImpl value,
+          $Res Function(_$FailureRemovalStateImpl) then) =
+      __$$FailureRemovalStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ModelFailure failure});
 
@@ -645,11 +648,11 @@ abstract class _$$_FailureRemovalStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FailureRemovalStateCopyWithImpl<$Res>
-    extends _$RecordRemovalStateCopyWithImpl<$Res, _$_FailureRemovalState>
-    implements _$$_FailureRemovalStateCopyWith<$Res> {
-  __$$_FailureRemovalStateCopyWithImpl(_$_FailureRemovalState _value,
-      $Res Function(_$_FailureRemovalState) _then)
+class __$$FailureRemovalStateImplCopyWithImpl<$Res>
+    extends _$RecordRemovalStateCopyWithImpl<$Res, _$FailureRemovalStateImpl>
+    implements _$$FailureRemovalStateImplCopyWith<$Res> {
+  __$$FailureRemovalStateImplCopyWithImpl(_$FailureRemovalStateImpl _value,
+      $Res Function(_$FailureRemovalStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -657,7 +660,7 @@ class __$$_FailureRemovalStateCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$_FailureRemovalState(
+    return _then(_$FailureRemovalStateImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -676,8 +679,8 @@ class __$$_FailureRemovalStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FailureRemovalState implements _FailureRemovalState {
-  const _$_FailureRemovalState(this.failure);
+class _$FailureRemovalStateImpl implements _FailureRemovalState {
+  const _$FailureRemovalStateImpl(this.failure);
 
   @override
   final ModelFailure failure;
@@ -691,7 +694,7 @@ class _$_FailureRemovalState implements _FailureRemovalState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FailureRemovalState &&
+            other is _$FailureRemovalStateImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -701,8 +704,8 @@ class _$_FailureRemovalState implements _FailureRemovalState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FailureRemovalStateCopyWith<_$_FailureRemovalState> get copyWith =>
-      __$$_FailureRemovalStateCopyWithImpl<_$_FailureRemovalState>(
+  _$$FailureRemovalStateImplCopyWith<_$FailureRemovalStateImpl> get copyWith =>
+      __$$FailureRemovalStateImplCopyWithImpl<_$FailureRemovalStateImpl>(
           this, _$identity);
 
   @override
@@ -782,10 +785,10 @@ class _$_FailureRemovalState implements _FailureRemovalState {
 
 abstract class _FailureRemovalState implements RecordRemovalState {
   const factory _FailureRemovalState(final ModelFailure failure) =
-      _$_FailureRemovalState;
+      _$FailureRemovalStateImpl;
 
   ModelFailure get failure;
   @JsonKey(ignore: true)
-  _$$_FailureRemovalStateCopyWith<_$_FailureRemovalState> get copyWith =>
+  _$$FailureRemovalStateImplCopyWith<_$FailureRemovalStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

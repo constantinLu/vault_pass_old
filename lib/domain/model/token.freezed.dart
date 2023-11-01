@@ -67,18 +67,21 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
 }
 
 /// @nodoc
-abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
-      __$$_TokenCopyWithImpl<$Res>;
+abstract class _$$TokenImplCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$$TokenImplCopyWith(
+          _$TokenImpl value, $Res Function(_$TokenImpl) then) =
+      __$$TokenImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic userId, dynamic emailAddress, dynamic password});
 }
 
 /// @nodoc
-class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
-    implements _$$_TokenCopyWith<$Res> {
-  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
+class __$$TokenImplCopyWithImpl<$Res>
+    extends _$TokenCopyWithImpl<$Res, _$TokenImpl>
+    implements _$$TokenImplCopyWith<$Res> {
+  __$$TokenImplCopyWithImpl(
+      _$TokenImpl _value, $Res Function(_$TokenImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +91,7 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
     Object? emailAddress = freezed,
     Object? password = freezed,
   }) {
-    return _then(_$_Token(
+    return _then(_$TokenImpl(
       userId: freezed == userId ? _value.userId! : userId,
       emailAddress:
           freezed == emailAddress ? _value.emailAddress! : emailAddress,
@@ -99,8 +102,8 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
 
 /// @nodoc
 
-class _$_Token extends _Token {
-  _$_Token({this.userId, this.emailAddress, this.password}) : super._();
+class _$TokenImpl extends _Token {
+  _$TokenImpl({this.userId, this.emailAddress, this.password}) : super._();
 
   @override
   final dynamic userId;
@@ -118,7 +121,7 @@ class _$_Token extends _Token {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Token &&
+            other is _$TokenImpl &&
             const DeepCollectionEquality().equals(other.userId, userId) &&
             const DeepCollectionEquality()
                 .equals(other.emailAddress, emailAddress) &&
@@ -135,15 +138,15 @@ class _$_Token extends _Token {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
-      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
+      __$$TokenImplCopyWithImpl<_$TokenImpl>(this, _$identity);
 }
 
 abstract class _Token extends Token {
   factory _Token(
       {final dynamic userId,
       final dynamic emailAddress,
-      final dynamic password}) = _$_Token;
+      final dynamic password}) = _$TokenImpl;
   _Token._() : super._();
 
   @override
@@ -154,6 +157,6 @@ abstract class _Token extends Token {
   dynamic get password;
   @override
   @JsonKey(ignore: true)
-  _$$_TokenCopyWith<_$_Token> get copyWith =>
+  _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

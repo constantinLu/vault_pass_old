@@ -7,7 +7,7 @@ part 'record.freezed.dart';
 abstract class Record implements _$Record {
   const Record._();
 
-  const factory Record({
+  factory Record({
     required UniqueId id,
     required Name recordName,
     required RecordType type,
@@ -18,6 +18,7 @@ abstract class Record implements _$Record {
     required Url url,
     required DateTime createdDate,
     required DateTime updatedDate,
+    bool? isFavorite,
   }) = _Record;
 
   factory Record.empty() => Record(
@@ -29,6 +30,7 @@ abstract class Record implements _$Record {
       logo: "",
       description: Description(""),
       url: Url(""),
+      isFavorite: false,
       createdDate: DateTime.now(),
       updatedDate: DateTime.now());
 
@@ -47,6 +49,7 @@ abstract class Record implements _$Record {
           logo: logo,
           description: Description(description),
           url: Url(url),
+          isFavorite: false,
           createdDate: DateTime.now(),
           updatedDate: DateTime.now());
 
@@ -58,6 +61,7 @@ abstract class Record implements _$Record {
     required String loginPassword,
     required String url,
     required String description,
+    bool? isFavorite,
   }) =>
       Record(
           id: UniqueId(),
@@ -68,6 +72,7 @@ abstract class Record implements _$Record {
           logo: logo,
           description: Description(description),
           url: Url(url),
+          isFavorite: isFavorite ?? false,
           createdDate: DateTime.now(),
           updatedDate: DateTime.now());
 
@@ -80,6 +85,7 @@ abstract class Record implements _$Record {
     required String loginPassword,
     required String url,
     required String description,
+    bool? isFavorite,
   }) =>
       Record(
           id: id,
@@ -90,6 +96,7 @@ abstract class Record implements _$Record {
           logo: logo,
           description: Description(description),
           url: Url(url),
+          isFavorite: isFavorite ?? false,
           createdDate: DateTime.now(),
           updatedDate: DateTime.now());
 }

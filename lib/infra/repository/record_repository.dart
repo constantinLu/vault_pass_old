@@ -79,4 +79,26 @@ class RecordRepository extends DatabaseAccessor<VaultPassDb> with _$RecordReposi
       return Either.left(const ModelFailure.unexpected());
     }
   }
+
+  Future<List<Record>> getFavorites() async {
+    final recordEntries = await (select(recordTable)
+          ..where((userEntity) => userEntity.isFavorite.equals(true)))
+        .get();
+    return RecordMapper.toModels(recordEntries);
+  }
+
+  Future<Either<ModelFailure, bool>> updateFavorites(UniqueId recordId, bool isFavorite) async {
+    try {
+      final updated =
+          await db.customUpdate('UPDATE record_table SET is_favorite = ? WHERE id = ?', variables: [
+        Variable.withBool(isFavorite),
+        Variable.withString(recordId.get()),
+      ], updates: {
+        recordTable
+      });
+      return updated == 1 ? Either.right(isFavorite) : Either.left(const ModelFailure.unexpected());
+    } catch (e) {
+      return Either.left(const ModelFailure.unexpected());
+    }
+  }
 }

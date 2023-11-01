@@ -4,7 +4,7 @@ import 'package:vault_pass/presentation/router/app_router.gr.dart';
 
 import '../utils/palette.dart';
 //TODO: remove child if not needed
-class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   Widget? child;
 
   AppBarWidget.withChild(this.child, {super.key});

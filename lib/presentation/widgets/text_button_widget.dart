@@ -14,6 +14,7 @@ class TextButtonWidget extends StatelessWidget {
     this.icon,
     this.btnSize = BtnSize.def,
     this.bold = true,
+    this.isLoading = false,
   }) : super(key: key);
 
   final String buttonName;
@@ -23,6 +24,7 @@ class TextButtonWidget extends StatelessWidget {
   final IconData? icon;
   final BtnSize? btnSize;
   final bool? bold;
+  final bool? isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -47,19 +49,24 @@ class TextButtonWidget extends StatelessWidget {
             ),
           ),
           onPressed: onTap,
-          child: Row(
-            mainAxisAlignment: _isBtnDef() ? MainAxisAlignment.center : MainAxisAlignment.start,
-            children: [
-              Icon(icon, size: _isBtnDef() ? 0 : 20),
-              SizedBox(width: _isBtnDef() ? 0 : 10),
-              Text(
-                buttonName,
-                style: bold! //just to keep the backwards compatibility
-                    ? buttonText16.copyWith(color: textColor)
-                    : buttonText15.copyWith(color: textColor),
-              ),
-            ],
-          ),
+          child: isLoading!
+              ? Row(
+                  children: [_progressIndicator()],
+                )
+              : Row(
+                  mainAxisAlignment:
+                      _isBtnDef() ? MainAxisAlignment.center : MainAxisAlignment.start,
+                  children: [
+                    Icon(icon, size: _isBtnDef() ? 0 : 20),
+                    SizedBox(width: _isBtnDef() ? 0 : 10),
+                    Text(
+                      buttonName,
+                      style: bold! //just to keep the backwards compatibility
+                          ? buttonText16.copyWith(color: textColor)
+                          : buttonText15.copyWith(color: textColor),
+                    ),
+                  ],
+                ),
         ),
       ),
     );
@@ -92,3 +99,15 @@ enum BtnSize {
   custom,
   def,
 } //default
+
+Widget _progressIndicator() {
+  return const SizedBox(
+    height: 20,
+    width: 20,
+    child: CircularProgressIndicator(
+      valueColor: AlwaysStoppedAnimation(Colors.white),
+      backgroundColor: Colors.white12,
+      strokeWidth: 3,
+    ),
+  );
+}

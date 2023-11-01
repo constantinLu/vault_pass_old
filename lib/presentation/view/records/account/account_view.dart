@@ -74,7 +74,8 @@ class _AccountViewState extends State<AccountView> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //! RECORD TYPE
-                                  TitleWidget(value: '${state.record.type.value.toLowerCase()} details'),
+                                  TitleWidget(
+                                      value: '${state.record.type.value.toLowerCase()} details'),
                                   const Divider(height: 10, thickness: 1, color: Colors.white),
                                   const SizedBox(height: 10),
 
@@ -120,7 +121,6 @@ class _AccountViewState extends State<AccountView> {
     );
   }
 }
-
 
 class _SpeedDialFabWidget extends StatelessWidget {
   final UniqueId recordId;

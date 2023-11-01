@@ -9,10 +9,10 @@ const headline34 = TextStyle(
 );
 
 headerText_white(int size) => TextStyle(
-  fontSize: size.toDouble(),
-  color: whiteFull,
-  fontWeight: FontWeight.bold,
-);
+      fontSize: size.toDouble(),
+      color: whiteFull,
+      fontWeight: FontWeight.bold,
+    );
 
 headerText20(Color color) => TextStyle(
       fontSize: 20,
@@ -21,21 +21,26 @@ headerText20(Color color) => TextStyle(
     );
 
 headerWhite(int size) => TextStyle(
-  color: whiteFull,
-  fontSize: size.toDouble(),
-  fontWeight: FontWeight.bold,
-);
+      color: whiteFull,
+      fontSize: size.toDouble(),
+      fontWeight: FontWeight.bold,
+    );
 
 // body
 bodyText(int size, Color color) => TextStyle(
-  color: color,
-  fontSize: size.toDouble(),
-);
+      color: color,
+      fontSize: size.toDouble(),
+    );
+
+bodyText_black(int size) => TextStyle(
+      color: blackFull,
+      fontSize: size.toDouble(),
+    );
 
 bodyText15(Color color) => TextStyle(
-  color: color,
-  fontSize: 15,
-);
+      color: color,
+      fontSize: 15,
+    );
 
 const bodyText15_grey = TextStyle(
   color: greySpanish,

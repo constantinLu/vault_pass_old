@@ -92,21 +92,22 @@ class _$RecordTypeEventCopyWithImpl<$Res, $Val extends RecordTypeEvent>
 }
 
 /// @nodoc
-abstract class _$$AccountTabBtnPressedEventCopyWith<$Res> {
-  factory _$$AccountTabBtnPressedEventCopyWith(
-          _$AccountTabBtnPressedEvent value,
-          $Res Function(_$AccountTabBtnPressedEvent) then) =
-      __$$AccountTabBtnPressedEventCopyWithImpl<$Res>;
+abstract class _$$AccountTabBtnPressedEventImplCopyWith<$Res> {
+  factory _$$AccountTabBtnPressedEventImplCopyWith(
+          _$AccountTabBtnPressedEventImpl value,
+          $Res Function(_$AccountTabBtnPressedEventImpl) then) =
+      __$$AccountTabBtnPressedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
-    extends _$RecordTypeEventCopyWithImpl<$Res, _$AccountTabBtnPressedEvent>
-    implements _$$AccountTabBtnPressedEventCopyWith<$Res> {
-  __$$AccountTabBtnPressedEventCopyWithImpl(_$AccountTabBtnPressedEvent _value,
-      $Res Function(_$AccountTabBtnPressedEvent) _then)
+class __$$AccountTabBtnPressedEventImplCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res, _$AccountTabBtnPressedEventImpl>
+    implements _$$AccountTabBtnPressedEventImplCopyWith<$Res> {
+  __$$AccountTabBtnPressedEventImplCopyWithImpl(
+      _$AccountTabBtnPressedEventImpl _value,
+      $Res Function(_$AccountTabBtnPressedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -114,7 +115,7 @@ class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$AccountTabBtnPressedEvent(
+    return _then(_$AccountTabBtnPressedEventImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -125,10 +126,10 @@ class __$$AccountTabBtnPressedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AccountTabBtnPressedEvent
+class _$AccountTabBtnPressedEventImpl
     with DiagnosticableTreeMixin
     implements AccountTabBtnPressedEvent {
-  const _$AccountTabBtnPressedEvent(this.index);
+  const _$AccountTabBtnPressedEventImpl(this.index);
 
   @override
   final int index;
@@ -150,7 +151,7 @@ class _$AccountTabBtnPressedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AccountTabBtnPressedEvent &&
+            other is _$AccountTabBtnPressedEventImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -160,9 +161,9 @@ class _$AccountTabBtnPressedEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AccountTabBtnPressedEventCopyWith<_$AccountTabBtnPressedEvent>
-      get copyWith => __$$AccountTabBtnPressedEventCopyWithImpl<
-          _$AccountTabBtnPressedEvent>(this, _$identity);
+  _$$AccountTabBtnPressedEventImplCopyWith<_$AccountTabBtnPressedEventImpl>
+      get copyWith => __$$AccountTabBtnPressedEventImplCopyWithImpl<
+          _$AccountTabBtnPressedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -246,30 +247,31 @@ class _$AccountTabBtnPressedEvent
 
 abstract class AccountTabBtnPressedEvent implements RecordTypeEvent {
   const factory AccountTabBtnPressedEvent(final int index) =
-      _$AccountTabBtnPressedEvent;
+      _$AccountTabBtnPressedEventImpl;
 
   int get index;
   @JsonKey(ignore: true)
-  _$$AccountTabBtnPressedEventCopyWith<_$AccountTabBtnPressedEvent>
+  _$$AccountTabBtnPressedEventImplCopyWith<_$AccountTabBtnPressedEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddressTabBtnPressedEventCopyWith<$Res> {
-  factory _$$AddressTabBtnPressedEventCopyWith(
-          _$AddressTabBtnPressedEvent value,
-          $Res Function(_$AddressTabBtnPressedEvent) then) =
-      __$$AddressTabBtnPressedEventCopyWithImpl<$Res>;
+abstract class _$$AddressTabBtnPressedEventImplCopyWith<$Res> {
+  factory _$$AddressTabBtnPressedEventImplCopyWith(
+          _$AddressTabBtnPressedEventImpl value,
+          $Res Function(_$AddressTabBtnPressedEventImpl) then) =
+      __$$AddressTabBtnPressedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
-    extends _$RecordTypeEventCopyWithImpl<$Res, _$AddressTabBtnPressedEvent>
-    implements _$$AddressTabBtnPressedEventCopyWith<$Res> {
-  __$$AddressTabBtnPressedEventCopyWithImpl(_$AddressTabBtnPressedEvent _value,
-      $Res Function(_$AddressTabBtnPressedEvent) _then)
+class __$$AddressTabBtnPressedEventImplCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res, _$AddressTabBtnPressedEventImpl>
+    implements _$$AddressTabBtnPressedEventImplCopyWith<$Res> {
+  __$$AddressTabBtnPressedEventImplCopyWithImpl(
+      _$AddressTabBtnPressedEventImpl _value,
+      $Res Function(_$AddressTabBtnPressedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -277,7 +279,7 @@ class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$AddressTabBtnPressedEvent(
+    return _then(_$AddressTabBtnPressedEventImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -288,10 +290,10 @@ class __$$AddressTabBtnPressedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AddressTabBtnPressedEvent
+class _$AddressTabBtnPressedEventImpl
     with DiagnosticableTreeMixin
     implements AddressTabBtnPressedEvent {
-  const _$AddressTabBtnPressedEvent(this.index);
+  const _$AddressTabBtnPressedEventImpl(this.index);
 
   @override
   final int index;
@@ -313,7 +315,7 @@ class _$AddressTabBtnPressedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AddressTabBtnPressedEvent &&
+            other is _$AddressTabBtnPressedEventImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -323,9 +325,9 @@ class _$AddressTabBtnPressedEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$AddressTabBtnPressedEventCopyWith<_$AddressTabBtnPressedEvent>
-      get copyWith => __$$AddressTabBtnPressedEventCopyWithImpl<
-          _$AddressTabBtnPressedEvent>(this, _$identity);
+  _$$AddressTabBtnPressedEventImplCopyWith<_$AddressTabBtnPressedEventImpl>
+      get copyWith => __$$AddressTabBtnPressedEventImplCopyWithImpl<
+          _$AddressTabBtnPressedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -409,32 +411,32 @@ class _$AddressTabBtnPressedEvent
 
 abstract class AddressTabBtnPressedEvent implements RecordTypeEvent {
   const factory AddressTabBtnPressedEvent(final int index) =
-      _$AddressTabBtnPressedEvent;
+      _$AddressTabBtnPressedEventImpl;
 
   int get index;
   @JsonKey(ignore: true)
-  _$$AddressTabBtnPressedEventCopyWith<_$AddressTabBtnPressedEvent>
+  _$$AddressTabBtnPressedEventImplCopyWith<_$AddressTabBtnPressedEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$BusinessAccountTabBtnPressedEventCopyWith<$Res> {
-  factory _$$BusinessAccountTabBtnPressedEventCopyWith(
-          _$BusinessAccountTabBtnPressedEvent value,
-          $Res Function(_$BusinessAccountTabBtnPressedEvent) then) =
-      __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>;
+abstract class _$$BusinessAccountTabBtnPressedEventImplCopyWith<$Res> {
+  factory _$$BusinessAccountTabBtnPressedEventImplCopyWith(
+          _$BusinessAccountTabBtnPressedEventImpl value,
+          $Res Function(_$BusinessAccountTabBtnPressedEventImpl) then) =
+      __$$BusinessAccountTabBtnPressedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int index});
 }
 
 /// @nodoc
-class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
+class __$$BusinessAccountTabBtnPressedEventImplCopyWithImpl<$Res>
     extends _$RecordTypeEventCopyWithImpl<$Res,
-        _$BusinessAccountTabBtnPressedEvent>
-    implements _$$BusinessAccountTabBtnPressedEventCopyWith<$Res> {
-  __$$BusinessAccountTabBtnPressedEventCopyWithImpl(
-      _$BusinessAccountTabBtnPressedEvent _value,
-      $Res Function(_$BusinessAccountTabBtnPressedEvent) _then)
+        _$BusinessAccountTabBtnPressedEventImpl>
+    implements _$$BusinessAccountTabBtnPressedEventImplCopyWith<$Res> {
+  __$$BusinessAccountTabBtnPressedEventImplCopyWithImpl(
+      _$BusinessAccountTabBtnPressedEventImpl _value,
+      $Res Function(_$BusinessAccountTabBtnPressedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -442,7 +444,7 @@ class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
   $Res call({
     Object? index = null,
   }) {
-    return _then(_$BusinessAccountTabBtnPressedEvent(
+    return _then(_$BusinessAccountTabBtnPressedEventImpl(
       null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
@@ -453,10 +455,10 @@ class __$$BusinessAccountTabBtnPressedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$BusinessAccountTabBtnPressedEvent
+class _$BusinessAccountTabBtnPressedEventImpl
     with DiagnosticableTreeMixin
     implements BusinessAccountTabBtnPressedEvent {
-  const _$BusinessAccountTabBtnPressedEvent(this.index);
+  const _$BusinessAccountTabBtnPressedEventImpl(this.index);
 
   @override
   final int index;
@@ -479,7 +481,7 @@ class _$BusinessAccountTabBtnPressedEvent
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BusinessAccountTabBtnPressedEvent &&
+            other is _$BusinessAccountTabBtnPressedEventImpl &&
             (identical(other.index, index) || other.index == index));
   }
 
@@ -489,10 +491,10 @@ class _$BusinessAccountTabBtnPressedEvent
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BusinessAccountTabBtnPressedEventCopyWith<
-          _$BusinessAccountTabBtnPressedEvent>
-      get copyWith => __$$BusinessAccountTabBtnPressedEventCopyWithImpl<
-          _$BusinessAccountTabBtnPressedEvent>(this, _$identity);
+  _$$BusinessAccountTabBtnPressedEventImplCopyWith<
+          _$BusinessAccountTabBtnPressedEventImpl>
+      get copyWith => __$$BusinessAccountTabBtnPressedEventImplCopyWithImpl<
+          _$BusinessAccountTabBtnPressedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -576,35 +578,37 @@ class _$BusinessAccountTabBtnPressedEvent
 
 abstract class BusinessAccountTabBtnPressedEvent implements RecordTypeEvent {
   const factory BusinessAccountTabBtnPressedEvent(final int index) =
-      _$BusinessAccountTabBtnPressedEvent;
+      _$BusinessAccountTabBtnPressedEventImpl;
 
   int get index;
   @JsonKey(ignore: true)
-  _$$BusinessAccountTabBtnPressedEventCopyWith<
-          _$BusinessAccountTabBtnPressedEvent>
+  _$$BusinessAccountTabBtnPressedEventImplCopyWith<
+          _$BusinessAccountTabBtnPressedEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FinishedEventCopyWith<$Res> {
-  factory _$$FinishedEventCopyWith(
-          _$FinishedEvent value, $Res Function(_$FinishedEvent) then) =
-      __$$FinishedEventCopyWithImpl<$Res>;
+abstract class _$$FinishedEventImplCopyWith<$Res> {
+  factory _$$FinishedEventImplCopyWith(
+          _$FinishedEventImpl value, $Res Function(_$FinishedEventImpl) then) =
+      __$$FinishedEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FinishedEventCopyWithImpl<$Res>
-    extends _$RecordTypeEventCopyWithImpl<$Res, _$FinishedEvent>
-    implements _$$FinishedEventCopyWith<$Res> {
-  __$$FinishedEventCopyWithImpl(
-      _$FinishedEvent _value, $Res Function(_$FinishedEvent) _then)
+class __$$FinishedEventImplCopyWithImpl<$Res>
+    extends _$RecordTypeEventCopyWithImpl<$Res, _$FinishedEventImpl>
+    implements _$$FinishedEventImplCopyWith<$Res> {
+  __$$FinishedEventImplCopyWithImpl(
+      _$FinishedEventImpl _value, $Res Function(_$FinishedEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
-  const _$FinishedEvent();
+class _$FinishedEventImpl
+    with DiagnosticableTreeMixin
+    implements FinishedEvent {
+  const _$FinishedEventImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -620,7 +624,7 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FinishedEvent);
+        (other.runtimeType == runtimeType && other is _$FinishedEventImpl);
   }
 
   @override
@@ -707,7 +711,7 @@ class _$FinishedEvent with DiagnosticableTreeMixin implements FinishedEvent {
 }
 
 abstract class FinishedEvent implements RecordTypeEvent {
-  const factory FinishedEvent() = _$FinishedEvent;
+  const factory FinishedEvent() = _$FinishedEventImpl;
 }
 
 /// @nodoc
@@ -783,27 +787,27 @@ class _$RecordTypeStateCopyWithImpl<$Res, $Val extends RecordTypeState>
 }
 
 /// @nodoc
-abstract class _$$InitialTypeStateCopyWith<$Res> {
-  factory _$$InitialTypeStateCopyWith(
-          _$InitialTypeState value, $Res Function(_$InitialTypeState) then) =
-      __$$InitialTypeStateCopyWithImpl<$Res>;
+abstract class _$$InitialTypeStateImplCopyWith<$Res> {
+  factory _$$InitialTypeStateImplCopyWith(_$InitialTypeStateImpl value,
+          $Res Function(_$InitialTypeStateImpl) then) =
+      __$$InitialTypeStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$InitialTypeState>
-    implements _$$InitialTypeStateCopyWith<$Res> {
-  __$$InitialTypeStateCopyWithImpl(
-      _$InitialTypeState _value, $Res Function(_$InitialTypeState) _then)
+class __$$InitialTypeStateImplCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$InitialTypeStateImpl>
+    implements _$$InitialTypeStateImplCopyWith<$Res> {
+  __$$InitialTypeStateImplCopyWithImpl(_$InitialTypeStateImpl _value,
+      $Res Function(_$InitialTypeStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitialTypeState
+class _$InitialTypeStateImpl
     with DiagnosticableTreeMixin
     implements InitialTypeState {
-  const _$InitialTypeState();
+  const _$InitialTypeStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -819,7 +823,7 @@ class _$InitialTypeState
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialTypeState);
+        (other.runtimeType == runtimeType && other is _$InitialTypeStateImpl);
   }
 
   @override
@@ -901,31 +905,31 @@ class _$InitialTypeState
 }
 
 abstract class InitialTypeState implements RecordTypeState {
-  const factory InitialTypeState() = _$InitialTypeState;
+  const factory InitialTypeState() = _$InitialTypeStateImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingTypeStateCopyWith<$Res> {
-  factory _$$LoadingTypeStateCopyWith(
-          _$LoadingTypeState value, $Res Function(_$LoadingTypeState) then) =
-      __$$LoadingTypeStateCopyWithImpl<$Res>;
+abstract class _$$LoadingTypeStateImplCopyWith<$Res> {
+  factory _$$LoadingTypeStateImplCopyWith(_$LoadingTypeStateImpl value,
+          $Res Function(_$LoadingTypeStateImpl) then) =
+      __$$LoadingTypeStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$LoadingTypeState>
-    implements _$$LoadingTypeStateCopyWith<$Res> {
-  __$$LoadingTypeStateCopyWithImpl(
-      _$LoadingTypeState _value, $Res Function(_$LoadingTypeState) _then)
+class __$$LoadingTypeStateImplCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$LoadingTypeStateImpl>
+    implements _$$LoadingTypeStateImplCopyWith<$Res> {
+  __$$LoadingTypeStateImplCopyWithImpl(_$LoadingTypeStateImpl _value,
+      $Res Function(_$LoadingTypeStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LoadingTypeState
+class _$LoadingTypeStateImpl
     with DiagnosticableTreeMixin
     implements LoadingTypeState {
-  const _$LoadingTypeState();
+  const _$LoadingTypeStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -941,7 +945,7 @@ class _$LoadingTypeState
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingTypeState);
+        (other.runtimeType == runtimeType && other is _$LoadingTypeStateImpl);
   }
 
   @override
@@ -1023,24 +1027,24 @@ class _$LoadingTypeState
 }
 
 abstract class LoadingTypeState implements RecordTypeState {
-  const factory LoadingTypeState() = _$LoadingTypeState;
+  const factory LoadingTypeState() = _$LoadingTypeStateImpl;
 }
 
 /// @nodoc
-abstract class _$$SuccessTypeStateCopyWith<$Res> {
-  factory _$$SuccessTypeStateCopyWith(
-          _$SuccessTypeState value, $Res Function(_$SuccessTypeState) then) =
-      __$$SuccessTypeStateCopyWithImpl<$Res>;
+abstract class _$$SuccessTypeStateImplCopyWith<$Res> {
+  factory _$$SuccessTypeStateImplCopyWith(_$SuccessTypeStateImpl value,
+          $Res Function(_$SuccessTypeStateImpl) then) =
+      __$$SuccessTypeStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Record> records, int tabIndex});
 }
 
 /// @nodoc
-class __$$SuccessTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$SuccessTypeState>
-    implements _$$SuccessTypeStateCopyWith<$Res> {
-  __$$SuccessTypeStateCopyWithImpl(
-      _$SuccessTypeState _value, $Res Function(_$SuccessTypeState) _then)
+class __$$SuccessTypeStateImplCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$SuccessTypeStateImpl>
+    implements _$$SuccessTypeStateImplCopyWith<$Res> {
+  __$$SuccessTypeStateImplCopyWithImpl(_$SuccessTypeStateImpl _value,
+      $Res Function(_$SuccessTypeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1049,7 +1053,7 @@ class __$$SuccessTypeStateCopyWithImpl<$Res>
     Object? records = null,
     Object? tabIndex = null,
   }) {
-    return _then(_$SuccessTypeState(
+    return _then(_$SuccessTypeStateImpl(
       null == records
           ? _value._records
           : records // ignore: cast_nullable_to_non_nullable
@@ -1064,10 +1068,10 @@ class __$$SuccessTypeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessTypeState
+class _$SuccessTypeStateImpl
     with DiagnosticableTreeMixin
     implements SuccessTypeState {
-  const _$SuccessTypeState(final List<Record> records, this.tabIndex)
+  const _$SuccessTypeStateImpl(final List<Record> records, this.tabIndex)
       : _records = records;
 
   final List<Record> _records;
@@ -1099,7 +1103,7 @@ class _$SuccessTypeState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessTypeState &&
+            other is _$SuccessTypeStateImpl &&
             const DeepCollectionEquality().equals(other._records, _records) &&
             (identical(other.tabIndex, tabIndex) ||
                 other.tabIndex == tabIndex));
@@ -1112,8 +1116,9 @@ class _$SuccessTypeState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessTypeStateCopyWith<_$SuccessTypeState> get copyWith =>
-      __$$SuccessTypeStateCopyWithImpl<_$SuccessTypeState>(this, _$identity);
+  _$$SuccessTypeStateImplCopyWith<_$SuccessTypeStateImpl> get copyWith =>
+      __$$SuccessTypeStateImplCopyWithImpl<_$SuccessTypeStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1192,20 +1197,20 @@ class _$SuccessTypeState
 
 abstract class SuccessTypeState implements RecordTypeState {
   const factory SuccessTypeState(
-      final List<Record> records, final int tabIndex) = _$SuccessTypeState;
+      final List<Record> records, final int tabIndex) = _$SuccessTypeStateImpl;
 
   List<Record> get records;
   int get tabIndex;
   @JsonKey(ignore: true)
-  _$$SuccessTypeStateCopyWith<_$SuccessTypeState> get copyWith =>
+  _$$SuccessTypeStateImplCopyWith<_$SuccessTypeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FailureTypeStateCopyWith<$Res> {
-  factory _$$FailureTypeStateCopyWith(
-          _$FailureTypeState value, $Res Function(_$FailureTypeState) then) =
-      __$$FailureTypeStateCopyWithImpl<$Res>;
+abstract class _$$FailureTypeStateImplCopyWith<$Res> {
+  factory _$$FailureTypeStateImplCopyWith(_$FailureTypeStateImpl value,
+          $Res Function(_$FailureTypeStateImpl) then) =
+      __$$FailureTypeStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ModelFailure failure});
 
@@ -1213,11 +1218,11 @@ abstract class _$$FailureTypeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$FailureTypeStateCopyWithImpl<$Res>
-    extends _$RecordTypeStateCopyWithImpl<$Res, _$FailureTypeState>
-    implements _$$FailureTypeStateCopyWith<$Res> {
-  __$$FailureTypeStateCopyWithImpl(
-      _$FailureTypeState _value, $Res Function(_$FailureTypeState) _then)
+class __$$FailureTypeStateImplCopyWithImpl<$Res>
+    extends _$RecordTypeStateCopyWithImpl<$Res, _$FailureTypeStateImpl>
+    implements _$$FailureTypeStateImplCopyWith<$Res> {
+  __$$FailureTypeStateImplCopyWithImpl(_$FailureTypeStateImpl _value,
+      $Res Function(_$FailureTypeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1225,7 +1230,7 @@ class __$$FailureTypeStateCopyWithImpl<$Res>
   $Res call({
     Object? failure = null,
   }) {
-    return _then(_$FailureTypeState(
+    return _then(_$FailureTypeStateImpl(
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
@@ -1244,10 +1249,10 @@ class __$$FailureTypeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureTypeState
+class _$FailureTypeStateImpl
     with DiagnosticableTreeMixin
     implements FailureTypeState {
-  const _$FailureTypeState(this.failure);
+  const _$FailureTypeStateImpl(this.failure);
 
   @override
   final ModelFailure failure;
@@ -1269,7 +1274,7 @@ class _$FailureTypeState
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FailureTypeState &&
+            other is _$FailureTypeStateImpl &&
             (identical(other.failure, failure) || other.failure == failure));
   }
 
@@ -1279,8 +1284,9 @@ class _$FailureTypeState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FailureTypeStateCopyWith<_$FailureTypeState> get copyWith =>
-      __$$FailureTypeStateCopyWithImpl<_$FailureTypeState>(this, _$identity);
+  _$$FailureTypeStateImplCopyWith<_$FailureTypeStateImpl> get copyWith =>
+      __$$FailureTypeStateImplCopyWithImpl<_$FailureTypeStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1359,10 +1365,10 @@ class _$FailureTypeState
 
 abstract class FailureTypeState implements RecordTypeState {
   const factory FailureTypeState(final ModelFailure failure) =
-      _$FailureTypeState;
+      _$FailureTypeStateImpl;
 
   ModelFailure get failure;
   @JsonKey(ignore: true)
-  _$$FailureTypeStateCopyWith<_$FailureTypeState> get copyWith =>
+  _$$FailureTypeStateImplCopyWith<_$FailureTypeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
