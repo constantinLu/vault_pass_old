@@ -14,8 +14,8 @@ class SplashView extends StatelessWidget {
       listener: (context, state) {
         state.map(
           initial: (_) => context.pushTo(const LoginView()),
-          //TODO: change this after the app is finished
-          unauthenticated: (_) => context.pushTo(const HomeView()),
+          // HERE YOU CAN DISABLE AUTH IN ORDER TO TEST
+          unauthenticated: (_) => context.pushTo(const RegisterView()),
           authorizedCredentials: (_) => context.pushTo(const HomeView()),
           authorizedBiometrics: (_) => context.pushTo(const HomeView()),
         );
