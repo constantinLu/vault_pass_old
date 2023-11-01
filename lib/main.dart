@@ -12,7 +12,7 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   systemOrientation();
   setup();
-  DbTestData().insertTestData();
+  //DbTestData().insertTestData();
   BlocOverrides.runZoned(() => runApp(const AppWidget()), blocObserver: AppBlocObserver());
 }
 
