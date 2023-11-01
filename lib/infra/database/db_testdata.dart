@@ -35,6 +35,7 @@ class DbTestData extends DatabaseAccessor<VaultPassDb> with _$DbTestDataMixin {
             logo: "noLogo",
             recordType: "Account",
             url: "https://google.account.com",
+            isFavorite: false,
             createdDate: DateTime.now(),
             updatedDate: DateTime.now());
 

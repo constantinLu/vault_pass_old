@@ -130,25 +130,25 @@ class _$RecordEventCopyWithImpl<$Res, $Val extends RecordEvent>
 }
 
 /// @nodoc
-abstract class _$$ResetRecordEventCopyWith<$Res> {
-  factory _$$ResetRecordEventCopyWith(
-          _$ResetRecordEvent value, $Res Function(_$ResetRecordEvent) then) =
-      __$$ResetRecordEventCopyWithImpl<$Res>;
+abstract class _$$ResetRecordEventImplCopyWith<$Res> {
+  factory _$$ResetRecordEventImplCopyWith(_$ResetRecordEventImpl value,
+          $Res Function(_$ResetRecordEventImpl) then) =
+      __$$ResetRecordEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$ResetRecordEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$ResetRecordEvent>
-    implements _$$ResetRecordEventCopyWith<$Res> {
-  __$$ResetRecordEventCopyWithImpl(
-      _$ResetRecordEvent _value, $Res Function(_$ResetRecordEvent) _then)
+class __$$ResetRecordEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$ResetRecordEventImpl>
+    implements _$$ResetRecordEventImplCopyWith<$Res> {
+  __$$ResetRecordEventImplCopyWithImpl(_$ResetRecordEventImpl _value,
+      $Res Function(_$ResetRecordEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$ResetRecordEvent implements ResetRecordEvent {
-  const _$ResetRecordEvent();
+class _$ResetRecordEventImpl implements ResetRecordEvent {
+  const _$ResetRecordEventImpl();
 
   @override
   String toString() {
@@ -158,7 +158,7 @@ class _$ResetRecordEvent implements ResetRecordEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ResetRecordEvent);
+        (other.runtimeType == runtimeType && other is _$ResetRecordEventImpl);
   }
 
   @override
@@ -283,24 +283,26 @@ class _$ResetRecordEvent implements ResetRecordEvent {
 }
 
 abstract class ResetRecordEvent implements RecordEvent {
-  const factory ResetRecordEvent() = _$ResetRecordEvent;
+  const factory ResetRecordEvent() = _$ResetRecordEventImpl;
 }
 
 /// @nodoc
-abstract class _$$InitializedRecordEventCopyWith<$Res> {
-  factory _$$InitializedRecordEventCopyWith(_$InitializedRecordEvent value,
-          $Res Function(_$InitializedRecordEvent) then) =
-      __$$InitializedRecordEventCopyWithImpl<$Res>;
+abstract class _$$InitializedRecordEventImplCopyWith<$Res> {
+  factory _$$InitializedRecordEventImplCopyWith(
+          _$InitializedRecordEventImpl value,
+          $Res Function(_$InitializedRecordEventImpl) then) =
+      __$$InitializedRecordEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Option<Record> optionalRecord});
 }
 
 /// @nodoc
-class __$$InitializedRecordEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$InitializedRecordEvent>
-    implements _$$InitializedRecordEventCopyWith<$Res> {
-  __$$InitializedRecordEventCopyWithImpl(_$InitializedRecordEvent _value,
-      $Res Function(_$InitializedRecordEvent) _then)
+class __$$InitializedRecordEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$InitializedRecordEventImpl>
+    implements _$$InitializedRecordEventImplCopyWith<$Res> {
+  __$$InitializedRecordEventImplCopyWithImpl(
+      _$InitializedRecordEventImpl _value,
+      $Res Function(_$InitializedRecordEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -308,7 +310,7 @@ class __$$InitializedRecordEventCopyWithImpl<$Res>
   $Res call({
     Object? optionalRecord = null,
   }) {
-    return _then(_$InitializedRecordEvent(
+    return _then(_$InitializedRecordEventImpl(
       null == optionalRecord
           ? _value.optionalRecord
           : optionalRecord // ignore: cast_nullable_to_non_nullable
@@ -319,8 +321,8 @@ class __$$InitializedRecordEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitializedRecordEvent implements InitializedRecordEvent {
-  const _$InitializedRecordEvent(this.optionalRecord);
+class _$InitializedRecordEventImpl implements InitializedRecordEvent {
+  const _$InitializedRecordEventImpl(this.optionalRecord);
 
   @override
   final Option<Record> optionalRecord;
@@ -334,7 +336,7 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitializedRecordEvent &&
+            other is _$InitializedRecordEventImpl &&
             (identical(other.optionalRecord, optionalRecord) ||
                 other.optionalRecord == optionalRecord));
   }
@@ -345,9 +347,9 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitializedRecordEventCopyWith<_$InitializedRecordEvent> get copyWith =>
-      __$$InitializedRecordEventCopyWithImpl<_$InitializedRecordEvent>(
-          this, _$identity);
+  _$$InitializedRecordEventImplCopyWith<_$InitializedRecordEventImpl>
+      get copyWith => __$$InitializedRecordEventImplCopyWithImpl<
+          _$InitializedRecordEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -469,29 +471,31 @@ class _$InitializedRecordEvent implements InitializedRecordEvent {
 
 abstract class InitializedRecordEvent implements RecordEvent {
   const factory InitializedRecordEvent(final Option<Record> optionalRecord) =
-      _$InitializedRecordEvent;
+      _$InitializedRecordEventImpl;
 
   Option<Record> get optionalRecord;
   @JsonKey(ignore: true)
-  _$$InitializedRecordEventCopyWith<_$InitializedRecordEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$InitializedRecordEventImplCopyWith<_$InitializedRecordEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RecordNameChangedEventCopyWith<$Res> {
-  factory _$$RecordNameChangedEventCopyWith(_$RecordNameChangedEvent value,
-          $Res Function(_$RecordNameChangedEvent) then) =
-      __$$RecordNameChangedEventCopyWithImpl<$Res>;
+abstract class _$$RecordNameChangedEventImplCopyWith<$Res> {
+  factory _$$RecordNameChangedEventImplCopyWith(
+          _$RecordNameChangedEventImpl value,
+          $Res Function(_$RecordNameChangedEventImpl) then) =
+      __$$RecordNameChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String recordName});
 }
 
 /// @nodoc
-class __$$RecordNameChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$RecordNameChangedEvent>
-    implements _$$RecordNameChangedEventCopyWith<$Res> {
-  __$$RecordNameChangedEventCopyWithImpl(_$RecordNameChangedEvent _value,
-      $Res Function(_$RecordNameChangedEvent) _then)
+class __$$RecordNameChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$RecordNameChangedEventImpl>
+    implements _$$RecordNameChangedEventImplCopyWith<$Res> {
+  __$$RecordNameChangedEventImplCopyWithImpl(
+      _$RecordNameChangedEventImpl _value,
+      $Res Function(_$RecordNameChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -499,7 +503,7 @@ class __$$RecordNameChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? recordName = null,
   }) {
-    return _then(_$RecordNameChangedEvent(
+    return _then(_$RecordNameChangedEventImpl(
       recordName: null == recordName
           ? _value.recordName
           : recordName // ignore: cast_nullable_to_non_nullable
@@ -510,8 +514,8 @@ class __$$RecordNameChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RecordNameChangedEvent implements RecordNameChangedEvent {
-  const _$RecordNameChangedEvent({required this.recordName});
+class _$RecordNameChangedEventImpl implements RecordNameChangedEvent {
+  const _$RecordNameChangedEventImpl({required this.recordName});
 
   @override
   final String recordName;
@@ -525,7 +529,7 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecordNameChangedEvent &&
+            other is _$RecordNameChangedEventImpl &&
             (identical(other.recordName, recordName) ||
                 other.recordName == recordName));
   }
@@ -536,9 +540,9 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecordNameChangedEventCopyWith<_$RecordNameChangedEvent> get copyWith =>
-      __$$RecordNameChangedEventCopyWithImpl<_$RecordNameChangedEvent>(
-          this, _$identity);
+  _$$RecordNameChangedEventImplCopyWith<_$RecordNameChangedEventImpl>
+      get copyWith => __$$RecordNameChangedEventImplCopyWithImpl<
+          _$RecordNameChangedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -660,29 +664,31 @@ class _$RecordNameChangedEvent implements RecordNameChangedEvent {
 
 abstract class RecordNameChangedEvent implements RecordEvent {
   const factory RecordNameChangedEvent({required final String recordName}) =
-      _$RecordNameChangedEvent;
+      _$RecordNameChangedEventImpl;
 
   String get recordName;
   @JsonKey(ignore: true)
-  _$$RecordNameChangedEventCopyWith<_$RecordNameChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RecordNameChangedEventImplCopyWith<_$RecordNameChangedEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RecordTypeChangedEventCopyWith<$Res> {
-  factory _$$RecordTypeChangedEventCopyWith(_$RecordTypeChangedEvent value,
-          $Res Function(_$RecordTypeChangedEvent) then) =
-      __$$RecordTypeChangedEventCopyWithImpl<$Res>;
+abstract class _$$RecordTypeChangedEventImplCopyWith<$Res> {
+  factory _$$RecordTypeChangedEventImplCopyWith(
+          _$RecordTypeChangedEventImpl value,
+          $Res Function(_$RecordTypeChangedEventImpl) then) =
+      __$$RecordTypeChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RecordType recordType});
 }
 
 /// @nodoc
-class __$$RecordTypeChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$RecordTypeChangedEvent>
-    implements _$$RecordTypeChangedEventCopyWith<$Res> {
-  __$$RecordTypeChangedEventCopyWithImpl(_$RecordTypeChangedEvent _value,
-      $Res Function(_$RecordTypeChangedEvent) _then)
+class __$$RecordTypeChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$RecordTypeChangedEventImpl>
+    implements _$$RecordTypeChangedEventImplCopyWith<$Res> {
+  __$$RecordTypeChangedEventImplCopyWithImpl(
+      _$RecordTypeChangedEventImpl _value,
+      $Res Function(_$RecordTypeChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -690,7 +696,7 @@ class __$$RecordTypeChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? recordType = null,
   }) {
-    return _then(_$RecordTypeChangedEvent(
+    return _then(_$RecordTypeChangedEventImpl(
       recordType: null == recordType
           ? _value.recordType
           : recordType // ignore: cast_nullable_to_non_nullable
@@ -701,8 +707,8 @@ class __$$RecordTypeChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
-  const _$RecordTypeChangedEvent({required this.recordType});
+class _$RecordTypeChangedEventImpl implements RecordTypeChangedEvent {
+  const _$RecordTypeChangedEventImpl({required this.recordType});
 
   @override
   final RecordType recordType;
@@ -716,7 +722,7 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecordTypeChangedEvent &&
+            other is _$RecordTypeChangedEventImpl &&
             (identical(other.recordType, recordType) ||
                 other.recordType == recordType));
   }
@@ -727,9 +733,9 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecordTypeChangedEventCopyWith<_$RecordTypeChangedEvent> get copyWith =>
-      __$$RecordTypeChangedEventCopyWithImpl<_$RecordTypeChangedEvent>(
-          this, _$identity);
+  _$$RecordTypeChangedEventImplCopyWith<_$RecordTypeChangedEventImpl>
+      get copyWith => __$$RecordTypeChangedEventImplCopyWithImpl<
+          _$RecordTypeChangedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -851,29 +857,31 @@ class _$RecordTypeChangedEvent implements RecordTypeChangedEvent {
 
 abstract class RecordTypeChangedEvent implements RecordEvent {
   const factory RecordTypeChangedEvent({required final RecordType recordType}) =
-      _$RecordTypeChangedEvent;
+      _$RecordTypeChangedEventImpl;
 
   RecordType get recordType;
   @JsonKey(ignore: true)
-  _$$RecordTypeChangedEventCopyWith<_$RecordTypeChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RecordTypeChangedEventImplCopyWith<_$RecordTypeChangedEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoginRecordChangedEventCopyWith<$Res> {
-  factory _$$LoginRecordChangedEventCopyWith(_$LoginRecordChangedEvent value,
-          $Res Function(_$LoginRecordChangedEvent) then) =
-      __$$LoginRecordChangedEventCopyWithImpl<$Res>;
+abstract class _$$LoginRecordChangedEventImplCopyWith<$Res> {
+  factory _$$LoginRecordChangedEventImplCopyWith(
+          _$LoginRecordChangedEventImpl value,
+          $Res Function(_$LoginRecordChangedEventImpl) then) =
+      __$$LoginRecordChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String loginRecord});
 }
 
 /// @nodoc
-class __$$LoginRecordChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$LoginRecordChangedEvent>
-    implements _$$LoginRecordChangedEventCopyWith<$Res> {
-  __$$LoginRecordChangedEventCopyWithImpl(_$LoginRecordChangedEvent _value,
-      $Res Function(_$LoginRecordChangedEvent) _then)
+class __$$LoginRecordChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$LoginRecordChangedEventImpl>
+    implements _$$LoginRecordChangedEventImplCopyWith<$Res> {
+  __$$LoginRecordChangedEventImplCopyWithImpl(
+      _$LoginRecordChangedEventImpl _value,
+      $Res Function(_$LoginRecordChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -881,7 +889,7 @@ class __$$LoginRecordChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? loginRecord = null,
   }) {
-    return _then(_$LoginRecordChangedEvent(
+    return _then(_$LoginRecordChangedEventImpl(
       loginRecord: null == loginRecord
           ? _value.loginRecord
           : loginRecord // ignore: cast_nullable_to_non_nullable
@@ -892,8 +900,8 @@ class __$$LoginRecordChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
-  const _$LoginRecordChangedEvent({required this.loginRecord});
+class _$LoginRecordChangedEventImpl implements LoginRecordChangedEvent {
+  const _$LoginRecordChangedEventImpl({required this.loginRecord});
 
   @override
   final String loginRecord;
@@ -907,7 +915,7 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginRecordChangedEvent &&
+            other is _$LoginRecordChangedEventImpl &&
             (identical(other.loginRecord, loginRecord) ||
                 other.loginRecord == loginRecord));
   }
@@ -918,9 +926,9 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginRecordChangedEventCopyWith<_$LoginRecordChangedEvent> get copyWith =>
-      __$$LoginRecordChangedEventCopyWithImpl<_$LoginRecordChangedEvent>(
-          this, _$identity);
+  _$$LoginRecordChangedEventImplCopyWith<_$LoginRecordChangedEventImpl>
+      get copyWith => __$$LoginRecordChangedEventImplCopyWithImpl<
+          _$LoginRecordChangedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1042,31 +1050,31 @@ class _$LoginRecordChangedEvent implements LoginRecordChangedEvent {
 
 abstract class LoginRecordChangedEvent implements RecordEvent {
   const factory LoginRecordChangedEvent({required final String loginRecord}) =
-      _$LoginRecordChangedEvent;
+      _$LoginRecordChangedEventImpl;
 
   String get loginRecord;
   @JsonKey(ignore: true)
-  _$$LoginRecordChangedEventCopyWith<_$LoginRecordChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LoginRecordChangedEventImplCopyWith<_$LoginRecordChangedEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PasswordRecordChangedEventCopyWith<$Res> {
-  factory _$$PasswordRecordChangedEventCopyWith(
-          _$PasswordRecordChangedEvent value,
-          $Res Function(_$PasswordRecordChangedEvent) then) =
-      __$$PasswordRecordChangedEventCopyWithImpl<$Res>;
+abstract class _$$PasswordRecordChangedEventImplCopyWith<$Res> {
+  factory _$$PasswordRecordChangedEventImplCopyWith(
+          _$PasswordRecordChangedEventImpl value,
+          $Res Function(_$PasswordRecordChangedEventImpl) then) =
+      __$$PasswordRecordChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String passwordRecord});
 }
 
 /// @nodoc
-class __$$PasswordRecordChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$PasswordRecordChangedEvent>
-    implements _$$PasswordRecordChangedEventCopyWith<$Res> {
-  __$$PasswordRecordChangedEventCopyWithImpl(
-      _$PasswordRecordChangedEvent _value,
-      $Res Function(_$PasswordRecordChangedEvent) _then)
+class __$$PasswordRecordChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$PasswordRecordChangedEventImpl>
+    implements _$$PasswordRecordChangedEventImplCopyWith<$Res> {
+  __$$PasswordRecordChangedEventImplCopyWithImpl(
+      _$PasswordRecordChangedEventImpl _value,
+      $Res Function(_$PasswordRecordChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1074,7 +1082,7 @@ class __$$PasswordRecordChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? passwordRecord = null,
   }) {
-    return _then(_$PasswordRecordChangedEvent(
+    return _then(_$PasswordRecordChangedEventImpl(
       passwordRecord: null == passwordRecord
           ? _value.passwordRecord
           : passwordRecord // ignore: cast_nullable_to_non_nullable
@@ -1085,8 +1093,8 @@ class __$$PasswordRecordChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
-  const _$PasswordRecordChangedEvent({required this.passwordRecord});
+class _$PasswordRecordChangedEventImpl implements PasswordRecordChangedEvent {
+  const _$PasswordRecordChangedEventImpl({required this.passwordRecord});
 
   @override
   final String passwordRecord;
@@ -1100,7 +1108,7 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PasswordRecordChangedEvent &&
+            other is _$PasswordRecordChangedEventImpl &&
             (identical(other.passwordRecord, passwordRecord) ||
                 other.passwordRecord == passwordRecord));
   }
@@ -1111,9 +1119,9 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PasswordRecordChangedEventCopyWith<_$PasswordRecordChangedEvent>
-      get copyWith => __$$PasswordRecordChangedEventCopyWithImpl<
-          _$PasswordRecordChangedEvent>(this, _$identity);
+  _$$PasswordRecordChangedEventImplCopyWith<_$PasswordRecordChangedEventImpl>
+      get copyWith => __$$PasswordRecordChangedEventImplCopyWithImpl<
+          _$PasswordRecordChangedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1235,29 +1243,30 @@ class _$PasswordRecordChangedEvent implements PasswordRecordChangedEvent {
 
 abstract class PasswordRecordChangedEvent implements RecordEvent {
   const factory PasswordRecordChangedEvent(
-      {required final String passwordRecord}) = _$PasswordRecordChangedEvent;
+          {required final String passwordRecord}) =
+      _$PasswordRecordChangedEventImpl;
 
   String get passwordRecord;
   @JsonKey(ignore: true)
-  _$$PasswordRecordChangedEventCopyWith<_$PasswordRecordChangedEvent>
+  _$$PasswordRecordChangedEventImplCopyWith<_$PasswordRecordChangedEventImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LogoChangedEventCopyWith<$Res> {
-  factory _$$LogoChangedEventCopyWith(
-          _$LogoChangedEvent value, $Res Function(_$LogoChangedEvent) then) =
-      __$$LogoChangedEventCopyWithImpl<$Res>;
+abstract class _$$LogoChangedEventImplCopyWith<$Res> {
+  factory _$$LogoChangedEventImplCopyWith(_$LogoChangedEventImpl value,
+          $Res Function(_$LogoChangedEventImpl) then) =
+      __$$LogoChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String logo});
 }
 
 /// @nodoc
-class __$$LogoChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$LogoChangedEvent>
-    implements _$$LogoChangedEventCopyWith<$Res> {
-  __$$LogoChangedEventCopyWithImpl(
-      _$LogoChangedEvent _value, $Res Function(_$LogoChangedEvent) _then)
+class __$$LogoChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$LogoChangedEventImpl>
+    implements _$$LogoChangedEventImplCopyWith<$Res> {
+  __$$LogoChangedEventImplCopyWithImpl(_$LogoChangedEventImpl _value,
+      $Res Function(_$LogoChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1265,7 +1274,7 @@ class __$$LogoChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? logo = null,
   }) {
-    return _then(_$LogoChangedEvent(
+    return _then(_$LogoChangedEventImpl(
       logo: null == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
@@ -1276,8 +1285,8 @@ class __$$LogoChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LogoChangedEvent implements LogoChangedEvent {
-  const _$LogoChangedEvent({required this.logo});
+class _$LogoChangedEventImpl implements LogoChangedEvent {
+  const _$LogoChangedEventImpl({required this.logo});
 
   @override
   final String logo;
@@ -1291,7 +1300,7 @@ class _$LogoChangedEvent implements LogoChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LogoChangedEvent &&
+            other is _$LogoChangedEventImpl &&
             (identical(other.logo, logo) || other.logo == logo));
   }
 
@@ -1301,8 +1310,9 @@ class _$LogoChangedEvent implements LogoChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LogoChangedEventCopyWith<_$LogoChangedEvent> get copyWith =>
-      __$$LogoChangedEventCopyWithImpl<_$LogoChangedEvent>(this, _$identity);
+  _$$LogoChangedEventImplCopyWith<_$LogoChangedEventImpl> get copyWith =>
+      __$$LogoChangedEventImplCopyWithImpl<_$LogoChangedEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1424,29 +1434,31 @@ class _$LogoChangedEvent implements LogoChangedEvent {
 
 abstract class LogoChangedEvent implements RecordEvent {
   const factory LogoChangedEvent({required final String logo}) =
-      _$LogoChangedEvent;
+      _$LogoChangedEventImpl;
 
   String get logo;
   @JsonKey(ignore: true)
-  _$$LogoChangedEventCopyWith<_$LogoChangedEvent> get copyWith =>
+  _$$LogoChangedEventImplCopyWith<_$LogoChangedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DescriptionChangedEventCopyWith<$Res> {
-  factory _$$DescriptionChangedEventCopyWith(_$DescriptionChangedEvent value,
-          $Res Function(_$DescriptionChangedEvent) then) =
-      __$$DescriptionChangedEventCopyWithImpl<$Res>;
+abstract class _$$DescriptionChangedEventImplCopyWith<$Res> {
+  factory _$$DescriptionChangedEventImplCopyWith(
+          _$DescriptionChangedEventImpl value,
+          $Res Function(_$DescriptionChangedEventImpl) then) =
+      __$$DescriptionChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String description});
 }
 
 /// @nodoc
-class __$$DescriptionChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$DescriptionChangedEvent>
-    implements _$$DescriptionChangedEventCopyWith<$Res> {
-  __$$DescriptionChangedEventCopyWithImpl(_$DescriptionChangedEvent _value,
-      $Res Function(_$DescriptionChangedEvent) _then)
+class __$$DescriptionChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$DescriptionChangedEventImpl>
+    implements _$$DescriptionChangedEventImplCopyWith<$Res> {
+  __$$DescriptionChangedEventImplCopyWithImpl(
+      _$DescriptionChangedEventImpl _value,
+      $Res Function(_$DescriptionChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1454,7 +1466,7 @@ class __$$DescriptionChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? description = null,
   }) {
-    return _then(_$DescriptionChangedEvent(
+    return _then(_$DescriptionChangedEventImpl(
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -1465,8 +1477,8 @@ class __$$DescriptionChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$DescriptionChangedEvent implements DescriptionChangedEvent {
-  const _$DescriptionChangedEvent({required this.description});
+class _$DescriptionChangedEventImpl implements DescriptionChangedEvent {
+  const _$DescriptionChangedEventImpl({required this.description});
 
   @override
   final String description;
@@ -1480,7 +1492,7 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DescriptionChangedEvent &&
+            other is _$DescriptionChangedEventImpl &&
             (identical(other.description, description) ||
                 other.description == description));
   }
@@ -1491,9 +1503,9 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DescriptionChangedEventCopyWith<_$DescriptionChangedEvent> get copyWith =>
-      __$$DescriptionChangedEventCopyWithImpl<_$DescriptionChangedEvent>(
-          this, _$identity);
+  _$$DescriptionChangedEventImplCopyWith<_$DescriptionChangedEventImpl>
+      get copyWith => __$$DescriptionChangedEventImplCopyWithImpl<
+          _$DescriptionChangedEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1615,29 +1627,29 @@ class _$DescriptionChangedEvent implements DescriptionChangedEvent {
 
 abstract class DescriptionChangedEvent implements RecordEvent {
   const factory DescriptionChangedEvent({required final String description}) =
-      _$DescriptionChangedEvent;
+      _$DescriptionChangedEventImpl;
 
   String get description;
   @JsonKey(ignore: true)
-  _$$DescriptionChangedEventCopyWith<_$DescriptionChangedEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$DescriptionChangedEventImplCopyWith<_$DescriptionChangedEventImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UrlChangedEventCopyWith<$Res> {
-  factory _$$UrlChangedEventCopyWith(
-          _$UrlChangedEvent value, $Res Function(_$UrlChangedEvent) then) =
-      __$$UrlChangedEventCopyWithImpl<$Res>;
+abstract class _$$UrlChangedEventImplCopyWith<$Res> {
+  factory _$$UrlChangedEventImplCopyWith(_$UrlChangedEventImpl value,
+          $Res Function(_$UrlChangedEventImpl) then) =
+      __$$UrlChangedEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$UrlChangedEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$UrlChangedEvent>
-    implements _$$UrlChangedEventCopyWith<$Res> {
-  __$$UrlChangedEventCopyWithImpl(
-      _$UrlChangedEvent _value, $Res Function(_$UrlChangedEvent) _then)
+class __$$UrlChangedEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$UrlChangedEventImpl>
+    implements _$$UrlChangedEventImplCopyWith<$Res> {
+  __$$UrlChangedEventImplCopyWithImpl(
+      _$UrlChangedEventImpl _value, $Res Function(_$UrlChangedEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1645,7 +1657,7 @@ class __$$UrlChangedEventCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$UrlChangedEvent(
+    return _then(_$UrlChangedEventImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -1656,8 +1668,8 @@ class __$$UrlChangedEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UrlChangedEvent implements UrlChangedEvent {
-  const _$UrlChangedEvent({required this.url});
+class _$UrlChangedEventImpl implements UrlChangedEvent {
+  const _$UrlChangedEventImpl({required this.url});
 
   @override
   final String url;
@@ -1671,7 +1683,7 @@ class _$UrlChangedEvent implements UrlChangedEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UrlChangedEvent &&
+            other is _$UrlChangedEventImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -1681,8 +1693,9 @@ class _$UrlChangedEvent implements UrlChangedEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UrlChangedEventCopyWith<_$UrlChangedEvent> get copyWith =>
-      __$$UrlChangedEventCopyWithImpl<_$UrlChangedEvent>(this, _$identity);
+  _$$UrlChangedEventImplCopyWith<_$UrlChangedEventImpl> get copyWith =>
+      __$$UrlChangedEventImplCopyWithImpl<_$UrlChangedEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1804,34 +1817,34 @@ class _$UrlChangedEvent implements UrlChangedEvent {
 
 abstract class UrlChangedEvent implements RecordEvent {
   const factory UrlChangedEvent({required final String url}) =
-      _$UrlChangedEvent;
+      _$UrlChangedEventImpl;
 
   String get url;
   @JsonKey(ignore: true)
-  _$$UrlChangedEventCopyWith<_$UrlChangedEvent> get copyWith =>
+  _$$UrlChangedEventImplCopyWith<_$UrlChangedEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AddtRecordEventCopyWith<$Res> {
-  factory _$$AddtRecordEventCopyWith(
-          _$AddtRecordEvent value, $Res Function(_$AddtRecordEvent) then) =
-      __$$AddtRecordEventCopyWithImpl<$Res>;
+abstract class _$$AddtRecordEventImplCopyWith<$Res> {
+  factory _$$AddtRecordEventImplCopyWith(_$AddtRecordEventImpl value,
+          $Res Function(_$AddtRecordEventImpl) then) =
+      __$$AddtRecordEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$AddtRecordEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$AddtRecordEvent>
-    implements _$$AddtRecordEventCopyWith<$Res> {
-  __$$AddtRecordEventCopyWithImpl(
-      _$AddtRecordEvent _value, $Res Function(_$AddtRecordEvent) _then)
+class __$$AddtRecordEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$AddtRecordEventImpl>
+    implements _$$AddtRecordEventImplCopyWith<$Res> {
+  __$$AddtRecordEventImplCopyWithImpl(
+      _$AddtRecordEventImpl _value, $Res Function(_$AddtRecordEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$AddtRecordEvent implements AddtRecordEvent {
-  const _$AddtRecordEvent();
+class _$AddtRecordEventImpl implements AddtRecordEvent {
+  const _$AddtRecordEventImpl();
 
   @override
   String toString() {
@@ -1841,7 +1854,7 @@ class _$AddtRecordEvent implements AddtRecordEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddtRecordEvent);
+        (other.runtimeType == runtimeType && other is _$AddtRecordEventImpl);
   }
 
   @override
@@ -1966,24 +1979,24 @@ class _$AddtRecordEvent implements AddtRecordEvent {
 }
 
 abstract class AddtRecordEvent implements RecordEvent {
-  const factory AddtRecordEvent() = _$AddtRecordEvent;
+  const factory AddtRecordEvent() = _$AddtRecordEventImpl;
 }
 
 /// @nodoc
-abstract class _$$EditRecordEventCopyWith<$Res> {
-  factory _$$EditRecordEventCopyWith(
-          _$EditRecordEvent value, $Res Function(_$EditRecordEvent) then) =
-      __$$EditRecordEventCopyWithImpl<$Res>;
+abstract class _$$EditRecordEventImplCopyWith<$Res> {
+  factory _$$EditRecordEventImplCopyWith(_$EditRecordEventImpl value,
+          $Res Function(_$EditRecordEventImpl) then) =
+      __$$EditRecordEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UniqueId id});
 }
 
 /// @nodoc
-class __$$EditRecordEventCopyWithImpl<$Res>
-    extends _$RecordEventCopyWithImpl<$Res, _$EditRecordEvent>
-    implements _$$EditRecordEventCopyWith<$Res> {
-  __$$EditRecordEventCopyWithImpl(
-      _$EditRecordEvent _value, $Res Function(_$EditRecordEvent) _then)
+class __$$EditRecordEventImplCopyWithImpl<$Res>
+    extends _$RecordEventCopyWithImpl<$Res, _$EditRecordEventImpl>
+    implements _$$EditRecordEventImplCopyWith<$Res> {
+  __$$EditRecordEventImplCopyWithImpl(
+      _$EditRecordEventImpl _value, $Res Function(_$EditRecordEventImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1991,7 +2004,7 @@ class __$$EditRecordEventCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
   }) {
-    return _then(_$EditRecordEvent(
+    return _then(_$EditRecordEventImpl(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -2002,8 +2015,8 @@ class __$$EditRecordEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$EditRecordEvent implements EditRecordEvent {
-  const _$EditRecordEvent(this.id);
+class _$EditRecordEventImpl implements EditRecordEvent {
+  const _$EditRecordEventImpl(this.id);
 
   @override
   final UniqueId id;
@@ -2017,7 +2030,7 @@ class _$EditRecordEvent implements EditRecordEvent {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$EditRecordEvent &&
+            other is _$EditRecordEventImpl &&
             (identical(other.id, id) || other.id == id));
   }
 
@@ -2027,8 +2040,9 @@ class _$EditRecordEvent implements EditRecordEvent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EditRecordEventCopyWith<_$EditRecordEvent> get copyWith =>
-      __$$EditRecordEventCopyWithImpl<_$EditRecordEvent>(this, _$identity);
+  _$$EditRecordEventImplCopyWith<_$EditRecordEventImpl> get copyWith =>
+      __$$EditRecordEventImplCopyWithImpl<_$EditRecordEventImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2149,11 +2163,11 @@ class _$EditRecordEvent implements EditRecordEvent {
 }
 
 abstract class EditRecordEvent implements RecordEvent {
-  const factory EditRecordEvent(final UniqueId id) = _$EditRecordEvent;
+  const factory EditRecordEvent(final UniqueId id) = _$EditRecordEventImpl;
 
   UniqueId get id;
   @JsonKey(ignore: true)
-  _$$EditRecordEventCopyWith<_$EditRecordEvent> get copyWith =>
+  _$$EditRecordEventImplCopyWith<_$EditRecordEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2162,7 +2176,8 @@ mixin _$RecordState {
   Record get record => throw _privateConstructorUsedError;
   bool get isSaving => throw _privateConstructorUsedError;
   bool get isEditing => throw _privateConstructorUsedError;
-  AutovalidateMode? get showErrorMessage => throw _privateConstructorUsedError;
+  AutovalidateMode? get showErrorMessage =>
+      throw _privateConstructorUsedError; //used for forms
   Option<Either<ModelFailure, Unit>> get response =>
       throw _privateConstructorUsedError;
 
@@ -2240,11 +2255,11 @@ class _$RecordStateCopyWithImpl<$Res, $Val extends RecordState>
 }
 
 /// @nodoc
-abstract class _$$_RecordStateCopyWith<$Res>
+abstract class _$$RecordStateImplCopyWith<$Res>
     implements $RecordStateCopyWith<$Res> {
-  factory _$$_RecordStateCopyWith(
-          _$_RecordState value, $Res Function(_$_RecordState) then) =
-      __$$_RecordStateCopyWithImpl<$Res>;
+  factory _$$RecordStateImplCopyWith(
+          _$RecordStateImpl value, $Res Function(_$RecordStateImpl) then) =
+      __$$RecordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2259,11 +2274,11 @@ abstract class _$$_RecordStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RecordStateCopyWithImpl<$Res>
-    extends _$RecordStateCopyWithImpl<$Res, _$_RecordState>
-    implements _$$_RecordStateCopyWith<$Res> {
-  __$$_RecordStateCopyWithImpl(
-      _$_RecordState _value, $Res Function(_$_RecordState) _then)
+class __$$RecordStateImplCopyWithImpl<$Res>
+    extends _$RecordStateCopyWithImpl<$Res, _$RecordStateImpl>
+    implements _$$RecordStateImplCopyWith<$Res> {
+  __$$RecordStateImplCopyWithImpl(
+      _$RecordStateImpl _value, $Res Function(_$RecordStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2275,7 +2290,7 @@ class __$$_RecordStateCopyWithImpl<$Res>
     Object? showErrorMessage = freezed,
     Object? response = null,
   }) {
-    return _then(_$_RecordState(
+    return _then(_$RecordStateImpl(
       record: null == record
           ? _value.record
           : record // ignore: cast_nullable_to_non_nullable
@@ -2302,8 +2317,8 @@ class __$$_RecordStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_RecordState extends _RecordState {
-  const _$_RecordState(
+class _$RecordStateImpl extends _RecordState {
+  const _$RecordStateImpl(
       {required this.record,
       required this.isSaving,
       required this.isEditing,
@@ -2319,6 +2334,7 @@ class _$_RecordState extends _RecordState {
   final bool isEditing;
   @override
   final AutovalidateMode? showErrorMessage;
+//used for forms
   @override
   final Option<Either<ModelFailure, Unit>> response;
 
@@ -2331,7 +2347,7 @@ class _$_RecordState extends _RecordState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RecordState &&
+            other is _$RecordStateImpl &&
             (identical(other.record, record) || other.record == record) &&
             (identical(other.isSaving, isSaving) ||
                 other.isSaving == isSaving) &&
@@ -2350,8 +2366,8 @@ class _$_RecordState extends _RecordState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecordStateCopyWith<_$_RecordState> get copyWith =>
-      __$$_RecordStateCopyWithImpl<_$_RecordState>(this, _$identity);
+  _$$RecordStateImplCopyWith<_$RecordStateImpl> get copyWith =>
+      __$$RecordStateImplCopyWithImpl<_$RecordStateImpl>(this, _$identity);
 }
 
 abstract class _RecordState extends RecordState {
@@ -2361,7 +2377,7 @@ abstract class _RecordState extends RecordState {
           required final bool isEditing,
           required final AutovalidateMode? showErrorMessage,
           required final Option<Either<ModelFailure, Unit>> response}) =
-      _$_RecordState;
+      _$RecordStateImpl;
   const _RecordState._() : super._();
 
   @override
@@ -2372,10 +2388,10 @@ abstract class _RecordState extends RecordState {
   bool get isEditing;
   @override
   AutovalidateMode? get showErrorMessage;
-  @override
+  @override //used for forms
   Option<Either<ModelFailure, Unit>> get response;
   @override
   @JsonKey(ignore: true)
-  _$$_RecordStateCopyWith<_$_RecordState> get copyWith =>
+  _$$RecordStateImplCopyWith<_$RecordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

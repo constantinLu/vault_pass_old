@@ -12,7 +12,7 @@ abstract class MicroType<T> {
 
   T get() {
     //id - identity - same as writing (r) -> r
-    return value.fold((l) => throw UnexpectedValueError(l), id);
+    return value.fold((l) => throw UnexpectedValueError(l), (id) => id);
   }
 
   Either<MicroTypeFailure<dynamic>, Unit> get failureOrUnit {

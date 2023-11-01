@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vault_pass/application/record_removal/record_removal_bloc.dart';
 import 'package:vault_pass/application/record_type/record_type_bloc.dart';
-import 'package:vault_pass/application/user/user_bloc.dart';
 import 'package:vault_pass/domain/core/export_extension.dart';
 import 'package:vault_pass/domain/core/extensions.dart';
 import 'package:vault_pass/injection.dart';
 import 'package:vault_pass/presentation/router/app_router.gr.dart';
+import 'package:vault_pass/presentation/widgets/reset_back_btn_widget.dart';
 
 import '../../domain/model/record.dart';
 import '../core/device_size.dart';
@@ -25,11 +25,9 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+
         /// GET all the records based on recordType
         BlocProvider(create: (context) => getIt<RecordRemovalBloc>()),
-        BlocProvider(
-            create: (context) =>
-                getIt<RecordTypeBloc>()..add(const RecordTypeEvent.accountTabBtnPressed(0)))
       ],
       child: MultiBlocListener(
         listeners: [
@@ -67,15 +65,9 @@ class HomeView extends StatelessWidget {
                 orElse: () {});
           }),
         ],
-        child: WillPopScope(
-          onWillPop: () {
-            //FIXME: THIS THROWS ERROR WHEN PRESSED
-            //TODO: when pressed, move the app in the drawer phone app and unauntheticate the user
-            //TODO: when opens back the app the fingerprint auth window should appear.
-            context.popRoute();
-            return Future.value(false);
-          },
+        child: ResetBackBtnWidget(
           child: Scaffold(
+
             ///# HEADER
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -87,17 +79,22 @@ class HomeView extends StatelessWidget {
                 child: IconButton(
                     tooltip: "Logout",
                     onPressed: () =>
-                        //TODO: add event to logout
-                        //context.bloc<AuthBloc>.add(const AuthEvent.authLogout());
-                        context.pushTo(const LoginView()),
+                    //TODO: add event to logout
+                    //context.bloc<AuthBloc>.add(const AuthEvent.authLogout());
+                    context.replaceRoute(const LoginView()),
                     icon: const Icon(
                       Icons.logout_sharp,
                       color: whiteFull,
                     )),
               ),
+              //TODO: or salute based on the time of the day
               //TODO: Make this dynamic of showing the initials, "Welcome Lungu or something"
               title: const Center(child: Text("Vault Pass", style: bodyText15_white_bold)),
-              actions: [Avatar(onTapDisabled: false,)],
+              actions: [
+                Avatar(
+                  onTapDisabled: false,
+                )
+              ],
               toolbarHeight: heightPercentOf(8, context),
             ),
 
@@ -114,8 +111,15 @@ class HomeView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+                  IconButton(
+                      onPressed: () {
+                        //context.read<FavoriteBloc>().getFavorites();
+                        context.pushTo(const FavoriteView());
+                      },
+                      icon: const Icon(Icons.favorite_border)),
+                  IconButton(
+                      onPressed: () => context.pushTo(const NotificationView()),
+                      icon: const Icon(Icons.notifications_none)),
                 ],
               ),
             ),
@@ -140,10 +144,10 @@ class FabWidget extends StatelessWidget {
           context.pushTo(const AccountAddView());
           break;
         case RecordType.address:
-          // context.teleportTo(const AccountView());
+        // context.teleportTo(const AccountView());
           break;
         case RecordType.business:
-          // context.teleportTo(const AccountView());
+        // context.teleportTo(const AccountView());
           break;
       }
     }
@@ -153,9 +157,7 @@ class FabWidget extends StatelessWidget {
       child: FloatingActionButton(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(radiusCircular)),
         child: const Icon(Icons.add),
-        onPressed: () {
-          selectView(RecordType.account, context);
-        },
+        onPressed: () => selectView(RecordType.account, context),
       ),
     );
   }

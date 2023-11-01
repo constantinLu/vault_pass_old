@@ -31,7 +31,7 @@ class _SettingsViewState extends State<SettingsView> {
       builder: (context, state) {
         return WillPopScope(
           onWillPop: () {
-            context.back();
+            context.pushTo(const HomeView());
             return Future.value(false);
           },
           child: state.response.isNone()
@@ -123,7 +123,7 @@ class _SettingsViewState extends State<SettingsView> {
                                   btnSize: BtnSize.large,
                                   icon: Icons.developer_mode_sharp,
                                   onTap: () {
-                                    context.pushTo(const AppSettingsView());
+                                    context.pushTo(const AboutUsSettingsView());
                                   },
                                   bgColor: Palette.blackCard,
                                   textColor: Palette.whiteSnow,

@@ -26,6 +26,7 @@ mixin _$Record {
   Url get url => throw _privateConstructorUsedError;
   DateTime get createdDate => throw _privateConstructorUsedError;
   DateTime get updatedDate => throw _privateConstructorUsedError;
+  bool? get isFavorite => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RecordCopyWith<Record> get copyWith => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $RecordCopyWith<$Res> {
       Description description,
       Url url,
       DateTime createdDate,
-      DateTime updatedDate});
+      DateTime updatedDate,
+      bool? isFavorite});
 }
 
 /// @nodoc
@@ -72,6 +74,7 @@ class _$RecordCopyWithImpl<$Res, $Val extends Record>
     Object? url = null,
     Object? createdDate = null,
     Object? updatedDate = null,
+    Object? isFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -114,14 +117,19 @@ class _$RecordCopyWithImpl<$Res, $Val extends Record>
           ? _value.updatedDate
           : updatedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_RecordCopyWith<$Res> implements $RecordCopyWith<$Res> {
-  factory _$$_RecordCopyWith(_$_Record value, $Res Function(_$_Record) then) =
-      __$$_RecordCopyWithImpl<$Res>;
+abstract class _$$RecordImplCopyWith<$Res> implements $RecordCopyWith<$Res> {
+  factory _$$RecordImplCopyWith(
+          _$RecordImpl value, $Res Function(_$RecordImpl) then) =
+      __$$RecordImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,14 +142,16 @@ abstract class _$$_RecordCopyWith<$Res> implements $RecordCopyWith<$Res> {
       Description description,
       Url url,
       DateTime createdDate,
-      DateTime updatedDate});
+      DateTime updatedDate,
+      bool? isFavorite});
 }
 
 /// @nodoc
-class __$$_RecordCopyWithImpl<$Res>
-    extends _$RecordCopyWithImpl<$Res, _$_Record>
-    implements _$$_RecordCopyWith<$Res> {
-  __$$_RecordCopyWithImpl(_$_Record _value, $Res Function(_$_Record) _then)
+class __$$RecordImplCopyWithImpl<$Res>
+    extends _$RecordCopyWithImpl<$Res, _$RecordImpl>
+    implements _$$RecordImplCopyWith<$Res> {
+  __$$RecordImplCopyWithImpl(
+      _$RecordImpl _value, $Res Function(_$RecordImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,8 +167,9 @@ class __$$_RecordCopyWithImpl<$Res>
     Object? url = null,
     Object? createdDate = null,
     Object? updatedDate = null,
+    Object? isFavorite = freezed,
   }) {
-    return _then(_$_Record(
+    return _then(_$RecordImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -199,14 +210,18 @@ class __$$_RecordCopyWithImpl<$Res>
           ? _value.updatedDate
           : updatedDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Record extends _Record {
-  const _$_Record(
+class _$RecordImpl extends _Record {
+  _$RecordImpl(
       {required this.id,
       required this.recordName,
       required this.type,
@@ -216,7 +231,8 @@ class _$_Record extends _Record {
       required this.description,
       required this.url,
       required this.createdDate,
-      required this.updatedDate})
+      required this.updatedDate,
+      this.isFavorite})
       : super._();
 
   @override
@@ -239,17 +255,19 @@ class _$_Record extends _Record {
   final DateTime createdDate;
   @override
   final DateTime updatedDate;
+  @override
+  final bool? isFavorite;
 
   @override
   String toString() {
-    return 'Record(id: $id, recordName: $recordName, type: $type, loginRecord: $loginRecord, passwordRecord: $passwordRecord, logo: $logo, description: $description, url: $url, createdDate: $createdDate, updatedDate: $updatedDate)';
+    return 'Record(id: $id, recordName: $recordName, type: $type, loginRecord: $loginRecord, passwordRecord: $passwordRecord, logo: $logo, description: $description, url: $url, createdDate: $createdDate, updatedDate: $updatedDate, isFavorite: $isFavorite)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Record &&
+            other is _$RecordImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.recordName, recordName) ||
                 other.recordName == recordName) &&
@@ -265,7 +283,9 @@ class _$_Record extends _Record {
             (identical(other.createdDate, createdDate) ||
                 other.createdDate == createdDate) &&
             (identical(other.updatedDate, updatedDate) ||
-                other.updatedDate == updatedDate));
+                other.updatedDate == updatedDate) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite));
   }
 
   @override
@@ -280,17 +300,18 @@ class _$_Record extends _Record {
       description,
       url,
       createdDate,
-      updatedDate);
+      updatedDate,
+      isFavorite);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RecordCopyWith<_$_Record> get copyWith =>
-      __$$_RecordCopyWithImpl<_$_Record>(this, _$identity);
+  _$$RecordImplCopyWith<_$RecordImpl> get copyWith =>
+      __$$RecordImplCopyWithImpl<_$RecordImpl>(this, _$identity);
 }
 
 abstract class _Record extends Record {
-  const factory _Record(
+  factory _Record(
       {required final UniqueId id,
       required final Name recordName,
       required final RecordType type,
@@ -300,8 +321,9 @@ abstract class _Record extends Record {
       required final Description description,
       required final Url url,
       required final DateTime createdDate,
-      required final DateTime updatedDate}) = _$_Record;
-  const _Record._() : super._();
+      required final DateTime updatedDate,
+      final bool? isFavorite}) = _$RecordImpl;
+  _Record._() : super._();
 
   @override
   UniqueId get id;
@@ -324,7 +346,9 @@ abstract class _Record extends Record {
   @override
   DateTime get updatedDate;
   @override
+  bool? get isFavorite;
+  @override
   @JsonKey(ignore: true)
-  _$$_RecordCopyWith<_$_Record> get copyWith =>
+  _$$RecordImplCopyWith<_$RecordImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

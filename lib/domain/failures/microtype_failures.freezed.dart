@@ -107,22 +107,22 @@ class _$MicroTypeFailureCopyWithImpl<T, $Res, $Val extends MicroTypeFailure<T>>
 }
 
 /// @nodoc
-abstract class _$$InvalidEmailCopyWith<T, $Res>
+abstract class _$$InvalidEmailImplCopyWith<T, $Res>
     implements $MicroTypeFailureCopyWith<T, $Res> {
-  factory _$$InvalidEmailCopyWith(
-          _$InvalidEmail<T> value, $Res Function(_$InvalidEmail<T>) then) =
-      __$$InvalidEmailCopyWithImpl<T, $Res>;
+  factory _$$InvalidEmailImplCopyWith(_$InvalidEmailImpl<T> value,
+          $Res Function(_$InvalidEmailImpl<T>) then) =
+      __$$InvalidEmailImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class __$$InvalidEmailCopyWithImpl<T, $Res>
-    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidEmail<T>>
-    implements _$$InvalidEmailCopyWith<T, $Res> {
-  __$$InvalidEmailCopyWithImpl(
-      _$InvalidEmail<T> _value, $Res Function(_$InvalidEmail<T>) _then)
+class __$$InvalidEmailImplCopyWithImpl<T, $Res>
+    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidEmailImpl<T>>
+    implements _$$InvalidEmailImplCopyWith<T, $Res> {
+  __$$InvalidEmailImplCopyWithImpl(
+      _$InvalidEmailImpl<T> _value, $Res Function(_$InvalidEmailImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +130,7 @@ class __$$InvalidEmailCopyWithImpl<T, $Res>
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(_$InvalidEmail<T>(
+    return _then(_$InvalidEmailImpl<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -141,8 +141,8 @@ class __$$InvalidEmailCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InvalidEmail<T> implements InvalidEmail<T> {
-  const _$InvalidEmail({required this.failedValue});
+class _$InvalidEmailImpl<T> implements InvalidEmail<T> {
+  const _$InvalidEmailImpl({required this.failedValue});
 
   @override
   final T failedValue;
@@ -156,7 +156,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvalidEmail<T> &&
+            other is _$InvalidEmailImpl<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -168,8 +168,9 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
-      __$$InvalidEmailCopyWithImpl<T, _$InvalidEmail<T>>(this, _$identity);
+  _$$InvalidEmailImplCopyWith<T, _$InvalidEmailImpl<T>> get copyWith =>
+      __$$InvalidEmailImplCopyWithImpl<T, _$InvalidEmailImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -248,33 +249,33 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 
 abstract class InvalidEmail<T> implements MicroTypeFailure<T> {
   const factory InvalidEmail({required final T failedValue}) =
-      _$InvalidEmail<T>;
+      _$InvalidEmailImpl<T>;
 
   @override
   T get failedValue;
   @override
   @JsonKey(ignore: true)
-  _$$InvalidEmailCopyWith<T, _$InvalidEmail<T>> get copyWith =>
+  _$$InvalidEmailImplCopyWith<T, _$InvalidEmailImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$InvalidPasswordCopyWith<T, $Res>
+abstract class _$$InvalidPasswordImplCopyWith<T, $Res>
     implements $MicroTypeFailureCopyWith<T, $Res> {
-  factory _$$InvalidPasswordCopyWith(_$InvalidPassword<T> value,
-          $Res Function(_$InvalidPassword<T>) then) =
-      __$$InvalidPasswordCopyWithImpl<T, $Res>;
+  factory _$$InvalidPasswordImplCopyWith(_$InvalidPasswordImpl<T> value,
+          $Res Function(_$InvalidPasswordImpl<T>) then) =
+      __$$InvalidPasswordImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class __$$InvalidPasswordCopyWithImpl<T, $Res>
-    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidPassword<T>>
-    implements _$$InvalidPasswordCopyWith<T, $Res> {
-  __$$InvalidPasswordCopyWithImpl(
-      _$InvalidPassword<T> _value, $Res Function(_$InvalidPassword<T>) _then)
+class __$$InvalidPasswordImplCopyWithImpl<T, $Res>
+    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidPasswordImpl<T>>
+    implements _$$InvalidPasswordImplCopyWith<T, $Res> {
+  __$$InvalidPasswordImplCopyWithImpl(_$InvalidPasswordImpl<T> _value,
+      $Res Function(_$InvalidPasswordImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -282,7 +283,7 @@ class __$$InvalidPasswordCopyWithImpl<T, $Res>
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(_$InvalidPassword<T>(
+    return _then(_$InvalidPasswordImpl<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -293,8 +294,8 @@ class __$$InvalidPasswordCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InvalidPassword<T> implements InvalidPassword<T> {
-  const _$InvalidPassword({required this.failedValue});
+class _$InvalidPasswordImpl<T> implements InvalidPassword<T> {
+  const _$InvalidPasswordImpl({required this.failedValue});
 
   @override
   final T failedValue;
@@ -308,7 +309,7 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvalidPassword<T> &&
+            other is _$InvalidPasswordImpl<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -320,8 +321,8 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvalidPasswordCopyWith<T, _$InvalidPassword<T>> get copyWith =>
-      __$$InvalidPasswordCopyWithImpl<T, _$InvalidPassword<T>>(
+  _$$InvalidPasswordImplCopyWith<T, _$InvalidPasswordImpl<T>> get copyWith =>
+      __$$InvalidPasswordImplCopyWithImpl<T, _$InvalidPasswordImpl<T>>(
           this, _$identity);
 
   @override
@@ -401,33 +402,33 @@ class _$InvalidPassword<T> implements InvalidPassword<T> {
 
 abstract class InvalidPassword<T> implements MicroTypeFailure<T> {
   const factory InvalidPassword({required final T failedValue}) =
-      _$InvalidPassword<T>;
+      _$InvalidPasswordImpl<T>;
 
   @override
   T get failedValue;
   @override
   @JsonKey(ignore: true)
-  _$$InvalidPasswordCopyWith<T, _$InvalidPassword<T>> get copyWith =>
+  _$$InvalidPasswordImplCopyWith<T, _$InvalidPasswordImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$InvalidStringCopyWith<T, $Res>
+abstract class _$$InvalidStringImplCopyWith<T, $Res>
     implements $MicroTypeFailureCopyWith<T, $Res> {
-  factory _$$InvalidStringCopyWith(
-          _$InvalidString<T> value, $Res Function(_$InvalidString<T>) then) =
-      __$$InvalidStringCopyWithImpl<T, $Res>;
+  factory _$$InvalidStringImplCopyWith(_$InvalidStringImpl<T> value,
+          $Res Function(_$InvalidStringImpl<T>) then) =
+      __$$InvalidStringImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class __$$InvalidStringCopyWithImpl<T, $Res>
-    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidString<T>>
-    implements _$$InvalidStringCopyWith<T, $Res> {
-  __$$InvalidStringCopyWithImpl(
-      _$InvalidString<T> _value, $Res Function(_$InvalidString<T>) _then)
+class __$$InvalidStringImplCopyWithImpl<T, $Res>
+    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InvalidStringImpl<T>>
+    implements _$$InvalidStringImplCopyWith<T, $Res> {
+  __$$InvalidStringImplCopyWithImpl(_$InvalidStringImpl<T> _value,
+      $Res Function(_$InvalidStringImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -435,7 +436,7 @@ class __$$InvalidStringCopyWithImpl<T, $Res>
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(_$InvalidString<T>(
+    return _then(_$InvalidStringImpl<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -446,8 +447,8 @@ class __$$InvalidStringCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InvalidString<T> implements InvalidString<T> {
-  const _$InvalidString({required this.failedValue});
+class _$InvalidStringImpl<T> implements InvalidString<T> {
+  const _$InvalidStringImpl({required this.failedValue});
 
   @override
   final T failedValue;
@@ -461,7 +462,7 @@ class _$InvalidString<T> implements InvalidString<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InvalidString<T> &&
+            other is _$InvalidStringImpl<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -473,8 +474,9 @@ class _$InvalidString<T> implements InvalidString<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InvalidStringCopyWith<T, _$InvalidString<T>> get copyWith =>
-      __$$InvalidStringCopyWithImpl<T, _$InvalidString<T>>(this, _$identity);
+  _$$InvalidStringImplCopyWith<T, _$InvalidStringImpl<T>> get copyWith =>
+      __$$InvalidStringImplCopyWithImpl<T, _$InvalidStringImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -553,33 +555,33 @@ class _$InvalidString<T> implements InvalidString<T> {
 
 abstract class InvalidString<T> implements MicroTypeFailure<T> {
   const factory InvalidString({required final T failedValue}) =
-      _$InvalidString<T>;
+      _$InvalidStringImpl<T>;
 
   @override
   T get failedValue;
   @override
   @JsonKey(ignore: true)
-  _$$InvalidStringCopyWith<T, _$InvalidString<T>> get copyWith =>
+  _$$InvalidStringImplCopyWith<T, _$InvalidStringImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$InfraFailureCopyWith<T, $Res>
+abstract class _$$InfraFailureImplCopyWith<T, $Res>
     implements $MicroTypeFailureCopyWith<T, $Res> {
-  factory _$$InfraFailureCopyWith(
-          _$InfraFailure<T> value, $Res Function(_$InfraFailure<T>) then) =
-      __$$InfraFailureCopyWithImpl<T, $Res>;
+  factory _$$InfraFailureImplCopyWith(_$InfraFailureImpl<T> value,
+          $Res Function(_$InfraFailureImpl<T>) then) =
+      __$$InfraFailureImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({T failedValue});
 }
 
 /// @nodoc
-class __$$InfraFailureCopyWithImpl<T, $Res>
-    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InfraFailure<T>>
-    implements _$$InfraFailureCopyWith<T, $Res> {
-  __$$InfraFailureCopyWithImpl(
-      _$InfraFailure<T> _value, $Res Function(_$InfraFailure<T>) _then)
+class __$$InfraFailureImplCopyWithImpl<T, $Res>
+    extends _$MicroTypeFailureCopyWithImpl<T, $Res, _$InfraFailureImpl<T>>
+    implements _$$InfraFailureImplCopyWith<T, $Res> {
+  __$$InfraFailureImplCopyWithImpl(
+      _$InfraFailureImpl<T> _value, $Res Function(_$InfraFailureImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -587,7 +589,7 @@ class __$$InfraFailureCopyWithImpl<T, $Res>
   $Res call({
     Object? failedValue = freezed,
   }) {
-    return _then(_$InfraFailure<T>(
+    return _then(_$InfraFailureImpl<T>(
       failedValue: freezed == failedValue
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
@@ -598,8 +600,8 @@ class __$$InfraFailureCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InfraFailure<T> implements InfraFailure<T> {
-  const _$InfraFailure({required this.failedValue});
+class _$InfraFailureImpl<T> implements InfraFailure<T> {
+  const _$InfraFailureImpl({required this.failedValue});
 
   @override
   final T failedValue;
@@ -613,7 +615,7 @@ class _$InfraFailure<T> implements InfraFailure<T> {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InfraFailure<T> &&
+            other is _$InfraFailureImpl<T> &&
             const DeepCollectionEquality()
                 .equals(other.failedValue, failedValue));
   }
@@ -625,8 +627,9 @@ class _$InfraFailure<T> implements InfraFailure<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$InfraFailureCopyWith<T, _$InfraFailure<T>> get copyWith =>
-      __$$InfraFailureCopyWithImpl<T, _$InfraFailure<T>>(this, _$identity);
+  _$$InfraFailureImplCopyWith<T, _$InfraFailureImpl<T>> get copyWith =>
+      __$$InfraFailureImplCopyWithImpl<T, _$InfraFailureImpl<T>>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -705,12 +708,12 @@ class _$InfraFailure<T> implements InfraFailure<T> {
 
 abstract class InfraFailure<T> implements MicroTypeFailure<T> {
   const factory InfraFailure({required final T failedValue}) =
-      _$InfraFailure<T>;
+      _$InfraFailureImpl<T>;
 
   @override
   T get failedValue;
   @override
   @JsonKey(ignore: true)
-  _$$InfraFailureCopyWith<T, _$InfraFailure<T>> get copyWith =>
+  _$$InfraFailureImplCopyWith<T, _$InfraFailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

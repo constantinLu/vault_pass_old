@@ -68,21 +68,22 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
 }
 
 /// @nodoc
-abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
-  factory _$$_SettingsCopyWith(
-          _$_Settings value, $Res Function(_$_Settings) then) =
-      __$$_SettingsCopyWithImpl<$Res>;
+abstract class _$$SettingsImplCopyWith<$Res>
+    implements $SettingsCopyWith<$Res> {
+  factory _$$SettingsImplCopyWith(
+          _$SettingsImpl value, $Res Function(_$SettingsImpl) then) =
+      __$$SettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UniqueId id, DateTime createdDate, DateTime updatedDate});
 }
 
 /// @nodoc
-class __$$_SettingsCopyWithImpl<$Res>
-    extends _$SettingsCopyWithImpl<$Res, _$_Settings>
-    implements _$$_SettingsCopyWith<$Res> {
-  __$$_SettingsCopyWithImpl(
-      _$_Settings _value, $Res Function(_$_Settings) _then)
+class __$$SettingsImplCopyWithImpl<$Res>
+    extends _$SettingsCopyWithImpl<$Res, _$SettingsImpl>
+    implements _$$SettingsImplCopyWith<$Res> {
+  __$$SettingsImplCopyWithImpl(
+      _$SettingsImpl _value, $Res Function(_$SettingsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +93,7 @@ class __$$_SettingsCopyWithImpl<$Res>
     Object? createdDate = null,
     Object? updatedDate = null,
   }) {
-    return _then(_$_Settings(
+    return _then(_$SettingsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -111,8 +112,8 @@ class __$$_SettingsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Settings extends _Settings {
-  const _$_Settings(
+class _$SettingsImpl extends _Settings {
+  const _$SettingsImpl(
       {required this.id, required this.createdDate, required this.updatedDate})
       : super._();
 
@@ -132,7 +133,7 @@ class _$_Settings extends _Settings {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Settings &&
+            other is _$SettingsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.createdDate, createdDate) ||
                 other.createdDate == createdDate) &&
@@ -146,15 +147,15 @@ class _$_Settings extends _Settings {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
-      __$$_SettingsCopyWithImpl<_$_Settings>(this, _$identity);
+  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
+      __$$SettingsImplCopyWithImpl<_$SettingsImpl>(this, _$identity);
 }
 
 abstract class _Settings extends Settings {
   const factory _Settings(
       {required final UniqueId id,
       required final DateTime createdDate,
-      required final DateTime updatedDate}) = _$_Settings;
+      required final DateTime updatedDate}) = _$SettingsImpl;
   const _Settings._() : super._();
 
   @override
@@ -165,6 +166,6 @@ abstract class _Settings extends Settings {
   DateTime get updatedDate;
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
+  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
